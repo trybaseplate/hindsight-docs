@@ -3,8 +3,12 @@ title: "Quickstart"
 description: "Get started with Hindsight in a few easy steps"
 ---
 
-### Add Competitors
-To get started, let's add some [competitors](https://app.usehindsight.com/competitors). Once you tell us who you're competitors are, our AI agents will automatically start finding relevant content from their websites and other places on the internet to track.
+### Before You Start
+Teams that complete all 10 steps increase their win rate by 12% on average. It's worth it!
+  <img alt="Insights" classname="block" src="/images/win-loss-dashboard.png" />
+
+### Configure Hindsight
+To get started, let's customize Hindsight so your competitive win-loss insights are tailored for your business.
 
 <img alt="Competitors" classname="block" src="/images/competitors.png" />
 
@@ -14,12 +18,16 @@ To get started, let's add some [competitors](https://app.usehindsight.com/compet
   Hindsight uses information about your products and pricing to build relevant competitor battlecards.
   If you have documents or webpages that overview your pricing and products, upload that content to your [Knowledge Base](https://app.usehindsight.com/library/knowledge).
   When creating battlecards, our AI will use this information to help you understand how your competitors stack up against you.
-  <img alt="Competitors" classname="block" src="/images/knowledge-base-upload.png" />
-
+  <img alt="Knowledge Base" classname="block" src="/images/knowledge-base-upload.png" />
   </Accordion>
   <Accordion icon="globe-pointer" title="Add Competitors">
-   Add your competitors by URL. You can also add specific instructions for our AI agents to follow when tracking your competitors. For example, you can tell them to only track content about specific products, specific subdomain, or even specific keywords.
+   Add your [competitors](https://app.usehindsight.com/competitors) by URL. You can also add specific instructions for our AI agents to follow when tracking your competitors. For example, you can tell them to only track content about specific products, specific subdomain, or even specific keywords.
     <img alt="Competitors" classname="block" src="/images/competitors-add.png" />
+  </Accordion>
+  <Accordion icon="tags" title="Add Decision Drivers">
+    Decision drivers are the key factors that influence your customers' buying decisions. These can include pricing, specific features, customer support, and more. By adding decision drivers, you can help our AI agents understand what to look for when analyzing your deals.
+    You can add decision drivers by going to the [Decision Drivers](https://app.usehindsight.com/settings/reasons) page and clicking "New Driver". Add a detailed description of the driver and any relevant keywords. Our AI will use this information to help you understand your strengths and weaknesses compared to your competitors.
+    <img alt="Decision Drivers" classname="block" src="/images/decision-drivers.png" />
   </Accordion>
 </AccordionGroup>
 
@@ -29,46 +37,44 @@ These insights are critical for building battlecards that help your sales team w
 
 <img alt="Integrations" classname="block" src="/images/integrations.png" />
 
-
 <AccordionGroup>
-
 <Accordion icon="salesforce" title="Connect Your CRM">
   Connect your Salesforce or HubSpot account vai OAuth. This will require admin access to your CRM. You can set up automation rules to automatically import your deals. Visit the [CRM settings](https://app.usehindsight.com/settings/properties) page for further controls. For detailed CRM setup instructions, check out our [CRM integration guide](https://docs.usehindsight.com/essentials/crm-integration).
   <img alt="CRM" classname="block" src="/images/crm-settings.png" />
 </Accordion>
 <Accordion icon="microphone" title="Connect Your Meeting Notetaker">
-  Connect your meeting notetaker (like Gong or Chorus) to automatically import your sales calls and meetings. This will help our AI extract competitive insights from your sales conversations. You can use our Zapier integration to connect meeting notetakers that aren't natively supported.
+  Connect your meeting notetaker (like Gong) to automatically import your sales calls and meetings. This will help our AI extract competitive insights from your sales conversations. You can use our [Zapier](https://docs.usehindsight.com/guides/zapier) integration to connect meeting notetakers that aren't natively supported.
+  <img alt="Zap Action" classname="block" src="/images/zap-overview.png" />
 </Accordion>
 <Accordion icon="slack" title="Connect Slack">
   Add the Hindsight Slack App to your workspace to deliver battlecards, notifications, and other insights directly to your sales team. You can control your [notification settings](https://app.usehindsight.com/settings/notifications).
-</Accordion>
+  <img alt="Slack" classname="block" src="/images/slack-app.png" />
 
+</Accordion>
 </AccordionGroup>
 
-## Update your docs
 
-Add content directly in your files with MDX syntax and React components. You can use any of our components, or even build your own.
 
-<CardGroup>
+### Get Started
+    <img alt="Deal Review" classname="block" src="/images/deals-home.png" />
 
-<Card title="Add Content With MDX" icon="file" href="/essentials/markdown">
-  Add content to your docs with MDX syntax.
-</Card>
+ <AccordionGroup>
+<Accordion icon="salesforce" title="Import and Analyze Your First Deal">
+  Import your first deal from your CRM. Hindsight will analyze the deal and extract competitive insights based on the decision drivers you added earlier. You can view the analysis on the individual [Deal](https://app.usehindsight.com/deals) page and in the [dashboard](https://app.usehindsight.com/dashboard) .
+  <img alt="Import Deals" classname="block" src="/images/deals-add.png" />
+</Accordion>
+<Accordion icon="users-viewfinder" title="Send Interview Request">
+  Send a win-loss interview request to someone from your sales team. Hindsight will handle follow-ups, conduct the interview, and analyze results. You can send the request via email or Slack. Configure in your[Win-Loss Surveys settings](https://app.usehindsight.com/settings/reports).
+  <img alt="Request Interview" classname="block" src="/images/request-feedback.png" />
+</Accordion>
+<Accordion icon="crosshairs-simple" title="Create Battlecard">
+  Visit the [Competitors](https://app.usehindsight.com/competitors) page and select a competitor. Regenerate the battlecard to utilize insights from your Deals. You can customize the battlecard by adding or removing sections, changing the layout, and more.
+  <img alt="Battlecard" classname="block" src="/images/battlecard.png" />
+</Accordion>
+<Accordion icon="slack" title="Share in Slack">
+  Add the Hindsight app to any of your Slack channels and get a simplified view of your battlecards by typing ```/battlecard [competitor name]```.
+  <img alt="Slack" classname="block" src="/images/slack-app.png" />
 
-<Card title="Add Code Blocks" icon="square-code" href="/essentials/code">
-  Add code directly to your docs with syntax highlighting.
-</Card>
+</Accordion>
+</AccordionGroup>
 
-<Card title="Add Images" icon="image" href="/essentials/images">
-  Add images to your docs to make them more engaging.
-</Card>
-
-<Card
-  title="Add Custom Components"
-  icon="puzzle-piece"
-  href="/essentials/reusable-snippets"
->
-  Add templates to your docs to make them more reusable.
-</Card>
-
-</CardGroup>
