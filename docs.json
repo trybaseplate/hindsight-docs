@@ -33,7 +33,8 @@
           {
             "group": "Guides",
             "pages": [
-              "guides/zapier"
+              "guides/zapier",
+              "guides/slack"
             ]
           }
         ]
