@@ -29,6 +29,12 @@
               "essentials/win-loss-interviews",
               "essentials/insights"
             ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/zapier"
+            ]
           }
         ]
       }
