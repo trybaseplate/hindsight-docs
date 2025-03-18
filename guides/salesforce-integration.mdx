@@ -1,0 +1,76 @@
+---
+title: 'Salesforce Integration'
+description: 'Sync Hindsight with Salesforce CRM for Deal Analysis'
+icon: 'salesforce'
+---
+
+
+## Overview
+Hindsight connects to Salesforce via OAuth to sync your deals and analyze them for competitive win-loss insights. This guide will help you set up the integration and start using it effectively.
+<img alt="Dashboard" classname="block" src="/images/win-loss-dashboard.png" />
+For support, please reach out via your Slack Connect channel or via [email](mailto:support@usehindsight.com)
+
+### How it Works
+When you connect Hindsight to your Salesforce CRM, you'll be able to **import specific Opportunities into Hindsight**. Hindsight will analyze these Opportunities to extract competitive insights based on your decision drivers.
+<br></br><br></br>You can set up **automation rules** in Hindsight that automatically import Opportunities based on custom criteria. You can use your Salesforce data to **filter in the Win-Loss dashboard** and analyze your Opportunities based on specific criteria, such as stage, amount, or close date.
+
+### Daily Sync
+**Opportunties are synced for the latest data every 12 hours**. This means that any changes made to your Opportunities in Salesforce will be reflected in Hindsight automatically.
+Hindsight listens to opportunities via webhooks to make this seamless for users.
+
+### Supported Objects
+Hindsight only syncs objects associated with the Opportunities that you import. This includes:
+- Opportunity
+- Account
+- Line Items
+- Contacts
+- Custom Fields
+- Feed Items
+- Emails
+- Meetings
+
+<img alt="slack deal" classname="block" src="/images/salesforce/salesforce-deal-sync.png" />
+
+### Segments
+**You can configure [segments](https://app.usehindsight.com/settings/segments) in Hindsight to filter your Opportunities based on custom criteria.** This allows you to analyze specific subsets of your Opportunities, such as those with a certain stage, amount, or close date.
+Segments are useful for analyzing your Opportunities based on specific criteria, such as:
+- Opportunities with a certain stage or pipeline (e.g. "Closed Won, New Business")
+- Opportunities with a certain amount (e.g. "> $10,000")
+- Opportunities with a certain close date (e.g. "Next 30 days")
+- Opportunities with a certain account type (e.g. "Enterprise")
+- Opportunities with a certain product (e.g. "Product A")
+- Opportunities with a certain region (e.g. "North America")
+
+<img alt="slack deal" classname="block" src="/images/salesforce/salesforce-segments.png" />
+
+
+## Connecting Salesforce
+### Authorization
+**Authorizing Salesforce requires admin access to your Salesforce account.** Click "Connect" on the [integrations](https://app.usehindsight.com/settings/integrations) page and follow the authorization steps.
+This will redirect you to the Salesforce authorization page. Click "Allow" to authorize Hindsight to access your Salesforce account. If you're having issues, contact your Salesforce admin.
+
+<img alt="slack deal" classname="block" src="/images/salesforce/salesforce-auth.png" />
+
+### Import Rules
+Setting up import rules allows you to **automatically import Opportunities into Hindsight** based on custom criteria. This is useful for keeping Hindsight's insights up-to-date without manual intervention.
+We recommend filtering to Closed Won and Lost opportunities. You can also filter by custom fields, such as "Region" or "Product", to analyze specific subsets of your Opportunities.
+<img alt="slack deal" classname="block" src="/images/salesforce/salesforce-import-auto.png" />
+
+
+## Customization
+
+### Opportunity Stages
+To help Hindsight understand your custom opportunity stages, navigate to the [CRM Settings](https://app.usehindsight.com/settings/properties) and click the "Stages" tab.
+**Mark your custom opportunity stages as "Closed Won" or "Closed Lost"** to help Hindsight analyze your Opportunities correctly. This will allow Hindsight to tag your Opportunities with the correct status and provide accurate win-loss insights.
+<img alt="slack deal" classname="block" src="/images/salesforce/salesforce-stages.png" />
+
+
+### Custom Properties
+You can customize the properties that Hindsight uses to analyze your opportunities in [CRM Settings](https://app.usehindsight.com/settings/properties) on the "Deals" and "Accounts". Having more properties makes analysis and sync slower, so "turn off"
+You can map your custom properties to Hindsight's default properties like "Region", "Type", and "Amount". Properties that are "Synced" but not mapped to a Hindsight property will still be analyzed and available for filtering.
+<img alt="slack deal" classname="block" src="/images/salesforce/salesforce-custom-properties.png" />
+
+
+### Line Items
+Hindsight pulls in your [line items](https://app.usehindsight.com/settings/products) from Salesforce to analyze your Opportunities. This allows Hindsight to provide insights on specific products and services associated with your Opportunities.
+<img alt="slack deal" classname="block" src="/images/salesforce/salesforce-line-items.png" />

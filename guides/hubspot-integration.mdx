@@ -1,0 +1,76 @@
+---
+title: 'HubSpot Integration'
+description: 'Sync Hindsight with HubSpot for Deal Analysis'
+icon: 'hubspot'
+---
+
+## Overview
+Hindsight connects to HubSpot via OAuth to sync your deals and analyze them for competitive win-loss insights. This guide will help you set up the integration and start using it effectively.
+<img alt="Dashboard" classname="block" src="/images/win-loss-dashboard.png" />
+For support, please reach out via your Slack Connect channel or via [email](mailto:support@usehindsight.com)
+
+### How it Works
+When you connect Hindsight to your HubSpot CRM, you'll be able to **import specific Deals into Hindsight**. Hindsight will analyze these Deals to extract competitive insights based on your decision drivers.
+<br></br><br></br>You can set up **automation rules** in Hindsight that automatically import Deals based on custom criteria. You can use your HubSpot data to **filter in the Win-Loss dashboard** and analyze your Deals based on specific criteria, such as stage, amount, or close date.
+
+### Daily Sync
+**Opportunties are synced for the latest data every 12 hours**. This means that any changes made to your Deals in HubSpot will be reflected in Hindsight automatically.
+Hindsight listens to Deals via webhooks to make this seamless for users.
+
+### Supported Objects
+Hindsight only syncs objects associated with the Deals that you import. This includes:
+- Deals
+- Account
+- Products
+- Contacts
+- Custom Fields
+- Notes
+- Emails
+- Meetings
+- Tickets
+
+<img alt="hubspot deal" classname="block" src="/images/hubspot/hubspot-deal-sync.png" />
+
+### Segments
+**You can configure [segments](https://app.usehindsight.com/settings/segments) in Hindsight to filter your Deals based on custom criteria.** This allows you to analyze specific subsets of your Deals, such as those with a certain stage, amount, or close date.
+Segments are useful for analyzing your Deals based on specific criteria, such as:
+- Deals with a certain stage or pipeline (e.g. "Closed Won, New Business")
+- Deals with a certain amount (e.g. "> $10,000")
+- Deals with a certain close date (e.g. "Next 30 days")
+- Deals with a certain account type (e.g. "Enterprise")
+- Deals with a certain product (e.g. "Product A")
+- Deals with a certain region (e.g. "North America")
+
+<img alt="slack deal" classname="block" src="/images/hubspot/hubspot-segments.png" />
+
+
+## Connecting HubSpot
+### Authorization
+**Authorizing HubSpot requires admin access to your HubSpot account.** Click "Connect" on the [integrations](https://app.usehindsight.com/settings/integrations) page and follow the authorization steps.
+This will redirect you to the HubSpot authorization page. Click "Allow" to authorize Hindsight to access your HubSpot account. If you're having issues, contact your HubSpot admin.
+
+<img alt="slack deal" classname="block" src="/images/hubspot/hubspot-auth.png" />
+
+### Import Rules
+Setting up import rules allows you to **automatically import Deals into Hindsight** based on custom criteria. This is useful for keeping Hindsight's insights up-to-date without manual intervention.
+We recommend filtering to Closed Won and Lost Deals. You can also filter by custom fields, such as "Region" or "Product", to analyze specific subsets of your Deals.
+<img alt="slack deal" classname="block" src="/images/salesforce/salesforce-import-auto.png" />
+
+
+## Customization
+
+### Deals Stages
+To help Hindsight understand your custom Deals stages, navigate to the [CRM Settings](https://app.usehindsight.com/settings/properties) and click the "Stages" tab.
+**Mark your custom Deals stages as "Closed Won" or "Closed Lost"** to help Hindsight analyze your Deals correctly. This will allow Hindsight to tag your Deals with the correct status and provide accurate win-loss insights.
+<img alt="slack deal" classname="block" src="/images/hubspot/hubspot-stages.png" />
+
+
+### Custom Properties
+You can customize the properties that Hindsight uses to analyze your Deals in [CRM Settings](https://app.usehindsight.com/settings/properties) on the "Deals" and "Accounts". Having more properties makes analysis and sync slower, so "turn off"
+You can map your custom properties to Hindsight's default properties like "Region", "Type", and "Amount". Properties that are "Synced" but not mapped to a Hindsight property will still be analyzed and available for filtering.
+<img alt="slack deal" classname="block" src="/images/hubspot/hubspot-properties.png" />
+
+
+### Line Items
+Hindsight pulls in your [line items](https://app.usehindsight.com/settings/products) from HubSpot to analyze your Deals. This allows Hindsight to provide insights on specific products and services associated with your Deals.
+<img alt="slack deal" classname="block" src="/images/hubspot/hubspot-line-items.png" />

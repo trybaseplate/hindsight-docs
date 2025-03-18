@@ -15,16 +15,12 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "introduction",
-              "quickstart"
-            ]
+            "pages": ["introduction", "quickstart"]
           },
           {
             "group": "Essentials",
             "pages": [
               "essentials/competitors",
-              "essentials/crm-integration",
               "essentials/deal-reviews",
               "essentials/win-loss-interviews",
               "essentials/insights"
@@ -33,6 +29,8 @@
           {
             "group": "Guides",
             "pages": [
+              "guides/salesforce-integration",
+              "guides/hubspot-integration",
               "guides/zapier",
               "guides/slack"
             ]
