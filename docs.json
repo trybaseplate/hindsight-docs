@@ -44,6 +44,11 @@
     "light": "/logo/dark.png",
     "dark": "/logo/light.svg"
   },
+  "integrations": {
+      "koala": {
+          "publicApiKey": "pk_f47f33c3e0dd4499c9e47e4a895492978fad"
+      }
+  },
   "navbar": {
     "links": [
       {
