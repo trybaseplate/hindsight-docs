@@ -14,8 +14,8 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Get Started",
-            "pages": ["introduction", "quickstart"]
+            "group": "Welcome",
+            "pages": ["overview", "quickstart"]
           },
           {
             "group": "Platform",
