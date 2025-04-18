@@ -18,22 +18,23 @@
             "pages": ["introduction", "quickstart"]
           },
           {
-            "group": "Essentials",
+            "group": "Platform",
             "pages": [
-              "essentials/competitors",
-              "essentials/battlecards",
-              "essentials/deal-reviews",
-              "essentials/win-loss-interviews",
-              "essentials/insights"
+              "platform/competitors",
+              "platform/battlecards",
+              "platform/deal-reviews",
+              "platform/win-loss-interviews",
+              "platform/insights"
             ]
           },
           {
-            "group": "Guides",
+            "group": "Integrations",
             "pages": [
-              "guides/salesforce-integration",
-              "guides/hubspot-integration",
-              "guides/zapier",
-              "guides/slack"
+              "integrations/slack",
+              "integrations/gong",
+              "integrations/salesforce-integration",
+              "integrations/hubspot-integration",
+              "integrations/zapier"
             ]
           }
         ]
