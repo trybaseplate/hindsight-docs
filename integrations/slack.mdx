@@ -12,19 +12,20 @@ This guide will help you set up the integration and start using it effectively.
 
 Disclaimer: AI generated responses may not be 100% accurate. Messages from Slack will not be used to train LLMs. User data is retained for only the time necessary to generate a response.
 
-# Add Hindsight to Your Slack Workspace
+## Set Up
+### Add Hindsight to Your Slack Workspace
 Go to the [integrations](https://app.usehindsight.com/settings/integrations) page and click "Connect". This will redirect you to the Slack authorization page. Click "Allow" to add Hindsight to your Slack workspace.
 <img alt="Integrations" classname="block" src="/images/integrations.png" />
 
-# Get Admin Permissions (if neccessary)
+### Get Admin Permissions (if neccessary)
 If you are not an admin of your Slack workspace, you may need to request admin permissions to add Hindsight to your workspace. This is required to allow Hindsight to send notifications and deliver battlecards to your sales team.
 Once approved, you'll have to add Hindsight to your workspace again. Click "Connect" on the [integrations](https://app.usehindsight.com/settings/integrations) page and follow the authorization steps again.
 <img alt="Slack Admin Approval" classname="block" src="/images/slack-admin.png" />
 
-# Add to Slack Channels
+### Add to Slack Channels
 Once Hindsight is added to your Slack workspace, you can add it to specific channels. This will allow Hindsight to send notifications and deliver battlecards to those channels.
 
-# Real-Time Alerts
+### Configure Real-Time Alerts
 You can customize the types of Alerts you want to receive in Slack in the [Alerts](https://app.usehindsight.com/settings/alerts) page. Here, you can choose which types of alerts you want to receive.
 <img alt="Slack Settings" classname="block" src="/images/slack-alerts.png" />
 
@@ -33,21 +34,35 @@ The alerts currently available are:
 2. **Newsleeter**: You can receive a weekly newsletter summarizing the latest competitive intelligence and insights from Hindsight.
 3. **Competitive Deals**: You can receive insights on competitive deals that are being won or lost. This will help you understand how your competitors are performing in the market
 
-# Instant Battlecards
-You can get battlecards in Slack by typing ```/battlecard [competitor name]``` in any channel where Hindsight is added. This will deliver a simplified view of the battlecard directly to that channel.
-<img alt="Slack Battlecards" classname="block" src="/images/slack-battlecard.png" />
+### Configure Personal Notifications
+You can customize the types of personal notifications you want to receive in Slack in the [Notifications](https://app.usehindsight.com/settings/notifications) page. Here, you can choose which types of notifications you want to receive as a DM from the Hindsight Slack App.
+<img alt="Slack Notifications" classname="block" src="/images/slack-notifications.png" />
 
-# Instant Answers
-You can ask Hindsight questions about your competitors by tagging Hindsight in a message - ```@Hindsight [your question]```. Hindsight will respond with the most relevant information from your battlecards and insights.
-<img alt="Slack Answers" classname="block" src="/images/slack-answer.png" />
+The notifications currently available are:
+1. **Weekly Digest**: Admin notification that lets you know about deals that need to be analyzed, pending interviews, and other important updates.
+2. **Weekly Competitive Updates**: Get a weekly summary of the latest competitive intelligence and insights from Hindsight.
+3. **Win-Loss Report**: A wekely report summarizing the latest win-loss insights from your team.
 
-# Competitive Newsletter
-You can receive a weekly newsletter summarizing the latest competitive intelligence and insights from Hindsight. This will help you stay up-to-date with the latest developments in your competitive landscape.
-<img alt="Slack Newsletter" classname="block" src="/images/slack-newsletter.png" />
-
-# Win-Loss interviews
+## Win-Loss interviews
 If you are using Hindsight for win-loss interviews, you can conduct debriefs directly in Slack. Hindsight's AI will ask questions and gather insights from your team members in a Slack channel. This will help you analyze your wins and losses more effectively.
 <img alt="Slack Win-Loss" classname="block" src="/images/slack-interview.png" />
 
-# Add Competitive Intel
+### Using Voice Inputs for Win-Loss Interviews
+Your sales team can record audio clips to answer questions during win-loss interviews in Slack. This feature allows for more natural and detailed responses, making it easier to capture insights from your team.
+To use this feature, simply click the microphone icon in the message input box and record your response. Hit enter to submit the audio. Slack will transcribe this audio clip and send it as a message to Hindsight's AI interviewer, which will continue the interview.
+
+## Sales Enablemement
+### Instant Battlecards
+You can get battlecards in Slack by typing ```/battlecard [competitor name]``` in any channel where Hindsight is added. This will deliver a simplified view of the battlecard directly to that channel.
+<img alt="Slack Battlecards" classname="block" src="/images/slack-battlecard.png" />
+
+### Instant Answers
+You can ask Hindsight questions about your competitors by tagging Hindsight in a message - ```@Hindsight [your question]```. Hindsight will respond with the most relevant information from your battlecards and insights.
+<img alt="Slack Answers" classname="block" src="/images/slack-answer.png" />
+
+### Competitive Newsletter
+You can receive a weekly newsletter summarizing the latest competitive intelligence and insights from Hindsight. This will help you stay up-to-date with the latest developments in your competitive landscape.
+<img alt="Slack Newsletter" classname="block" src="/images/slack-newsletter.png" />
+
+## Crowdsource Competitive Intel
 You can add intelligence from Slack into Hindsight by using the 3 dot menu on any message. Click "More actions" and select "Add to Hindsight". This will allow you to add competitive insights from your Slack conversations directly into Hindsight for analysis.
