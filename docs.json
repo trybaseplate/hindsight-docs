@@ -15,12 +15,13 @@
         "groups": [
           {
             "group": "Welcome",
-            "pages": ["overview", "quickstart"]
+            "pages": ["overview", "quickstart", "deals-quickstart"]
           },
           {
             "group": "Platform",
             "pages": [
               "platform/competitors",
+              "platform/features",
               "platform/battlecards",
               "platform/feature-comparison",
               "platform/deal-reviews",
