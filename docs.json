@@ -15,18 +15,45 @@
         "groups": [
           {
             "group": "Welcome",
-            "pages": ["overview", "quickstart", "deals-quickstart"]
+            "pages": ["overview", "quickstart-ci", "deals-quickstart"]
+          },
+          {
+            "group": "Release Notes",
+            "pages": [
+              "release-notes/feature-tracking-2.0",
+              "release-notes/decision-drivers-2.0",
+              "release-notes/custom-metrics"
+            ]
           },
           {
             "group": "Platform",
             "pages": [
-              "platform/competitors",
-              "platform/features",
-              "platform/battlecards",
-              "platform/feature-comparison",
               "platform/deal-reviews",
+              "platform/competitive-monitoring", 
+              "platform/competitive-enablement",
               "platform/win-loss-interviews",
-              "platform/insights"
+              "platform/analytics"
+            ]
+          },
+          {
+            "group": "Workflows",
+            "pages": [
+              "workflows/sync-deals",
+              "workflows/analyze-deals",
+              "workflows/generate-battlecards",
+              "workflows/generate-custom-assets",
+              "workflows/generate-feature-comparison",
+              "workflows/enablement-in-slack"
+            ]
+          },
+          {
+            "group": "Objects",
+            "pages": [
+              "objects/deals",
+              "objects/competitors",
+              "objects/decision-drivers",
+              "objects/features",
+              "objects/metrics"
             ]
           },
           {
@@ -48,9 +75,9 @@
     "dark": "/logo/light.svg"
   },
   "integrations": {
-      "koala": {
-          "publicApiKey": "pk_f47f33c3e0dd4499c9e47e4a895492978fad"
-      }
+    "koala": {
+      "publicApiKey": "pk_f47f33c3e0dd4499c9e47e4a895492978fad"
+    }
   },
   "navbar": {
     "links": [

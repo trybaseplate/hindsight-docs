@@ -1,59 +1,91 @@
 ---
-title: "Deal Intelligence Setup"
-description: "Connect Your Sales Tools and Customize Your Insights"
+title: "Quickstart - Win-Loss"
+description: "Connect your sales tools and set up AI-powered deal analysis in 4 steps"
 ---
 
-To start analyzing your sales data, connect your sales tools (CRM, call recorder, etc.) and configure what types of insights you'd like to collect.
-By connecting your tools and telling Hindsight about your business, you help your AI assistant extract more useful data.
+Get your deal intelligence system up and running by connecting your sales tools, configuring decision drivers, setting up features, and importing your deals for analysis.
 
-For a deep dive on how Deal Intelligence works, click [here](/platform/deal-reviews.mdx).
+{/* <img alt="Deal Review" classname="block" src="/images/deals-home.png" /> */}
 
-### Connect Your Sales Tools
-Next, let's connect a few [integrations](https://app.usehindsight.com/settings/integrations). Hindsight analyzes your sales data to track competitors and extract win-loss insights.
-These insights are critical for creating a revenue and data-driven organization.
+<Steps>
+  <Step icon="plug" title="Connect Integrations">
+    Connect your sales tools to automatically import deals, calls, and customer data. Hindsight integrates with all major CRM and sales platforms.
+    
+    **Popular Integrations:**
+    - **Salesforce & HubSpot**: Automatic deal import and analysis
+    - **Gong & Clari**: Sales call transcription and insights
+    - **Slack**: Receive insights and battlecards directly in your channels
+    
+    Visit [Integrations](https://app.usehindsight.com/settings/integrations) to connect your tools. For detailed setup instructions, check our integration guides:
+    - [Salesforce Integration](/integrations/salesforce-integration)
+    - [HubSpot Integration](/integrations/hubspot-integration) 
+    - [Gong Integration](/integrations/gong)
+    - [Slack Integration](/integrations/slack)
+    
+    {/* <img alt="Integrations" classname="block" src="/images/integrations.png" /> */}
+  </Step>
+  
+  <Step icon="users-viewfinder" title="Create Decision Drivers">
+    Set up decision drivers - the key factors that influence your customers' buying decisions. Choose from our pre-built library of 35 drivers or create custom ones.
+    
+    Navigate to [Decision Drivers](https://app.usehindsight.com/settings/reasons) and click **"Add Drivers"** to:
+    - **Browse Pre-built Library**: Instantly select from 35 curated drivers across 6 categories
+    - **Search & Filter**: Find relevant drivers by category (Sales, Pricing, Product, etc.)
+    - **Bulk Selection**: Add multiple drivers at once
+    - **Custom Drivers**: Create industry-specific factors unique to your business
+    
+    {/* <img alt="Decision Drivers" classname="block" src="/images/decision-drivers.png" /> */}
+  </Step>
+  
+  <Step icon="grid" title="Add Features">
+    Define the product features you want to track across deals and competitive analysis. Features help you understand what capabilities customers care about most.
+    
+    Go to [Features](https://app.usehindsight.com/settings/features) to set up your feature catalog:
+    - **CSV Import**: Upload up to 50 features at once using our template
+    - **Manual Creation**: Add individual features with descriptions and categorization
+    - **Product Organization**: Group features by product and product area
+    - **AI Detection**: Features will be automatically detected in deal conversations
+    
+    {/* <img alt="Create Features" classname="block" src="/images/features/features-create.png" /> */}
+  </Step>
+  
+  <Step icon="database" title="Import and Analyze Deals">
+    Start importing your deals for AI-powered analysis. Hindsight will automatically extract competitive insights, decision drivers, and feature mentions.
+    
+    **Import Options:**
+    - **Automatic Import**: Connected CRM deals sync automatically
+    - **Manual Import**: Add specific deals for analysis
+    - **Bulk Upload**: Import multiple deals at once
+    
+    Once imported, Hindsight analyzes each deal to identify:
+    - Competitor mentions and competitive dynamics
+    - Decision driver sentiment and influence
+    - Feature requests and pain points
+    - Win/loss factors and patterns
+    
+    {/* <img alt="Import Deals" classname="block" src="/images/deals-add.png" /> */}
+  </Step>
+</Steps>
 
- Decision drivers are the key factors that influence your customers' buying decisions. These can include pricing, customer support, and more. By adding decision drivers, you can help our AI agents understand what to look for when analyzing your deals.
-    You can add decision drivers by going to the [Decision Drivers](https://app.usehindsight.com/settings/reasons) page and clicking "New Driver". Add a detailed description of the driver and any relevant keywords. Our AI will use this information to help you understand your strengths and weaknesses compared to your competitors.
-    <img alt="Decision Drivers" classname="block" src="/images/decision-drivers.png" />
-<img alt="Integrations" classname="block" src="/images/integrations.png" />
+### What's Next?
+<CardGroup cols={3}>
+  <Card title="Analyze Deal Patterns" icon="chart-line" href="/platform/deal-reviews">
+    Explore your deal analysis dashboard to understand win/loss patterns and competitive dynamics.
+  </Card>
+  <Card title="Generate Battlecards" icon="crosshairs-simple" href="/platform/battlecards">
+    Create competitive battlecards based on your deal intelligence and feature analysis.
+  </Card>
+  <Card title="Win-Loss Interviews" icon="users-viewfinder" href="/platform/win-loss-interviews">
+    Set up automated win-loss interviews to gather deeper insights from your deals.
+  </Card>
+</CardGroup>
 
-<AccordionGroup>
-<Accordion icon="salesforce" title="Connect Your CRM">
-  Connect your Salesforce or HubSpot account vai OAuth. This will require admin access to your CRM. You can set up automation rules to automatically import your deals. Visit the [CRM settings](https://app.usehindsight.com/settings/properties) page for further controls. For detailed CRM setup instructions, check out our [CRM integration guide](https://docs.usehindsight.com/essentials/crm-integration).
-  <img alt="CRM" classname="block" src="/images/crm-settings.png" />
-</Accordion>
-<Accordion icon="microphone" title="Connect Your Meeting Notetaker">
-  Connect your meeting notetaker (like Gong) to automatically import your sales calls and meetings. This will help our AI extract competitive insights from your sales conversations. You can use our [Zapier](https://docs.usehindsight.com/guides/zapier) integration to connect meeting notetakers that aren't natively supported.
-  <img alt="Zap Action" classname="block" src="/images/zap-overview.png" />
-</Accordion>
-<Accordion icon="slack" title="Connect Slack">
-  Add the Hindsight Slack App to your workspace to deliver battlecards, notifications, and other insights directly to your sales team. You can control your [notification settings](https://app.usehindsight.com/settings/notifications).
-  <img alt="Slack" classname="block" src="/images/slack-app.png" />
+### Advanced Setup
+Once your basic deal intelligence is running, consider these advanced features:
+- **Custom Analysis Rules**: Configure specific triggers for deal analysis
+- **Team Notifications**: Set up Slack alerts for important competitive insights
+- **Export & Reporting**: Generate executive reports on deal performance
+- **API Integration**: Connect deal insights to your existing sales workflows
 
-</Accordion>
-</AccordionGroup> 
-
-
-### Get Started
-    <img alt="Deal Review" classname="block" src="/images/deals-home.png" />
-
- <AccordionGroup>
-<Accordion icon="salesforce" title="Import and Analyze Your First Deal">
-  Import your first deal from your CRM. Hindsight will analyze the deal and extract competitive insights based on the decision drivers you added earlier. You can view the analysis on the individual [Deal](https://app.usehindsight.com/deals) page and in the [dashboard](https://app.usehindsight.com/dashboard) .
-  <img alt="Import Deals" classname="block" src="/images/deals-add.png" />
-</Accordion>
-<Accordion icon="users-viewfinder" title="Send Interview Request">
-  Send a win-loss interview request to someone from your sales team. Hindsight will handle follow-ups, conduct the interview, and analyze results. You can send the request via email or Slack. Configure in your [Win-Loss Surveys settings](https://app.usehindsight.com/settings/reports).
-  <img alt="Request Interview" classname="block" src="/images/request-feedback.png" />
-</Accordion>
-<Accordion icon="crosshairs-simple" title="Create Battlecard">
-  Visit the [Competitors](https://app.usehindsight.com/competitors) page and select a competitor. Regenerate the battlecard to utilize insights from your Deals. You can customize the battlecard by adding or removing sections, changing the layout, and more.
-  <img alt="Battlecard" classname="block" src="/images/battlecard.png" />
-</Accordion>
-<Accordion icon="slack" title="Share in Slack">
-  Add the Hindsight app to any of your Slack channels and get a simplified view of your battlecards by typing ```/battlecard [competitor name]```.
-  <img alt="Slack" classname="block" src="/images/slack-app.png" />
-
-</Accordion>
-</AccordionGroup>
+For detailed information on deal analysis capabilities, see our [Deal Reviews Guide](/platform/deal-reviews).
 

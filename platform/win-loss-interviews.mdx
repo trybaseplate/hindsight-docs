@@ -1,9 +1,170 @@
 ---
-title: 'Win/Loss Interviews'
-description: 'Collect Unbiased Feedback from Prospects after Deals Close'
+title: 'Win-Loss Interviews'
+description: 'Automate win-loss interview collection and analysis to understand why deals are won or lost'
 icon: 'clipboard-question'
 ---
 
+## Overview
 
-## Detailed Guides Coming Soon!
-For support, please reach out via your Slack Connect channel or via [email](mailto:support@usehindsight.com)
+Hindsight's automated win-loss interview system helps you systematically collect **feedback from both buyers and sellers** after deals close. The platform automatically identifies closed deals, sends customized interview requests, conducts AI-powered interviews, and analyzes responses to provide actionable insights.
+
+## Key Features
+
+### Automated Interview Triggers
+- **Deal-Based Filtering**: Automatically trigger interviews based on deal stage, amount, owner, or custom criteria
+- **Smart Timing**: Configurable delays to send interviews at optimal times after deal closure
+
+### Multi-Channel Collection
+- **Email Automation**: Customizable email sequences with professional templates
+- **Slack Interviews**: Conduct interviews directly in Slack with voice transcription support
+- **Survey Links**: Generate shareable survey links for AI interviews in a web interface
+- **A/B Testing**: Test multiple outreach sequence variants to optimize response rates
+
+### AI-Powered Interviews
+- **Personalized**: Interviews are deeply personalized based on insights from Deal Reviews and contact information
+- **Conversational AI**: Natural language interviews that adapt based on responses
+- **Voice Support**: Record and transcribe voice responses through Slack
+- **Smart Follow-ups**: AI asks relevant follow-up questions based on initial responses
+
+## Setting Up Automated Interviews
+
+### External Buyer Interviews
+
+Configure automated feedback collection from buyers and prospects in (Settings)[https://app.usehindsight.com/settings/reports]:
+
+```javascript
+// Example deal filter configuration
+{
+  dealStage: ["Closed Won", "Closed Lost"],
+  dealAmount: { min: 10000 },
+  dealOwner: "specific-rep@company.com", // Optional
+  customField: "enterprise_deal" // Optional
+}
+```
+
+**Email Customization Options:**
+- Custom subject lines and email content
+- Personalized sender (we recommend PMs or leadership, not sales reps)
+- Email threading to maintain conversation context
+- Link included in email to complete the interview
+- Automated reminder sequences
+
+**Response Collection:**
+- Completed interviews are transcribed, uploaded to Hindsight, and analyzed automatically
+- Slack-based interviews with voice support are handled similarly
+
+### Internal Seller Interviews
+
+Automate feedback collection from your sales team:
+
+**Slack Integration:**
+- Automatic requests in Slack when deals close
+- Voice recording capabilities through Slack
+- Real-time transcription using AI
+- Integration with Deal Review workflows
+
+**Email Workflows:**
+- Customizable templates for different deal types
+- Automated follow-ups for incomplete responses
+- Thread management for organized communication
+
+## Interview Customization
+
+### Email Templates
+
+Create multiple email variants to optimize response rates, for example:
+
+- **Professional Templates**: Formal business communication style
+- **Casual Templates**: Friendly, conversational tone
+- **Industry-Specific**: Tailored messaging for different verticals
+- **Follow-up Sequences**: Gentle reminders with varying messaging
+
+### AI Interview Personas
+
+Customize the AI interviewer based on your needs:
+
+- **Conversational Style**: Formal vs. casual tone
+- **Question Focus**: Technical details vs. business impact
+- **Follow-up Depth**: Surface-level vs. deep-dive questioning
+
+## Slack Integration
+
+### Setup Requirements
+
+1. **Slack App Installation**: Install Hindsight bot in your workspace
+
+### Voice Interview Features
+
+**Recording Capabilities:**
+- High-quality voice recording through Slack
+- Automatic transcription using Groq Whisper AI
+- Support for multiple languages and accents
+- Noise reduction and audio enhancement
+
+## Response Analysis
+
+### Automatic Processing
+
+All interview responses are automatically:
+- **Transcribed**: Voice converted to text for analysis
+- **Categorized**: Responses sorted by themes and topics
+- **Analyzed**: AI extracts key insights and patterns
+- **Documented**: Stored as structured deal documents
+
+### Integration with Deal Analysis
+
+Interview responses integrate seamlessly with:
+- **Deal Review Reports**: Include feedback in comprehensive deal analysis
+- **Competitive Intelligence**: Extract competitor mentions and comparisons
+- **Feature Feedback**: Identify product improvement opportunities
+- **Win-Loss Patterns**: Build understanding of success factors
+
+## Success Measurement
+
+### Response Rate Optimization
+
+Track and improve interview participation:
+
+**Email Metrics:**
+- Response rates by email variant
+- A/B test performance
+
+**Survey Metrics:**
+- Completion rates by survey length
+- Follow-up effectiveness
+
+## Best Practices
+
+### Timing Strategy
+
+**For Won Deals:**
+- Send within 1-2 weeks of deal closure
+- Allow time for implementation discussion
+- Capture fresh memories while maintaining relationships
+
+**For Lost Deals:**
+- Send immediately after loss notification
+- Maintain professional tone
+- Focus on future relationship building
+
+### Email Effectiveness
+
+**Before Sending Requests**
+- For external requests, try to have the sales rep send a personal note explaining that they will receive a request
+- Include context about the interview purpose and importance
+- For internal requests, ensure the sales team understands the value of providing feedback during trainings and win-loss insights shareouts
+
+**Subject Line Optimization:**
+- Include deal/company reference
+- Avoid "survey" language
+- Use personal, conversational tone
+- A/B test different approaches
+
+**Content Best Practices:**
+- Keep initial request brief
+- Explain value for respondent
+- Offer multiple response options
+- Include clear next steps
+
+
+The win-loss interview system transforms post-deal activities from manual, inconsistent processes into systematic, data-driven insights that improve your entire sales and product strategy.
