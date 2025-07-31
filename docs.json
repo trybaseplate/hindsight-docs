@@ -65,6 +65,12 @@
               "integrations/hubspot-integration",
               "integrations/zapier"
             ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/product-managers"
+            ]
           }
         ]
       }
