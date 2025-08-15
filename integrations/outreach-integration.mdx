@@ -1,0 +1,280 @@
+---
+title: 'Outreach Integration'
+description: 'Connect Outreach Kaia to Hindsight via S3 Export'
+icon: 'phone-outgoing'
+---
+
+## Overview
+Hindsight integrates with Outreach Kaia to extract Competitive Win-Loss Insights from your call recordings and transcripts. Since Outreach doesn't provide direct API access to Kaia transcripts, this integration uses Outreach's daily S3 export feature to securely transfer your call data to Hindsight.
+
+<img alt="Outreach Integration" classname="block" src="/images/outreach-integration.png" />
+
+For support, please reach out via your Slack Connect channel or via [email](mailto:support@usehindsight.com)
+
+### How it Works
+1. **Daily Export**: Outreach automatically exports your Kaia call recordings and transcripts to your AWS S3 bucket every day
+2. **Secure Access**: Hindsight securely accesses your S3 bucket using the credentials you provide
+3. **Smart Matching**: Hindsight automatically matches call transcripts to the right deals based on participant emails, account domains, and call timing
+4. **AI Analysis**: Hindsight analyzes the call transcripts to extract competitive insights and decision drivers
+5. **Deal Integration**: Insights are automatically added to your deals and used in battlecards, reports, and competitive intelligence
+
+<img alt="Deal Insights" classname="block" src="/images/competitor-deal-quotes.png" />
+
+## Setup Requirements
+
+### Prerequisites
+- **Outreach Admin Access**: You need admin access to configure the daily export feature
+- **AWS Account**: You need an AWS account to create the S3 bucket
+- **Growth Plan**: Outreach integration requires a Hindsight Enterprise plan
+
+### Setup Overview
+This setup involves three main steps:
+1. **Create AWS S3 Bucket** - Set up a dedicated bucket for Outreach exports
+2. **Configure Outreach Export** - Enable daily export to your S3 bucket  
+3. **Connect to Hindsight** - Provide S3 credentials to Hindsight
+
+---
+
+## Step 1: Create AWS S3 Bucket
+
+### 1.1 Create the S3 Bucket
+1. Log into your [AWS Console](https://console.aws.amazon.com/)
+2. Navigate to **S3** service
+3. Click **"Create bucket"**
+4. Configure your bucket:
+   - **Bucket name**: `your-company-outreach-kaia` (choose a unique name)
+   - **AWS Region**: Choose a region close to your location
+   - **Block Public Access**: Keep all public access blocked (recommended)
+   - **Bucket Versioning**: Enable (recommended)
+   - **Default encryption**: Enable with Amazon S3 managed keys (SSE-S3)
+
+<img alt="S3 Bucket Creation" classname="block" src="/images/outreach/s3-bucket-create.png" />
+
+5. Click **"Create bucket"**
+
+### 1.2 Create IAM User for Hindsight
+1. Navigate to **IAM** service in AWS Console
+2. Click **"Users"** in the left sidebar
+3. Click **"Add users"**
+4. Configure the user:
+   - **User name**: `hindsight-outreach-access`
+   - **Access type**: Select **"Access key - Programmatic access"**
+
+<img alt="IAM User Creation" classname="block" src="/images/outreach/iam-user-create.png" />
+
+5. Click **"Next: Permissions"**
+
+### 1.3 Create IAM Policy
+1. Click **"Attach policies directly"**
+2. Click **"Create policy"**
+3. Switch to the **JSON** tab and paste this policy:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket",
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::your-company-outreach-kaia",
+        "arn:aws:s3:::your-company-outreach-kaia/*"
+      ]
+    }
+  ]
+}
+```
+
+<img alt="IAM Policy JSON" classname="block" src="/images/outreach/iam-policy-json.png" />
+
+⚠️ **Important**: Replace `your-company-outreach-kaia` with your actual bucket name
+
+4. Click **"Next: Tags"** (optional)
+5. Click **"Next: Review"**
+6. Name your policy: `HindsightOutreachS3Access`
+7. Click **"Create policy"**
+
+### 1.4 Attach Policy to User
+1. Go back to the user creation tab
+2. Search for `HindsightOutreachS3Access` and select it
+3. Click **"Next: Tags"** (optional)
+4. Click **"Next: Review"**
+5. Click **"Create user"**
+
+### 1.5 Save Access Keys
+**Important**: Save these credentials securely - you'll need them for Hindsight configuration.
+
+<img alt="IAM Access Keys" classname="block" src="/images/outreach/iam-access-keys.png" />
+
+- **Access Key ID**: `AKIA...` 
+- **Secret Access Key**: `wJalrXUt...` (click "Show" to reveal)
+
+⚠️ **Security Note**: These keys provide access to your S3 bucket. Store them securely and never share them publicly.
+
+---
+
+## Step 2: Configure Outreach Export
+
+### 2.1 Access Outreach Admin Panel
+1. Log into Outreach with admin privileges
+2. Navigate to **Administration** → **Tools** → **Kaia**
+3. Find the **Bulk Export** section
+
+<img alt="Outreach Admin Panel" classname="block" src="/images/outreach/outreach-admin-panel.png" />
+
+### 2.2 Enable Daily Export
+1. Toggle **"Bulk Export"** to ON
+2. Select **"AWS S3"** as the service
+3. Choose **"Daily Export"** as the export option
+
+<img alt="Outreach Export Settings" classname="block" src="/images/outreach/outreach-export-settings.png" />
+
+### 2.3 Configure S3 Settings
+Enter your S3 bucket information:
+
+- **S3 Region**: The region where you created your bucket (e.g., `us-east-1`)
+- **S3 Bucket Name**: Your bucket name (e.g., `your-company-outreach-kaia`)
+- **IAM Access Key ID**: From Step 1.5
+- **IAM Access Secret**: From Step 1.5
+
+<img alt="Outreach S3 Configuration" classname="block" src="/images/outreach/outreach-s3-config.png" />
+
+### 2.4 Test and Save
+1. Click **"Test Connection"** to verify the setup
+2. If successful, click **"Save"** to enable daily exports
+
+<img alt="Outreach Test Success" classname="block" src="/images/outreach/outreach-test-success.png" />
+
+⚠️ **Note**: Outreach will retry failed exports for up to 48 hours. You'll receive email notifications about export status.
+
+---
+
+## Step 3: Connect to Hindsight
+
+### 3.1 Navigate to Integrations
+1. Go to [Hindsight Integrations](https://app.usehindsight.com/settings/integrations)
+2. Find the **Outreach** integration card
+3. Click **"Connect"** to start the OAuth process
+
+<img alt="Hindsight Integrations" classname="block" src="/images/outreach/hindsight-integrations.png" />
+
+### 3.2 Authorize Outreach
+1. Complete the OAuth authorization with Outreach
+2. This connects Hindsight to your Outreach account for user and deal matching
+
+<img alt="Outreach OAuth" classname="block" src="/images/outreach/outreach-oauth.png" />
+
+### 3.3 Configure S3 Access
+After OAuth, you'll see the S3 configuration form:
+
+<img alt="Hindsight S3 Config" classname="block" src="/images/outreach/hindsight-s3-config.png" />
+
+Enter your S3 details:
+- **S3 Region**: Same as configured in Outreach
+- **S3 Bucket Name**: Your bucket name
+- **Access Key ID**: From Step 1.5  
+- **Secret Access Key**: From Step 1.5
+
+### 3.4 Test Connection
+1. Click **"Test Connection"** to verify Hindsight can access your bucket
+2. If successful, click **"Save Configuration"**
+
+<img alt="Hindsight Test Success" classname="block" src="/images/outreach/hindsight-test-success.png" />
+
+---
+
+## Verification & Usage
+
+### Daily Sync Process
+Once configured, the integration works automatically:
+
+1. **Outreach Export**: Every day, Outreach exports new Kaia recordings to your S3 bucket
+2. **Hindsight Sync**: During your regular Salesforce/HubSpot deal syncs, Hindsight checks for new call transcripts
+3. **Automatic Matching**: Hindsight matches calls to deals based on:
+   - Participant email addresses
+   - Account domains
+   - Call timing relative to deal dates
+   - Outreach user assignments
+
+<img alt="Sync Status" classname="block" src="/images/outreach/sync-status.png" />
+
+### Monitoring Integration Health
+Check integration status on the [Integrations page](https://app.usehindsight.com/settings/integrations):
+
+- **Connection Status**: Shows if Outreach and S3 are connected
+- **Last Sync**: When Hindsight last processed new files
+- **Files Processed**: Number of transcripts processed today
+- **Transcripts Matched**: How many were successfully matched to deals
+
+### Viewing Call Transcripts in Deals
+Once calls are matched to deals, you'll see them in:
+
+1. **Deal Documents**: Call transcripts appear as documents in your deals
+2. **Competitive Insights**: AI-extracted insights from calls
+3. **Battlecards**: Competitive intelligence from your calls
+
+<img alt="Deal Call Transcripts" classname="block" src="/images/outreach/deal-call-transcripts.png" />
+
+---
+
+## Troubleshooting
+
+### Common Issues
+
+#### "S3 Access Denied" Error
+- **Cause**: Incorrect IAM permissions or access keys
+- **Solution**: 
+  1. Verify your S3 bucket name matches exactly
+  2. Check IAM policy has correct bucket ARN
+  3. Ensure access keys are entered correctly
+  4. Test S3 access from AWS Console
+
+#### "No Files Found" 
+- **Cause**: Outreach export not working or no calls in timeframe
+- **Solution**:
+  1. Check Outreach export status in admin panel
+  2. Verify calls exist in the expected timeframe
+  3. Wait 24-48 hours for initial export to complete
+
+#### "Low Match Rate"
+- **Cause**: Calls not matching to deals properly
+- **Solution**:
+  1. Ensure deal contact emails match call participants
+  2. Check deal date ranges include call timestamps
+  3. Verify Outreach users are mapped correctly
+
+### Getting Help
+If you encounter issues:
+
+1. Check the [sync logs](https://app.usehindsight.com/settings/integrations) for error details
+2. Reach out via your Slack Connect channel
+3. Email [support@usehindsight.com](mailto:support@usehindsight.com) with:
+   - Your organization name
+   - Screenshot of any error messages
+   - S3 bucket name (do not include access keys)
+
+---
+
+## Security & Privacy
+
+### Data Security
+- **Encryption**: All data is encrypted in transit and at rest
+- **Access Control**: IAM policies limit Hindsight's access to only necessary S3 operations
+- **Audit Trail**: All S3 access is logged in AWS CloudTrail
+
+### Data Processing
+- **Automatic Cleanup**: Processed files are automatically deleted from S3 (configurable)
+- **Data Retention**: Transcripts are stored according to your Hindsight data retention policy
+- **Privacy**: Only users with deal access can view associated call transcripts
+
+### Compliance
+This integration supports:
+- **SOC 2 Type II** compliance
+- **GDPR** data protection requirements
+- **CCPA** privacy regulations
+
+For detailed security information, see our [Security Documentation](https://trust.usehindsight.com).
