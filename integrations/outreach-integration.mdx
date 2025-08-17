@@ -7,7 +7,10 @@ icon: 'phone-outgoing'
 ## Overview
 Hindsight integrates with Outreach Kaia to extract Competitive Win-Loss Insights from your call recordings and transcripts. Since Outreach doesn't provide direct API access to Kaia transcripts, this integration uses Outreach's daily S3 export feature to securely transfer your call data to Hindsight.
 
-<img alt="Outreach Integration" classname="block" src="/images/outreach-integration.png" />
+The main steps:
+1. Set up an AWS S3 bucket to recieve Outreach Kaia exports (follow this guide)
+2. Configure Outreach to export Kaia recordings to your S3 bucket daily [see Outreach docs](https://support.outreach.io/hc/en-us/articles/28005562346395-Exporting-Data-in-Kaia-using-Daily-Export)
+3. Connect Hindsight to your Outreach account and S3 bucket using the steps below (detailed instructions follow)
 
 For support, please reach out via your Slack Connect channel or via [email](mailto:support@usehindsight.com)
 
@@ -17,8 +20,6 @@ For support, please reach out via your Slack Connect channel or via [email](mail
 3. **Smart Matching**: Hindsight automatically matches call transcripts to the right deals based on participant emails, account domains, and call timing
 4. **AI Analysis**: Hindsight analyzes the call transcripts to extract competitive insights and decision drivers
 5. **Deal Integration**: Insights are automatically added to your deals and used in battlecards, reports, and competitive intelligence
-
-<img alt="Deal Insights" classname="block" src="/images/competitor-deal-quotes.png" />
 
 ## Setup Requirements
 
@@ -47,27 +48,28 @@ This setup involves three main steps:
    - **Block Public Access**: Keep all public access blocked (recommended)
    - **Bucket Versioning**: Enable (recommended)
    - **Default encryption**: Enable with Amazon S3 managed keys (SSE-S3)
-
-<img alt="S3 Bucket Creation" classname="block" src="/images/outreach/s3-bucket-create.png" />
-
 5. Click **"Create bucket"**
 
 ### 1.2 Create IAM User for Hindsight
 1. Navigate to **IAM** service in AWS Console
 2. Click **"Users"** in the left sidebar
-3. Click **"Add users"**
+3. Click **"Create user"** 
 4. Configure the user:
    - **User name**: `hindsight-outreach-access`
-   - **Access type**: Select **"Access key - Programmatic access"**
+   - Leave **"Provide user access to the AWS Management Console"** **unchecked** - we only need programmatic access
+5. Click **"Next"**
 
-<img alt="IAM User Creation" classname="block" src="/images/outreach/iam-user-create.png" />
+### 1.3 Create and Attach IAM Policy
 
-5. Click **"Next: Permissions"**
+⚠️ **Important**: The next steps involve creating a policy in a new tab, then returning to attach it. Keep both tabs open!
 
-### 1.3 Create IAM Policy
 1. Click **"Attach policies directly"**
-2. Click **"Create policy"**
-3. Switch to the **JSON** tab and paste this policy:
+2. Click **"Create policy"** 
+
+   ⚠️ **Note**: This opens a new browser tab - **do not close your user creation tab!**
+
+3. **In the new policy tab**, switch to the **JSON** tab
+4. **Delete all existing content** and paste this policy:
 
 ```json
 {
@@ -89,31 +91,44 @@ This setup involves three main steps:
 }
 ```
 
-<img alt="IAM Policy JSON" classname="block" src="/images/outreach/iam-policy-json.png" />
-
 ⚠️ **Important**: Replace `your-company-outreach-kaia` with your actual bucket name
 
+5. **In the policy tab**, click **"Next: Tags"** (optional)
+6. **In the policy tab**, click **"Next: Review"**
+7. **In the policy tab**, name your policy: `HindsightOutreachS3Access`
+8. **In the policy tab**, click **"Create policy"**
+9. **Close the policy tab** and **return to your user creation tab**
+
+### 1.4 Attach the Policy to Your User
+
+**Back in your user creation tab:**
+
+1. Click the **refresh button** (🔄) next to the search box to load your new policy
+2. In the search box, type: `HindsightOutreachS3Access`
+3. **Check the checkbox** next to `HindsightOutreachS3Access` to select it
 4. Click **"Next: Tags"** (optional)
 5. Click **"Next: Review"**
-6. Name your policy: `HindsightOutreachS3Access`
-7. Click **"Create policy"**
+6. Click **"Create user"**
 
-### 1.4 Attach Policy to User
-1. Go back to the user creation tab
-2. Search for `HindsightOutreachS3Access` and select it
-3. Click **"Next: Tags"** (optional)
-4. Click **"Next: Review"**
-5. Click **"Create user"**
+### 1.5 Create Access Keys
 
-### 1.5 Save Access Keys
-**Important**: Save these credentials securely - you'll need them for Hindsight configuration.
+After creating the user, you'll be taken to the user details page. Now you need to create access keys:
 
-<img alt="IAM Access Keys" classname="block" src="/images/outreach/iam-access-keys.png" />
+1. Click the **"Create access key"** button
+2. Select **"Application running outside AWS"** as the use case
+3. Click **"Next"**
+4. Add a description tag (optional): `Hindsight S3 Integration`
+5. Click **"Create access key"**
 
-- **Access Key ID**: `AKIA...` 
-- **Secret Access Key**: `wJalrXUt...` (click "Show" to reveal)
+**What we're creating**: These are **programmatic access keys** (not console login credentials) that allow Hindsight to authenticate with AWS APIs to access your S3 bucket.
 
-⚠️ **Security Note**: These keys provide access to your S3 bucket. Store them securely and never share them publicly.
+**Copy and save these values immediately**:
+- **Access Key ID**: Starts with `AKIA...` (e.g., `AKIAIOSFODNN7EXAMPLE`)
+- **Secret Access Key**: Long alphanumeric string (click **"Show"** to reveal, e.g., `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`)
+
+⚠️ **Critical**: AWS will **never show the Secret Access Key again** after you close this page. If you lose it, you'll need to create new access keys.
+
+⚠️ **Security Note**: These keys provide programmatic access to your S3 bucket. Store them securely (like in a password manager) and never share them publicly or commit them to code repositories.
 
 ---
 
@@ -124,14 +139,10 @@ This setup involves three main steps:
 2. Navigate to **Administration** → **Tools** → **Kaia**
 3. Find the **Bulk Export** section
 
-<img alt="Outreach Admin Panel" classname="block" src="/images/outreach/outreach-admin-panel.png" />
-
 ### 2.2 Enable Daily Export
 1. Toggle **"Bulk Export"** to ON
 2. Select **"AWS S3"** as the service
 3. Choose **"Daily Export"** as the export option
-
-<img alt="Outreach Export Settings" classname="block" src="/images/outreach/outreach-export-settings.png" />
 
 ### 2.3 Configure S3 Settings
 Enter your S3 bucket information:
@@ -141,13 +152,9 @@ Enter your S3 bucket information:
 - **IAM Access Key ID**: From Step 1.5
 - **IAM Access Secret**: From Step 1.5
 
-<img alt="Outreach S3 Configuration" classname="block" src="/images/outreach/outreach-s3-config.png" />
-
 ### 2.4 Test and Save
 1. Click **"Test Connection"** to verify the setup
 2. If successful, click **"Save"** to enable daily exports
-
-<img alt="Outreach Test Success" classname="block" src="/images/outreach/outreach-test-success.png" />
 
 ⚠️ **Note**: Outreach will retry failed exports for up to 48 hours. You'll receive email notifications about export status.
 
@@ -160,18 +167,12 @@ Enter your S3 bucket information:
 2. Find the **Outreach** integration card
 3. Click **"Connect"** to start the OAuth process
 
-<img alt="Hindsight Integrations" classname="block" src="/images/outreach/hindsight-integrations.png" />
-
 ### 3.2 Authorize Outreach
 1. Complete the OAuth authorization with Outreach
 2. This connects Hindsight to your Outreach account for user and deal matching
 
-<img alt="Outreach OAuth" classname="block" src="/images/outreach/outreach-oauth.png" />
-
 ### 3.3 Configure S3 Access
 After OAuth, you'll see the S3 configuration form:
-
-<img alt="Hindsight S3 Config" classname="block" src="/images/outreach/hindsight-s3-config.png" />
 
 Enter your S3 details:
 - **S3 Region**: Same as configured in Outreach
@@ -182,8 +183,6 @@ Enter your S3 details:
 ### 3.4 Test Connection
 1. Click **"Test Connection"** to verify Hindsight can access your bucket
 2. If successful, click **"Save Configuration"**
-
-<img alt="Hindsight Test Success" classname="block" src="/images/outreach/hindsight-test-success.png" />
 
 ---
 
@@ -200,8 +199,6 @@ Once configured, the integration works automatically:
    - Call timing relative to deal dates
    - Outreach user assignments
 
-<img alt="Sync Status" classname="block" src="/images/outreach/sync-status.png" />
-
 ### Monitoring Integration Health
 Check integration status on the [Integrations page](https://app.usehindsight.com/settings/integrations):
 
@@ -216,8 +213,6 @@ Once calls are matched to deals, you'll see them in:
 1. **Deal Documents**: Call transcripts appear as documents in your deals
 2. **Competitive Insights**: AI-extracted insights from calls
 3. **Battlecards**: Competitive intelligence from your calls
-
-<img alt="Deal Call Transcripts" classname="block" src="/images/outreach/deal-call-transcripts.png" />
 
 ---
 

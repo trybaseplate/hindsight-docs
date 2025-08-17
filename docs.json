@@ -63,7 +63,8 @@
               "integrations/gong",
               "integrations/salesforce-integration",
               "integrations/hubspot-integration",
-              "integrations/zapier"
+              "integrations/zapier",
+              "integrations/outreach-integration"
             ]
           },
           {
