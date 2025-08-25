@@ -31,17 +31,14 @@
               "platform/deal-reviews",
               "platform/competitive-monitoring", 
               "platform/competitive-enablement",
-              "platform/win-loss-interviews",
-              "platform/analytics"
-            ]
+              "platform/win-loss-interviews"
+              ]
           },
           {
             "group": "Workflows",
             "pages": [
               "workflows/sync-deals",
               "workflows/analyze-deals",
-              "workflows/generate-battlecards",
-              "workflows/generate-custom-assets",
               "workflows/generate-feature-comparison",
               "workflows/enablement-in-slack"
             ]
@@ -65,12 +62,6 @@
               "integrations/hubspot-integration",
               "integrations/zapier",
               "integrations/outreach-integration"
-            ]
-          },
-          {
-            "group": "Guides",
-            "pages": [
-              "guides/product-managers"
             ]
           }
         ]
