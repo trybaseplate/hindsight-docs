@@ -20,6 +20,7 @@
           {
             "group": "Release Notes",
             "pages": [
+              "release-notes/custom-answers",
               "release-notes/feature-tracking-2.0",
               "release-notes/decision-drivers-2.0",
               "release-notes/custom-metrics"
