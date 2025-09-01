@@ -1,129 +1,96 @@
 ---
 title: 'Competitive Enablement'
-description: 'Transform competitive intelligence into actionable sales enablement'
+description: 'Use Chat + Create Asset to turn competitive insights into shareable documents saved to your Library'
 icon: 'crosshairs-simple'
 ---
 
 ## Overview
-Competitive Enablement bridges the gap between competitive intelligence and sales execution. Hindsight automatically transforms research and deal insights into practical tools that help your sales team win more competitive deals through AI-generated battlecards, feature comparisons, and instant Slack access to competitive resources.
+Use the AI Assistant to research what is working / not working in the field, then turn insights into data-driven, shareable assets that live in your Asset Library. These assets power sales enablement in Slack and across your team.
 
-## For Product Marketing and Enablement Teams
+<Steps>
+  <Step title="Find Context with Chat">
+    Ask the AI for competitive analysis, comparisons, objection handling, or messaging. The assistant will pull the right sources to build a foundation. See the <a href="/guides/prompting">Prompting Guide</a> for tips.
+  </Step>
+  <Step title="Create Asset from a Response">
+    When you get a useful answer, click <b>Create Asset</b> on that message. Give it a clear title and optionally tag a competitor.
+  </Step>
+  <Step title="Edit & Organize in Library">
+    The asset is saved to your Library with metadata (author, date, source chat) and is fully searchable. Edit in the markdown editor and organize as needed.
+  </Step>
+  <Step title="Share with Sales">
+    Share links directly or use Slack to surface assets in-channel. Team members can find and use the latest enablement content without leaving Slack.
+  </Step>
+  <Step title="Keep Current">
+    Refresh assets as the market changes by iterating in chat and updating the document. Your Library remains the source of truth.
+  </Step>
+</Steps>
 
-### Dynamic Battlecard Creation
-Hindsight automatically generates comprehensive battlecards for each competitor using:
-- **Deal Intelligence**: Analysis of won/lost deals against specific competitors
-- **Competitive Content**: AI-processed competitor websites, documentation, and marketing materials
-- **Customer Quotes**: Real buyer feedback from deal conversations and interviews
-- **Feature Comparisons**: Side-by-side capability analysis with your solution
+## Creating Assets via Chat
 
-#### Battlecard Components
+### 1. Generate the right content
+Use the assistant to pull evidence and synthesize:
+- Competitive positioning and differentiation
+- Product comparisons and capability summaries
+- Objection handling and talk tracks
+- Pricing and packaging references from deals
 
-**Why We Win Cards**
-- **Winning Reasons**: Top 4-5 factors that drive success against this competitor
-- **Evidence-Based**: Each reason backed by actual buyer quotes or competitive analysis
-- **Deal Context**: Revenue impact and frequency of winning reasons
-- **Proof Points**: Customer testimonials and success stories for each advantage
+Tip: Provide explicit goals and steps, and start focused threads per task. See <a href="/guides/prompting">Prompting Guide</a> for examples on chaining tools (Deal Search, Search Across Deals, Search Within Deal, Competitor Search).
 
-**Why We Lose Cards**
-- **Common Objections**: Most frequent challenges when competing against this rival
-- **Objection Handling**: Specific responses and positioning for each objection
-- **Risk Mitigation**: Strategies to address competitor strengths
-- **Coaching Guidance**: Training materials for sales reps
+### 2. Convert to an asset
+- Click <b>Create Asset</b> on any AI response
+- Add a descriptive title (e.g., “Competitor B – Enterprise Objection Guide”)
+- Optionally select a <b>Competitor</b> to tag and organize
+- The asset is stored in <b>Library → Documents</b> and indexed for search
 
-**Feature Comparison Cards**
-- **Capability Matrix**: Detailed feature-by-feature comparison tables
-- **Competitive Positioning**: How to position your advantages and address gaps
-- **Technical Details**: In-depth product capability analysis
-- **Use Case Mapping**: Which features matter for specific customer scenarios
+### 3. Edit and maintain
+Open the asset in the editor to polish
 
-**Competitive Intelligence Cards**
-- **Market Positioning**: How competitor positions themselves in market
-- **Pricing Strategy**: Competitive pricing models and discount patterns
-- **Customer Base**: Target markets and successful customer profiles
-- **Recent Updates**: Latest product releases, partnerships, and strategic moves
+## Common asset types
+- Battlecards and competitive one-pagers
+- Pricing and packaging briefs
+- Objection handling guides
+- Product/feature comparison briefs
+- Deal-specific talking points and executive summaries
+- Landing page and marketing content
 
-#### Automated Content Generation
-Battlecards are automatically generated using:
-1. **Competitive Monitoring**: Latest intelligence from 6+ data sources
-2. **Deal Analysis**: Patterns from historical wins and losses
-3. **Customer Feedback**: Actual buyer quotes from deal conversations
-4. **Feature Tracking**: Product capability comparisons and positioning
+## Sharing in Slack
+Surface assets where the team works:
+- Share asset links in relevant channels
+- Use chat to request assets or have AI reference saved materials
+- Optional slash command support to retrieve assets by name or competitor (e.g., <code>/assets Salesforce</code>)
 
-### Feature Comparison Engine
-Hindsight's Feature Comparison Engine provides detailed analysis of product capabilities against competitors, helping teams understand strengths, weaknesses, and market positioning.
+## Best practices
+- Start a new chat for each task to avoid context overflow
+- Be explicit about the outcome you need and the audience
+- Tag competitors to improve discoverability
+- Title assets clearly for search and re-use
+- Keep content tight, factual, and backed by sources
 
-#### Comparison Sources
-Feature comparisons draw from:
-- **Product Documentation**: Official feature specifications and capabilities
-- **Customer Conversations**: Real-world usage feedback and requests from Deals
-- **Competitive Research**: Third-party reviews and analyst reports
+## Getting started
+<Steps>
+  <Step title="Open Chat">
+    Navigate to AI chat and describe the asset you need (e.g., “Create objection handling for Competitor X for an enterprise buyer”).
+  </Step>
+  <Step title="Refine the Draft">
+    Ask follow-ups to add quotes, proof points, or comparisons until it’s ready.
+  </Step>
+  <Step title="Create Asset">
+    Click <b>Create Asset</b>, name it, and tag a competitor if relevant.
+  </Step>
+  <Step title="Edit & Share">
+    Find it in <b>Library → Documents</b>, make edits, then share the link or post in Slack.
+  </Step>
+</Steps>
 
-### Proof-Point Library
-Maintain a library of deals, quotes, and customer stories that support competitive claims. Hindsight automatically extracts and organizes proof points from:
-- **Deal Documents**: Proposals, contracts, and emails
-- **Meeting Transcripts**: Gong calls, Zoom recordings, and customer conversations
-- **Customer Interviews**: Structured feedback from win/loss interviews
-
-These are organized into:
-- **Deals**: Access to all deals where this competitor was involved
-- **Quotes**: Searchable database of customer quotes related to this competitor
-- **Documents**: Central repository of competitive documents and resources
-- **Assets**: Downloadable battlecards, feature comparisons, and objection handling guides
-
-
-## For Sales Teams: AI Assistant in Slack
-Hindsight's AI Assistant in Slack provides sales reps with instant access to competitive resources and deal insights
-
-### /battlecard Command
-Sales reps get immediate access to competitive resources:
-```
-/battlecard [competitor name]
-```
-- **Instant Results**: Immediate battlecard delivery in Slack
-- **Contextual Intelligence**: Relevant competitive positioning for current deals
-- **Source Links**: Direct access to supporting documents and evidence
-- **Team Sharing**: Easy distribution of competitive insights
-
-### AI-Powered Competitive Q&A
-Ask questions about competitors and get instant, evidence-based answers:
-- **"@Hindsight How does [competitor] price their enterprise plans?"**
-- **"@Hindsight What are customers saying about [competitor] vs. us?"**
-- **"@Hindsight What's [competitor]'s biggest weakness in [vertical]?"**
-- **"@Hindsight How do I handle the objection about [competitor] feature X?"**
-
-### Competitive Intelligence Alerts
-Stay informed about competitor changes through Slack:
-- **Real-Time Updates**: Immediate alerts for high-priority competitive moves
-- **Weekly Digests**: Comprehensive summaries of competitive landscape changes
-- **Deal Notifications**: Alerts when competitors appear in your active opportunities
-- **Custom Triggers**: Personalized alerts based on your territories and accounts
-
-
-## Key Benefits & Outcomes
-
-### For Product Marketing Teams
-- **Scalable Content Creation**: AI generates competitive content at scale
-- **Real-Time Market Intelligence**: Stay current with competitive landscape changes
-- **Data-Driven Positioning**: Base messaging on actual deal outcomes and customer feedback
-- **Efficient Resource Management**: Automate routine competitive research and analysis
-
-### For Sales Enablement Teams
-- **Consistent Messaging**: Ensure all reps use approved competitive positioning
-- **Instant Access**: Reps get competitive resources exactly when needed
-- **Usage Analytics**: Track which competitive materials drive results
-- **Continuous Improvement**: Feedback loop to optimize competitive enablement
-
-### For Sales Representatives
-- **Faster Competitive Prep**: Reduce time spent researching competitors
-- **Confident Positioning**: Access to evidence-based competitive responses
-- **Real-Time Support**: Get competitive guidance during active sales conversations
-- **Higher Win Rates**: Data-driven competitive strategies that actually work
-
-## Implementation
-
-### Getting Started
-1. **Competitor Setup**: Add key competitors and configure monitoring sources
-2. **Content Review**: Validate AI-generated battlecards and add custom insights
-3. **Team Training**: Educate teams on accessing and using competitive resources
-4. **Slack Integration**: Add Hindsight to Slack and train reps on usage
-5. **Performance Tracking**: Monitor competitive win rates and battlecard usage
+### Related
+<CardGroup cols={3}>
+  <Card title="Prompting Guide" icon="chat-circle-text" href="/guides/prompting">
+    Learn how to structure prompts and chain tools to get better outputs.
+  </Card>
+  <Card title="Generate Custom Assets" icon="wand-magic" href="/workflows/generate-custom-assets">
+    Deeper guidance on tailoring assets for deals and audiences.
+  </Card>
+  <Card title="Slack Integration" icon="slack-logo" href="/integrations/slack">
+    Share enablement content directly in Slack channels.
+  </Card>
+</CardGroup>

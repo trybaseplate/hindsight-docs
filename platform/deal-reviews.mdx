@@ -1,11 +1,11 @@
 ---
 title: 'Deal Reviews'
-description: 'AI-powered win-loss analysis that transforms your deal data into actionable insights'
+description: 'Learn from every deal with win/loss insights'
 icon: 'chart-simple'
 ---
 
 ## Overview
-Deal Reviews is Hindsight's comprehensive analysis engine that automatically processes your closed deals to generate structured win-loss insights. Instead of manual post-mortems, AI analyzes all your deal documents, CRM data, and conversations to create detailed deal stories with actionable recommendations.
+Use AI to analyze your closed deals to generate structured win-loss insights. AI analyzes all your deal documents, CRM data, and conversations to create detailed deal stories with actionable recommendations.
 
 ## How Deal Analysis Works
 
@@ -16,38 +16,18 @@ Hindsight analyzes multiple data sources from each deal:
 - **Deal Documents**: Proposals, contracts, emails, notes, and attachments
 - **Win-Loss Interviews**: Structured feedback from buyers and internal teams
 
-### AI-Powered Deal Story Generation
+Deal data is synced automatically every 12 hours for the deals you select to import for analysis. Auto-import rules can be configured to automate the win-loss analysis process end-to-end.
+
+### Outputs
 For every analyzed deal, Hindsight creates a comprehensive deal story containing:
 
-**Executive Summary**
-- 2-3 paragraph overview of the entire deal narrative
-- Key outcome and primary factors that influenced the decision
-- Strategic context and business implications
-
-**Deal Overview**
-- **Timeline**: Chronological events and key milestones
-- **Stakeholders**: Decision makers and their influence on the outcome
-- **Deal Context**: Background information and business drivers
-
-**Decision Factor Analysis**
-- Detailed breakdown of what influenced the buyer's choice
-- Impact assessment for each factor (positive, negative, neutral)
-- Evidence from actual customer conversations and documents
-
-**Competitive Landscape**
-- Primary competitors involved in the evaluation
-- How rivals positioned themselves against your solution
-- Your key differentiators and competitive advantages/disadvantages
-
-**Key Quotes & Evidence**
-- Verbatim customer quotes that illustrate important points
-- Attribution to specific stakeholders when available
-- Context about why each quote matters to the outcome
-
-**Lessons Learned & Recommendations**
-- Actionable takeaways for future similar deals
-- Team-specific guidance (Product, Sales, Marketing)
-- Process improvements and coaching opportunities
+- **Executive Summary**
+- **Timeline**
+- **Stakeholders**
+- **Decision Drivers Analysis**
+- **Competitive Landscape**
+- **Key Quotes & Evidence**
+- **Lessons Learned & Recommendations**
 
 ## Structured Insights Extraction
 
@@ -63,7 +43,6 @@ Track which product capabilities influenced the deal:
 - **Feature Mentions**: Automatic detection of product feature discussions
 - **Customer Sentiment**: How buyers perceived specific capabilities
 - **Competitive Context**: Features compared against competitor offerings
-- **Business Impact**: Connection between features and deal outcomes
 
 ### Competitive Intelligence
 Comprehensive competitor analysis for every deal:
@@ -71,47 +50,32 @@ Comprehensive competitor analysis for every deal:
 - **Precision Tagging**: Automatically classify if competitors were incumbents, primary, or secondary
 - **Outcome Classification**: Whether competitors were mentioned, evaluated, or selected
 - **Positioning Analysis**: How competitors were positioned vs. your solution
-- **Win/Loss Patterns**: Insights into competitive strengths and weaknesses
 
-### Custom Metrics Assessment
-Score deals against your custom business dimensions:
-- **Automated Scoring**: AI evaluates deals against your 1-5 scale metrics
-- **Trend Analysis**: Track metric performance across deals and time
-- **Risk Indicators**: Early warning signs from metric patterns
-- **Coaching Opportunities**: Areas for sales team improvement
+### Custom Insights:
+Create custom prompts to extract specific insights:
+- **Metrics**: AI evaluates deals against a 1-5 scale rubric
+- **Answers**: Free-form answers with configurable prompts, length, and format
 
 ## CRM Integration & Sync-Back
 
 ### Automated CRM Updates
-Hindsight automatically syncs insights back to your CRM:
+Hindsight automatically syncs insights back to your CRM
 
-**HubSpot Integration**
-- Win/Loss Deal Type classification
-- Primary and secondary reasons with impact scores
-- Competitor analysis and outcome tracking
-- Quantitative scoring (Product Fit, Sales Execution, Relationship)
-- Deal story and coaching notes
+- **Win/Loss Reasons**: Populate standardized win/loss reasons
+- **Deal Summary**: Executive summary in deal notes
+- **Competitors**: Update competitor fields with detected competitors
+- **Features**: Populate features discussed in the deal
+- **Custom Fields**: Sync custom metrics and answers to CRM fields
 
-**Salesforce Integration** 
-- Custom win-loss fields population
-- Opportunity record enhancement
-- Competitive intelligence tracking
-- Analysis date and metadata
-
-### Deal Classification
-AI automatically categorizes each deal:
-- **New Business - Greenfield**: First-time buyers with no existing solution
-- **New Business - Competitive Displacement**: Replacing competitor solutions
-- **Existing Business - Expansion**: Growing within current accounts
-- **Existing Business - Renewal**: Contract renewals and extensions
+Requires HubSpot or Salesforce integration with Admin / Write access.
 
 ## Analysis Triggers & Automation
 
 ### Automatic Analysis
 Deals are automatically analyzed when:
 - Deal stage changes to "Closed Won" or "Closed Lost"
-- Sufficient deal data is available (documents, CRM properties)
-- Organization has active Hindsight subscription
+- Deal meets auto-import criteria (configured in settings)
+- New deal data is available (win-loss interviews, CRM properties)
 
 ### Manual Analysis
 You can also trigger analysis manually:
@@ -120,44 +84,13 @@ You can also trigger analysis manually:
 - When filtering by particular document types
 - For historical deals that weren't previously analyzed
 
-### Batch Processing
-Efficient analysis of multiple deals:
-- Parallel processing of decision drivers, features, and competitors
-- Intelligent scheduling to prevent system overload
-- Progress tracking and status updates
-- Error handling and retry logic
-
-## Insights Delivery & Distribution
-
-### Deal Story Reports
-- Comprehensive narrative reports for each analyzed deal
-- Executive-friendly summaries for leadership review
-- Detailed analysis for sales teams and account managers
-- Visual dashboards showing key metrics and trends
-
 ### Automated Feedback Collection
+Collect feedback from stakeholders with automated win-loss interviews:
 - Internal team feedback requests via Slack and email
 - External buyer feedback through automated surveys
-- Structured feedback forms for systematic data collection
-- Integration with existing feedback processes
-
-### Pattern Recognition
-- Cross-deal analysis to identify winning and losing patterns
-- Competitive trend analysis across your deal portfolio
-- Decision driver effectiveness tracking
-- Feature impact assessment across deals
 
 ## Getting Started with Deal Reviews
 
 ### Setup Requirements
 1. **CRM Integration**: Connect HubSpot or Salesforce for deal data
-2. **Decision Drivers**: Configure your organization's decision framework
-3. **Competitors**: Add competitor profiles for tracking
-4. **Features**: Set up product capability tracking (optional)
-5. **Custom Metrics**: Define business dimension scoring (optional)
-
-### Best Practices
-- **Complete Deal Data**: Ensure deals have sufficient documents and CRM properties
-- **Regular Review**: Analyze both wins and losses for balanced insights
-- **Team Training**: Educate teams on interpreting and acting on insights
-- **Feedback Loop**: Use insights to improve sales processes and product strategy
+2. **Analysis Configuration**: Configure your organization's Drivers, Features, and Competitors

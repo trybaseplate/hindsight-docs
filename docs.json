@@ -18,13 +18,16 @@
             "pages": ["overview", "quickstart-ci", "deals-quickstart"]
           },
           {
+            "group": "Guides",
+            "pages": [
+              "guides/prompting",
+              "guides/custom-insights"
+            ]
+          },
+          {
             "group": "Release Notes",
             "pages": [
-              "release-notes/assets",
-              "release-notes/custom-answers",
-              "release-notes/feature-tracking-2.0",
-              "release-notes/decision-drivers-2.0",
-              "release-notes/custom-metrics"
+              "release-notes/release-notes"
             ]
           },
           {
@@ -32,18 +35,11 @@
             "pages": [
               "platform/deal-reviews",
               "platform/competitive-monitoring", 
+              "platform/analytics",
+              "platform/ai-assistant",
               "platform/competitive-enablement",
               "platform/win-loss-interviews"
               ]
-          },
-          {
-            "group": "Workflows",
-            "pages": [
-              "workflows/sync-deals",
-              "workflows/analyze-deals",
-              "workflows/generate-feature-comparison",
-              "workflows/enablement-in-slack"
-            ]
           },
           {
             "group": "Objects",

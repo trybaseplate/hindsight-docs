@@ -1,0 +1,88 @@
+---
+title: 'AI Assistant'
+description: 'Ask questions, retrieve context from deals and competitors, and create shareable assets from chat'
+icon: 'message-dots'
+---
+
+## Overview
+The AI Assistant helps you research competitors, analyze deals, and generate enablement content. Ask questions in natural language, let the assistant retrieve the right context (deals, transcripts, CRM fields, web intel), and convert great answers into reusable assets saved in your Library (Documents).
+
+## What you can do
+- Ask questions about competitors, pricing, objections, and product capabilities
+- Search across deals or within a single deal to pull quotes and evidence
+- Compare products and summarize patterns from wins and losses
+- Generate messaging, objection handling, and one-pagers
+- Create Assets from chat responses and save to your Library
+
+## How the assistant finds context
+The assistant uses built-in tools and shows sources directly in the chat window:
+- **Deal Search** — Filter deals by name, stage, competitor, amount, close date
+- **Search Across Deals** — Broad scan for themes and examples
+- **Search Within Deal** — Pull details from one deal’s transcripts, CRM fields, and notes
+- **Competitor Search** — Gather intelligence on a specific competitor
+
+Learn prompt patterns and tool chaining in the <a href="/guides/prompting">Prompting Guide</a>.
+
+## Create Assets from chat
+Convert answers into shareable documents:
+1. Click **Create Asset** on a response
+2. Add a clear title and optionally tag a **Competitor**
+3. The asset is saved to **Library → Documents**, searchable and editable
+4. Share links or post in Slack; keep content up to date over time
+
+See the full workflow in <a href="/workflows/generate-custom-assets">Generate Custom Assets</a> and <a href="/platform/competitive-enablement">Competitive Enablement</a>.
+
+## Use in Slack
+- Ask questions with **@Hindsight** to retrieve competitive context on demand
+- Share asset links directly in channels
+- Optional command support to find assets by competitor (e.g., `/assets Salesforce`)
+
+Set up Slack in <a href="/integrations/slack">Slack Integration</a>.
+
+## Example prompts
+- “Summarize how we win vs. Competitor A in enterprise deals. Include proof points.”
+- “Search deals lost due to pricing last quarter and draft an objection handling guide.”
+- “Compare our Reporting Dashboard vs. Competitor B. Highlight strengths, gaps, and buyer quotes.”
+- “Pull common evaluation criteria in fintech deals and create a one-pager.”
+
+## Best practices
+- **Context Engineering**: Be explicit about the outcome and steps (audience, format, sources)
+- **Focused Threads**: Start a new chat per task to avoid context overflow
+- **Evidence First**: Ask for sources and quotes from deals
+- **Iterate**: Refine drafts before creating the final asset
+
+See <a href="/guides/prompting">Prompting Guide</a> for more.
+
+## Privacy & controls
+- Uses your organization’s data sources you have access to
+- Shows which tools ran and links to source documents
+- Assets include metadata (author, date, source chat session)
+
+## Getting started
+<Steps>
+  <Step title="Open AI Assistant">
+    Describe your task (e.g., “Create objection handling for Competitor X for enterprise buyers”).
+  </Step>
+  <Step title="Find and Refine Context">
+    Let the assistant search deals and competitors. Ask follow-ups for quotes and comparisons.
+  </Step>
+  <Step title="Create Asset">
+    Click **Create Asset**, name it, and optionally tag a competitor.
+  </Step>
+  <Step title="Edit & Share">
+    Find it in **Library → Documents**, polish in the editor, and share or post to Slack.
+  </Step>
+</Steps>
+
+### Related
+<CardGroup cols={3}>
+  <Card title="Prompting Guide" icon="chat-circle-text" href="/guides/prompting">
+    Learn to structure prompts and chain tools.
+  </Card>
+  <Card title="Generate Custom Assets" icon="wand-magic" href="/workflows/generate-custom-assets">
+    End-to-end asset creation workflows.
+  </Card>
+  <Card title="Competitive Enablement" icon="crosshairs-simple" href="/platform/competitive-enablement">
+    Turn insights into enablement content.
+  </Card>
+</CardGroup>

@@ -1,0 +1,107 @@
+---
+title: "Custom Insights"
+description: "Use AI to populate standardized fields across deals: numeric metrics and free‑form answers that sync to your CRM and power analytics"
+---
+
+## Overview
+Custom Insights let RevOps teams define what the AI should extract or score for every deal—then auto‑populate those fields consistently. Use them to operationalize frameworks (MEDDPIC), quantify product fit or pricing risk, standardize summaries, and push results back to your CRM.
+
+## Insight types
+- **Custom Metrics (1–5 scores)**
+  - AI evaluates a deal against a rubric you define and returns a score (1–5) plus an explanation
+  - Examples: Product Fit Score, Pricing Leverage, Champion Strength, MEDDPIC completeness
+- **Custom Answers (free‑form text)**
+  - AI returns a concise, structured answer to a prompt you define
+  - Examples: Executive Summary, Next Steps, Identified Competitors, Paper Process notes
+
+## How it works
+- **Your taxonomy**: You define the prompts and (for metrics) the scoring rubric in Settings
+- **AI extraction**: Hindsight analyzes synced deal data (CRM, transcripts, docs) and fills your fields
+- **Review & verify**: Teams can review per‑deal outputs and optionally mark as verified
+- **Sync back to CRM**: Map each metric/answer to Salesforce or HubSpot fields for reporting and automation
+- **Analytics**: Scores and answers become filterable in Analytics and can drive dashboards and trends
+
+## Setup
+<Steps>
+  <Step title="Define the insight">
+    Create a Custom Metric (score + rubric) or a Custom Answer (free‑form). Write a clear prompt and intended output format.
+  </Step>
+  <Step title="Add scoring rubric (metrics)">
+    Specify 1–5 criteria with concrete, observable thresholds. Include short examples for edge cases.
+  </Step>
+  <Step title="Choose scope & timing">
+    Apply to all analyzed deals or specific segments. Run on analysis, re‑analysis, or via backfill.
+  </Step>
+  <Step title="Map to CRM (optional)">
+    Link each insight to a CRM field (SFDC/HubSpot) for reporting, workflows, and dashboards.
+  </Step>
+  <Step title="Test & backfill">
+    Run on a sample set, review explanations, tune prompts/rubric, then backfill historical deals.
+  </Step>
+</Steps>
+
+## Recommended use cases
+- **MEDDPIC / Sales Methodology**
+  - Metrics: M, E, D1, D2, P, I, C completeness (1–5 each) with short rationale
+  - Answers: Named contacts for E/Champion, Decision Criteria summary, Paper Process notes
+- **Competitors**
+  - Metrics: Primary competitor identification confidence, Competitive pressure score
+  - Answers: Who we competed against, where we won/lost and why
+- **Summaries & Next Steps**
+  - Answers: Executive summary, risks, next actions, stakeholder map
+- **Product Fit**
+  - Metrics: Fit by product line/module, Integration risk, Security fit
+  - Answers: Required capabilities vs. current gaps
+- **Pricing & Commercials**
+  - Metrics: Pricing pressure score, Discount sensitivity, Multi‑year likelihood
+  - Answers: Packaging considered, procurement constraints
+- **Risk & Coaching**
+  - Metrics: Deal health score, Champion strength, Access to power
+  - Answers: Coaching opportunities, objection patterns
+
+## Prompt and rubric tips
+- Be explicit about inputs and outputs (audience, format, length)
+- For metrics, define crisp thresholds for each score (1–5) and include examples
+- Ask for a short explanation alongside the score to aid review
+- Reference the sources to prioritize (transcripts, emails, CRM notes, docs)
+- Keep one insight per prompt to avoid ambiguity
+
+## Review and governance
+- **Explainability**: Each score includes an explanation and pointers to evidence
+- **Verification**: Mark fields as verified; filter Analytics by verification status if needed
+- **Overrides**: Manual edits persist; re‑analysis won’t overwrite verified fields
+- **Auditability**: Outputs record when/why they were generated (date, model, inputs)
+
+## Using insights in Analytics and Chat
+- Filter Analytics by your custom scores/answers to see segment‑level patterns and trends
+- Compare period‑over‑period deltas for metrics to measure improvement
+- Ask the **AI Assistant** to summarize deals by a custom metric and then **Create Asset** for enablement
+
+## Getting started
+<Steps>
+  <Step title="Create a few insights">
+    Start with 2–3 high‑impact metrics (e.g., Product Fit, Champion Strength) and 1–2 answers (Executive Summary, Next Steps).
+  </Step>
+  <Step title="Map to CRM">
+    Connect each to a Salesforce/HubSpot field so RevOps can report and automate.
+  </Step>
+  <Step title="Backfill & review">
+    Run on last quarter’s deals, spot‑check explanations, and iterate the rubric/prompts.
+  </Step>
+  <Step title="Operationalize">
+    Add to dashboards, coaching workflows, and QBRs; re‑analyze on major updates.
+  </Step>
+</Steps>
+
+### Related
+<CardGroup cols={3}>
+  <Card title="Analytics" icon="chart-line" href="/platform/analytics">
+    Segment, trend, and drill into your custom scores and answers.
+  </Card>
+  <Card title="Deal Reviews" icon="chart-simple" href="/platform/deal-reviews">
+    See how insights are produced alongside the full deal story.
+  </Card>
+  <Card title="AI Assistant" icon="chat-circle-text" href="/platform/ai-assistant">
+    Generate summaries, find evidence, and turn insights into assets.
+  </Card>
+</CardGroup>

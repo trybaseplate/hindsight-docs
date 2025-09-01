@@ -1,41 +1,111 @@
 ---
 title: 'Analytics'
-description: 'Turn deal data into strategic insights with comprehensive analytics'
+description: 'Actionable Insights: trends by decision drivers, competitors, and product features'
 icon: 'chart-line'
 ---
 
 ## Overview
-Analytics in Hindsight transforms your deal data into strategic intelligence. Instead of basic reporting, get sophisticated analysis that reveals patterns, predicts outcomes, and guides strategic decisions.
+Hindsight's dashboards turn your deal data into actionable win-loss insights. Track performance over time, understand why you win or lose, and drill into competitors, drivers, and features. 
+Filter to specific segments to uncover patterns that improve win rates.
 
-## How It Works
-- **Automated Analysis**: AI processes all deal data to surface meaningful patterns
-- **Multi-Dimensional Views**: Analyze by time, team, region, competitor, feature, or custom metrics
-- **Predictive Insights**: Understand which factors drive deal success
-- **Custom Dashboards**: Create views tailored to your specific business needs
+## Key insight types
+- **Win Rate & Trends**: Overall win rate and change vs. prior period
+- **Reasons & Themes**: Decision drivers with sentiment and evidence
+- **Competitor Impact**: Frequency, win rate vs. each competitor, affected revenue
+- **Deal Metrics**: Compare selected metrics across All/Won/Lost, with deltas vs. previous period (bar or line view)
+- **Feature Mentions**: Capabilities most associated with wins/losses
 
-## Key Capabilities
-- **Win-Loss Analytics**: Deep dive into what drives deal outcomes
-- **Competitive Analysis**: Understand performance against specific competitors
-- **Feature Performance**: Track which product capabilities drive revenue
-- **Custom Metrics**: Analyze business-specific success factors
-- **Trend Analysis**: Identify improving or declining performance areas
+## Where this data comes from
+- **Deal Labeling**: Each analyzed deal is labeled with your organization’s configured taxonomy for:
+  - Decision Drivers (with sentiment and estimated impact)
+  - Competitors (with role such as Primary, Incumbent, Secondary)
+  - Features (mentions and sentiment)
+- **User-Controlled Taxonomy**: Admins define and update drivers, competitors, and features; teams can review or adjust labels at the deal level.
+- **Impact Estimation & Rollups**: Per‑deal labels and impact scores are aggregated into the dashboard’s charts and KPIs (e.g., driver influence, competitor win rates, feature associations).
+- **Quantifiable Trends Over Time**: Insights are bucketed by close date and respect your filters, enabling time‑series analysis and comparisons to prior periods.
 
-## Why This Architecture Matters
-Hindsight's analytics leverage the full spectrum of deal intelligence:
-- **Complete Data**: Every deal analyzed, not just a sample
-- **Rich Context**: Combines CRM data, call transcripts, emails, and competitive intelligence
-- **AI-Enhanced**: Automated pattern recognition beyond human analysis
-- **Actionable**: Connected directly to enablement and coaching workflows
+## Charts in this dashboard
+- **Win Rate (Pie)**: Overall Won vs. Lost for the current filter window.
+- **Competitor Win Rate (Bar, vertical list)**:
+  - Sort by: Alphabetical, Deal count (total/won/lost), Win rate, Amount
+  - Toggle: Primary competitor only
+  - Shows win rate and affected revenue per competitor
+- **Competitive Deals Volume**: Deals involving each competitor (stacked Won/Lost)
+- **Decision Drivers**:
+  - Bar chart: Positive / Neutral / Negative counts per driver
+  - Scatter: Frequency vs. impact visualization for drivers
+  - Table: Sortable driver table with supporting details
+- **Deal Metrics (Bar/Line)**:
+  - Select one or more metrics (defaults + any custom metrics)
+  - Compare All vs. Won vs. Lost averages
+  - Deltas vs. the previous period (▲/▼) where available
+  - Line view groups by day or month based on date range
 
-## Key Insights
-- **Revenue Drivers**: Which factors correlate with larger deal sizes
-- **Competitive Patterns**: Where you consistently win or lose against specific competitors
-- **Process Optimization**: Identify bottlenecks in your sales process
-- **Coaching Opportunities**: Specific areas where reps need development
-- **Market Trends**: Shifts in buyer behavior and competitive landscape
+## Filters & segmentation
+Use filters to isolate insights for specific contexts. Available filters include:
+- **Date Range (close_date)**: From/To with automatic previous-period calculation
+- **Outcome / Status**: Won, Lost, specific stages, previous status
+- **Competitor**: Pick one or many; filter by **competitor_role** (Primary, Incumbent, Secondary); or use **any_competitor**
+- **Decision Drivers**: Filter by **driver** or a **single_driver** with **sentiment** (positive/neutral/negative)
+- **Features & Mentions**: Filter by feature, mention, and product labels
+- **Deal Properties**: Amount (min/max), deal_type, region, segment, industry
+- **People**: owner_ids (reps), collaborators, teams
+- **Documents/Labels**: document, label, intel_label/intel_relevance (if enabled)
+- **CRM Filters**:
+  - Salesforce/HubSpot deal property filters (salesforce_filters, hubspot_filters)
+  - Salesforce/HubSpot account property filters (salesforce_filters_account, hubspot_filters_account)
+- **Analysis Flags**: deal_analyzed, analysis_verified, external
 
-## Getting Started
-1. **Review Default Dashboards**: Explore pre-built analytics views
-2. **Create Custom Views**: Build dashboards for your specific needs
-3. **Set Up Alerts**: Get notified of significant trend changes
-4. **Share Insights**: Distribute key findings across your organization
+All charts, tables, and KPIs respect the active filters.
+
+### Examples
+- “Win rate vs. Competitor A for Enterprise (segment) in Q2, Primary competitor only.”
+- “Top negative decision drivers for Lost deals in EMEA last 90 days.”
+- “Compare deal metrics as a line chart month-by-month for SMB vs. Mid-Market.”
+- “Which features are most associated with wins in fintech?”
+
+## Drill down and evidence
+- Hover for tooltips; sort competitor and driver views to explore patterns
+- Click into tables to review underlying deals and supporting evidence (quotes, docs)
+- Move from pattern to concrete examples for coaching and enablement
+
+## Use with the AI Assistant
+- Ask the assistant to analyze the current segment (e.g., “Summarize why we lose vs. Competitor C in healthcare last quarter and draft an objection guide”).
+- Convert results into a shareable document with **Create Asset** and save to **Library → Documents**.
+- See: <a href="/platform/ai-assistant">AI Assistant</a> and <a href="/platform/competitive-enablement">Competitive Enablement</a>.
+
+## Best practices
+- Start broad, then add filters one at a time to isolate effects
+- Use the **Primary competitor only** toggle for apples-to-apples comparisons
+- Compare to the previous period to spot momentum (look for ▲/▼ deltas)
+- Validate insights by clicking through to example deals and quotes
+- Turn recurring findings into assets for sales coaching and PM feedback
+
+## Getting started
+<Steps>
+  <Step title="Connect your data">
+    Ensure CRM and meeting tools are connected and deals are syncing.
+  </Step>
+  <Step title="Configure context">
+    Set up Decision Drivers, Competitors, and (optionally) Features for richer analysis.
+  </Step>
+  <Step title="Open Analytics">
+    Select a time range, apply segment filters, and explore the charts.
+  </Step>
+  <Step title="Operationalize insights">
+    Share findings, and use the assistant + Create Asset to publish enablement docs.
+  </Step>
+</Steps>
+
+### Related
+<CardGroup cols={3}>
+  <Card title="Deal Reviews" icon="chart-simple" href="/platform/deal-reviews">
+    How individual deals are analyzed and summarized.
+  </Card>
+  <Card title="AI Assistant" icon="chat-circle-text" href="/platform/ai-assistant">
+    Ask questions, retrieve context, and create assets from chat.
+  </Card>
+  <Card title="Sync Deals" icon="arrows-rotate" href="/workflows/sync-deals">
+    Ensure data quality and coverage for accurate analytics.
+  </Card>
+</CardGroup>
