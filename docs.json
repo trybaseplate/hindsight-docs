@@ -21,6 +21,7 @@
             "group": "Guides",
             "pages": [
               "guides/prompting",
+              "guides/slack-ai-agent",
               "guides/custom-insights"
             ]
           },
