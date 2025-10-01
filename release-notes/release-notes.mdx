@@ -3,29 +3,64 @@ title: "Release Notes"
 description: "Summary of major updates"
 ---
 
+## September 2025
+
+### Competitive Intelligence Revamp
+We refreshed our competitive tracking workflow to improve usability, controls, and human-in-the-loop processes. Key updates include:
+- Ability to configure completely custom URL tracking for competitors. Track any webpage on a custom scraping schedule to meet your needs
+- Improved event detection with AI, including deduplication of similar events and better extraction of event details
+- New event triage workflow to review, edit, and approve detected events before they are shared with your team
+- Slack notifications to alert competitor owners when new events are detected and ready for triage
+
+### Chat with this Data (Beta)
+We added an integrated chat experience built around the various data tables in Hindsight. This allows users to create custom .csv files with win/loss and competitive data,
+then pass that data to Hindsight's AI assistant to answer questions, extract insights, and build reports.
+
+### Reports (Alpha)
+We released an early version of Hindsight's native Reports functionality. Reports allow users to use powerful, pre-built prompt templates to generate reports based on their deal data.
+- 10 default reports released, spanning Win/Loss, Competitive Intel, Product, Marketing, and Sales topics
+- Ability to customize report data by filtering to any custom criteria (e.g. region, product, time period)
+- Completely customizable reports via prompting and further data exploration with help of AI assistant
+- Reports library for creating, managing, and sharing reports across your team
+
+## August 2025
+
+### Push to CRM (Beta)
+We added Push to CRM functionality for Custom Answers and Custom Metrics, enabling automatic syncing of qualitative insights and scoring frameworks directly to your CRM. This ensures that critical deal information is consistently updated in your CRM, enhancing visibility and alignment across sales teams.
+
+### Clari Copilot Integration
+We launched a native integration with Clari Copilot, allowing seamless integration of Clari Copilot call transcripts with the Hindsight platform
+
+### Outreach Kaia Integration
+We launched an integration with Outreach Kaia call transcripts, enabling users to leverage Outreach Kaia's call transcripts and insights within the Hindsight platform.
+
+### Chat with this Deal
+We added an integrated chat window on individual deal reports, allowing users to interact with AI in the context of a specific deal without having to leave the page. This allows for simple queries and workflows built off of deal review data.
+
+
 ## July 2025
 
-### Assets (v1.8.0)
+### Assets
 We introduced Chat-to-Asset creation so you can convert any AI chat response into a permanent, shareable document in your Library. Titles and optional competitor tags improve organization and discovery, while a markdown editor lets you refine content before sharing.
 
 Assets integrate with Slack so teams can surface relevant materials in-channel, and a centralized Library makes search and access simple. Common use cases include battlecards, objection guides, product comparisons, one-pagers, and other sales collateral. See full notes: [/release-notes/assets](/release-notes/assets)
 
-### Custom Answers (v1.8.0)
+### Custom Answers 
 Custom Answers lets you define prompts once and automatically run them across all deals to fill qualitative data gaps. Answers can be true/false, one sentence, or paragraph length, and are derived from full deal context (CRM, transcripts, summaries, interviews). You can review, export, and optionally push answers to CRM.
 
 This standardizes “free-form” insights like main objection, champion identified, decision maker, or coaching takeaways—enabling consistent analysis at scale. See full notes: [/release-notes/custom-answers](/release-notes/custom-answers)
 
-### Custom Metrics (v1.9.0)
+### Custom Metrics
 Create 1–5 scoring frameworks tailored to your business with rubrics, categories, and rules for when to score. Five enhanced default metrics (Sales Execution, Relationship, Pricing Fit, Product Fit, Competitive Performance) help you start fast, and scores come with explanations and manual overrides.
 
 Metrics are visualized in Analytics with bar/line charts, multi-select comparisons, and segment filters, so you can spot trends, correlate with outcomes, and guide coaching. See full notes: [/release-notes/custom-metrics](/release-notes/custom-metrics)
 
-### Decision Drivers Upgrade (v1.8.0)
+### Decision Drivers Upgrade
 We launched a pre-built library of decision drivers organized into six categories (Sales Execution, Relationship, Pricing & Packaging, Product & Features, Implementation & Support, Buyer Behavior). This makes setup dramatically faster, while retaining full customization and backward compatibility with existing drivers.
 
 The new interface improves discovery, bulk selection, and organization, helping teams standardize definitions and improve analysis coverage. See full notes: [/release-notes/decision-drivers-2.0](/release-notes/decision-drivers-2.0)
 
-### Feature Tracking 2.0 (v2.0.0)
+### Feature Tracking 2.0
 A rebuilt feature tracking system adds a dedicated Features dashboard, AI-powered detection of feature mentions in deals, better analytics (mentions, sentiment, revenue impact), and improved competitive analysis with evidence-backed comparisons. Data is consolidated for performance and accuracy, with a cleaner UX and automatic migration for existing data.
 
 The result is clearer visibility into which capabilities drive revenue, cleaner comparisons against competitors, and more actionable feedback loops for product and sales. See full notes: [/release-notes/feature-tracking-2.0](/release-notes/feature-tracking-2.0)

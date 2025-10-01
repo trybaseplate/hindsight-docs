@@ -13,34 +13,29 @@ Get started with Hindsight's competitive intelligence features by adding competi
     Then, add Hindsight to a channel by typing ```@Hindsight``` in any channel and confirming the invite.
     {/* <img alt="Connect Slack" classname="block" src="/images/onboard-add-workspace.png" /> */}
   </Step>
-  <Step icon="bell" title="Customize Your Alerts">
-    Configure the types of [alerts](https://app.usehindsight.com/settings/alerts) you want to receive. You can choose to receive a Weekly Newsletter and Real-Time Updates. You can choose what types of updates to receive based on the ```Sensitivity``` setting.
-    You can choose "High Relevance" to only receive Real-Time Updates when something really important is detected, or decrease the sensitivity to receive more updates.
-    {/* <img alt="Configure Alerts" classname="block" src="/images/onboard-alerts.png" /> */}
-
-  </Step>
   <Step icon="crosshairs-simple" title="Add Your First Competitor">
-     Add your [competitors](https://app.usehindsight.com/competitors) by domain. You can also add specific instructions for our AI agents to follow when tracking your competitors. For example, you can tell them to only track content about specific products, specific subdomain, or even specific keywords.
+     Add your [competitors](https://app.usehindsight.com/competitors) by domain and configure URLs for tracking. Add their marketing site plus support or technical sites for best results. You can also add specific instructions for our AI agents to follow when tracking your competitors. For example, you can tell them to only track content about specific products, specific subdomain, or even specific keywords.
+     
+     Choose how often to scrape each page based on how frequently the content changes - daily for dynamic pages like blogs, weekly for product pages, or monthly for static content.
 
        {/* <img alt="Competitors" classname="block" src="/images/onboard-add-competitor-filled.png" /> */}
   </Step>
-   <Step icon="trophy" title="Nice work!">
-    You've successfully added your first competitor. Hindsight will start tracking their moves and sending you updates. You can view the updates on the [News Feed](https://app.usehindsight.com/feed) page. 
+  <Step icon="user" title="Assign a Competitor Owner">
+    Add an owner for each competitor who will be responsible for triaging competitive intelligence. The owner will be notified in Slack when new events are detected, allowing them to quickly review and alert the team about important competitive updates.
     
-    Add more competitors by hitting the ```New``` button at the top right of your competitors page.
-    {/* <img alt="Competitors" classname="block" src="/images/competitors.png" /> */}
+    Choose team members who are familiar with the competitive landscape and can make informed decisions about which updates require immediate attention.
   </Step>
 </Steps>
 
 ### What's Next?
 <CardGroup cols={3}>
-  <Card title="Generate Battlecards" icon="crosshairs-simple" href="/platform/battlecards">
-    Generate battlecards to help your team win more deals.
+  <Card title="Connect CRM & Call Recording" icon="salesforce" href="/integrations">
+    Connect your CRM and call recording tools to incorporate deal insights and competitive context from customer conversations.
   </Card>
-  <Card title="Track Features" icon="grid-3x3" href="/platform/feature-comparison">
-    Track features and competitive capabilities to understand your strengths and gaps.
+  <Card title="Generate Assets" icon="file" href="/workflows/generate-custom-assets">
+    Create custom competitive assets like battlecards, comparison sheets, and objection handlers.
   </Card>
-  <Card title="Slack Assistant" icon="gear" href="/integrations/slack">
+  <Card title="Deploy Slack Assistant" icon="gear" href="/integrations/slack">
     Enable your sales team with instant access to your CI via Slack.
   </Card>
 </CardGroup>

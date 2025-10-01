@@ -34,24 +34,42 @@
             ]
           },
           {
-            "group": "Platform",
+            "group": "Collect",
             "pages": [
-              "platform/deal-reviews",
-              "platform/competitive-monitoring", 
-              "platform/analytics",
-              "platform/ai-assistant",
-              "platform/competitive-enablement",
-              "platform/win-loss-interviews"
+              "platform/collect/sales-data",
+              "platform/collect/competitive-monitoring", 
+              "platform/collect/win-loss-interviews"
               ]
           },
           {
-            "group": "Objects",
+            "group": "Review",
             "pages": [
-              "objects/deals",
-              "objects/competitors",
-              "objects/decision-drivers",
-              "objects/features",
-              "objects/metrics"
+              "platform/review/deal-reviews",
+              "platform/review/intel-triage"
+            ]
+          },
+                    {
+            "group": "Explain",
+            "pages": [
+              "platform/explain/chat",
+              "platform/explain/deals",
+              "platform/explain/decision-drivers",
+              "platform/explain/competitors",
+              "platform/explain/features",
+              "platform/explain/metrics",
+              "platform/explain/answers"
+            ]
+          },
+          {
+            "group": "Activate",
+            "pages": [
+              "platform/activate/custom-assets",
+              "platform/activate/battlecards",
+              "platform/activate/feature-comparison",
+              "platform/activate/slack-ai-assistant",
+              "platform/activate/push-to-crm",
+              "platform/activate/custom-reports",
+              "platform/activate/ai-roleplay"
             ]
           },
           {
