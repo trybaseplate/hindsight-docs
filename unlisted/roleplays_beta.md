@@ -74,19 +74,9 @@ Each session is automatically graded based on your rubric:
 
 ## We Want Your Feedback
 
-As a design partner, your input is crucial to making this feature better. Please share:
+Your input is crucial to making this feature better.
 
 - What's working well?
 - What's confusing or unclear?
 - What features are missing?
 - How would you improve the roleplay experience?
-
-Contact your account team or email [feedback email] with your thoughts.
-
-## What's Coming Next
-
-We're actively developing:
-
-- Additional scenario types beyond competitive situations
-- Team analytics and benchmarking
-- Integration with your existing sales training tools
