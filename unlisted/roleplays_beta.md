@@ -37,14 +37,16 @@ Ground your roleplay in reality by selecting deals to base the scenario on:
 - Choose relevant deals that match your competitive scenario
 - The system will use real objections, questions, and competitive dynamics from these deals
 - This ensures the roleplay reflects actual situations your team faces
+- The AI will incorporate messaging and positioning from your battlecards and other competitive assets
 
 ### 3. Generate and Edit the Rubric
 
 The rubric determines how reps will be evaluated:
 
-- **Generate**: Use our AI to create an initial rubric based on your scenario and selected deals
+- **Generate**: Use our AI to create an initial rubric based on your scenario, selected deals, and messaging from your battlecards
 - **Edit**: Customize the grading criteria to match your team's best practices
 - Define what "good" looks like for each aspect of the conversation
+- The rubric will reflect the competitive positioning and key messages from your existing assets
 
 <img src="/images/roleplays/roleplay_rubric.png" alt="Roleplay rubric editor" />
 
