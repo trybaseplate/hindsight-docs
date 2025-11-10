@@ -1,6 +1,4 @@
-# Roleplays Beta
-
-> **Early Access Feature**: This feature is in beta and available to select design partners. We're actively gathering feedback to improve the experience.
+**NOTE: Early Access Feature**: This feature is in beta and available to select design partners. We're actively gathering feedback to improve the experience.
 
 ## Overview
 
