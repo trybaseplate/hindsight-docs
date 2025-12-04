@@ -547,26 +547,6 @@ All errors follow this format:
 
 ---
 
-## Webhooks
-
-Subscribe to real-time updates:
-
-```json
-POST /api/v1/webhooks
-{
-  "url": "https://your-app.com/webhooks/hindsight",
-  "events": ["deal.updated", "document.uploaded", "insight.generated"]
-}
-```
-
-**Event Types:**
-- `deal.updated` - Deal status or metadata changed
-- `document.uploaded` - New document processed
-- `insight.generated` - New AI-generated insight
-- `competitor.updated` - Competitor intel updated
-
----
-
 ## Next Steps
 
 <CardGroup cols={2}>
