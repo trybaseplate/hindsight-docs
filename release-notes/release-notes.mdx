@@ -2,6 +2,42 @@
 title: "Release Notes"
 description: "Summary of major updates"
 ---
+## December 2025
+
+### Data Analyst Agent V2
+We've significantly upgraded the Data Analyst Agent in Chat, enabling powerful analytics across your entire deal library.
+
+Key improvements include:
+- **Unlimited Dataset Size**: Analyze thousands of deals at once, removing previous limits on dataset size
+- **AI-Powered Pattern Recognition**: Leverages outputs from AI Deal Reviews to surface patterns in competition, product fit, sales execution, and more
+- **Dynamic Visualizations**: AI automatically builds charts and graphs to illustrate key findings
+- **Recursive Segmentation**: Automatically segments data to drill down into trends and outliers
+- **Quantitative + Qualitative Insights**: Combines statistical analysis with contextual understanding for comprehensive insights
+- **New Dataset UI**: Improved interface for viewing, exploring, and exporting datasets and segments used in analysis
+
+Coming soon:
+- **Advanced Segmentation**: More sophisticated segmentation capabilities for deeper analysis
+- **Enhanced Visualizations**: Additional chart types and customization options
+
+### Slack Assistant Settings & Analytics
+New admin controls and usage analytics for the Hindsight Slack Assistant.
+
+Key capabilities include:
+- **Custom System Prompt**: Configure a custom system prompt to tailor AI responses in Slack to your team's tone, terminology, and guidelines
+- **Competitive Intel Toggle**: Control whether the Slack Assistant can search and surface competitive intelligence data
+- **Usage Analytics**: Track how many questions are being asked in Slack over time, identify top topics and competitors being queried, and see which team members are engaging most with the assistant
+
+These settings give admins more control over the Slack experience while providing visibility into how teams are leveraging AI assistance.
+
+### Variables in Recipes
+Recipes now support configurable variables, making it easier to create flexible, reusable analysis workflows that can be quickly customized at runtime.
+
+Key capabilities include:
+- **Text Variables**: Add simple text inputs that users fill in when running a recipe (e.g., competitor name for a **Top Objections** recipe)
+- **Filter Variables**: Let users apply Deal filters at runtime (e.g., filter a **Product Gaps** report to your Enterprise segment, or filter a **Win Themes** report to deals won in the last quarter)
+
+This makes Recipes more accessible for teams who want standardized workflows with the flexibility to adapt each run to their specific needs.
+You can configure variables when building or remixing a recipe in the Recipe Builder. You can make variables required or optional, and set default values for both text and filter variables.
 
 ## November 2025
 
@@ -10,9 +46,9 @@ We've launched Recipes, a powerful new way to create, customize, and run reusabl
 
 Key capabilities include:
 - **Role-Based Recipe Library**: Pre-built recipes organized by function (Product Management, Marketing, Competitive Intelligence, Sales Enablement, Operations) help teams get started quickly with relevant analyses
-- **Two Analysis Modes**: 
-  - **AI Search Mode**: AI agent intelligently finds and deeply analyzes relevant data from up to 25 deals, surfacing insights without manual dataset configuration
-  - **Data Analysis Mode**: Build custom datasets with advanced filtering and column selection, then analyze up to 100 deals at once with your chosen prompt
+- **Two Modes**: 
+  - **Deal Research Agent**: AI agent finds and deeply analyzes relevant data from up to 25 deals at a time, using call transcripts, notes and other deal context without dataset configuration
+  - **Data Analyst Agent**: Build custom datasets with advanced filtering and column selection, then analyze up to 100 deals at once with your chosen prompt
 - **Remix & Customize**: Start with any Hindsight default recipe and remix it to create your own version with custom filters, columns, and prompts that match your specific workflows
 - **Recipe Management**: Save, organize, and share recipes across your team for consistent analysis approaches
 
