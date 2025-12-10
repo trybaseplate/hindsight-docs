@@ -1,0 +1,86 @@
+---
+title: "Recipes"
+description: "Build reusable workflows for you and your team"
+---
+
+Recipes let you create reusable workflows in Hindsight that your entire team can leverage. Define the inputs, prompts, and analysis parameters once—then run them repeatedly with different data.
+
+## What Can You Create?
+
+Recipes power a wide range of use cases across your go-to-market team:
+
+- **Competitive assets that auto-update** — Battlecards, objection handling guides, and competitor comparisons
+- **Win/loss reports and deal alerts in Slack** — Recurring reports on deal outcomes and trends
+- **Personalized sales coaching and insights** — Coaching insights, talk tracks, and rep performance analysis
+- **Real-time product intelligence** — Feature gap reports, buyer feedback summaries, and roadmap inputs
+
+## Automating with Workflows (Early Access)
+
+Once you've built a recipe, you can schedule it to run automatically with **Workflows**. This lets you:
+
+- **Schedule recurring runs** — Set recipes to run daily, weekly, or on a custom cadence
+- **Deliver to Slack** — Push insights directly to specific Slack channels
+- **Send via email** — Share reports with stakeholders automatically
+- **Connect external tools** — Use Zapier to send outputs to your CRM, docs, or other systems
+
+Workflows turn one-time analysis into ongoing intelligence that reaches your team where they work.
+
+## Recipe Library
+
+Hindsight provides a variety of default AI Search and Data Analyst recipes across key use cases:
+
+- **Competitive Intel** — Battlecards, competitor comparisons, and win/loss analysis by competitor
+- **Enablement** — Coaching insights, objection handling, and talk tracks
+- **Marketing** — Messaging analysis, persona insights, and competitive trends
+- **Operations** — Pipeline trends, pricing insights, and process optimization
+- **Product** — Feature gap reports, buyer feedback, and roadmap inputs
+- **Sales** — Deal reviews, rep performance, and win-loss reports
+
+<Tip>
+Use a default recipe as a starting point—hit the **Remix** button and edit it to make your own.
+</Tip>
+
+## Recipe Types
+
+### AI Search Recipes
+Use natural language prompts to search and analyze your deal data. These recipes leverage Hindsight's AI search capabilities to find insights across your deals.
+
+For more on crafting effective prompts in AI Search Mode, see the [Good Prompts](/guides/prompting) guide.
+
+### Data Analyst Mode Recipes
+Data Analyst mode allows Hindsight's AI to pick apart trends from across an unlimited number of deals, without being limited to the 25-deal context window of AI Search mode.
+
+Data Analyst mode pulls data directly from Hindsight's Deal Reviews, and uses a code writing Agent to segment, chart, and analyze large datasets.
+
+To provide fine-grained controls, Data Analyst mode allows you to define your dataset using a set of "Filters" and "Columns".
+- **Filters** — Define which deals to include in the analysis using CRM or Hindsight-defined field. E.g. "Stage is 'Closed Won'" or "Industry is 'Healthcare'"
+- **Columns** — Select the data fields to analyze e.g. "Account.Industry", "Deal.Product_Fit", "Deal.Loss_Reason" 
+
+## Variables
+
+Variables make your recipes dynamic and reusable. When someone runs a recipe, they'll see a form to fill in the required inputs.
+
+### Variable Types
+
+- **Text variables** — Inserted directly into your prompt. Use these for things like competitor names, product features, or custom instructions.
+- **Deal filter variables** — Map to specific filters in Data Analyst mode. Use these to let users select deal stages, date ranges, segments, or other filter criteria at runtime.
+
+### Required vs Optional
+
+- **Required variables** — Must be filled in before the recipe can run
+- **Optional variables** — Provide defaults or allow users to skip if not needed
+
+
+## Creating a Recipe
+
+1. Navigate to **Chat** in Hindsight
+2. Click **Browse Recipes**
+3. Choose an existing recipe to remix, or click **Create Recipe**
+4. Configure your inputs and hit Run to test
+
+## Best Practices
+
+- **Keep prompts focused** — Each recipe should solve one specific problem
+- **Use clear variable names** — Make it obvious what inputs are expected
+- **Test your recipe** — Run your recipe before sharing with the team
+- **Document your recipes** — Add descriptions so teammates understand when to use each one

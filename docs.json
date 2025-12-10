@@ -20,11 +20,10 @@
           {
             "group": "Guides",
             "pages": [
+              "guides/recipes",
               "guides/prompting",
               "guides/slack-ai-agent",
-              "guides/creating-reports",
               "guides/custom-insights",
-              "guides/asset-enablement-for-pmms",
               "guides/win-loss-interviews"
             ]
           },
