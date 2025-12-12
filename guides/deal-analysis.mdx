@@ -1,0 +1,137 @@
+---
+title: "Deal Analysis"
+description: "How Hindsight reviews deals to extract accurate, actionable insights"
+---
+<iframe src="https://www.loom.com/embed/761c5e61b0984955be97c86b274e615c?sid=82f39b9d-d324-484c-ba41-90cf4cc347a0" className="w-full aspect-video"
+></iframe>
+
+## Why Deal Analysis Matters
+
+Most teams have unreliable CRM data—incomplete fields, inconsistent entries, and outdated information. This makes it nearly impossible to generate accurate reports, battlecards, or insights.
+
+Hindsight fixes this by automatically reviewing every deal and triangulating across multiple sources (CRM properties, emails, calls, notes, documents) to extract verified, accurate data. This clean data then powers all downstream workflows—reports, competitive intelligence, product insights, and more.
+
+## How It Works
+
+For each deal, Hindsight's AI:
+1. **Aggregates sources** — Pulls in CRM fields, call transcripts, emails, notes, and documents
+2. **Cross-references** — Compares what was said vs. what was logged to find the truth
+3. **Extracts structured data** — Populates standardized fields with accurate, sourced information
+4. **Scores and explains** — Provides confidence levels and evidence for each insight
+
+The result: a complete, verified picture of every deal that you can trust for analysis and reporting.
+
+## Default Insights
+
+Every analyzed deal automatically includes:
+
+| Category | What's Extracted |
+|----------|------------------|
+| **Deal Summary** | Concise overview of the opportunity, key stakeholders, and outcome |
+| **Competitors** | Who competed, incumbent status, threat level, and positioning used |
+| **Features** | Which product capabilities were discussed, their importance to the buyer |
+| **Decision Drivers** | What mattered most to the buyer, why, and how important each factor was |
+| **Sales Execution** | How well the sales process was run, key moments, and areas for improvement |
+| **Product Fit** | How well your solution matched buyer requirements |
+| **Pricing Fit** | Pricing dynamics, discount sensitivity, and commercial considerations |
+| **Relationship Strength** | Champion presence, access to power, stakeholder engagement |
+| **Competitive Performance** | Where you won or lost against each competitor and why |
+
+These insights are automatically populated and kept up-to-date as new deal data comes in.
+
+## Extending with Custom Insights
+
+Beyond the defaults, you can define your own insights to match your specific workflows and methodologies.
+
+### Custom Metrics (1–5 Scores)
+AI evaluates a deal against a rubric you define and returns a score plus an explanation.
+
+**Examples:**
+- MEDDPIC completeness (M, E, D, D, P, I, C scored individually)
+- Champion Strength
+- Technical Validation Progress
+- Procurement Risk
+
+### Custom Answers (Free-form Text)
+AI returns a structured answer to a prompt you define.
+
+**Examples:**
+- Paper Process notes
+- Security requirements summary
+- Integration requirements
+- Stakeholder map
+
+## Setting Up Custom Insights
+
+<Steps>
+  <Step title="Define the insight">
+    Create a Custom Metric (score + rubric) or a Custom Answer (free-form). Write a clear prompt describing what to extract.
+  </Step>
+  <Step title="Add scoring rubric (for metrics)">
+    Specify 1–5 criteria with concrete, observable thresholds. Include examples for edge cases.
+  </Step>
+  <Step title="Choose scope">
+    Apply to all deals or specific segments. Run on initial analysis, re-analysis, or via backfill.
+  </Step>
+  <Step title="Map to CRM (optional)">
+    Link each insight to a Salesforce/HubSpot field for reporting and automation.
+  </Step>
+  <Step title="Test & iterate">
+    Run on a sample set, review the AI's explanations, tune your prompts, then backfill historical deals.
+  </Step>
+</Steps>
+
+## Prompt and Rubric Tips
+
+- Be explicit about what sources to prioritize (transcripts vs. CRM vs. emails)
+- For metrics, define clear thresholds for each score level with examples
+- Ask for a short explanation alongside scores to aid review
+- Keep one insight per prompt to avoid ambiguity
+- Specify the output format you want (bullet points, paragraph, etc.)
+
+## Review and Verification
+
+- **Explainability**: Every insight includes an explanation and links to source evidence
+- **Verification**: Mark fields as verified; filter by verification status in Analytics
+- **Manual overrides**: Your edits persist—re-analysis won't overwrite verified fields
+- **Audit trail**: All outputs record when and how they were generated
+
+## Using Deal Analysis Data
+
+Once deals are analyzed, the extracted data powers everything else in Hindsight:
+
+- **Reports & Analytics**: Filter and segment by any extracted field
+- **Battlecards**: Competitive insights feed directly into competitive assets
+- **AI Chat**: Ask questions and get answers grounded in verified deal data
+- **CRM Sync**: Push clean data back to Salesforce/HubSpot
+
+## Getting Started
+
+<Steps>
+  <Step title="Review default insights">
+    Check a few analyzed deals to see what Hindsight extracts out of the box.
+  </Step>
+  <Step title="Add custom insights">
+    Start with 2–3 high-impact metrics or answers specific to your sales process.
+  </Step>
+  <Step title="Map to CRM">
+    Connect insights to CRM fields for reporting and automation.
+  </Step>
+  <Step title="Backfill & validate">
+    Run on historical deals, spot-check the results, and refine your prompts.
+  </Step>
+</Steps>
+
+## Related
+
+<CardGroup cols={3}>
+  <Card title="Analytics" icon="chart-line" href="/platform/analytics">
+    Segment, trend, and drill into your deal insights.
+  </Card>
+  <Card title="Deal Reviews" icon="chart-simple" href="/platform/deal-reviews">
+    See how insights are produced alongside the full deal story.
+  </Card>
+  <Card title="AI Assistant" icon="chat-circle-text" href="/platform/ai-assistant">
+    Ask questions grounded in verified deal data.
+  </Card>
+</CardGroup>

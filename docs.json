@@ -22,8 +22,8 @@
             "pages": [
               "guides/recipes",
               "guides/prompting",
+              "guides/deal-analysis",
               "guides/slack-ai-agent",
-              "guides/custom-insights",
               "guides/win-loss-interviews"
             ]
           },
