@@ -48,30 +48,6 @@
               "platform/review/intel-triage"
             ]
           },
-                    {
-            "group": "Explain",
-            "pages": [
-              "platform/explain/chat",
-              "platform/explain/deals",
-              "platform/explain/decision-drivers",
-              "platform/explain/competitors",
-              "platform/explain/features",
-              "platform/explain/metrics",
-              "platform/explain/answers"
-            ]
-          },
-          {
-            "group": "Activate",
-            "pages": [
-              "platform/activate/custom-assets",
-              "platform/activate/battlecards",
-              "platform/activate/feature-comparison",
-              "platform/activate/slack-ai-assistant",
-              "platform/activate/push-to-crm",
-              "platform/activate/custom-reports",
-              "platform/activate/ai-roleplay"
-            ]
-          },
           {
             "group": "Integrations",
             "pages": [
