@@ -1,17 +1,19 @@
 ---
 title: "Recipes"
-description: "Build reusable workflows for you and your team"
+description: "Build reusable, extendable workflows for you and your team"
 ---
+<iframe src="https://www.loom.com/embed/b3b9a4e6d0a64d6fbd641099f2e1a95c" className="w-full aspect-video"
+></iframe>
 
-Recipes let you create reusable workflows in Hindsight that your entire team can leverage. Define the inputs, prompts, and analysis parameters once—then run them repeatedly with different data.
+Recipes let you create custom workflows in Hindsight which you can schedule or run on demand. When you cook up something that works, save it as a recipe!
 
 ## What Can You Create?
 
-Recipes power a wide range of use cases across your go-to-market team:
+Recipes power a wide range of use cases built on top of Hindsight's Deal Intelligence.
 
-- **Competitive assets that auto-update** — Battlecards, objection handling guides, and competitor comparisons
 - **Win/loss reports and deal alerts in Slack** — Recurring reports on deal outcomes and trends
 - **Personalized sales coaching and insights** — Coaching insights, talk tracks, and rep performance analysis
+- **Competitive assets that auto-update** — Battlecards, objection handling guides, and competitor comparisons
 - **Real-time product intelligence** — Feature gap reports, buyer feedback summaries, and roadmap inputs
 
 ## Automating with Workflows (Early Access)
@@ -19,15 +21,16 @@ Recipes power a wide range of use cases across your go-to-market team:
 Once you've built a recipe, you can schedule it to run automatically with **Workflows**. This lets you:
 
 - **Schedule recurring runs** — Set recipes to run daily, weekly, or on a custom cadence
-- **Deliver to Slack** — Push insights directly to specific Slack channels
-- **Send via email** — Share reports with stakeholders automatically
+- **Deliver to Slack** — Push insights directly to specific Slack channels, or Slack DMs
+- **Send via email** — Share reports with groups of stakeholders in a newsletter format
+- **Save to Library** - Create or update existing assets and documents in your Library
 - **Connect external tools** — Use Zapier to send outputs to your CRM, docs, or other systems
 
 Workflows turn one-time analysis into ongoing intelligence that reaches your team where they work.
 
 ## Recipe Library
 
-Hindsight provides a variety of default AI Search and Data Analyst recipes across key use cases:
+We provide a growing library of pre-built recipes to get you started. These cover common use cases across departments:
 
 - **Competitive Intel** — Battlecards, competitor comparisons, and win/loss analysis by competitor
 - **Enablement** — Coaching insights, objection handling, and talk tracks
@@ -45,12 +48,19 @@ Use a default recipe as a starting point—hit the **Remix** button and edit it 
 ### AI Search Recipes
 Use natural language prompts to search and analyze your deal data. These recipes leverage Hindsight's AI search capabilities to find insights across your deals.
 
+AI Search Recipes are best for qualitative insights that can be derived by diving deeper into a smaller set of deals. Use cases include:
+- Finding objections from the last week of calls
+- Summarizing competitive positioning in recent deals
+- Extracting buyer personas from a set of closed-won deals
+
+When building AI Search recipes, keep in mind the 25-deal context window for individual tool calls. Make sure your prompt is focused enough to get meaningful results from a limited set of deals.
+
 For more on crafting effective prompts in AI Search Mode, see the [Good Prompts](/guides/prompting) guide.
 
 ### Data Analyst Mode Recipes
 Data Analyst mode allows Hindsight's AI to pick apart trends from across an unlimited number of deals, without being limited to the 25-deal context window of AI Search mode.
 
-Data Analyst mode pulls data directly from Hindsight's Deal Reviews, and uses a code writing Agent to segment, chart, and analyze large datasets.
+Data Analyst mode pulls data directly from Hindsight's Deal Reviews, and uses Code Interpreter to segment, chart, and analyze large datasets.
 
 To provide fine-grained controls, Data Analyst mode allows you to define your dataset using a set of "Filters" and "Columns".
 - **Filters** — Define which deals to include in the analysis using CRM or Hindsight-defined field. E.g. "Stage is 'Closed Won'" or "Industry is 'Healthcare'"
