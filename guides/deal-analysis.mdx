@@ -41,25 +41,95 @@ These insights are automatically populated and kept up-to-date as new deal data 
 
 ## Extending with Custom Insights
 
-Beyond the defaults, you can define your own insights to match your specific workflows and methodologies.
+Beyond the defaults, you can define your own insights to match your specific workflows, messaging frameworks, and sales methodologies.
+
+Hindsight supports this through Custom Metrics and Custom Answers that you create via the UI and natural language prompts.
 
 ### Custom Metrics (1–5 Scores)
 AI evaluates a deal against a rubric you define and returns a score plus an explanation.
 
 **Examples:**
-- MEDDPIC completeness (M, E, D, D, P, I, C scored individually)
 - Champion Strength
-- Technical Validation Progress
-- Procurement Risk
+- Messaging Accuracy
+- ROI Articulation
+- Objection Handling Effectiveness
+- Buying Urgency
 
-### Custom Answers (Free-form Text)
+### Custom Answers (Anything)
 AI returns a structured answer to a prompt you define.
 
-**Examples:**
-- Paper Process notes
-- Security requirements summary
-- Integration requirements
-- Stakeholder map
+Custom Answers can be of a few types:
+- ** True / False **: e.g., "Was a technical demo conducted?"
+- ** Multiple Choice **: e.g., "What was the primary reason for loss? (Price / Features / Timing / Relationship)"
+- ** Short Text **: e.g., "List the key stakeholders involved in the decision."
+- ** Long Text **: e.g., "Summarize the customer's main pain points and how our solution addresses them."
+
+Custom Answers are created in Groups to accomplish specific analytics tasks.
+
+### Example Custom Answer Groups
+
+Hindsight includes pre-built answer packs you can use as starting points:
+
+<AccordionGroup>
+  <Accordion title="MEDDPICC">
+    Comprehensive deal qualification using the MEDDPICC framework.
+    
+    | Answer Name | Type | Prompt |
+    |-------------|------|--------|
+    | Metrics: Quantified | True/False | "Has the buyer quantified a business metric with a baseline, target, or specific value they want to improve? Answer True if a concrete number or range was provided, False otherwise." |
+    | Metrics: Description | Short Text | "Briefly describe the business metric the buyer cares about improving, in their own terms. If no metric was discussed, state 'No metric identified'." |
+    | Economic Buyer: Engaged | True/False | "Has the economic buyer (the person with budget authority) directly participated in the deal through meetings, emails, or decision-making? Answer True if engaged, False otherwise." |
+    | Economic Buyer: Description | Short Text | "Describe who the economic buyer is and their level of involvement in this deal. If unknown, state 'Economic buyer not identified'." |
+    | Decision Criteria: Clarity | Multiple Choice | "How clearly are the buyer's decision criteria articulated? Options: Clear, Partial, Unclear" |
+    | Decision Criteria: Summary | Short Text | "Summarize the buyer's key decision criteria at a high level. If unclear, describe what is known or state 'Decision criteria not defined'." |
+    | Decision Process: Clarity | Multiple Choice | "How clearly is the process for making the final decision understood, including approval steps and timeline? Options: Clear, Partial, Unclear" |
+    | Decision Process: Description | Short Text | "Describe the known decision process, including any approval steps or timeline. If unclear, state 'Decision process not defined'." |
+    | Paper Process: Risk Level | Multiple Choice | "Based on complexity, legal/procurement involvement, and timing, how risky is the paper process for this deal? Options: Low, Medium, High, Unknown" |
+    | Paper Process: Description | Short Text | "Describe any known contractual, legal, security, or procurement processes. If none identified, state 'Paper process not identified'." |
+    | Pain: Urgency | Multiple Choice | "How urgent is solving the buyer's primary pain from their perspective? Options: High, Medium, Low, Unknown" |
+    | Pain: Summary | Short Text | "Summarize the buyer's primary pain or problem in one sentence, including any acknowledged risks of inaction. If no pain identified, state 'Pain not articulated'." |
+    | Champion: Strength | Multiple Choice | "How strong is the internal champion in terms of actively driving the deal forward and influencing the outcome? Options: Strong, Weak, None, Unknown" |
+    | Champion: Description | Short Text | "Describe the champion, their role, and their level of influence in driving this deal. If no champion, state 'No champion identified'." |
+    | Competition: Risk Level | Multiple Choice | "How risky is the competitive landscape for this deal, considering active competitors and incumbent solutions? Options: Low, Medium, High, Unknown" |
+    | Competition: Description | Short Text | "Describe the competitive situation, including any named competitors or incumbent status quo. If no competition, state 'No competition identified'." |
+  </Accordion>
+
+  <Accordion title="Persona Insights">
+    Understand buyer personas and messaging fit.
+    
+    | Answer Name | Type | Prompt |
+    |-------------|------|--------|
+    | Primary Buyer Persona | Multiple Choice | "What is the primary buyer persona involved in this deal? Select the role or title that best describes the main buyer. Options: Executive/C-Suite, VP/Director, Manager, Individual Contributor, Technical/IT, Finance/Procurement, Operations, Other" |
+    | Buyer Role in Decision | Multiple Choice | "What role did the primary buyer play in the decision-making process? Options: Driver, Influencer, Approver, Blocker" |
+    | Primary Use Case | Multiple Choice | "What is the primary use case or application the buyer is evaluating this solution for? Options: Cost Reduction, Revenue Growth, Efficiency/Productivity, Risk/Compliance, Digital Transformation, Competitive Advantage, Other" |
+    | Persona Pain Statement | Short Text | "Summarize the primary pain point or challenge this buyer persona is experiencing, in their own words if possible." |
+    | Persona-Message Fit | Multiple Choice | "How well did our messaging resonate with this buyer persona? Options: Strong, Partial, Weak" |
+    | Messaging Fit Rationale | Short Text | "Explain why the messaging was or wasn't effective for this persona. What resonated or fell flat?" |
+  </Accordion>
+
+  <Accordion title="Product Insights">
+    Understand buyer use cases, product fit, and implementation risks.
+    
+    | Answer Name | Type | Prompt |
+    |-------------|------|--------|
+    | Primary Buyer Use Case | Short Text | "In one sentence, describe the primary outcome or workflow the buyer expects to achieve with the product." |
+    | Problem-Solution Fit | Multiple Choice | "How well does the product's current value proposition address the buyer's stated problem? Options: Strong, Partial, Weak" |
+    | Product Scope Match | Multiple Choice | "Does the buyer's intended use case fall within the product's intended scope? Options: In-Scope, Edge, Out-of-Scope" |
+    | Implementation Risk Raised | True/False | "Were concerns raised about onboarding, integration, or time-to-value?" |
+  </Accordion>
+
+  <Accordion title="Pricing">
+    Assess pricing dynamics and commercial friction in deals.
+    
+    | Answer Name | Type | Prompt |
+    |-------------|------|--------|
+    | Pricing Discussed | True/False | "Has pricing or commercial structure been explicitly discussed with the buyer?" |
+    | Price Sensitivity Level | Multiple Choice | "Based on objections, comparisons, or behavior, how sensitive is the buyer to price? Options: High, Medium, Low" |
+    | Discount Requested | True/False | "Has the buyer requested a discount, concession, or special pricing?" |
+    | Commercial Complexity Present | True/False | "Are procurement, legal, security, or non-standard commercial terms involved?" |
+    | Pricing Friction Summary | Short Text | "In one sentence, describe the primary source of pricing or commercial friction." |
+  </Accordion>
+</AccordionGroup>
 
 ## Setting Up Custom Insights
 
