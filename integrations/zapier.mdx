@@ -1,38 +1,65 @@
 ---
 title: 'Zapier Integration'
-description: 'Connect 1000s of tools to Hindsight'
+description: 'Send Hindsight workflow outputs to 1000s of apps'
 icon: 'bolt'
 ---
 
-### Overview
-Hindsight's Zapier integration allows you to connect thousands of apps without needing us to build a native integration. This guide will help you set up the integration and start using it effectively.
-Most commonly, the Zapier integration is used to connect meeting notetakers to automatically import your sales calls and meetings. This helps our AI extract competitive insights from your sales conversations.
-<img alt="Zap Action" classname="block" src="/images/zap-overview.png" />
+## Overview
 
-# Create an API key
-Generate an API key from the [API Keys](https://app.usehindsight.com/settings/keys) page. You’ll use this key in step 3 to authenticate with your Hindsight account in Zapier
+Hindsight's Zapier integration allows you to send the outputs of your workflows to thousands of apps without needing us to build a native integration. For example, you can automatically create a slide deck in [Gamma.ai](https://gamma.ai) from a Hindsight workflow output.
+
+<Note>
+The Zapier integration is currently invite-only. [Request access in the app](https://app.usehindsight.com/settings/integrations) to get started. You'll receive an invite to use the Zapier integration in your email.
+</Note>
+
+## Create a Zap
+
+When creating a Zap, select **Hindsight** as the Trigger app. You should see Hindsight (1.3.0) as the version.
+
+
+## Authenticate your Hindsight account
+
+Generate an API key from the [API Keys](https://app.usehindsight.com/settings/keys) page. Paste your API key when connecting your Hindsight account to the Accounts tab in Zapier to authenticate.
+
 <img alt="API Keys" classname="block" src="/images/api-keys.png" />
 
-# Create a Zap
-You can use one of our prebuilt Zap templates from the Integrations page or create a custom Zap. You can find the templates on the [Integrations](https://app.usehindsight.com/settings/integrations) page. 
-When creating a Zap, you'll need to select a trigger app and an action app. The trigger app is the app that will send data to Hindsight, and the action app is Hindsight itself.
-<img alt="Zap Template" classname="block" src="/images/integrations.png" />
+## Set up your Trigger
 
-# Authenticate your Hindsight account
-You will paste your API key in the Accounts tab to authenticate your Hindsight account. This will allow Zapier to send data to your Hindsight account.
+Choose a workflow as your trigger—this will fire whenever that workflow completes. You'll see a test output to help you map the data to your action app.
+
+<img alt="Zap Action" classname="block" src="/images/zap-configure-trigger.png" />
+
+## Configure your Action
+
+Select your destination app (e.g., Gamma.ai, Google Slides, Notion) and map the workflow output fields to your action. You'll typically want to use the Report Content field. 
+This allows you to automatically send Hindsight workflow results to your connected apps.
+
+<img alt="Zap Action" classname="block" src="/images/zap-configure-action.png" />
+
+## Test and Enable
+
+Test your Zap to make sure everything is working correctly, then turn it on to start automatically sending workflow outputs to your connected apps.
+
+---
+
+## Using Hindsight as an Action
+
+You can also use Hindsight as an Action to send data *into* Hindsight from other apps. This is useful for importing documents from meeting notetakers and other sources.
+
+### Create a Zap with Hindsight Action
+
+Select your trigger app (e.g., a meeting notetaker like Fathom), then select **Hindsight** as the Action app. Choose the **Create Document** action to create a new document in your Hindsight account whenever the Zap is triggered.
+
 <img alt="Zap Action" classname="block" src="/images/zap-action.png" />
 
-# Create a Zap Action
-Select the Hindsight app and choose the Create Document action. This will allow you to create a new document in your Hindsight account whenever the Zap is triggered.
-<img alt="Zap Action" classname="block" src="/images/zap-action.png" />
+### Map your fields
 
-# Map your fields
 Map the fields from your trigger app to the fields in Hindsight. This will allow you to send data from your trigger app to Hindsight when the Zap is triggered.
-<img alt="Zap Action" classname="block" src="/images/zap-action-settings.png" />
 
-# Test your Zap
-Test your Zap to make sure everything is working correctly. This will send a test document to your Hindsight account.
+<img alt="Zap Action Settings" classname="block" src="/images/zap-action-settings.png" />
 
-# Turn on your Zap
-Once you’ve tested your Zap and everything is working correctly, turn on your Zap to start sending data to your Hindsight account.
-<img alt="Zap Action" classname="block" src="/images/deal-documents-fathom.png" />
+### Test and turn on your Zap
+
+Test your Zap to make sure everything is working correctly. This will send a test document to your Hindsight account. Once verified, turn on your Zap to start sending data.
+
+<img alt="Deal Documents" classname="block" src="/images/deal-documents-fathom.png" />
