@@ -1,6 +1,6 @@
 ---
-title: "Prompting"
-description: "Get the most out of Hindsight's AI"
+title: "AI Agent"
+description: "Get the most out of Hindsight's AI Agent"
 ---
 
 <iframe src="https://www.loom.com/embed/fb28f2db67a74984b06872add3e3cc55" className="w-full aspect-video"
@@ -17,12 +17,25 @@ Simple, non descript queries still work for most use cases (e.g. what's the top 
 However, by understanding what tools Hindsight has access to, you can be more clear about the task and steps, allowing you to complete more complex tasks with more precision.
 If you aren't comfortable invoking specific tools in your prompt, feel free to use Recipes for powerful pre-built prompts (see the [Recipe Guide](/guides/recipes) for more).
 
+## Agent Routing
+Behind the scenes, Hindsight routes your queries to specialized sub-agents, each optimized for different tasks. The system automatically detects whether you're asking about competitors, deals, or data analysis and picks the right expert to handle your request.
+
 ## Tools
+
+### Deal Research
 - **Select Deals** — use filters to select deals by name, segment, stage, competitor, amount, close date.
-- **Search Deals** - find deals based on keywords or themes in the deal analysis data.
+- **Search Deals** — find deals based on keywords or themes in the deal analysis data using semantic search.
 - **Search Across Deal Documents** — broad scan across deal documents (e.g. transcripts) for themes and examples (e.g. GDPR).
-- **Search Within Deal** — look inside one deal's transcripts, CRM fields, notes.
-- **Competitor Search** — pull intelligence on one competitor.
+- **Search Within Deal** — deep search inside specific deals' transcripts, CRM fields, and notes.
+
+### Competitive Intelligence
+- **Competitor Assets** — search approved messaging, battlecards, and competitive assets for a specific competitor.
+- **Competitor Intel** — pull pre-saved intelligence from public sources (websites, G2, LinkedIn, etc.).
+- **Knowledge Base** — search your company's internal messaging docs, playbooks, and enablement content.
+- **Web Search** — live web search for real-time competitor information, news, and product updates.
+- **Scrape URL** — extract and analyze content from specific web pages (pricing pages, docs, blogs).
+
+### Data Analysis
 - **Analyze Segment** — segment a dataset using filters and generate insights. **Only available in Data Analysis mode**.
 
 Hindsight always shows you which tool is being used, and what sources were found within the chat window.
@@ -53,23 +66,33 @@ You'll see the specific quotes from the deal documents within that deal, along w
   <img src="/images/chat/search_within_deal_call.png" alt="Search Within Deal tool" />
 </Frame>
 
-### Competitor Search
-You'll see the competitor's logo and quotes from competitive intelligence documents we've scraped.
+### Competitor Assets & Intel
+You'll see the competitor's logo and quotes from battlecards, competitive assets, and intelligence documents.
 <Frame>
   <img src="/images/chat/search_competitive_intel.png" alt="Competitor Search tool" />
 </Frame>
 
+### Knowledge Base
+You'll see results from your company's internal messaging docs, playbooks, and enablement content. These are resources in your Asset library tagged under your organization's name.
+  <img src="/images/chat/knowledge_base.png" alt="Knowledge Base tool" />
+
+### Web Search & Scrape URL
+You'll see live web results with links to the source pages, or extracted content from specific URLs you've provided.
+You can save these results to your Knowledge Base for future use.
+<img src="/images/chat/web_search.png" alt="Web Search tool" />
+
 ### Analyze Segment
-You'll see the segmenet query, filters, segment dataset, tables, and charts.
+You'll see the segment query, filters, segment dataset, tables, and charts.
 <Frame>
   <img src="/images/chat/analyze_segment_call.png" alt="Analyze Segment tool" />
 </Frame>
 
 ## Chaining Tools
-Think of the primitives as building blocks:
-- **Select Deal / Search Deals / Search Across Deal Documents** — find the right deals.
-- **Search Within Deal** — pull details.
-- **Competitor Search** — layer in market context.
+Think of the tools as building blocks:
+- **Select Deals / Search Deals / Search Across Deal Documents** — find the right deals.
+- **Search Within Deal** — pull specific details and quotes from deals.
+- **Competitor Assets / Competitor Intel / Knowledge Base** — layer in competitive context and your company's positioning.
+- **Web Search / Scrape URL** — fill gaps with live web information.
 
 Let the model decide how to use these tools to accomplish your task, or provide specific instructions for the model to follow. Once you have the right context, the rest is simple prompting to get your ideal output.
 
