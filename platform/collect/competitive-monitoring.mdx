@@ -1,125 +1,110 @@
 ---
 title: 'Competitive Monitoring'
-description: 'Automated competitive intelligence that keeps you ahead of the competition'
+description: 'AI-powered competitive intelligence with customizable workflows'
 icon: 'radar'
 ---
 
 ## Overview
-Competitive Monitoring is Hindsight's always-on intelligence system that tracks competitor moves, product updates, and market changes across hundreds of data sources. Instead of manually researching competitors, let AI continuously gather and analyze competitive intelligence 24/7.
+Competitive Monitoring is now powered by Hindsight's AI agent and workflows system, giving you complete control over how competitive intelligence is gathered, analyzed, and delivered to your team.
+
+Each competitor you track gets an automated "Competitive Monitor" workflow that runs on a weekly schedule (Mondays at 11am EST by default). You can customize the schedule, the research recipe, and how results are delivered.
 
 ## How It Works
-Hindsight runs automated competitor syncs **every weekday at 1 AM EST**. Each competitor gets monitored across multiple channels simultaneously:
 
-- **Website Monitoring**: Daily scans of competitor websites, product pages, and documentation
-- **Social Intelligence**: LinkedIn, Twitter/X posts and company updates  
-- **Advertising Tracking**: LinkedIn Ads, Google Ads campaigns and messaging
-- **Review Analysis**: G2, Capterra, and other review platform monitoring
-- **News & Press**: Google News alerts and industry publication mentions
-- **Community Forums**: Slack workspaces, Discord servers, and relevant discussions
+### Agent-Powered Research
+The Competitive Monitor workflow uses Hindsight's AI agent with access to powerful research tools:
+
+- **Web Search** — Live search for real-time competitor information, news, and product updates
+- **Scrape URL** — Extract and analyze content from specific web pages (pricing pages, docs, blogs)
+- **Map URL** *(experimental)* — Discover and index subpages from a given URL to find all relevant content
+- **Browse Tool** *(experimental)* — Full browser capabilities for research on bot-protected sources like LinkedIn and G2
+
+### Intel Library
+When the agent finds valuable intelligence, it gets saved to your Intel Library—a dedicated space for competitive research materials:
+
+- **Centralized Organization**: Keep approved, high-quality insights organized and accessible
+- **Team Access**: Surface materials via the Slack Agent and other enablement workflows
+- **Auto-Sync**: Saved pages are automatically indexed and synced regularly to stay current and detect changes
 
 ## Getting Started
-1. **Add Competitors**: Define which companies to monitor and their key URLs/profiles
-2. **Configure Sources**: Enable relevant monitoring channels (website, social, ads, reviews) and how often to scan
-3. **Set Up Notifications**: Choose a competitor owner who will get alerted in Slack to new intelligence ready for triage
-4. **Review Intelligence**: Triage new competitive events in the Hindsight app and share relevant insights with your team
 
-## Data Sources & Scheduling
+1. **Add Competitors**: Navigate to Competitors and add the companies you want to track
+2. **Enable Monitoring**: Toggle monitoring on for each competitor you want to track actively
+3. **Customize Workflows**: Each competitor gets a default "Competitive Monitor" workflow—remix the recipe to customize research focus, output format, and delivery
+4. **Configure Delivery**: Set up Slack channels, email recipients, or other output actions for your workflow results
 
-### Website Intelligence (Custom)
-- **Root Domain Scanning**: Monitors main website and additional URLs for changes
-- **Sitemap Crawling**: Discovers new pages and product updates (bi-weekly)
-- **Content Analysis**: Tracks blog posts, case studies, pricing pages
-- **Product Documentation**: Monitors feature releases and capability changes
+## Customizing Your Monitoring
 
-### Social Media Monitoring (Tuesday)
-- **LinkedIn Company Pages**: Posts, updates, employee announcements
-- **Twitter/X Accounts**: Company tweets, product announcements
-- **Executive Social**: C-level posts and strategic communications
+### Workflow Recipes
+Each competitor's monitoring workflow starts with a default Recipe that you can remix and customize:
 
-### Advertising Intelligence (Wednesday)  
-- **LinkedIn Ad Library**: Active campaigns, messaging, targeting
-- **Google Ads Monitoring**: Search ads, display campaigns
-- **Creative Analysis**: Ad copy, visuals, positioning themes
+- **Research Focus**: Adjust the prompt to prioritize product updates, pricing changes, marketing campaigns, or other areas
+- **Output Format**: Configure how insights are formatted—executive summaries, detailed reports, battlecard updates, etc.
+- **Source Priorities**: Specify which sources to emphasize (website, LinkedIn, G2, news, etc.)
 
-### Review Platform Tracking (Friday)
-- **G2 Reviews**: Customer feedback, ratings, feature mentions
-- **Industry-Specific Platforms**: Vertical review sites
-- **Sentiment Analysis**: Positive/negative trend tracking
+### Schedule Configuration
+Default schedule is weekly (Mondays at 11am EST), but you can customize:
 
-### News & Press Coverage (Daily)
-- **Google News Alerts**: Industry mentions, funding, partnerships  
-- **Trade Publications**: Vertical media coverage
-- **Press Release Monitoring**: Official company announcements
+- **Frequency**: Daily, weekly, bi-weekly, or monthly
+- **Day & Time**: Choose what works best for your team's workflow
+- **Per-Competitor Schedules**: Set different cadences for different competitors based on priority
 
-### Community & Forums (Tuesday)
-- **Slack Workspaces**: Industry communities, customer discussions
-- **Discord Servers**: Developer communities, user groups
-- **Subreddit Monitoring**: Relevant industry discussions
+### Delivery Options
+Configure how and where results are delivered:
 
-## Intelligence Processing & Event Generation
+- **Slack Channels**: Push updates directly to dedicated competitive intelligence channels
+- **Slack DMs**: Send to specific team members (e.g., competitor owners)
+- **Email**: Distribute to broader teams via email lists
+- **Library Updates**: Automatically update battlecards and competitive assets in your Library
 
-### AI-Powered Event Categorization
-Every piece of competitive intelligence gets processed by AI to determine:
-- **Event Type**: Product Launch, Marketing Campaign, Personnel Change, Funding, etc.
-- **Relevance Score**: 1-3 scale based on strategic importance to your business
-- **Business Impact**: How this affects your competitive positioning
-- **Timeline**: When the change occurred or takes effect
+## Intelligence Processing
 
-### Event Relevance Scoring
-**High Priority (Score: 3)** - Immediate sales team notification:
+### AI-Powered Analysis
+The agent analyzes gathered intelligence to surface:
+
+- **Key Developments**: Product launches, pricing changes, funding, partnerships
+- **Strategic Implications**: How changes affect your competitive positioning
+- **Recommended Actions**: Suggested updates to messaging or battlecards
+
+### Event Categorization
+Intelligence is automatically categorized by type and priority:
+
+**High Priority** — Immediate attention:
 - Major product launches or significant updates
-- Pricing changes or new packaging tiers  
+- Pricing changes or new packaging tiers
 - Acquisitions, mergers, or strategic partnerships
-- Executive leadership changes (C-level)
-- New funding rounds or IPO announcements
-- Major layoffs or rapid expansion
+- Executive leadership changes
+- Funding rounds or IPO announcements
 
-**Medium Priority (Score: 2)** - Weekly digest notification:
+**Medium Priority** — Weekly review:
 - New marketing campaigns or positioning changes
 - Customer case studies and success stories
 - Key personnel hires or departures
-- Social posts mentioning other competitors
 - Reviews and third-party comparisons
-- Conference presentations or thought leadership
 
-**Low Priority (Score: 1)** - Background intelligence:
+**Low Priority** — Background intelligence:
 - Minor website updates or blog posts
 - General social media activity
-- Office relocations or company culture posts
-- Small feature updates or bug fixes
-- Non-competitive industry news
+- Small feature updates
 
-### Automated Event Grouping
-Similar intelligence gets automatically grouped into coherent events:
-- **Job Postings**: All hiring activity consolidated into expansion trends
-- **Product Updates**: Related feature releases grouped by theme
-- **Marketing Campaigns**: Multiple ads/posts grouped by campaign
-- **Executive Changes**: Leadership transitions tracked as strategic shifts
+## Using Intelligence in Chat
 
-## Intelligence Distribution
+All competitive intelligence is accessible via Hindsight's AI chat:
 
-### Real-Time Alerts
-High-priority events trigger immediate notifications through:
-- **Slack Integration**: Dedicated competitive intelligence channels
-- **Dashboard Notifications**: In-app alerts for active users
+- **Ask Questions**: "What has Competitor X announced in the last month?"
+- **Build Assets**: "Create a battlecard update based on Competitor X's latest product launch"
+- **Compare**: "How does our pricing compare to Competitor X after their recent changes?"
 
-### Weekly Competitive Digest
-Comprehensive summaries delivered every week containing:
-- **Executive Summary**: Key developments and strategic implications
-- **Event Timeline**: Chronological view of competitor activities
-- **Impact Analysis**: How changes affect your competitive position
+The agent will pull from your Intel Library and can run live research to fill gaps.
 
-### Continuous Intelligence Feed
-All competitive intelligence stored in searchable repository:
-- **Historical Tracking**: Complete timeline of competitor evolution
-- **Search & Filter**: Find specific types of intelligence quickly
-- **Slack Integration**: Share intelligence with broader teams
+## Migration Notes
 
-### Notification Preferences
-Customize how your team receives intelligence:
-- **Slack Channels**: Direct competitive updates to relevant channels
-- **Email Recipients**: Weekly digest distribution lists
-- **Alert Thresholds**: Minimum relevance score for immediate notifications
-- **Frequency Settings**: Daily, weekly, or custom notification schedules
+If you previously had competitive monitoring set up, your configuration has been automatically migrated:
+
+- Existing competitors with monitoring enabled now have Competitive Monitor workflows
+- Default Recipe provides similar coverage to the previous system
+- You can remix the recipe to customize or enhance your monitoring
+
+For help customizing your workflows or setting up new competitors, reach out to our team.
 
 
