@@ -31,10 +31,10 @@ tags:
     description: Upload and manage documents
 
 paths:
-  /chat/completions:
+  /responses:
     post:
-      operationId: createChatCompletion
-      summary: Create a chat completion
+      operationId: createResponse
+      summary: Create a response
       description: |
         Send a message and receive an AI-generated response with citations from your competitive intelligence data.
         Hindsight automatically orchestrates multiple searches across deals, competitors, and knowledge base to provide comprehensive answers.

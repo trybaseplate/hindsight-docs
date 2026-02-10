@@ -71,7 +71,7 @@
           {
             "group": "Endpoints",
             "pages": [
-              "api-reference/chat-completions",
+              "api-reference/responses",
               "api-reference/upload-library-document",
               "api-reference/upload-deal-document"
             ]
