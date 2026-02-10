@@ -1,0 +1,100 @@
+---
+title: 'Upload to Deal'
+openapi: 'POST /documents/deals'
+---
+
+Associate documents with specific deals for win-loss analysis. Audio and video files are automatically transcribed.
+
+## Deal Identification
+
+You can identify the deal using one of three methods:
+
+| Parameter | Description |
+|-----------|-------------|
+| `deal_id` | Hindsight's internal deal ID |
+| `salesforce_id` | Salesforce Opportunity ID (e.g., `006xxxxxxxxxxxx`) |
+| `hubspot_id` | HubSpot Deal ID |
+
+## Source Options
+
+The `source` field determines the icon displayed and helps with document organization:
+
+| Source | Description |
+|--------|-------------|
+| `gong` | Gong call recordings |
+| `clari` | Clari |
+| `fathom` | Fathom AI |
+| `fireflies` | Fireflies.ai |
+| `avoma` | Avoma |
+| `outreach` | Outreach |
+| `gmail` | Gmail |
+| `Salesforce` | Salesforce |
+| `Hubspot` | HubSpot |
+| `api` | API upload |
+
+## Supported File Types
+
+| Category | Formats | Notes |
+|----------|---------|-------|
+| Documents | PDF, DOCX, PPTX, XLSX, MD, TXT | Parsed and chunked for search |
+| Audio | MP3, WAV, M4A | Automatically transcribed via Whisper |
+| Video | MP4 | Automatically transcribed via Whisper |
+
+<RequestExample>
+```bash cURL
+curl -X POST https://api.hindsight.com/api/v1/documents/deals \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "file_name": "Discovery Call Recording.mp3",
+    "file_url": "https://example.com/recording.mp3",
+    "content_type": "audio/mpeg",
+    "salesforce_id": "006xxxxxxxxxxxx",
+    "source": "gong"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://api.hindsight.com/api/v1/documents/deals', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${API_KEY}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    file_name: 'Discovery Call Recording.mp3',
+    file_url: 'https://example.com/recording.mp3',
+    content_type: 'audio/mpeg',
+    salesforce_id: '006xxxxxxxxxxxx',
+    source: 'gong'
+  })
+});
+
+const data = await response.json();
+console.log(`Document uploaded: ${data.document.id}`);
+console.log(`Processing workflow: ${data.workflow_id}`);
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://api.hindsight.com/api/v1/documents/deals',
+    headers={
+        'Authorization': f'Bearer {API_KEY}',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'file_name': 'Discovery Call Recording.mp3',
+        'file_url': 'https://example.com/recording.mp3',
+        'content_type': 'audio/mpeg',
+        'salesforce_id': '006xxxxxxxxxxxx',
+        'source': 'gong'
+    }
+)
+
+data = response.json()
+print(f"Document uploaded: {data['document']['id']}")
+print(f"Processing workflow: {data['workflow_id']}")
+```
+</RequestExample>

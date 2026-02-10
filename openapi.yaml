@@ -1,0 +1,523 @@
+openapi: 3.1.0
+info:
+  title: Hindsight API
+  description: |
+    Integrate Hindsight competitive intelligence, win-loss insights, and deal data into your applications.
+    
+    ## Authentication
+    All API requests require a Bearer token in the Authorization header:
+    ```
+    Authorization: Bearer YOUR_API_KEY
+    ```
+    
+    Get your API key from the [Hindsight dashboard](https://app.hindsight.com/settings/keys).
+  version: 1.0.0
+  contact:
+    name: Hindsight Support
+    url: https://hindsight.com/support
+    email: support@hindsight.com
+
+servers:
+  - url: https://api.hindsight.com/api/v1
+    description: Production server
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Chat
+    description: AI-powered chat completions with competitive intelligence
+  - name: Documents
+    description: Upload and manage documents
+
+paths:
+  /chat/completions:
+    post:
+      operationId: createChatCompletion
+      summary: Create a chat completion
+      description: |
+        Send a message and receive an AI-generated response with citations from your competitive intelligence data.
+        Hindsight automatically orchestrates multiple searches across deals, competitors, and knowledge base to provide comprehensive answers.
+      tags:
+        - Chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionRequest'
+            examples:
+              basic:
+                summary: Basic question
+                value:
+                  messages:
+                    - role: user
+                      content: "What security objections have we encountered with Enterprise customers?"
+                  org_id: "org_123"
+                  stream: false
+              withHistory:
+                summary: With conversation history
+                value:
+                  messages:
+                    - role: user
+                      content: "What are common objections to our enterprise tier?"
+                    - role: assistant
+                      content: "Based on recent deals, the main objections are..."
+                    - role: user
+                      content: "How should we handle the pricing objection?"
+                  org_id: "org_123"
+                  stream: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCompletionResponse'
+            text/event-stream:
+              schema:
+                type: string
+                description: Server-Sent Events stream for streaming responses
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /documents/library:
+    post:
+      operationId: uploadLibraryDocument
+      summary: Upload document to knowledge base
+      description: |
+        Upload competitive intelligence documents, assets, and other files to your library.
+        Documents are automatically processed, chunked, and indexed for search.
+      tags:
+        - Documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryDocumentUploadRequest'
+            examples:
+              withUrl:
+                summary: Upload from URL
+                value:
+                  file_name: "Competitor X Pricing Guide.pdf"
+                  file_url: "https://example.com/document.pdf"
+                  content_type: "application/pdf"
+                  type: "asset"
+                  competitor_id: "comp_123"
+                  source: "drive"
+              withBase64:
+                summary: Upload with base64 content
+                value:
+                  file_name: "Battlecard.md"
+                  file_base64: "IyBDb21wZXRpdG9yIFggQmF0dGxlY2FyZA0K..."
+                  content_type: "text/markdown"
+                  type: "asset"
+                  competitor_name: "Competitor X"
+                  source: "notion"
+      responses:
+        '200':
+          description: Document upload initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentUploadResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /documents/deals:
+    post:
+      operationId: uploadDealDocument
+      summary: Upload document to a deal
+      description: |
+        Associate documents with specific deals for win-loss analysis.
+        Audio and video files are automatically transcribed.
+        Documents are processed and used to enrich deal insights.
+      tags:
+        - Documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DealDocumentUploadRequest'
+            examples:
+              withDealId:
+                summary: Upload with Hindsight deal ID
+                value:
+                  file_name: "Discovery Call Notes.pdf"
+                  file_url: "https://example.com/document.pdf"
+                  content_type: "application/pdf"
+                  deal_id: "deal_123"
+                  source: "gong"
+              withSalesforceId:
+                summary: Upload with Salesforce ID
+                value:
+                  file_name: "Call Recording.mp3"
+                  file_url: "https://example.com/recording.mp3"
+                  content_type: "audio/mpeg"
+                  salesforce_id: "006xxxxxxxxxxxx"
+                  source: "gong"
+              withHubspotId:
+                summary: Upload with HubSpot ID
+                value:
+                  file_name: "Email Thread.eml"
+                  file_base64: "..."
+                  content_type: "message/rfc822"
+                  hubspot_id: "12345678"
+                  source: "Hubspot"
+      responses:
+        '200':
+          description: Document upload initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentUploadResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Deal not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error:
+                  code: "not_found"
+                  message: "Deal with the specified ID was not found"
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key from Hindsight dashboard
+
+  schemas:
+    ChatCompletionRequest:
+      type: object
+      required:
+        - messages
+        - org_id
+      properties:
+        messages:
+          type: array
+          description: The conversation messages
+          items:
+            $ref: '#/components/schemas/Message'
+          minItems: 1
+        org_id:
+          type: string
+          description: Your Hindsight organization ID
+          example: "org_123"
+        stream:
+          type: boolean
+          description: Whether to stream the response using Server-Sent Events
+          default: false
+
+    Message:
+      type: object
+      required:
+        - role
+        - content
+      properties:
+        role:
+          type: string
+          enum: [user, assistant, system]
+          description: The role of the message author
+        content:
+          type: string
+          description: The content of the message
+
+    ChatCompletionResponse:
+      type: object
+      properties:
+        message:
+          type: object
+          properties:
+            role:
+              type: string
+              enum: [assistant]
+            content:
+              type: string
+              description: The AI-generated response with inline citations
+            citations:
+              type: array
+              description: Source documents referenced in the response
+              items:
+                $ref: '#/components/schemas/Citation'
+        tool_calls:
+          type: array
+          description: The internal tools that were called to generate the response
+          items:
+            type: string
+          example: ["search_across_deals", "search_deal_documents"]
+
+    Citation:
+      type: object
+      properties:
+        document_id:
+          type: string
+          description: Unique identifier for the source document
+        document_name:
+          type: string
+          description: Name of the source document
+        deal_id:
+          type: string
+          nullable: true
+          description: Associated deal ID, if applicable
+        deal_name:
+          type: string
+          nullable: true
+          description: Associated deal name, if applicable
+        url:
+          type: string
+          format: uri
+          description: URL to view the document in Hindsight
+        excerpt:
+          type: string
+          description: Relevant excerpt from the document
+
+    LibraryDocumentUploadRequest:
+      type: object
+      required:
+        - file_name
+        - content_type
+        - type
+      properties:
+        file_name:
+          type: string
+          description: Name of the file
+          example: "Competitor X Pricing Guide.pdf"
+        file_url:
+          type: string
+          format: uri
+          description: URL to download the file from (provide either file_url or file_base64)
+          example: "https://example.com/document.pdf"
+        file_base64:
+          type: string
+          format: byte
+          description: Base64-encoded file content (provide either file_url or file_base64)
+        content_type:
+          type: string
+          description: MIME type of the file
+          example: "application/pdf"
+          enum:
+            - application/pdf
+            - text/markdown
+            - text/plain
+            - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            - application/vnd.openxmlformats-officedocument.presentationml.presentation
+            - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        type:
+          type: string
+          description: Document type
+          enum:
+            - asset
+            - intel
+        competitor_id:
+          type: string
+          description: Hindsight competitor ID (provide either competitor_id or competitor_name)
+          example: "comp_123"
+        competitor_name:
+          type: string
+          description: Competitor name - will be resolved to competitor_id automatically
+          example: "Competitor X"
+        source:
+          type: string
+          description: Source application where the document originated
+          enum:
+            - drive
+            - notion
+            - confluence
+            - onedrive
+            - sharepoint
+            - vanta
+            - url
+            - zapier
+            - api
+          example: "drive"
+        folder_id:
+          type: string
+          description: Folder ID to organize the document
+          example: "folder_123"
+
+    DealDocumentUploadRequest:
+      type: object
+      required:
+        - file_name
+        - content_type
+      properties:
+        file_name:
+          type: string
+          description: Name of the file
+          example: "Discovery Call Notes.pdf"
+        file_url:
+          type: string
+          format: uri
+          description: URL to download the file from (provide either file_url or file_base64)
+        file_base64:
+          type: string
+          format: byte
+          description: Base64-encoded file content (provide either file_url or file_base64)
+        content_type:
+          type: string
+          description: MIME type of the file
+          example: "application/pdf"
+        deal_id:
+          type: string
+          description: Hindsight deal ID (provide one of deal_id, salesforce_id, or hubspot_id)
+          example: "deal_123"
+        salesforce_id:
+          type: string
+          description: Salesforce Opportunity ID
+          example: "006xxxxxxxxxxxx"
+        hubspot_id:
+          type: string
+          description: HubSpot Deal ID
+          example: "12345678"
+        source:
+          type: string
+          description: Source application where the document originated
+          enum:
+            - gong
+            - clari
+            - fathom
+            - fireflies
+            - avoma
+            - outreach
+            - gmail
+            - Salesforce
+            - Hubspot
+            - api
+          example: "gong"
+
+    DocumentUploadResponse:
+      type: object
+      properties:
+        document:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique identifier for the document
+              example: "doc_abc123"
+            file_name:
+              type: string
+              description: Name of the uploaded file
+              example: "Competitor X Pricing Guide.pdf"
+            status:
+              type: string
+              description: Processing status of the document
+              enum:
+                - processing
+                - ready
+                - failed
+              example: "processing"
+            deal_id:
+              type: string
+              nullable: true
+              description: Associated deal ID (for deal documents only)
+            url:
+              type: string
+              format: uri
+              description: URL to view the document in Hindsight
+              example: "https://app.hindsight.com/library/doc_abc123"
+            created_at:
+              type: string
+              format: date-time
+              description: Timestamp when the document was created
+              example: "2026-02-10T12:00:00Z"
+        workflow_id:
+          type: string
+          description: ID to track the document processing workflow
+          example: "run_xyz789"
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code
+              example: "unauthorized"
+            message:
+              type: string
+              description: Human-readable error message
+              example: "Invalid API key"
+            details:
+              type: object
+              description: Additional error details
+              additionalProperties: true
+
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "bad_request"
+              message: "Invalid parameters"
+              details:
+                missing_fields: ["file_name"]
+
+    Unauthorized:
+      description: Unauthorized - invalid or missing API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "unauthorized"
+              message: "Invalid API key"
+
+    RateLimitExceeded:
+      description: Too many requests - rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "rate_limit_exceeded"
+              message: "Rate limit exceeded. Please retry after 60 seconds."
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+          description: Number of seconds to wait before retrying
+
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "internal_error"
+              message: "An unexpected error occurred"

@@ -60,6 +60,23 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["integrations/api"]
+          },
+          {
+            "group": "Endpoints",
+            "pages": [
+              "api-reference/chat-completions",
+              "api-reference/upload-library-document",
+              "api-reference/upload-deal-document"
+            ]
+          }
+        ]
       }
     ]
   },
