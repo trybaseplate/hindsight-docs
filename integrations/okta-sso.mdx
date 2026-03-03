@@ -1,0 +1,146 @@
+---
+title: 'Okta SSO'
+description: 'Set up SAML Single Sign-On for Hindsight using Okta Workforce'
+icon: 'lock'
+---
+
+## Overview
+
+Hindsight supports enterprise Single Sign-On (SSO) via SAML 2.0 using Okta Workforce. Once configured, users in your organization can sign in to Hindsight using their existing Okta credentials — no separate password needed.
+
+Setting up Okta SSO is a two-part process:
+
+1. **Your IT admin** configures a SAML app in Okta and sends Hindsight a Metadata URL.
+2. **Your Hindsight Success Manager** completes the connection on our side and enables it.
+
+For support, reach out via your Slack Connect channel or [email us](mailto:support@usehindsight.com).
+
+---
+
+## What We Support
+
+| Feature | Supported |
+|---|---|
+| SAML 2.0 | ✅ Yes |
+| SP-initiated SSO (sign in from Hindsight) | ✅ Yes |
+| IdP-initiated SSO (sign in from Okta dashboard) | ✅ Yes |
+| Automatic account linking for existing users | ✅ Yes |
+| Multiple email domains per connection | ❌ No — one domain per connection |
+| Subdomain matching (e.g. `sales.company.com`) | ⚠️ Available on request |
+| SCIM provisioning / automatic deprovisioning | ❌ Not supported — user assignment is managed in Okta |
+| Multi-factor authentication (MFA) passthrough | ✅ Yes — Okta MFA is respected |
+| OIDC / OAuth SSO | ❌ Not supported for Okta — SAML only |
+
+<Note>
+If you need subdomain support (e.g. users with `@sales.company.com` logging in under a `company.com` connection), let your Success Manager know before setup begins.
+</Note>
+
+---
+
+## What You'll Need
+
+Before starting, make sure you have:
+
+- **Admin access** to your Okta account
+- The **email domain** your users will sign in with (e.g. `company.com`)
+- Two values that Hindsight will provide to you:
+  - **Single Sign-On URL** (also called the ACS URL)
+  - **Audience URI** (also called the SP Entity ID)
+
+Your Hindsight Success Manager will send these to you before you begin.
+
+---
+
+## Setup Instructions (For Your Okta Admin)
+
+### Step 1: Create a new SAML app integration in Okta
+
+1. Sign in to [Okta](https://www.okta.com/) and go to the **Admin** dashboard.
+2. In the left navigation, go to **Applications → Applications**.
+3. Click **Create App Integration**.
+4. In the modal, select **SAML 2.0** and click **Next**.
+5. Enter an **App name** (e.g. "Hindsight") and click **Next**.
+
+### Step 2: Configure SAML settings
+
+On the **Configure SAML** page:
+
+1. In the **Single sign-on URL** field, paste the value provided by Hindsight.
+2. In the **Audience URI (SP Entity ID)** field, paste the value provided by Hindsight.
+3. Leave **Name ID format** as `EmailAddress` and **Application username** as `Okta username`.
+
+### Step 3: Set up attribute statements
+
+Hindsight requires the following attributes to be mapped in Okta. These are **the default Okta values** and typically don't need to be changed, but it's worth verifying:
+
+| Name | Value |
+|---|---|
+| `mail` | `user.email` |
+| `firstName` | `user.firstName` |
+| `lastName` | `user.lastName` |
+
+To verify or add these:
+
+1. Scroll to the **Attribute Statements (optional)** section.
+2. Add each row from the table above — enter the **Name** and select the corresponding **Value** from the dropdown.
+3. Click **Next**, fill out the feedback form as you like, and click **Finish**.
+
+<Warning>
+Incorrect attribute mappings are one of the most common causes of SSO errors. Double-check that `mail` maps to `user.email` before proceeding.
+</Warning>
+
+### Step 4: Assign users or groups
+
+Before anyone can sign in via Okta SSO, they must be assigned to the app:
+
+1. Go to the **Assignments** tab on your new app.
+2. Click **Assign** and choose **Assign to People** or **Assign to Groups**.
+3. Search for and assign the relevant users or groups.
+4. Click **Done**.
+
+<Note>
+Only users assigned to this Okta app will be able to sign in to Hindsight via SSO. If a user is not assigned, they will not be able to authenticate.
+</Note>
+
+### Step 5: Copy the Metadata URL
+
+Once setup is complete:
+
+1. Go to the **Sign On** tab of your Okta app.
+2. Under **Sign on methods**, find and copy the **Metadata URL**.
+3. Send this URL to your Hindsight Success Manager.
+
+---
+
+## What Happens Next (Hindsight's Side)
+
+Once your Success Manager receives the Metadata URL, they will:
+
+1. Paste it into the Hindsight/Clerk connection configuration.
+2. Verify the connection is set up correctly.
+3. Enable the connection for your domain.
+
+Once enabled, **all users with email addresses matching your configured domain will be redirected to Okta** when signing in to Hindsight. Existing Hindsight users with matching email domains will have their accounts automatically linked to SSO.
+
+<Warning>
+If there are existing users on your domain and there's a misconfiguration in Okta, those users may be unable to sign in once the connection is enabled. We recommend coordinating with your Success Manager to test at a low-traffic time.
+</Warning>
+
+---
+
+## Frequently Asked Questions
+
+**Will existing Hindsight users be affected?**
+Yes — any existing user whose email matches your domain will be migrated to SSO automatically. They will be prompted to authenticate through Okta on their next sign-in.
+
+**What if a user is removed from Okta?**
+If a user is deprovisioned in Okta (removed or deactivated), they will no longer be able to sign in to Hindsight via SSO. However, their Hindsight account and data are **not automatically deleted**. Contact your Success Manager if you need an account removed.
+
+**Can we use multiple domains?**
+Each SSO connection supports one domain. If you have users across multiple domains (e.g. `companya.com` and `companyb.com`), contact your Success Manager to set up separate connections.
+
+**Can users still sign in with a password?**
+Once SSO is enabled for your domain, users will be routed through Okta and cannot bypass it with a password. If you need a fallback for specific users, let your Success Manager know.
+
+**Do you support SCIM for automatic provisioning?**
+Not currently. User access is managed by assigning or unassigning users in your Okta app. We recommend reviewing assignments before and after employee onboarding/offboarding.

@@ -41,7 +41,8 @@
               "integrations/salesforce-integration",
               "integrations/hubspot-integration",
               "integrations/zapier",
-              "integrations/outreach-integration"
+              "integrations/outreach-integration",
+              "integrations/okta-sso"
             ]
           }
         ]
