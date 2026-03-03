@@ -34,21 +34,6 @@
             ]
           },
           {
-            "group": "Collect",
-            "pages": [
-              "platform/collect/sales-data",
-              "platform/collect/competitive-monitoring", 
-              "platform/collect/win-loss-interviews"
-              ]
-          },
-          {
-            "group": "Review",
-            "pages": [
-              "platform/review/deal-reviews",
-              "platform/review/intel-triage"
-            ]
-          },
-          {
             "group": "Integrations",
             "pages": [
               "integrations/slack",

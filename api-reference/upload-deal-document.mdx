@@ -5,6 +5,43 @@ openapi: 'POST /documents/deals'
 
 Associate documents with specific deals for win-loss analysis. Audio and video files are automatically transcribed.
 
+<Accordion title="Copy for AI context">
+```text
+POST https://api.usehindsight.com/api/v1/documents/deals
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+
+Request body:
+{
+  "file_name": "string (required)",
+  "file_url": "string (uri) — URL to fetch file from",
+  "file_base64": "string — base64-encoded file content (alternative to file_url)",
+  "content_type": "string (required) — MIME type, e.g. application/pdf, audio/mpeg, video/mp4",
+  "deal_id": "string — Hindsight deal ID",
+  "salesforce_id": "string — Salesforce Opportunity ID",
+  "hubspot_id": "string — HubSpot Deal ID",
+  "source": "gong | clari | fathom | fireflies | avoma | outreach | gmail | Salesforce | Hubspot | api"
+}
+Provide exactly one of: deal_id, salesforce_id, or hubspot_id.
+
+200 Response:
+{
+  "document": {
+    "id": "doc_abc123",
+    "file_name": "Discovery Call Recording.mp3",
+    "status": "processing | ready | failed",
+    "type": "asset | intel",
+    "url": "https://app.usehindsight.com/deals/deal_123/documents/viewer/doc_abc123",
+    "created_at": "2026-02-10T12:00:00Z"
+  },
+  "run_id": "run_xyz789"
+}
+
+Rate limits: 10 req/min (Essentials), 60 req/min (Growth), 300 req/min (Enterprise)
+           10,000/mo (Essentials), 30,000/mo (Growth), 100,000/mo (Enterprise)
+```
+</Accordion>
+
 ## Deal Identification
 
 You can identify the deal using one of three methods:
@@ -42,7 +79,7 @@ The `source` field determines the icon displayed and helps with document organiz
 
 <RequestExample>
 ```bash cURL
-curl -X POST https://api.hindsight.com/api/v1/documents/deals \
+curl -X POST https://api.usehindsight.com/api/v1/documents/deals \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -55,7 +92,7 @@ curl -X POST https://api.hindsight.com/api/v1/documents/deals \
 ```
 
 ```javascript Node.js
-const response = await fetch('https://api.hindsight.com/api/v1/documents/deals', {
+const response = await fetch('https://api.usehindsight.com/api/v1/documents/deals', {
   method: 'POST',
   headers: {
     'Authorization': `Bearer ${API_KEY}`,
@@ -72,14 +109,14 @@ const response = await fetch('https://api.hindsight.com/api/v1/documents/deals',
 
 const data = await response.json();
 console.log(`Document uploaded: ${data.document.id}`);
-console.log(`Processing workflow: ${data.workflow_id}`);
+console.log(`Processing run: ${data.run_id}`);
 ```
 
 ```python Python
 import requests
 
 response = requests.post(
-    'https://api.hindsight.com/api/v1/documents/deals',
+    'https://api.usehindsight.com/api/v1/documents/deals',
     headers={
         'Authorization': f'Bearer {API_KEY}',
         'Content-Type': 'application/json'
@@ -95,6 +132,6 @@ response = requests.post(
 
 data = response.json()
 print(f"Document uploaded: {data['document']['id']}")
-print(f"Processing workflow: {data['workflow_id']}")
+print(f"Processing run: {data['run_id']}")
 ```
 </RequestExample>

@@ -10,15 +10,27 @@ info:
     Authorization: Bearer YOUR_API_KEY
     ```
     
-    Get your API key from the [Hindsight dashboard](https://app.hindsight.com/settings/keys).
+    Get your API key from the [Hindsight dashboard](https://app.usehindsight.com/settings/keys).
+    
+    ## Rate Limits
+    
+    API requests are rate-limited per plan:
+    
+    | Plan | Per Minute | Per Month |
+    |------|-----------|----------|
+    | Essentials | 10 | 10,000 |
+    | Growth | 60 | 30,000 |
+    | Enterprise | 300 | 100,000 |
+    
+    When a limit is exceeded, the API returns a `429` response. Check the `Retry-After` header for when to retry.
   version: 1.0.0
   contact:
     name: Hindsight Support
-    url: https://hindsight.com/support
+    url: https://usehindsight.com/support
     email: support@hindsight.com
 
 servers:
-  - url: https://api.hindsight.com/api/v1
+  - url: https://api.usehindsight.com/api/v1
     description: Production server
 
 security:
@@ -292,6 +304,7 @@ components:
           type: string
           format: uri
           description: URL to view the document in Hindsight
+          example: "https://app.usehindsight.com/deals/deal_123/documents/viewer/doc_abc123"
         excerpt:
           type: string
           description: Relevant excerpt from the document
@@ -355,11 +368,6 @@ components:
             - zapier
             - api
           example: "drive"
-        folder_id:
-          type: string
-          description: Folder ID to organize the document
-          example: "folder_123"
-
     DealDocumentUploadRequest:
       type: object
       required:
@@ -432,23 +440,26 @@ components:
                 - ready
                 - failed
               example: "processing"
-            deal_id:
+            type:
               type: string
-              nullable: true
-              description: Associated deal ID (for deal documents only)
+              description: Document type
+              enum:
+                - asset
+                - intel
+              example: "asset"
             url:
               type: string
               format: uri
               description: URL to view the document in Hindsight
-              example: "https://app.hindsight.com/library/doc_abc123"
+              example: "https://app.usehindsight.com/deals/deal_123/documents/viewer/doc_abc123"
             created_at:
               type: string
               format: date-time
               description: Timestamp when the document was created
               example: "2026-02-10T12:00:00Z"
-        workflow_id:
+        run_id:
           type: string
-          description: ID to track the document processing workflow
+          description: ID to track the document processing run
           example: "run_xyz789"
 
     Error:
@@ -504,7 +515,7 @@ components:
           example:
             error:
               code: "rate_limit_exceeded"
-              message: "Rate limit exceeded. Please retry after 60 seconds."
+              message: "Rate limit exceeded. Limits are 10/min on Essentials, 60/min on Growth, and 300/min on Enterprise. Check the Retry-After header."
       headers:
         Retry-After:
           schema:
