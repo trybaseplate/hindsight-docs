@@ -9,19 +9,17 @@ Upload competitive intelligence documents, assets, and battlecards to your libra
 ```text
 POST https://api.usehindsight.com/api/v1/documents/library
 Authorization: Bearer YOUR_API_KEY
-Content-Type: application/json
+Content-Type: multipart/form-data
 
-Request body:
-{
-  "file_name": "string (required)",
-  "file_url": "string (uri) — URL to fetch file from",
-  "file_base64": "string — base64-encoded file content (alternative to file_url)",
-  "content_type": "string (required) — MIME type, e.g. application/pdf",
-  "type": "asset | intel (required)",
-  "competitor_id": "string — Hindsight competitor ID",
-  "competitor_name": "string — resolved to competitor_id automatically",
-  "source": "drive | notion | confluence | onedrive | sharepoint | vanta | url | zapier | api"
-}
+Request fields (multipart/form-data):
+  file_name: string (required)
+  file_url: string (uri) — URL to fetch file from
+  file: binary — binary file content (alternative to file_url)
+  content_type: string (required) — MIME type, e.g. application/pdf
+  type: asset | intel (required)
+  competitor_id: string — Hindsight competitor ID
+  competitor_name: string — resolved to competitor_id automatically
+  source: drive | notion | confluence | onedrive | sharepoint | vanta | url | zapier | api
 
 200 Response:
 {
@@ -68,32 +66,29 @@ The `source` field determines the icon displayed in the Hindsight UI:
 ```bash cURL
 curl -X POST https://api.usehindsight.com/api/v1/documents/library \
   -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "file_name": "Competitor X Pricing Guide.pdf",
-    "file_url": "https://example.com/document.pdf",
-    "content_type": "application/pdf",
-    "type": "asset",
-    "competitor_name": "Competitor X",
-    "source": "drive"
-  }'
+  -F "file_name=Competitor X Pricing Guide.pdf" \
+  -F "file_url=https://example.com/document.pdf" \
+  -F "content_type=application/pdf" \
+  -F "type=asset" \
+  -F "competitor_name=Competitor X" \
+  -F "source=drive"
 ```
 
 ```javascript Node.js
+const formData = new FormData();
+formData.append('file_name', 'Competitor X Pricing Guide.pdf');
+formData.append('file_url', 'https://example.com/document.pdf');
+formData.append('content_type', 'application/pdf');
+formData.append('type', 'asset');
+formData.append('competitor_name', 'Competitor X');
+formData.append('source', 'drive');
+
 const response = await fetch('https://api.usehindsight.com/api/v1/documents/library', {
   method: 'POST',
   headers: {
-    'Authorization': `Bearer ${API_KEY}`,
-    'Content-Type': 'application/json'
+    'Authorization': `Bearer ${API_KEY}`
   },
-  body: JSON.stringify({
-    file_name: 'Competitor X Pricing Guide.pdf',
-    file_url: 'https://example.com/document.pdf',
-    content_type: 'application/pdf',
-    type: 'asset',
-    competitor_name: 'Competitor X',
-    source: 'drive'
-  })
+  body: formData
 });
 
 const data = await response.json();
@@ -105,11 +100,8 @@ import requests
 
 response = requests.post(
     'https://api.usehindsight.com/api/v1/documents/library',
-    headers={
-        'Authorization': f'Bearer {API_KEY}',
-        'Content-Type': 'application/json'
-    },
-    json={
+    headers={'Authorization': f'Bearer {API_KEY}'},
+    data={
         'file_name': 'Competitor X Pricing Guide.pdf',
         'file_url': 'https://example.com/document.pdf',
         'content_type': 'application/pdf',

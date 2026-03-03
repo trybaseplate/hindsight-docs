@@ -9,19 +9,17 @@ Associate documents with specific deals for win-loss analysis. Audio and video f
 ```text
 POST https://api.usehindsight.com/api/v1/documents/deals
 Authorization: Bearer YOUR_API_KEY
-Content-Type: application/json
+Content-Type: multipart/form-data
 
-Request body:
-{
-  "file_name": "string (required)",
-  "file_url": "string (uri) — URL to fetch file from",
-  "file_base64": "string — base64-encoded file content (alternative to file_url)",
-  "content_type": "string (required) — MIME type, e.g. application/pdf, audio/mpeg, video/mp4",
-  "deal_id": "string — Hindsight deal ID",
-  "salesforce_id": "string — Salesforce Opportunity ID",
-  "hubspot_id": "string — HubSpot Deal ID",
-  "source": "gong | clari | fathom | fireflies | avoma | outreach | gmail | Salesforce | Hubspot | api"
-}
+Request fields (multipart/form-data):
+  file_name: string (required)
+  file_url: string (uri) — URL to fetch file from
+  file: binary — binary file content (alternative to file_url)
+  content_type: string (required) — MIME type, e.g. application/pdf, audio/mpeg, video/mp4
+  deal_id: string — Hindsight deal ID
+  salesforce_id: string — Salesforce Opportunity ID
+  hubspot_id: string — HubSpot Deal ID
+  source: gong | clari | fathom | fireflies | avoma | outreach | gmail | Salesforce | Hubspot | api
 Provide exactly one of: deal_id, salesforce_id, or hubspot_id.
 
 200 Response:

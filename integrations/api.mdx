@@ -19,13 +19,13 @@ The Hindsight API provides access to competitive intelligence, win-loss insights
 
 ## Authentication
 
-All API requests require authentication using an API key in the header, and your organizational identifier (org_id) in the request body.:
+All API requests require authentication using an API key in the header:
 
 ```bash
 Authorization: Bearer YOUR_API_KEY
 ```
 
-Get your API keys and org_id from the [Hindsight dashboard](https://app.usehindsight.com/settings/keys).
+Get your API keys from the [Hindsight dashboard](https://app.usehindsight.com/settings/keys).
 
 ---
 
@@ -51,7 +51,6 @@ POST https://api.usehindsight.com/api/v1/responses
       "content": "What security objections have we encountered with Enterprise customers?"
     }
   ],
-  "org_id": "your_org_id",
   "stream": false
 }
 ```
@@ -115,15 +114,15 @@ POST https://api.usehindsight.com/api/v1/documents/library
 
 #### Request Format
 
-```json
-{
-  "file_name": "Competitor X Pricing Guide.pdf",
-  "file_url": "https://example.com/document.pdf",
-  "content_type": "application/pdf",
-  "type": "asset",
-  "competitor_id": "comp_123",
-  "source": "drive",
-}
+Send as `multipart/form-data`:
+
+```
+file_name=Competitor X Pricing Guide.pdf
+file_url=https://example.com/document.pdf
+content_type=application/pdf
+type=asset
+competitor_id=comp_123
+source=drive
 ```
 
 #### Parameters
@@ -132,14 +131,14 @@ POST https://api.usehindsight.com/api/v1/documents/library
 |-----------|------|----------|-------------|
 | `file_name` | string | Yes | Name of the file |
 | `file_url` | string | Yes* | URL to download the file from |
-| `file_base64` | string | Yes* | Base64-encoded file content (alternative to `file_url`) |
+| `file` | binary | Yes* | Binary file content (alternative to `file_url`) |
 | `content_type` | string | Yes | MIME type (e.g., `application/pdf`, `text/markdown`) |
 | `type` | string | Yes | Document type: `"asset"` or `"intel"` |
 | `competitor_id` | string | Yes** | Hindsight competitor ID |
 | `competitor_name` | string | Yes** | Competitor name (resolved to ID automatically) |
 | `source` | string | No | Source application: `"drive"`, `"notion"`, `"confluence"`, `"onedrive"`, `"sharepoint"`, `"vanta"`, `"url"`, `"zapier"`, `"api"` |
 
-*Either `file_url` or `file_base64` is required  
+*Either `file_url` or `file` is required  
 **Either `competitor_id` or `competitor_name` is required
 
 #### Response
@@ -169,14 +168,14 @@ POST https://api.usehindsight.com/api/v1/documents/deals
 
 #### Request Format
 
-```json
-{
-  "file_name": "Discovery Call Notes.pdf",
-  "file_url": "https://example.com/document.pdf",
-  "content_type": "application/pdf",
-  "deal_id": "deal_123",
-  "source": "gong"
-}
+Send as `multipart/form-data`:
+
+```
+file_name=Discovery Call Notes.pdf
+file_url=https://example.com/document.pdf
+content_type=application/pdf
+deal_id=deal_123
+source=gong
 ```
 
 #### Parameters
@@ -185,14 +184,14 @@ POST https://api.usehindsight.com/api/v1/documents/deals
 |-----------|------|----------|-------------|
 | `file_name` | string | Yes | Name of the file |
 | `file_url` | string | Yes* | URL to download the file from |
-| `file_base64` | string | Yes* | Base64-encoded file content (alternative to `file_url`) |
+| `file` | binary | Yes* | Binary file content (alternative to `file_url`) |
 | `content_type` | string | Yes | MIME type (e.g., `application/pdf`, `audio/mpeg`) |
 | `deal_id` | string | Yes** | Hindsight deal ID |
 | `salesforce_id` | string | Yes** | Salesforce Opportunity ID |
 | `hubspot_id` | string | Yes** | HubSpot Deal ID |
 | `source` | string | No | Source application: `"gong"`, `"clari"`, `"fathom"`, `"fireflies"`, `"avoma"`, `"outreach"`, `"gmail"`, `"Salesforce"`, `"Hubspot"`, `"api"` |
 
-*Either `file_url` or `file_base64` is required  
+*Either `file_url` or `file` is required  
 **One of `deal_id`, `salesforce_id`, or `hubspot_id` is required
 
 #### Supported File Types
@@ -580,8 +579,7 @@ curl -X POST https://api.usehindsight.com/api/v1/responses \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "messages": [{"role": "user", "content": "What are common objections to our enterprise tier?"}],
-    "org_id": "your_org_id"
+    "messages": [{"role": "user", "content": "What are common objections to our enterprise tier?"}]
   }'
 ```
 
@@ -617,8 +615,7 @@ app.message(async ({ message, say }) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      messages: [{ role: 'user', content: message.text }],
-      org_id: ORG_ID
+      messages: [{ role: 'user', content: message.text }]
     })
   });
   
