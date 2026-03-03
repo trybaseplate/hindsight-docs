@@ -123,7 +123,6 @@ POST https://api.usehindsight.com/api/v1/documents/library
   "type": "asset",
   "competitor_id": "comp_123",
   "source": "drive",
-  "folder_id": "folder_123"
 }
 ```
 
@@ -139,7 +138,6 @@ POST https://api.usehindsight.com/api/v1/documents/library
 | `competitor_id` | string | Yes** | Hindsight competitor ID |
 | `competitor_name` | string | Yes** | Competitor name (resolved to ID automatically) |
 | `source` | string | No | Source application: `"drive"`, `"notion"`, `"confluence"`, `"onedrive"`, `"sharepoint"`, `"vanta"`, `"url"`, `"zapier"`, `"api"` |
-| `folder_id` | string | No | Folder ID to organize the document |
 
 *Either `file_url` or `file_base64` is required  
 **Either `competitor_id` or `competitor_name` is required
@@ -152,10 +150,10 @@ POST https://api.usehindsight.com/api/v1/documents/library
     "id": "doc_abc123",
     "file_name": "Competitor X Pricing Guide.pdf",
     "status": "processing",
-    "url": "https://app.usehindsight.com/library/doc_abc123",
+    "url": "https://app.usehindsight.com/documents/viewer/[doc_id]",
     "created_at": "2026-02-10T12:00:00Z"
   },
-  "workflow_id": "run_xyz789"
+  "run_id": "run_xyz789"
 }
 ```
 
@@ -212,10 +210,10 @@ POST https://api.usehindsight.com/api/v1/documents/deals
     "file_name": "Discovery Call Notes.pdf",
     "status": "processing",
     "deal_id": "deal_123",
-    "url": "https://app.usehindsight.com/deals/deal_123/documents/doc_def456",
+    "url": "https://app.usehindsight.com/deals/deal_123/documents/viewer/doc_def456",
     "created_at": "2026-02-10T12:00:00Z"
   },
-  "workflow_id": "run_abc123"
+  "run_id": "run_abc123"
 }
 ```
 
@@ -635,11 +633,11 @@ app.message(async ({ message, say }) => {
 
 ## Rate Limits
 
-| Plan | Requests/minute | Requests/day |
-|------|----------------|--------------|
-| Free | 10 | 100 |
-| Professional | 60 | 10,000 |
-| Enterprise | 300 | Unlimited |
+| Plan | Requests/minute | Requests/month |
+|------|----------------|----------------|
+| Essentials | 10 | 10,000 |
+| Growth | 60 | 30,000 |
+| Enterprise | 300 | 100,000 |
 
 ---
 
