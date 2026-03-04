@@ -2,6 +2,48 @@
 title: "Release Notes"
 description: "Summary of major updates"
 ---
+## March 3rd 2026
+
+### Win-Loss Interview Scheduling Agent
+The Interview Agent now handles end-to-end interview coordination automatically — no manual outreach required. When a deal closes, the agent reads deal context, sends personalized Slack interviews to your team, reaches out to buyers by email, manages approvals, and follows up with non-responders.
+
+<img alt="Interview Agent Session" classname="block" src="/images/release-notes/march-2026/interview-agent-session.png" />
+
+Key capabilities include:
+- **Automated Internal Interviews**: Personalized Slack DMs go out to the deal owner and collaborators as soon as the agent runs, with a tailored opening question based on the deal outcome — no warm-up needed
+- **Buyer Outreach**: Sends email interview requests to buyer-side contacts using your configured templates, with support for multiple variants (e.g. different incentive levels or buyer segments)
+- **Approval Workflows**: Optionally gate buyer outreach behind an approval step — approvers get notified via Slack and email and can approve with a single click
+- **Automatic Follow-Ups**: The agent re-pings non-responders and reminds approvers who haven't acted, so nothing falls through the cracks
+- **Custom Instructions**: Inject freeform routing logic directly into the agent's prompt — for example, route interviews to specific roles, use higher-incentive templates for enterprise accounts, or skip external outreach for SMB losses
+
+<img alt="Interview Agent Approval Request" classname="block" src="/images/release-notes/march-2026/interview-agent-approval-request.png" />
+
+Configure the agent under **Settings → Interview Agent**. See the [Win-Loss Interviews guide](/guides/win-loss-interviews) for full setup details.
+
+### Hindsight API (Open Beta)
+The Hindsight API is now in open beta. You can now integrate Hindsight's competitive intelligence, win-loss insights, and deal data directly into your AI agents, MCP servers, Glean, Slack bots, or custom applications.
+
+Key capabilities include:
+- **Chat / Responses Endpoint**: Send messages to Hindsight's AI and get fully synthesized, cited answers — Hindsight handles the tool orchestration for you
+- **Streaming Support**: Get real-time streamed responses via SSE for lower-latency integrations
+- **Document Upload — Library**: Programmatically upload competitive intelligence and enablement assets to your Hindsight Library, with support for competitor tagging and source tracking
+- **Document Upload — Deals**: Associate documents and audio files (auto-transcribed) with specific deals by Hindsight, Salesforce, or HubSpot ID
+
+Get your API keys from **Settings → API Keys**. See the [API docs](/integrations/api) for endpoint references and request formats.
+
+<img alt="API Keys" classname="block" src="/images/api-keys.png" />
+
+### Deal Datasets in Chat
+You can now insert Deal Datasets directly into the chat from the Chat page, giving you more flexibility to bring structured deal data into any conversation — including mid-session.
+
+Click the button at the bottom left of the chat input to open the dataset dialog. Apply filters to scope the dataset to the deals you care about, then insert it into the chat. Allow a few seconds for the export to complete.
+
+<img alt="Opening Deal Grid in Chat" classname="block" src="/images/release-notes/march-2026/opening-deal-grid-in-chat.png" />
+
+The dataset will be added as context for your current conversation, so you can ask follow-up questions or run analyses without starting a new session.
+
+<img alt="Inserting Deal Grid Mid Session" classname="block" src="/images/release-notes/march-2026/inserting-deal-grid-mid-session.png" />
+
 ## February 2026
 Another month, another set of powerful updates to Hindsight. This year is all about AI Agents.
 More power, more simplicity. For some teams, this may be a breaking change. 
