@@ -74,3 +74,72 @@ To help Hindsight understand your custom opportunity stages, navigate to the [CR
 You can customize the properties that Hindsight uses to analyze your opportunities in [CRM Settings](https://app.usehindsight.com/settings/properties) on the "Deals", "Accounts", and "Contacts". Having more properties makes analysis and sync slower, so "turn off"
 You can map your custom properties to Hindsight's default properties like "Region", "Type", and "Amount". Properties that are "Synced" but not mapped to a Hindsight property will still be analyzed and available for filtering.
 <img alt="slack deal" classname="block" src="/images/salesforce/salesforce-custom-properties.png" />
+
+## Push to CRM
+
+After Hindsight analyzes a deal, it automatically writes structured win-loss data back to the corresponding Salesforce Opportunity. This lets your team access insights directly in Salesforce without leaving their workflow.
+
+### How It Works
+
+Once analysis is complete, Hindsight patches the Opportunity record in Salesforce with a set of custom fields. These fields are created on your Salesforce Opportunity object under the `WL_` namespace. **You must run the field setup from the [Integrations](https://app.usehindsight.com/settings/integrations) page before data will appear** — Hindsight will not write to fields that don't exist yet.
+
+### Default Fields
+
+Hindsight populates the following fields on each analyzed Opportunity:
+
+#### Core Metadata
+
+| Salesforce Field | Label | Type | Description |
+|---|---|---|---|
+| `WL_Date_Analyzed__c` | Win/Loss Analysis Date | Date | Date the win-loss analysis was completed. |
+
+#### Primary Win/Loss Reason
+
+| Salesforce Field | Label | Type | Description |
+|---|---|---|---|
+| `WL_Reason_Primary__c` | Primary Win/Loss Reason | Text (255) | Short label of the main reason for win/loss (e.g. "Pricing", "Ease of Use"). |
+| `WL_Reason_Primary_Category__c` | Primary Reason Category | Picklist | Higher-level category. One of: `product`, `sales_execution`, `relationship`, `pricing`, `competitor`, `implementation`, `buyer_behavior`. |
+| `WL_Reason_Primary_Impact__c` | Primary Reason Impact | Number (0–1) | Normalized impact score, where 1.0 = highest impact. |
+| `WL_Reason_Primary_Summary__c` | Primary Reason Summary | Long Text | 1–2 sentence plain-language summary of the primary reason. |
+
+#### Secondary Win/Loss Reason
+
+| Salesforce Field | Label | Type | Description |
+|---|---|---|---|
+| `WL_Reason_Secondary__c` | Secondary Reason | Text (255) | Label for the second-most impactful reason. |
+| `WL_Reason_Secondary_Category__c` | Secondary Reason Category | Picklist | Same category options as primary reason. |
+| `WL_Reason_Secondary_Impact__c` | Secondary Reason Impact | Number (0–1) | Normalized impact score for the secondary reason. |
+| `WL_Reason_Secondary_Summary__c` | Secondary Reason Summary | Long Text | Summary of the secondary reason's impact. |
+
+#### Competitor Intelligence
+
+| Salesforce Field | Label | Type | Description |
+|---|---|---|---|
+| `WL_Competitor__c` | Primary Competitor | Text (255) | Name of the primary competitor identified in the deal (if any). |
+| `WL_Competitor_Is_Incumbent__c` | Competitor Is Incumbent | Picklist | Whether the competitor was the incumbent. Values: `true` (Yes) or `false` (No). |
+| `WL_Competitor_Outcome__c` | Competitor Outcome | Picklist | How the competitor featured in the deal: `mentioned`, `evaluated`, or `selected`. |
+| `WL_Competitor_Reason__c` | Competitor Reason | Long Text | Positioning summary and key differentiators for the competitor. |
+
+#### Quantitative Scores
+
+All scores are on a **1–5 scale**.
+
+| Salesforce Field | Label | Type | Description |
+|---|---|---|---|
+| `WL_Product_Fit_Score__c` | Product Fit Score | Number | How well the product matched the buyer's requirements. |
+| `WL_Sales_Execution_Score__c` | Sales Execution Score | Number | Quality of the sales team's execution throughout the deal. |
+| `WL_Relationship_Score__c` | Relationship Score | Number | Strength of the buyer relationship. |
+| `WL_Price_Sensitivity__c` | Price Sensitivity | Number | How price-sensitive the buyer was. |
+| `WL_Competitive_Intensity__c` | Competitive Intensity | Number | How competitive the deal environment was. |
+
+#### Narrative
+
+| Salesforce Field | Label | Type | Description |
+|---|---|---|---|
+| `WL_Deal_Story__c` | Deal Story | Long Text (2000) | Executive summary narrative of what happened in the deal — useful for coaching and enablement. |
+
+### Custom Field Mappings
+
+In addition to the default fields above, you can map **custom questions** and **custom metrics** configured in your Hindsight workspace to any Salesforce Opportunity field. To set this up, navigate to [Settings → Questions](https://app.usehindsight.com/settings/questions) and assign a Salesforce field API name to each question or metric.
+
+When Hindsight writes to Salesforce, any custom answer or metric with a field mapping will be included in the same update as the default fields.
