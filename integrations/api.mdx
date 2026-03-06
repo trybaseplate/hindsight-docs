@@ -40,7 +40,7 @@ The REST API is designed for applications that need complete, synthesized answer
 ### Endpoint
 
 ```
-POST https://api.usehindsight.com/api/v1/responses
+POST https://app.usehindsight.com/api/v1/responses
 ```
 
 ### Request Format
@@ -111,7 +111,7 @@ Upload documents to your Hindsight knowledge base or associate them with specifi
 Upload competitive intelligence documents, assets, and other files to your library.
 
 ```
-POST https://api.usehindsight.com/api/v1/documents/library
+POST https://app.usehindsight.com/api/v1/documents/library
 ```
 
 #### Request Format
@@ -165,7 +165,7 @@ source=drive
 Associate documents with specific deals for win-loss analysis.
 
 ```
-POST https://api.usehindsight.com/api/v1/documents/deals
+POST https://app.usehindsight.com/api/v1/documents/deals
 ```
 
 #### Request Format
@@ -577,7 +577,7 @@ Integrate Hindsight as a data source in Glean to answer competitive intelligence
 
 **REST API Example:**
 ```bash
-curl -X POST https://api.usehindsight.com/api/v1/responses \
+curl -X POST https://app.usehindsight.com/api/v1/responses \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -610,7 +610,7 @@ Build a Slack bot that answers team questions about deals and competitors.
 **REST API Example:**
 ```javascript
 app.message(async ({ message, say }) => {
-  const response = await fetch('https://api.usehindsight.com/api/v1/responses', {
+  const response = await fetch('https://app.usehindsight.com/api/v1/responses', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${API_KEY}`,

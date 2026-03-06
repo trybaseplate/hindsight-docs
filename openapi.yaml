@@ -30,7 +30,7 @@ info:
     email: support@hindsight.com
 
 servers:
-  - url: https://api.usehindsight.com/api/v1
+  - url: https://app.usehindsight.com/api/v1
     description: Production server
 
 security:
