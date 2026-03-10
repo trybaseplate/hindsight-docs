@@ -1,0 +1,107 @@
+---
+title: "Competitor Monitoring"
+description: "Build a systematic competitive monitoring program using AI Agent recipes and workflows"
+---
+
+Competitive landscapes move fast. New pricing pages, product announcements, G2 reviews, hiring signals — by the time someone notices, it's already in the next deal cycle.
+
+Hindsight's AI Agent gives you a way to monitor competitors systematically. Not a news digest. A research agent you configure, pointed at exactly the sources you care about, running on a schedule and pushing findings to your team.
+
+---
+
+## How It Works
+
+The AI Agent has a set of tools it can use to research competitors from the web in real time:
+
+- **Web Search** — live search for news, product updates, announcements, and competitive signals
+- **Scrape URL** — pulls and analyzes the full content of a specific page (pricing pages, docs, changelogs, blog posts)
+- **Map URL** *(experimental)* — discovers and indexes subpages from a root URL, useful for finding everything relevant on a competitor's site
+- **Browse Tool** *(experimental)* — full browser access for sources that require it, like LinkedIn
+
+These tools let the agent go beyond keyword matching. It reads pages, extracts signals, and synthesizes findings — the same way a researcher would, just automated and on cadence.
+
+You can invoke these tools directly in a prompt, or let the agent decide which ones to use based on your instructions.
+
+---
+
+## The Default Recipe
+
+When you set up competitor monitoring, Hindsight creates a default recipe as a starting point. It runs a general web search for recent activity on your tracked competitors.
+
+The default is intentionally generic. It works, but it might not find the signals that matter most to your team, or for a specific competitor.
+
+**The intent is for you to customize it.**
+
+Remix the recipe and tell the agent exactly where to look. Examples:
+
+- Point it at a competitor's changelog URL to track product releases
+- Give it a G2 search query to surface new reviews
+- Direct it to a competitor's hiring page to catch team expansion signals
+- Set it to scrape a pricing page weekly so you catch changes before your reps do
+
+The more specific your instructions, the more useful the output. A recipe that says "research Competitor X" will return noise. A recipe that says "scrape competitor-x.com/changelog and summarize new features added this month" will return signal.
+
+---
+
+## Remixing a Recipe
+
+Once you find an approach that returns useful findings, save it.
+
+In the Recipe library, hit **Remix** on any recipe to create your own version. Give it a name, edit the prompt, and save it as a reusable starting point.
+
+Build one recipe per competitor, or one per signal type (e.g., "pricing changes," "product releases," "hiring signals"). Remix the same base recipe for each competitor by swapping in a variable for the competitor name — so the structure stays consistent and only the target changes.
+
+**To create or remix a recipe:**
+
+1. Go to [Chat](https://app.usehindsight.com/chat) in Hindsight
+2. Click **Browse Recipes**
+3. Find a relevant starting recipe and click **Remix**, or click **Create Recipe** to start fresh
+4. Edit the prompt, add variables if needed, and hit **Run** to test
+5. Save when you're happy with the output
+
+---
+
+## Running on a Cadence with Workflows
+
+A recipe you run once is useful. A recipe that runs every Monday at 8am and posts findings to Slack is a competitive monitoring program.
+
+Use [Workflows](https://app.usehindsight.com/workflows) to automate your recipes:
+
+- **Schedule recurring runs** — daily, weekly, or on a custom cadence
+- **Deliver to Slack** — push summaries to a channel like `#competitive-intel` or DM a specific person
+- **Save to your intel library** — automatically update competitor profiles in [Intel](https://app.usehindsight.com/intel) when new information is found
+- **Connect to external tools** — use Zapier to route outputs to your CRM or docs
+
+This is how you keep battlecards current without a person owning it manually. The workflow runs, finds something new, and either surfaces it to your team or updates the record directly.
+
+---
+
+## Why This Approach Works
+
+Most competitive monitoring tools give you a firehose: keyword alerts, news feeds, review notifications. You still have to read everything and decide what matters.
+
+Hindsight's AI Agent is different in a few ways:
+
+**It reads, not just crawls.** The Scrape URL and Browse tools extract and analyze content, not just check if a page changed. You get a summary of what's new, not a raw diff.
+
+**You control the sources.** Generic web search is a starting point. The real value is pointing the agent at the exact pages you care about: a competitor's pricing page, their docs changelog, their LinkedIn jobs board. You get the signal, not the noise.
+
+**It connects to your deal data.** Once new intel is saved to your library, the AI assistant can reference it when answering rep questions mid-deal. Competitive monitoring feeds directly into competitive enablement.
+
+**It's flexible.** One team might want a weekly Slack digest of all competitor activity. Another might want per-competitor recipes running on different schedules with different sources. Recipes and Workflows support both.
+
+---
+
+## Recommended Setup
+
+| Competitor | Sources to Monitor | Frequency | Destination |
+|---|---|---|---|
+| Primary competitor | Pricing page, changelog, G2 | Weekly | `#competitive-intel` Slack |
+| Secondary competitors | Homepage, blog, hiring page | Bi-weekly | Intel library |
+| All | Web search for news and press | Weekly | Slack digest |
+
+Start with one recipe for your top competitor. Get the output right. Remix it for others. Add Workflows once the recipe is dialed in.
+
+---
+
+*Related: [Setting Up Your Knowledge Base](/guides/knowledge-base-setup) | [Recipes Guide](/guides/recipes) | [AI Agent Tools](/guides/prompting)*

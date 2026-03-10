@@ -1,0 +1,122 @@
+---
+title: "Creating Competitive Content"
+description: "Build competitive content from verified deal data and keep it current automatically"
+---
+
+Battlecards go stale. Objection handling docs get written once and forgotten. The usual problem is not a lack of information — it's that updating content requires someone to own it manually.
+
+Hindsight gives you a way to build competitive content from verified deal data and keep it current automatically. This guide covers how to create it, validate it, save it, and maintain it.
+
+---
+
+## Step 1: Start with a Default Recipe
+
+The fastest way to create competitive content is to use a pre-built recipe from Hindsight's library.
+
+**To find one:**
+
+1. Go to [Chat](https://app.usehindsight.com/chat) in Hindsight
+2. Click **Browse Recipes**
+3. Filter by **Competitive Intel**
+
+You'll find starting recipes for common use cases: battlecards, competitor comparisons, objection handling guides, win/loss breakdowns by competitor.
+
+Pick the one closest to what you need and run it. This gives you a first draft grounded in your actual deal data before you write a single word.
+
+---
+
+## Step 2: Create Your Own Recipe
+
+Default recipes are starting points. For content you'll use regularly, build your own.
+
+Hit **Remix** on any default recipe to create a copy you can edit. Or start from scratch with **Create Recipe**.
+
+A good competitive content recipe is specific. It names the competitor, defines the deal set to draw from, and tells the agent what to produce. Vague prompts return vague content.
+
+**Example: Generic**
+> "Create a battlecard for Competitor X."
+
+**Example: Specific**
+> "Search closed-won deals in enterprise accounts where Competitor X was evaluated. Find the objections buyers raised and how reps responded in wins. Then search closed-lost deals and identify where we fell short. Combine into a battlecard with: top win themes, top loss themes, objection-handling talk tracks, and 3 things to avoid."
+
+The specific version uses Hindsight's tools in sequence — deal search, within-deal search, synthesis — and produces content that reflects what actually happened, not what someone assumed.
+
+**Build assets for the scenarios that matter.** Hindsight's model is designed for specificity. An objection handling guide for enterprise deals is different from one for midmarket. A battlecard for Competitor X in a technical buyer evaluation reads differently than one for a business stakeholder. Build for each scenario you actually face. Examples:
+
+- *Competitor X — Enterprise Objection Handling*
+- *Competitor X — Midmarket Battlecard*
+- *Competitor Y vs. Competitor Z — Comparison (Technical Buyers)*
+- *Competitor X — Late-Stage Pricing Objections*
+
+The more precisely an asset matches a rep's situation, the more they'll use it.
+
+**Add variables to make recipes reusable.** A competitor name variable lets you run the same recipe across all your tracked competitors without rewriting the prompt each time. A segment variable (enterprise, midmarket, SMB) lets you produce scenario-specific versions from a single recipe.
+
+Once you're happy with the output, save the recipe. Give it a clear name and description so teammates know when to use it.
+
+---
+
+## Step 3: Pass the Smell Test
+
+Before you save content to your library, read it like a skeptic.
+
+Hindsight draws from verified deal data, but output is only as good as your prompt and your data coverage. Run through these checks:
+
+**Does it reflect deals you recognize?**
+Hindsight shows which deals and documents it used. If the sample is thin — fewer than 5 to 10 deals against a competitor — flag the content and note the sample size. Thin coverage means thin confidence.
+
+**Is the win/loss framing balanced?**
+A battlecard built only from closed-won deals will skew positive. Make sure your recipe draws from both wins and losses. The loss data is where the real differentiation lives.
+
+**Would a rep trust this?**
+Read the talk tracks out loud. If they sound like marketing copy, rewrite them. Reps need language that works in a live conversation, not a press release.
+
+**Is anything missing?**
+Check the output against what you know. Use Web Search or Scrape URL in the AI chat to fill gaps with current information — recent product announcements, pricing changes, G2 reviews. Save anything useful to your intel library while you're at it.
+
+---
+
+## Step 4: Save to Your Library
+
+Once content passes your review, save it.
+
+In the chat window, click **Save to Library** on any output. Tag it with the relevant competitor so the AI assistant can surface it when reps ask questions mid-deal.
+
+**Title assets clearly.** The name is how the AI finds and cites your content, and how reps know which one to use. A title like "Battlecard" is not enough. Be specific: *Competitor X — Enterprise Battlecard*, *Competitor X — Midmarket Objection Handling*, *Competitor Y — Pricing FAQ*.
+
+A few other things to keep in mind:
+
+- **Format matters.** Markdown is Hindsight's preferred format. Clean structure improves how the AI retrieves and cites your content.
+- **Add a "last updated" note** at the top of each document. This tells your team how fresh the content is and flags when it's due for a refresh.
+
+---
+
+## Step 5: Keep Content Current with Workflows
+
+Saving content once is not enough. Use **Workflows** to have Hindsight suggest updates to your saved assets automatically.
+
+**How it works:**
+
+1. Build a workflow that runs your competitive content recipe on a schedule
+2. Add the **Update Asset** action at the end of the workflow
+3. Point it at the asset you want to keep current
+
+When the workflow runs, Hindsight compares new deal data and intel against your existing content and **suggests** edits. It does not overwrite anything. You review each suggestion and confirm or reject it — so you stay in control of what goes into your library.
+
+This means your assets reflect your most recent deals. When three reps in a row lose to a competitor because of a new objection, Hindsight will surface it the next time the workflow runs, not six months from now.
+
+**To set this up:**
+
+1. Go to [Workflows](https://app.usehindsight.com/workflows)
+2. Create a new workflow and select your recipe as the trigger
+3. Set a schedule (weekly works for most teams)
+4. Add the **Update Asset** action and select the target document
+5. Add a Slack notification so your team knows when suggestions are ready to review
+
+You'll get a Slack message when updates are waiting. Click through, review the proposed changes, and accept what's useful.
+
+This works for every asset type. Run it against your enterprise battlecard with a filter on enterprise deals. Run a separate workflow for your midmarket version filtered to midmarket deals. Each asset stays relevant to the segment it was built for.
+
+---
+
+*Related: [Setting Up Your Knowledge Base](/guides/knowledge-base-setup) | [Monitoring Competitors](/guides/monitoring-competitors) | [Recipes Guide](/guides/recipes)*

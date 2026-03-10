@@ -1,0 +1,97 @@
+---
+title: "Library Setup"
+description: "How to seed and manage your knowledge base for accurate AI answers"
+---
+
+Hindsight's AI runs best on verified data. The quality of answers your team gets — in Slack, in battlecards, in deal reviews — depends directly on what you put in your knowledge base.
+
+This guide covers how to seed and manage that knowledge base.
+
+---
+
+## What the Knowledge Base Is
+
+Hindsight maintains a trusted repository of information about your company and your competitors. This is the primary source the AI draws from when enabling reps, generating battlecards, and answering questions in chat.
+
+There are two sections, which you can find under "Library" in the sidebar:
+
+- **/assets** — Your content library. Sales playbooks, battlecards, one-pagers, messaging docs. Organized by competitor.
+- **/intel** — Public and web-sourced competitive data. Tracked URLs, product pages, press releases, release notes.
+
+Everything in both sections is categorized by competitor. The AI uses this structure to retrieve the right context for the right question.
+
+---
+
+## Importing Existing Content
+
+If your team already has competitive content sitting in Google Drive, Notion, or Confluence, you can import it directly into `/assets`.
+
+**To get started:**
+
+1. Go to [Assets](https://app.usehindsight.com/assets) and connect your integration (Drive, Notion, or Confluence).
+2. Select the files you want to import.
+3. Tag each file with a competitor. This tells Hindsight which competitive context the file belongs to.
+
+**Tagging rules:**
+
+- Files about a competitor (battlecards, objection handling, pricing comparisons) go under that competitor's tag.
+- Files about your own company (your playbook, your messaging, your ICP) go under **"You"**.
+- Untagged files can be categorized after import. Hindsight will flag them.
+
+This seeds your knowledge base with existing knowledge. The AI prioritizes your asset library when answering rep questions — so the more complete it is, the better the answers.
+
+> **Best format:** Markdown. Hindsight parses and retrieves markdown most reliably. If you're importing rich-text docs, clean formatting helps.
+> **Clean Separation:** It's better to have multiple short, cleanly titled documents for a competitor than one long doc. This allows Hindsight to pull the most relevant context for each question. 
+
+---
+
+## Mapping Competitive Websites
+
+The `/intel` library is for public web data. Competitor product pages, pricing pages, release notes, G2 profiles — anything you want Hindsight to monitor and keep current.
+
+**To add a URL:**
+
+- Go to [Intel](https://app.usehindsight.com/intel) and add a URL directly, or
+- Add URLs from a Workflow, or
+- Ask the AI Assistant to pull a page and save it
+
+Each URL has a **refresh frequency** you can configure. Hindsight re-fetches on that schedule and updates the record automatically. This is "approved" data — the AI can cite it in responses.
+
+Set shorter refresh intervals for fast-moving pages like competitor pricing or changelog feeds. Set longer intervals for stable content like company overview pages.
+
+---
+
+## Saving Pages from the AI Assistant
+
+When you're in a chat and Hindsight cites a URL, you can save it to your intel library in one click.
+
+This is the fastest way to grow your knowledge base organically. If the AI found it useful, it's worth keeping.
+
+---
+
+## Creating Hindsight-Native Content
+
+You can also write content directly inside Hindsight. This is the simplest path and gives Hindsight the most control over formatting, structure, and updates.
+
+Native content is easier to maintain. When something changes, you update it in one place and it's immediately current for every rep and every workflow that references it.
+
+[See the guide to creating native content →](/guides/creating-assets)
+
+---
+
+## Keeping It Current
+
+Hindsight syncs the latest versions of your intel URLs automatically based on your refresh settings. For asset library content, updates from connected integrations pull through when you re-sync.
+
+The knowledge base is only as good as its freshest entry. Stale battlecards are one of the top reasons reps stop trusting competitive tools. Hindsight is designed to fix that — but it requires intentional setup up front.
+
+---
+
+## Quick Reference
+
+| Section | What Goes Here | Source |
+|---|---|---|
+| [Assets](https://app.usehindsight.com/assets) | Your content and competitive materials | Drive, Notion, Confluence, or native |
+| [Intel](https://app.usehindsight.com/intel) | Public web data about competitors | URLs, tracked pages |
+| Tag: Competitor name | Anything about that competitor | Either section |
+| Tag: "You" | Your own playbooks, messaging, positioning | Either section |

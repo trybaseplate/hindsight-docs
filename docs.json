@@ -20,9 +20,12 @@
           {
             "group": "Guides",
             "pages": [
-              "guides/recipes",
+              "guides/recipes", 
               "guides/prompting",
               "guides/deal-analysis",
+              "guides/knowledge-base-setup",
+              "guides/creating-assets",
+              "guides/monitoring-competitors",
               "guides/slack-ai-agent",
               "guides/win-loss-interviews"
             ]
