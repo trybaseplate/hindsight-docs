@@ -39,6 +39,8 @@ security:
 tags:
   - name: Chat
     description: AI-powered chat completions with competitive intelligence
+  - name: Deals
+    description: Access and export deal data
   - name: Documents
     description: Upload and manage documents
 
@@ -94,6 +96,159 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '429':
           $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /deals:
+    get:
+      operationId: getDeals
+      summary: Get deals with filtering and pagination
+      description: |
+        Retrieve deals with flexible filtering, sorting, and pagination.
+        Returns deal objects with all their properties and relationships.
+        Use this for real-time data access and integrations.
+      tags:
+        - Deals
+      parameters:
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+            default: 50
+            maximum: 100
+          description: Number of deals per page
+        - name: page_index
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Zero-based page index
+        - name: count
+          in: query
+          schema:
+            type: boolean
+          description: If true, returns only the total count
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [created_at, updated_at, close_date, amount, name]
+          description: Column to sort by
+        - name: sort_order
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+            default: desc
+          description: Sort direction
+        - name: columns
+          in: query
+          schema:
+            type: string
+          description: Comma-separated list of columns to return
+        - name: searchQuery
+          in: query
+          schema:
+            type: string
+          description: Fuzzy search across deal names
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: JSON array of deal stages
+        - name: owner_ids
+          in: query
+          schema:
+            type: string
+          description: JSON array of owner IDs
+        - name: close_date
+          in: query
+          schema:
+            type: string
+          description: "JSON object: {\"from\": \"2026-01-01\", \"to\": \"2026-03-31\"}"
+        - name: amount
+          in: query
+          schema:
+            type: string
+          description: "JSON object: {\"min\": 10000, \"max\": 100000}"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/Deal'
+                  - type: integer
+                    description: Total count when count=true
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /deals/export:
+    post:
+      operationId: exportDeals
+      summary: Bulk export deals to CSV
+      description: |
+        Generate a CSV file of deal data with flexible filtering and column selection.
+        Returns an export_id to track the job status and download the file when ready.
+      tags:
+        - Deals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportDealsRequest'
+      responses:
+        '200':
+          description: Export job started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportDealsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    
+  /deals/export/{export_id}:
+    get:
+      operationId: getExportStatus
+      summary: Get export status
+      description: |
+        Check the status of a bulk export job and get the download URL when ready.
+      tags:
+        - Deals
+      parameters:
+        - name: export_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Export ID from the initial export request
+      responses:
+        '200':
+          description: Export status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportStatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Export not found
         '500':
           $ref: '#/components/responses/InternalServerError'
 
@@ -301,6 +456,231 @@ components:
         excerpt:
           type: string
           description: Relevant excerpt from the document
+
+    Deal:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Hindsight deal ID
+          example: "deal_123"
+        name:
+          type: string
+          description: Deal name
+          example: "Acme Corp - Enterprise License"
+        amount:
+          type: number
+          description: Deal value
+          example: 50000
+        status_id:
+          type: string
+          description: Current deal stage ID
+          example: "negotiation"
+        previous_status_id:
+          type: string
+          nullable: true
+          description: Previous deal stage ID
+          example: "qualification"
+        proposal_due:
+          type: string
+          format: date
+          description: Expected or actual close date
+          example: "2026-03-15"
+        created_at:
+          type: string
+          format: date-time
+          description: Deal creation timestamp
+        owner_id:
+          type: string
+          description: Deal owner ID
+        salesforce_id:
+          type: string
+          nullable: true
+          description: Salesforce Opportunity ID
+        hubspot_id:
+          type: string
+          nullable: true
+          description: HubSpot Deal ID
+        deal_analyzed:
+          type: boolean
+          description: Whether deal has been analyzed
+        analysis_verified:
+          type: boolean
+          description: Whether analysis has been verified
+        type:
+          type: string
+          nullable: true
+          description: Type of deal
+          example: "New Business"
+        region:
+          type: string
+          nullable: true
+          description: Geographic region
+        deal_competitor_associations:
+          type: array
+          items:
+            type: object
+            properties:
+              competitor_id:
+                type: string
+              is_primary:
+                type: boolean
+              is_incumbent:
+                type: boolean
+          description: Array of competitor associations
+        drivers:
+          type: array
+          items:
+            type: object
+            properties:
+              reason_id:
+                type: string
+              positive:
+                type: boolean
+                nullable: true
+              summary:
+                type: string
+          description: Array of deal drivers/reasons
+        wl_product_fit_score:
+          type: number
+          nullable: true
+          description: Product fit score (1-5)
+        wl_sales_execution_score:
+          type: number
+          nullable: true
+          description: Sales execution score (1-5)
+        wl_relationship_score:
+          type: number
+          nullable: true
+          description: Relationship score (1-5)
+
+    ExportDealsRequest:
+      type: object
+      required:
+        - columns
+      properties:
+        columns:
+          type: array
+          items:
+            type: string
+          description: Array of column IDs to include in the export
+          example: ["name", "amount", "stage", "close_date"]
+        filters:
+          type: object
+          description: Optional filters to apply
+          properties:
+            deal_ids:
+              type: array
+              items:
+                type: string
+              description: Specific deal IDs to export
+            owner_ids:
+              type: array
+              items:
+                type: string
+              description: Filter by owner IDs
+            status:
+              type: array
+              items:
+                type: string
+              description: Filter by deal stages
+            close_date:
+              type: object
+              properties:
+                from:
+                  type: string
+                  format: date
+                to:
+                  type: string
+                  format: date
+            amount:
+              type: object
+              properties:
+                min:
+                  type: number
+                max:
+                  type: number
+            competitor_ids:
+              type: array
+              items:
+                type: string
+            deal_type:
+              type: array
+              items:
+                type: string
+            region:
+              type: array
+              items:
+                type: string
+            industry:
+              type: array
+              items:
+                type: string
+            analyzed:
+              type: boolean
+            verified:
+              type: boolean
+
+    ExportDealsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        export_id:
+          type: string
+          description: Unique export job ID
+          example: "exp_abc123"
+        status:
+          type: string
+          enum: [pending]
+          description: Initial status is always pending
+        message:
+          type: string
+          example: "Export job started successfully"
+        estimated_completion:
+          type: string
+          example: "2-3 minutes"
+
+    ExportStatusResponse:
+      type: object
+      properties:
+        export_id:
+          type: string
+          example: "exp_abc123"
+        status:
+          type: string
+          enum: [pending, completed, failed]
+          description: Current export status
+        download_url:
+          type: string
+          format: uri
+          nullable: true
+          description: Download URL (available when status is completed)
+        rows_exported:
+          type: integer
+          nullable: true
+          description: Number of rows in the export
+        error:
+          type: string
+          nullable: true
+          description: Error message if status is failed
+        created_at:
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+          nullable: true
+        failed_at:
+          type: string
+          format: date-time
+          nullable: true
+        expires_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: When the download URL expires (7 days after completion)
 
     LibraryDocumentUploadRequest:
       type: object

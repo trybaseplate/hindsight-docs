@@ -1,0 +1,496 @@
+---
+title: 'Bulk Export Deals'
+openapi: 'POST /deals/export'
+---
+
+Bulk export deal data with flexible filtering and column selection. Generates a CSV file for download that includes all specified deal fields and custom properties.
+
+<Accordion title="Copy for AI context">
+```text
+POST https://app.usehindsight.com/api/v1/deals/export
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+
+Request body:
+{
+  "columns": ["name", "amount", "stage", "close_date", ...],  // Array of column IDs to include
+  "filters": {                                                 // Optional filters
+    "deal_ids": ["deal_123", "deal_456"],                     // Specific deal IDs
+    "owner_ids": ["user_abc"],                                 // Deal owner IDs
+    "status": ["Closed Won", "Closed Lost"],                   // Deal stages
+    "close_date": {                                            // Date range
+      "from": "2026-01-01",
+      "to": "2026-03-31"
+    },
+    "amount": {                                                // Deal size range
+      "min": 10000,
+      "max": 100000
+    },
+    "competitor_ids": ["comp_123"],                            // Competitor IDs
+    "deal_type": ["New Business", "Expansion"],                // Deal types
+    "region": ["North America", "EMEA"],                       // Regions
+    "industry": ["Technology", "Finance"],                     // Industries
+    "product_ids": ["prod_123"],                               // Product IDs
+    "analyzed": true,                                          // Only analyzed deals
+    "verified": true                                           // Only verified analyses
+  }
+}
+
+200 Response:
+{
+  "success": true,
+  "export_id": "exp_abc123",
+  "status": "pending",
+  "message": "Export job started successfully",
+  "estimated_completion": "2-3 minutes"
+}
+
+GET https://app.usehindsight.com/api/v1/deals/export/{export_id}
+200 Response:
+{
+  "export_id": "exp_abc123",
+  "status": "completed | pending | failed",
+  "download_url": "https://...",  // Available when status is "completed"
+  "rows_exported": 150,
+  "created_at": "2026-03-10T12:00:00Z",
+  "completed_at": "2026-03-10T12:02:30Z",
+  "expires_at": "2026-03-17T12:02:30Z"  // Download URL expires in 7 days
+}
+
+Rate limits: 5 exports/hr (Essentials), 20 exports/hr (Growth), 100 exports/hr (Enterprise)
+```
+</Accordion>
+
+## Overview
+
+The bulk export API allows you to generate CSV files of your deal data with custom column selection and filtering. This is useful for:
+
+- Creating custom reports for leadership
+- Exporting data for external analysis tools
+- Generating filtered deal lists for specific time periods or segments
+- Backing up deal data
+
+## Request Format
+
+### Required Fields
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `columns` | string[] | Array of column IDs to include in the export. See [Available Columns](#available-columns) for options. |
+
+### Optional Filters
+
+All filters are optional. If no filters are provided, all deals in your organization will be exported.
+
+#### Deal Identification
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `deal_ids` | string[] | Export specific deals by their Hindsight IDs | `["deal_123", "deal_456"]` |
+
+#### People & Ownership
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `owner_ids` | string[] | Filter by deal owner IDs | `["user_abc", "user_xyz"]` |
+| `collaborator_ids` | string[] | Filter by collaborator IDs | `["user_def"]` |
+
+#### Deal Attributes
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `status` | string[] | Deal stages/statuses | `["Closed Won", "Closed Lost", "Negotiation"]` |
+| `deal_type` | string[] | Types of deals | `["New Business", "Expansion", "Renewal"]` |
+| `region` | string[] | Geographic regions | `["North America", "EMEA", "APAC"]` |
+| `industry` | string[] | Customer industries | `["Technology", "Healthcare", "Finance"]` |
+| `product_ids` | string[] | Product IDs associated with the deal | `["prod_123", "prod_456"]` |
+
+#### Date & Amount Filters
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `close_date` | object | Date range filter | `{"from": "2026-01-01", "to": "2026-03-31"}` |
+| `close_date.from` | string | Start date (ISO 8601) | `"2026-01-01"` |
+| `close_date.to` | string | End date (ISO 8601) | `"2026-03-31"` |
+| `amount` | object | Deal amount range | `{"min": 10000, "max": 100000}` |
+| `amount.min` | number | Minimum deal amount | `10000` |
+| `amount.max` | number | Maximum deal amount | `100000` |
+
+#### Competitive Intelligence
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `competitor_ids` | string[] | Filter by competitors mentioned | `["comp_123", "comp_456"]` |
+| `has_competitor` | boolean | Only deals with competitor mentions | `true` |
+
+#### Analysis Filters
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `analyzed` | boolean | Only include analyzed deals | `true` |
+| `verified` | boolean | Only include verified analyses | `true` |
+
+#### CRM Filters (Advanced)
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `salesforce_filters` | object[] | Custom Salesforce filters | See [CRM Filters](#crm-filters) |
+| `hubspot_filters` | object[] | Custom HubSpot filters | See [CRM Filters](#crm-filters) |
+
+### Filter Type Modifiers
+
+For array-based filters, you can specify how they should be applied:
+
+| Filter Type | Description | Example |
+|-------------|-------------|---------|
+| `is` / `is any of` | Matches if any value is present (default) | Include deals with competitor A OR B |
+| `is not` / `exclude` | Excludes if any value is present | Exclude deals with competitor A or B |
+| `include all of` | Matches only if all values are present | Include only deals with BOTH A AND B |
+
+To use filter modifiers, append `_filter_type` to the filter name:
+
+```json
+{
+  "competitor_ids": ["comp_123", "comp_456"],
+  "competitor_ids_filter_type": "include all of"
+}
+```
+
+## Available Columns
+
+### Standard Columns
+
+| Column ID | Description |
+|-----------|-------------|
+| `name` | Deal name |
+| `owner_id` | Deal owner ID |
+| `all_competitors` | All competitors involved in the deal |
+| `drivers` | Win/loss drivers and reasons |
+| `features` | Product features discussed |
+| `scorecard` | Complete win-loss analysis scorecard (includes all scores and explanations) |
+| `deal_status` | Current deal stage |
+| `previous_status` | Previous deal stage |
+| `amount` | Deal value |
+| `proposal_due` | Expected/actual close date |
+| `created_at` | Deal creation date |
+| `deal_analyzed` | Whether deal has been analyzed |
+| `analysis_verified` | Whether analysis has been verified |
+| `type` | Deal type (New Business, Expansion, Renewal) |
+| `region` | Geographic region |
+| `summary` | Executive summary of the deal |
+
+> **Note:** The `scorecard` column includes all win-loss metrics (product fit, sales execution, relationship, price sensitivity, competitive intensity, customer fit, messaging fit, and messaging accuracy) with both scores and explanations.
+
+### Dynamic Columns
+
+These columns are generated based on your workspace configuration and CRM integrations:
+
+#### CRM Properties
+
+Custom properties from your CRM system:
+- Format: `crm_{property_id}`
+- Example: `crm_lead_source`, `crm_sales_rep_region`
+
+#### CRM Account Properties
+
+Account-level properties from your CRM:
+- HubSpot format: `crm_hubspot_account_{property_id}`
+- Salesforce format: `crm_salesforce_account_{property_id}`
+- Examples: `crm_hubspot_account_industry`, `crm_salesforce_account_annual_revenue`
+
+#### Custom Metrics
+
+Organization-specific metrics you've configured:
+- Score format: `custom_metric_score_{metric_id}`
+- Explanation format: `custom_metric_explanation_{metric_id}`
+- Example: If you have a custom metric called "Strategic Fit", the columns would be `custom_metric_score_abc123` and `custom_metric_explanation_abc123`
+
+#### Custom Answers
+
+Custom questions you've set up for deal analysis:
+- Format: `custom_answer_{answer_id}`
+- Example: `custom_answer_xyz789` for a custom question like "Champion identified?"
+
+## Response
+
+### Initial Response (POST)
+
+When you submit an export request, you'll receive an export_id and status:
+
+```json
+{
+  "success": true,
+  "export_id": "exp_abc123",
+  "status": "pending",
+  "message": "Export job started successfully",
+  "estimated_completion": "2-3 minutes"
+}
+```
+
+### Checking Export Status (GET)
+
+Poll the export status endpoint to check when your export is ready:
+
+```
+GET /api/v1/deals/export/{export_id}
+```
+
+Response while processing:
+```json
+{
+  "export_id": "exp_abc123",
+  "status": "pending",
+  "created_at": "2026-03-10T12:00:00Z"
+}
+```
+
+Response when complete:
+```json
+{
+  "export_id": "exp_abc123",
+  "status": "completed",
+  "download_url": "https://storage.example.com/exports/exp_abc123.csv?signature=...",
+  "rows_exported": 150,
+  "created_at": "2026-03-10T12:00:00Z",
+  "completed_at": "2026-03-10T12:02:30Z",
+  "expires_at": "2026-03-17T12:02:30Z"
+}
+```
+
+Response if failed:
+```json
+{
+  "export_id": "exp_abc123",
+  "status": "failed",
+  "error": "Export failed: Invalid column ID 'invalid_column'",
+  "created_at": "2026-03-10T12:00:00Z",
+  "failed_at": "2026-03-10T12:01:15Z"
+}
+```
+
+### Download URL Expiration
+
+- Download URLs are valid for 7 days after generation
+- After expiration, you'll need to create a new export request
+- The export record remains accessible via GET for 30 days
+
+## CRM Filters
+
+For advanced filtering using CRM-specific properties:
+
+```json
+{
+  "salesforce_filters": [
+    {
+      "property": "Account.Industry",
+      "operator": "is",
+      "value": "Technology"
+    },
+    {
+      "property": "Amount",
+      "operator": "is greater than",
+      "value": "50000"
+    }
+  ]
+}
+```
+
+Supported operators:
+- `is`, `is not`
+- `is greater than`, `is less than`
+- `is greater than or equal to`, `is less than or equal to`
+- `is before`, `is after` (for dates)
+- `contains`, `does not contain` (for text)
+
+## Rate Limits
+
+Export generation is rate-limited per plan to prevent system overload:
+
+| Plan | Exports per Hour | Concurrent Exports |
+|------|-----------------|-------------------|
+| Essentials | 5 | 2 |
+| Growth | 20 | 5 |
+| Enterprise | 100 | 20 |
+
+When a limit is exceeded, the API returns a `429` response.
+
+## Examples
+
+<RequestExample>
+
+```bash Basic Export
+curl -X POST https://app.usehindsight.com/api/v1/deals/export \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "columns": ["name", "amount", "deal_status", "proposal_due", "owner_id"]
+  }'
+```
+
+```bash Filtered Export - Closed Deals Q1 2026
+curl -X POST https://app.usehindsight.com/api/v1/deals/export \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "columns": [
+      "name", "amount", "deal_status", "proposal_due", 
+      "drivers", "scorecard", "all_competitors", "summary"
+    ],
+    "filters": {
+      "status": ["Closed Won", "Closed Lost"],
+      "close_date": {
+        "from": "2026-01-01",
+        "to": "2026-03-31"
+      },
+      "analyzed": true
+    }
+  }'
+```
+
+```bash Export with Competitor Filter
+curl -X POST https://app.usehindsight.com/api/v1/deals/export \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "columns": [
+      "name", "amount", "deal_status", "all_competitors",
+      "drivers", "scorecard"
+    ],
+    "filters": {
+      "competitor_ids": ["comp_competitor-x", "comp_competitor-y"],
+      "competitor_ids_filter_type": "is any of",
+      "status": ["Closed Lost"]
+    }
+  }'
+```
+
+```bash Check Export Status
+curl https://app.usehindsight.com/api/v1/deals/export/exp_abc123 \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+```javascript Node.js - Start Export
+const response = await fetch('https://app.usehindsight.com/api/v1/deals/export', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${API_KEY}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    columns: ['name', 'amount', 'deal_status', 'proposal_due', 'owner_id'],
+    filters: {
+      status: ['Closed Won', 'Closed Lost'],
+      close_date: {
+        from: '2026-01-01',
+        to: '2026-03-31'
+      }
+    }
+  })
+});
+
+const { export_id } = await response.json();
+console.log('Export started:', export_id);
+```
+
+```javascript Node.js - Poll for Completion
+async function waitForExport(exportId) {
+  while (true) {
+    const response = await fetch(
+      `https://app.usehindsight.com/api/v1/deals/export/${exportId}`,
+      {
+        headers: { 'Authorization': `Bearer ${API_KEY}` }
+      }
+    );
+    
+    const status = await response.json();
+    
+    if (status.status === 'completed') {
+      console.log('Export ready!', status.download_url);
+      return status.download_url;
+    } else if (status.status === 'failed') {
+      throw new Error(`Export failed: ${status.error}`);
+    }
+    
+    // Wait 5 seconds before checking again
+    await new Promise(resolve => setTimeout(resolve, 5000));
+  }
+}
+
+const downloadUrl = await waitForExport('exp_abc123');
+```
+
+```python Python - Complete Flow
+import requests
+import time
+
+API_KEY = 'your_api_key_here'
+BASE_URL = 'https://app.usehindsight.com/api/v1'
+
+# Start export
+response = requests.post(
+    f'{BASE_URL}/deals/export',
+    headers={
+        'Authorization': f'Bearer {API_KEY}',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'columns': ['name', 'amount', 'deal_status', 'proposal_due'],
+        'filters': {
+            'status': ['Closed Won', 'Closed Lost'],
+            'analyzed': True
+        }
+    }
+)
+
+export_id = response.json()['export_id']
+print(f'Export started: {export_id}')
+
+# Poll for completion
+while True:
+    status_response = requests.get(
+        f'{BASE_URL}/deals/export/{export_id}',
+        headers={'Authorization': f'Bearer {API_KEY}'}
+    )
+    
+    status = status_response.json()
+    
+    if status['status'] == 'completed':
+        print(f'Export ready! Download from: {status["download_url"]}')
+        print(f'Rows exported: {status["rows_exported"]}')
+        break
+    elif status['status'] == 'failed':
+        print(f'Export failed: {status["error"]}')
+        break
+    
+    print('Export still processing...')
+    time.sleep(5)
+```
+
+</RequestExample>
+
+## Best Practices
+
+1. **Column Selection**: Only request columns you need to minimize export size and processing time
+2. **Polling Interval**: Wait 5-10 seconds between status checks to avoid rate limiting
+3. **Download Promptly**: Download the file within 7 days before the URL expires
+4. **Filter Early**: Apply filters to reduce export size rather than filtering after download
+5. **Pagination Alternative**: For real-time data access, consider using the paginated `/deals` endpoint instead
+
+## Error Responses
+
+| Status Code | Description |
+|-------------|-------------|
+| 400 | Invalid request (e.g., invalid column ID, malformed filters) |
+| 401 | Invalid or missing API key |
+| 403 | Insufficient permissions |
+| 404 | Export ID not found |
+| 429 | Rate limit exceeded |
+| 500 | Internal server error |
+
+Example error response:
+```json
+{
+  "error": "Invalid column IDs: unknown_column, invalid_field",
+  "status": 400
+}
+```

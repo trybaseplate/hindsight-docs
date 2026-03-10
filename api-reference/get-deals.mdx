@@ -1,0 +1,552 @@
+---
+title: 'Get Deals'
+openapi: 'GET /deals'
+---
+
+Retrieve deals with flexible filtering, sorting, and pagination. Returns deal objects with all their properties and relationships.
+
+<Accordion title="Copy for AI context">
+```text
+GET https://app.usehindsight.com/api/v1/deals
+Authorization: Bearer YOUR_API_KEY
+
+Query Parameters:
+  # Pagination
+  page_size: number (default: 50, max: 100)
+  page_index: number (default: 0)
+  count: boolean (return only count, not data)
+  
+  # Sorting
+  sort: string (column name to sort by)
+  sort_order: "asc" | "desc" (default: "desc")
+  
+  # Column selection
+  columns: string (comma-separated column names, default: "*")
+  
+  # Search
+  searchQuery: string (fuzzy search across deal names)
+  
+  # Filters (same as bulk export)
+  owner_ids: string (JSON array of owner IDs)
+  owner_filter_type: "is any of" | "is not"
+  status: string (JSON array of deal stages)
+  status_filter_type: "is any of" | "is not"
+  close_date: string (JSON object: {"from": "2026-01-01", "to": "2026-03-31"})
+  amount: string (JSON object: {"min": 10000, "max": 100000})
+  competitor: string (JSON array of competitor IDs)
+  competitor_filter_type: "is any of" | "is not"
+  deal_type: string (JSON array)
+  deal_type_filter_type: "is any of" | "is not"
+  region: string (JSON array)
+  region_filter_type: "is any of" | "is not"
+  industry: string (JSON array)
+  industry_filter_type: "is any of" | "is not"
+  product_labels: string (JSON array of product IDs)
+  product_filter_type: "is any of" | "is not" | "include all of"
+  deal_analyzed: string (JSON array: ["true"] or ["false"])
+  analysis_verified: string (JSON array: ["true"] or ["false"])
+  # ... and more (see full filter list below)
+
+200 Response:
+[
+  {
+    "id": "deal_123",
+    "name": "Acme Corp - Enterprise License",
+    "amount": 50000,
+    "status_id": "negotiation",
+    "previous_status_id": "qualification",
+    "proposal_due": "2026-03-15",
+    "created_at": "2026-01-10T12:00:00Z",
+    "owner_id": "user_abc",
+    "salesforce_id": "006xxxxxxxxxxxx",
+    "hubspot_id": "789123456",
+    "deal_analyzed": true,
+    "analysis_verified": true,
+    "type": "New Business",
+    "region": "North America",
+    "deal_competitor_associations": [
+      {
+        "competitor_id": "comp_123",
+        "is_primary": true,
+        "is_incumbent": false
+      }
+    ],
+    "drivers": [
+      {
+        "reason_id": "reason_456",
+        "positive": true,
+        "summary": "Strong product fit"
+      }
+    ],
+    "wl_product_fit_score": 4.2,
+    "wl_sales_execution_score": 3.8,
+    "wl_relationship_score": 4.5,
+    // ... additional fields based on columns parameter
+  }
+]
+
+Rate limits: 60 req/min (Essentials), 300 req/min (Growth), 1000 req/min (Enterprise)
+```
+</Accordion>
+
+## Overview
+
+Use this endpoint to programmatically access your deal data with real-time filtering and pagination. Unlike bulk export which generates a CSV file, this endpoint returns JSON objects immediately and is ideal for:
+
+- Building custom dashboards and reports
+- Syncing deal data to external systems
+- Real-time data access for integrations
+- Paginating through large datasets
+
+For large datasets or CSV format, use the [Bulk Export Deals](/api-reference/export-deals) endpoint instead.
+
+## Pagination
+
+| Parameter | Type | Description | Default |
+|-----------|------|-------------|---------|
+| `page_size` | number | Number of deals to return per page | 50 |
+| `page_index` | number | Zero-based page index | 0 |
+| `count` | boolean | If true, returns only the total count | false |
+
+**Example:**
+```
+GET /deals?page_size=20&page_index=0  # First 20 deals
+GET /deals?page_size=20&page_index=1  # Next 20 deals
+GET /deals?count=true                  # Get total deal count
+```
+
+
+## Column Selection
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `columns` | string | Comma-separated column names to return. Use `*` for all columns. See [Available Columns](/api-reference/export-deals#available-columns) for the full list. |
+
+Limit returned data to only the fields you need to reduce response size and improve performance.
+
+**Example:**
+```
+GET /deals?columns=name,amount,deal_status,proposal_due,owner_id
+GET /deals?columns=*  # All columns (default)
+```
+
+For a complete list of available columns (standard and dynamic), see the [Available Columns](/api-reference/export-deals#available-columns) section in the Bulk Export Deals documentation.
+
+## Search
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `searchQuery` | string | Fuzzy search across deal names |
+
+**Example:**
+```
+GET /deals?searchQuery=acme
+```
+
+## Filters
+
+All filters from the bulk export endpoint are supported. Filters are passed as query parameters with JSON-encoded values for arrays and objects.
+
+### Deal Identification
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `ids` | string | JSON array of specific deal IDs | `["deal_123","deal_456"]` |
+| `owner_ids` | string | JSON array of owner IDs | `["user_abc"]` |
+| `owner_filter_type` | string | Filter type for owners | `is any of` |
+| `collaborators` | string | JSON array of collaborator IDs | `["user_def"]` |
+| `collaborator_filter_type` | string | Filter type for collaborators | `is any of` |
+
+### Deal Attributes
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `status` | string | JSON array of deal stages | `["Closed Won","Closed Lost"]` |
+| `status_filter_type` | string | Filter type | `is any of` |
+| `deal_type` | string | JSON array of deal types | `["New Business","Expansion"]` |
+| `deal_type_filter_type` | string | Filter type | `is any of` |
+| `region` | string | JSON array of regions | `["North America","EMEA"]` |
+| `region_filter_type` | string | Filter type | `is any of` |
+| `industry` | string | JSON array of industries | `["Technology","Healthcare"]` |
+| `industry_filter_type` | string | Filter type | `is any of` |
+| `product_labels` | string | JSON array of product IDs | `["prod_123"]` |
+| `product_filter_type` | string | Filter type | `is any of` \| `include all of` |
+
+### Date & Amount
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `close_date` | string | JSON object with date range | `{"from":"2026-01-01","to":"2026-03-31"}` |
+| `amount` | string | JSON object with min/max | `{"min":10000,"max":100000}` |
+
+### Competitive Intelligence
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `competitor` | string | JSON array of competitor IDs | `["comp_123"]` |
+| `competitor_filter_type` | string | Filter type | `is any of` |
+| `any_competitor` | string | JSON array: `["true"]` or `["false"]` | `["true"]` |
+
+### Analysis
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `deal_analyzed` | string | JSON array: `["true"]` or `["false"]` | `["true"]` |
+| `analysis_verified` | string | JSON array: `["true"]` or `["false"]` | `["true"]` |
+
+### Win-Loss Scores
+
+Filters for deal analysis scores (range queries):
+
+| Filter | Format | Example |
+|--------|--------|---------|
+| `wl_product_fit_score` | `{"min": number, "max": number}` | `{"min":3,"max":5}` |
+| `wl_sales_execution_score` | `{"min": number, "max": number}` | `{"min":3,"max":5}` |
+| `wl_relationship_score` | `{"min": number, "max": number}` | `{"min":3,"max":5}` |
+| `wl_price_sensitivity_score` | `{"min": number, "max": number}` | `{"min":1,"max":3}` |
+| `wl_competitive_intensity_score` | `{"min": number, "max": number}` | `{"min":3,"max":5}` |
+| `wl_customer_fit_score` | `{"min": number, "max": number}` | `{"min":3,"max":5}` |
+| `wl_messaging_fit_score` | `{"min": number, "max": number}` | `{"min":3,"max":5}` |
+| `wl_messaging_accuracy_score` | `{"min": number, "max": number}` | `{"min":3,"max":5}` |
+
+### CRM Filters (Advanced)
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `salesforce_filters` | string | JSON array of Salesforce filter objects | See [CRM Filters](#crm-filters) |
+| `hubspot_filters` | string | JSON array of HubSpot filter objects | See [CRM Filters](#crm-filters) |
+
+### Segments
+
+| Filter | Type | Description | Example |
+|--------|------|-------------|---------|
+| `segment` | string | JSON array of segment IDs | `["seg_123","seg_456"]` |
+| `segment_filter_type` | string | `is any of` \| `include all of` | `is any of` |
+
+
+## Sorting
+
+| Parameter | Type | Description | Default |
+|-----------|------|-------------|---------|
+| `sort` | string | Column name to sort by | created_at |
+| `sort_order` | string | `asc` or `desc` | desc |
+
+**Available sort columns:**
+- `created_at` - Creation date
+- `proposal_due` - Expected/actual close date
+- `amount` - Deal value
+- `name` - Deal name
+- `wl_product_fit_score` - Product fit score
+- `wl_sales_execution_score` - Sales execution score
+- `wl_relationship_score` - Relationship score
+- `wl_price_sensitivity_score` - Price sensitivity score
+- `wl_competitive_intensity_score` - Competitive intensity score
+- `wl_customer_fit_score` - Customer fit score
+- `wl_messaging_fit_score` - Messaging fit score
+- `wl_messaging_accuracy_score` - Messaging accuracy score
+
+**Example:**
+```
+GET /deals?sort=proposal_due&sort_order=asc
+GET /deals?sort=amount&sort_order=desc
+```
+
+## Response Format
+
+### Standard Response
+
+Returns an array of deal objects with all requested fields:
+
+```json
+[
+  {
+    "id": "deal_123",
+    "name": "Acme Corp - Enterprise License",
+    "amount": 50000,
+    "status_id": "negotiation",
+    "previous_status_id": "qualification",
+    "proposal_due": "2026-03-15",
+    "created_at": "2026-01-10T12:00:00Z",
+    "owner_id": "user_abc",
+    "salesforce_id": "006xxxxxxxxxxxx",
+    "hubspot_id": "789123456",
+    "deal_analyzed": true,
+    "analysis_verified": true,
+    "type": "New Business",
+    "region": "North America",
+    "deal_competitor_associations": [
+      {
+        "competitor_id": "comp_123",
+        "is_primary": true,
+        "is_incumbent": false,
+        "positioning_summary": "Main competitor evaluation"
+      }
+    ],
+    "drivers": [
+      {
+        "reason_id": "reason_456",
+        "positive": false,
+        "summary": "Price too high compared to competitor"
+      }
+    ],
+    "wl_product_fit_score": 4.2,
+    "wl_sales_execution_score": 3.8,
+    "wl_relationship_score": 4.5
+  }
+]
+```
+
+### Count Response
+
+When `count=true`, returns only the total count:
+
+```json
+142
+```
+
+## CRM Filters
+
+For advanced filtering using CRM-specific properties:
+
+```
+GET /deals?salesforce_filters=[{"property":"Account.Industry","operator":"is","value":"Technology"}]
+```
+
+Salesforce filter object structure:
+```json
+{
+  "property": "Account.Industry",
+  "operator": "is",
+  "value": "Technology"
+}
+```
+
+Supported operators:
+- `is`, `is not`
+- `is greater than`, `is less than`
+- `is greater than or equal to`, `is less than or equal to`
+- `is before`, `is after` (for dates)
+- `contains`, `does not contain` (for text)
+
+## Rate Limits
+
+| Plan | Requests per Minute |
+|------|-------------------|
+| Essentials | 60 |
+| Growth | 300 |
+| Enterprise | 1,000 |
+
+## Examples
+
+<RequestExample>
+
+```bash Get Recent Deals
+curl "https://app.usehindsight.com/api/v1/deals?page_size=20&sort=created_at&sort_order=desc" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+```bash Get Closed Deals with Analysis
+curl "https://app.usehindsight.com/api/v1/deals?status=%5B%22Closed%20Won%22%2C%22Closed%20Lost%22%5D&deal_analyzed=%5B%22true%22%5D&page_size=50" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+```bash Search Deals by Name
+curl "https://app.usehindsight.com/api/v1/deals?searchQuery=acme&page_size=10" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+```bash Get Deal Count
+curl "https://app.usehindsight.com/api/v1/deals?count=true" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+```bash Filter by Close Date and Amount
+curl "https://app.usehindsight.com/api/v1/deals?close_date=%7B%22from%22%3A%222026-01-01%22%2C%22to%22%3A%222026-03-31%22%7D&amount=%7B%22min%22%3A50000%7D" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+```javascript Node.js - Get Paginated Deals
+const API_KEY = 'your_api_key_here';
+const BASE_URL = 'https://app.usehindsight.com/api/v1';
+
+async function getDeals(page = 0, pageSize = 50) {
+  const response = await fetch(
+    `${BASE_URL}/deals?page_size=${pageSize}&page_index=${page}`,
+    {
+      headers: {
+        'Authorization': `Bearer ${API_KEY}`
+      }
+    }
+  );
+  
+  return await response.json();
+}
+
+// Get first page
+const deals = await getDeals(0, 50);
+console.log(`Retrieved ${deals.length} deals`);
+```
+
+```javascript Node.js - Filter Closed Deals with Competitors
+const filters = {
+  status: JSON.stringify(['Closed Won', 'Closed Lost']),
+  status_filter_type: 'is any of',
+  any_competitor: JSON.stringify(['true']),
+  close_date: JSON.stringify({
+    from: '2026-01-01',
+    to: '2026-03-31'
+  })
+};
+
+const queryParams = new URLSearchParams(filters);
+
+const response = await fetch(
+  `${BASE_URL}/deals?${queryParams.toString()}`,
+  {
+    headers: { 'Authorization': `Bearer ${API_KEY}` }
+  }
+);
+
+const deals = await response.json();
+console.log(`Found ${deals.length} closed deals with competitor mentions`);
+```
+
+```javascript Node.js - Get Total Deal Count
+async function getTotalDeals() {
+  const response = await fetch(
+    `${BASE_URL}/deals?count=true`,
+    {
+      headers: { 'Authorization': `Bearer ${API_KEY}` }
+    }
+  );
+  
+  const count = await response.json();
+  return count;
+}
+
+const total = await getTotalDeals();
+console.log(`Total deals: ${total}`);
+```
+
+```python Python - Iterate Through All Deals
+import requests
+import json
+
+API_KEY = 'your_api_key_here'
+BASE_URL = 'https://app.usehindsight.com/api/v1'
+
+def get_all_deals(filters=None):
+    """Fetch all deals with pagination"""
+    all_deals = []
+    page = 0
+    page_size = 100
+    
+    while True:
+        params = {
+            'page_size': page_size,
+            'page_index': page
+        }
+        
+        # Add filters if provided
+        if filters:
+            params.update(filters)
+        
+        response = requests.get(
+            f'{BASE_URL}/deals',
+            headers={'Authorization': f'Bearer {API_KEY}'},
+            params=params
+        )
+        response.raise_for_status()
+        
+        deals = response.json()
+        
+        if not deals:
+            break
+            
+        all_deals.extend(deals)
+        print(f'Fetched page {page + 1}: {len(deals)} deals')
+        
+        if len(deals) < page_size:
+            break
+            
+        page += 1
+    
+    return all_deals
+
+# Get all analyzed deals from Q1 2026
+filters = {
+    'deal_analyzed': json.dumps(['true']),
+    'close_date': json.dumps({
+        'from': '2026-01-01',
+        'to': '2026-03-31'
+    })
+}
+
+deals = get_all_deals(filters)
+print(f'Total deals retrieved: {len(deals)}')
+```
+
+```python Python - Filter by Win-Loss Scores
+import requests
+import json
+
+# Get high-performing deals (high product fit and execution)
+filters = {
+    'wl_product_fit_score': json.dumps({'min': 4}),
+    'wl_sales_execution_score': json.dumps({'min': 4}),
+    'status': json.dumps(['Closed Won']),
+    'status_filter_type': 'is any of'
+}
+
+response = requests.get(
+    f'{BASE_URL}/deals',
+    headers={'Authorization': f'Bearer {API_KEY}'},
+    params=filters
+)
+
+deals = response.json()
+print(f'Found {len(deals)} high-performing won deals')
+
+for deal in deals[:5]:
+    print(f"- {deal['name']}: ${deal['amount']:,.0f}")
+```
+
+</RequestExample>
+
+## Best Practices
+
+1. **Use Pagination**: Always paginate through large datasets rather than requesting all at once
+2. **Select Columns**: Use the `columns` parameter to only fetch fields you need
+3. **Cache Counts**: If you need counts frequently, cache them with appropriate TTL
+4. **Filter Server-Side**: Apply filters in the API request rather than fetching all data and filtering client-side
+5. **Handle Rate Limits**: Implement exponential backoff when you receive 429 responses
+6. **Use Bulk Export for Large Datasets**: If you need to analyze thousands of deals, use the bulk export endpoint instead
+
+## Comparison: Get Deals vs Bulk Export
+
+| Feature | GET /deals | POST /deals/export |
+|---------|-----------|-------------------|
+| **Response Format** | JSON | CSV |
+| **Response Time** | Immediate | 2-3 minutes |
+| **Use Case** | Real-time access, integrations | Reports, analysis, backups |
+| **Pagination** | Built-in | N/A (single file) |
+| **Max Records** | Unlimited (paginated) | Unlimited |
+| **Rate Limits** | 60-1000 req/min | 5-100 exports/hour |
+| **Data Freshness** | Real-time | Snapshot at export time |
+
+## Error Responses
+
+| Status Code | Description |
+|-------------|-------------|
+| 400 | Invalid request (e.g., invalid filter format, invalid column name) |
+| 401 | Invalid or missing API key |
+| 403 | Insufficient permissions |
+| 429 | Rate limit exceeded |
+| 500 | Internal server error |
+
+Example error response:
+```json
+{
+  "message": "Invalid filter format: close_date must be a valid JSON object"
+}
+```
