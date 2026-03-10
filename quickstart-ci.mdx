@@ -1,41 +1,63 @@
 ---
-title: "Quickstart - CI"
-description: "Set up automated competitive intelligence in 5 minutes (Essentials Plan)"
+title: "Quickstart: Competitive Intelligence"
+description: "Get up and running with Hindsight CI in four steps"
 ---
 
-Get started with Hindsight's competitive intelligence features by adding competitors and setting up automated tracking.
-
-{/* <img alt="Connect Slack" classname="block" src="/images/onboard-connect-slack.png" /> */}
+Get up and running with Hindsight CI in four steps. By the end, your team will have competitive content grounded in real deal data and a live Slack assistant they can query mid-deal.
 
 <Steps>
-  <Step icon="crosshairs-simple" title="Add Your First Competitor">
-     Add your [competitors](https://app.usehindsight.com/competitors) by domain and configure URLs for tracking. Add their marketing site plus support or technical sites for best results. 
-     
-     You can also add specific instructions for our AI agents to follow when tracking your competitors. For example, you can tell them to only track content about specific products, specific subdomain, or even specific keywords.
-     
-     Choose how often to scrape each page based on how frequently the content changes - daily for dynamic pages like blogs, weekly for product pages, or monthly for static content.
+  <Step icon="crosshairs-simple" title="Add Your Competitors">
+    Your [competitors](https://app.usehindsight.com/competitors) are added during setup. Hindsight sets up a default "Monitoring" workflow for each competitor, which you can customize or turn off. This workflow automatically tracks competitor changes across the web, G2, news, and job postings — so you get a steady stream of updates without lifting a finger.
   </Step>
-  <Step icon="user" title="Assign a Competitor Owner">
-    Add an owner for each competitor who will be responsible for triaging competitive intelligence. The owner will be notified in Slack when new events are detected, allowing them to quickly review and alert the team about important competitive updates.
+  
+  <Step icon="sparkle" title="Run Your First Recipe">
+    With competitors added, the fastest way to see Hindsight's value is to run a recipe from the [chat](https://app.usehindsight.com/chat).
     
-    Choose team members who are familiar with the competitive landscape and can make informed decisions about which updates require immediate attention.
+    1. Go to **Chat** in Hindsight
+    2. You'll see the "Getting Started - Battlecard Recipe"
+    3. Fill out the competitor name
+    4. Run it and review the output
+    
+    **Save pages to your intel library.** If the agent surfaces a URL you haven't tracked yet — a competitor's pricing page, a G2 profile, a recent blog post — you can save it directly to your [intel library](https://app.usehindsight.com/intel) from the chat.
+    
+    **Save assets to your library (optional).** If the output looks good, save it. Click **Save to Library** in the chat and tag it with the competitor. Title it specifically so reps know exactly when to use it.
   </Step>
-    <Step icon="slack" title="Connect Slack">
-    Add the Hindsight Slack App to your workspace to deliver competitive updates, battlecards, and insights directly to your team. First, add the bot to your Slack Workspace.
-    Then, add Hindsight to a channel by typing ```@Hindsight``` in any channel and confirming the invite.
-    {/* <img alt="Connect Slack" classname="block" src="/images/onboard-add-workspace.png" /> */}
+  
+  <Step icon="cloud-arrow-up" title="Upload Your Existing Content">
+    If your team already has competitive content — battlecards, objection handling docs, one-pagers — bring it in now.
+    
+    Go to [Assets](https://app.usehindsight.com/assets) and connect your integration (Google Drive, Notion, or Confluence), or upload files directly. Tag each file with the relevant competitor. Files about your own company — your playbook, your messaging, your ICP — go under **"You"**.
+    
+    This seeds your knowledge base immediately. The AI assistant draws from your asset library first when answering rep questions, so the more complete it is on day one, the better the answers from the start.
+  </Step>
+  
+  <Step icon="slack" title="Connect Slack and Test Your First Question">
+    Hindsight works best when it meets reps where they already are.
+    
+    **To connect:**
+    1. Add the Hindsight Slack app to your workspace
+    2. Type `@Hindsight` in any channel and confirm the invite
+    
+    Once connected, test it. Ask a question a rep would actually ask mid-deal:
+    
+    > *@Hindsight how do we beat [Competitor X] in an enterprise deal?*
+    
+    > *@Hindsight what objections come up most against [Competitor Y]?*
+    
+    The answer will be grounded in your asset library and deal data. If the answer is thin, that's signal — go back to Step 2 and build out more content for that competitor.
   </Step>
 </Steps>
 
-### What's Next?
+## What's Next
+
 <CardGroup cols={3}>
-  <Card title="Connect CRM & Call Recording" icon="salesforce" href="/integrations">
-    Connect your CRM and call recording tools to incorporate deal insights and competitive context from customer conversations.
+  <Card title="Create Competitive Content" icon="file-pen" href="/guides/creating-assets">
+    Build battlecards and enablement content from verified deal data that stays current automatically.
   </Card>
-  <Card title="Generate Assets" icon="file" href="/workflows/generate-custom-assets">
-    Create custom competitive assets like battlecards, comparison sheets, and objection handlers.
+  <Card title="Monitor Competitors" icon="binoculars" href="/guides/monitoring-competitors">
+    Set up automated monitoring with recipes and workflows to track competitor changes on a cadence.
   </Card>
-  <Card title="Deploy Slack Assistant" icon="gear" href="/integrations/slack">
-    Enable your sales team with instant access to your CI via Slack.
+  <Card title="Set Up Your Knowledge Base" icon="books" href="/guides/knowledge-base-setup">
+    Learn how to organize and maintain your competitive intelligence library for accurate AI answers.
   </Card>
 </CardGroup>
