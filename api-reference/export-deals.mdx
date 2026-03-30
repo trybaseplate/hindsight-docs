@@ -13,12 +13,12 @@ Content-Type: application/json
 
 Request body:
 {
-  "columns": ["name", "amount", "stage", "close_date", ...],  // Array of column IDs to include
-  "filters": {                                                 // Optional filters
-    "deal_ids": ["deal_123", "deal_456"],                     // Specific deal IDs
-    "owner_ids": ["user_abc"],                                 // Deal owner IDs
-    "status": ["Closed Won", "Closed Lost"],                   // Deal stages
-    "close_date": {                                            // Date range
+  "columns": ["name", "amount", "deal_status", "proposal_due", ...],  // Array of column IDs to include
+  "filters": {                                                          // Optional filters
+    "deal_ids": ["deal_123", "deal_456"],                              // Specific deal IDs
+    "owner_ids": ["user_abc"],                                         // Deal owner IDs
+    "status": ["Won", "Lost"],                                         // Deal stages (Hindsight stage values)
+    "close_date": {                                                     // Date range
       "from": "2026-01-01",
       "to": "2026-03-31"
     },
@@ -26,13 +26,13 @@ Request body:
       "min": 10000,
       "max": 100000
     },
-    "competitor_ids": ["comp_123"],                            // Competitor IDs
-    "deal_type": ["New Business", "Expansion"],                // Deal types
-    "region": ["North America", "EMEA"],                       // Regions
-    "industry": ["Technology", "Finance"],                     // Industries
-    "product_ids": ["prod_123"],                               // Product IDs
-    "analyzed": true,                                          // Only analyzed deals
-    "verified": true                                           // Only verified analyses
+    "competitors": ["comp_123"],                                       // Competitor IDs (any competitor on deal)
+    "deal_type": ["New Business", "Expansion"],                        // Deal types
+    "region": ["North America", "EMEA"],                               // Regions
+    "industry": ["Technology", "Finance"],                             // Industries
+    "product_labels": ["Product A"],                                   // Product labels
+    "analyzed": true,                                                  // Only analyzed deals
+    "verified": true                                                   // Only verified analyses
   }
 }
 
@@ -41,8 +41,7 @@ Request body:
   "success": true,
   "export_id": "exp_abc123",
   "status": "pending",
-  "message": "Export job started successfully",
-  "estimated_completion": "2-3 minutes"
+  "message": "Export job started successfully"
 }
 
 GET https://app.usehindsight.com/api/v1/deals/export/{export_id}
@@ -50,14 +49,14 @@ GET https://app.usehindsight.com/api/v1/deals/export/{export_id}
 {
   "export_id": "exp_abc123",
   "status": "completed | pending | failed",
-  "download_url": "https://...",  // Available when status is "completed"
+  "download_url": "https://app.usehindsight.com/api/v1/deals/export/exp_abc123/download?token=...",  // Available when status is "completed"
   "rows_exported": 150,
   "created_at": "2026-03-10T12:00:00Z",
   "completed_at": "2026-03-10T12:02:30Z",
   "expires_at": "2026-03-17T12:02:30Z"  // Download URL expires in 7 days
 }
 
-Rate limits: 5 exports/hr (Essentials), 20 exports/hr (Growth), 100 exports/hr (Enterprise)
+Rate limits: Per-minute (10/60/300 req/min for Essentials/Growth/Enterprise) + monthly quota per route.
 ```
 </Accordion>
 
@@ -93,17 +92,19 @@ All filters are optional. If no filters are provided, all deals in your organiza
 | Filter | Type | Description | Example |
 |--------|------|-------------|---------|
 | `owner_ids` | string[] | Filter by deal owner IDs | `["user_abc", "user_xyz"]` |
-| `collaborator_ids` | string[] | Filter by collaborator IDs | `["user_def"]` |
+| `collaborators` | string[] | Filter by collaborator IDs | `["user_def"]` |
 
 #### Deal Attributes
 
 | Filter | Type | Description | Example |
 |--------|------|-------------|---------|
-| `status` | string[] | Deal stages/statuses | `["Closed Won", "Closed Lost", "Negotiation"]` |
+| `status` | string[] | Deal stages. Values are your CRM's stage names (e.g. `"Won"`, `"Lost"`)
 | `deal_type` | string[] | Types of deals | `["New Business", "Expansion", "Renewal"]` |
 | `region` | string[] | Geographic regions | `["North America", "EMEA", "APAC"]` |
 | `industry` | string[] | Customer industries | `["Technology", "Healthcare", "Finance"]` |
-| `product_ids` | string[] | Product IDs associated with the deal | `["prod_123", "prod_456"]` |
+| `product_labels` | string[] | Product labels associated with the deal | `["Product A", "Product B"]` |
+
+> **Note on status values:** `status` filters come from your your specific workspace configuration.
 
 #### Date & Amount Filters
 
@@ -120,8 +121,9 @@ All filters are optional. If no filters are provided, all deals in your organiza
 
 | Filter | Type | Description | Example |
 |--------|------|-------------|---------|
-| `competitor_ids` | string[] | Filter by competitors mentioned | `["comp_123", "comp_456"]` |
-| `has_competitor` | boolean | Only deals with competitor mentions | `true` |
+| `competitors` | string[] | Filter by competitor IDs — matches deals where any of the specified competitors appear | `["comp_123", "comp_456"]` |
+| `primary_competitor` | string[] | Filter by competitor IDs — matches deals where the specified competitor is the primary competitor | `["comp_123"]` |
+| `has_competitor` | boolean | Only deals with any competitor mentioned | `true` |
 
 #### Analysis Filters
 
@@ -134,8 +136,10 @@ All filters are optional. If no filters are provided, all deals in your organiza
 
 | Filter | Type | Description | Example |
 |--------|------|-------------|---------|
-| `salesforce_filters` | object[] | Custom Salesforce filters | See [CRM Filters](#crm-filters) |
-| `hubspot_filters` | object[] | Custom HubSpot filters | See [CRM Filters](#crm-filters) |
+| `salesforce_filters` | object[] | Deal-level Salesforce properties (Opportunity object) | See [CRM Filters](#crm-filters) |
+| `salesforce_filters_account` | object[] | Account-level Salesforce properties (Account object) | See [CRM Filters](#crm-filters) |
+| `hubspot_filters` | object[] | Deal-level HubSpot properties | See [CRM Filters](#crm-filters) |
+| `hubspot_filters_account` | object[] | Account-level HubSpot properties (Company object) | See [CRM Filters](#crm-filters) |
 
 ### Filter Type Modifiers
 
@@ -151,10 +155,12 @@ To use filter modifiers, append `_filter_type` to the filter name:
 
 ```json
 {
-  "competitor_ids": ["comp_123", "comp_456"],
-  "competitor_ids_filter_type": "include all of"
+  "competitors": ["comp_123", "comp_456"],
+  "competitors_filter_type": "include all of"
 }
 ```
+
+Supported `_filter_type` suffixes: `owner_filter_type`, `collaborator_filter_type`, `competitors_filter_type`, `primary_competitor_filter_type`, `product_filter_type`, `status_filter_type`, `deal_type_filter_type`, `region_filter_type`, `industry_filter_type`.
 
 ## Available Columns
 
@@ -185,31 +191,31 @@ To use filter modifiers, append `_filter_type` to the filter name:
 
 These columns are generated based on your workspace configuration and CRM integrations:
 
-#### CRM Properties
+#### CRM Deal Properties
 
-Custom properties from your CRM system:
+Deal-level custom properties synced from your CRM (Opportunity/Deal object):
 - Format: `crm_{property_id}`
 - Example: `crm_lead_source`, `crm_sales_rep_region`
 
 #### CRM Account Properties
 
-Account-level properties from your CRM:
+Account-level properties synced from your CRM:
 - HubSpot format: `crm_hubspot_account_{property_id}`
 - Salesforce format: `crm_salesforce_account_{property_id}`
 - Examples: `crm_hubspot_account_industry`, `crm_salesforce_account_annual_revenue`
 
 #### Custom Metrics
 
-Organization-specific metrics you've configured:
-- Score format: `custom_metric_score_{metric_id}`
-- Explanation format: `custom_metric_explanation_{metric_id}`
-- Example: If you have a custom metric called "Strategic Fit", the columns would be `custom_metric_score_abc123` and `custom_metric_explanation_abc123`
+Organization-specific metrics you've configured. Use the metric's **name** (not its internal ID) when specifying columns:
+- Score format: `custom_metric_score_{metric_name}`
+- Explanation format: `custom_metric_explanation_{metric_name}`
+- Example: For a custom metric called "Strategic Fit": `custom_metric_score_Strategic Fit` or `custom_metric_explanation_StrategicFit`
 
 #### Custom Answers
 
-Custom questions you've set up for deal analysis:
-- Format: `custom_answer_{answer_id}`
-- Example: `custom_answer_xyz789` for a custom question like "Champion identified?"
+Custom questions you've set up for deal analysis. Use the question's **name** (not its internal ID):
+- Format: `custom_answer_{answer_name}`
+- Example: `custom_answer_Champion identified` or `custom_answer_ChampionIdentified` for a custom question called "Champion identified"
 
 ## Response
 
@@ -222,8 +228,7 @@ When you submit an export request, you'll receive an export_id and status:
   "success": true,
   "export_id": "exp_abc123",
   "status": "pending",
-  "message": "Export job started successfully",
-  "estimated_completion": "2-3 minutes"
+  "message": "Export job started successfully"
 }
 ```
 
@@ -249,7 +254,7 @@ Response when complete:
 {
   "export_id": "exp_abc123",
   "status": "completed",
-  "download_url": "https://storage.example.com/exports/exp_abc123.csv?signature=...",
+  "download_url": "https://app.usehindsight.com/api/v1/deals/export/exp_abc123/download?token=...",
   "rows_exported": 150,
   "created_at": "2026-03-10T12:00:00Z",
   "completed_at": "2026-03-10T12:02:30Z",
@@ -276,18 +281,20 @@ Response if failed:
 
 ## CRM Filters
 
-For advanced filtering using CRM-specific properties:
+Use CRM filters to filter deals based on properties from your Salesforce or HubSpot integration. Deal-level and account-level properties use separate filter keys:
 
 ```json
 {
+  "salesforce_filters_account": [
+    {
+      "property": { "id": "Account.Industry", "map_to": "industry" },
+      "operator": "is",
+      "value": "COMPUTER_SOFTWARE"
+    }
+  ],
   "salesforce_filters": [
     {
-      "property": "Account.Industry",
-      "operator": "is",
-      "value": "Technology"
-    },
-    {
-      "property": "Amount",
+      "property": { "id": "Amount" },
       "operator": "is greater than",
       "value": "50000"
     }
@@ -295,7 +302,34 @@ For advanced filtering using CRM-specific properties:
 }
 ```
 
-Supported operators:
+**Deal vs. account filters:**
+
+| Filter key | Object |
+|---|---|
+| `salesforce_filters` | Opportunity (deal-level) |
+| `salesforce_filters_account` | Account (account-level) |
+| `hubspot_filters` | Deal (deal-level) |
+| `hubspot_filters_account` | Company (account-level) |
+
+**The `property` field is an object**, not a string:
+
+```json
+{ "property": { "id": "field_name" } }
+```
+
+**`map_to` for standard account properties:**
+
+Some account properties (like industry or company name) are stored in a dedicated database column rather than the raw CRM payload. These require a `map_to` field pointing to the column name. Without it, the filter searches the raw CRM JSON and won't find data for these fields.
+
+```json
+{
+  "property": {
+    "id": "Account.Industry",
+    "map_to": "industry"
+  }
+}
+```
+**Supported operators:**
 - `is`, `is not`
 - `is greater than`, `is less than`
 - `is greater than or equal to`, `is less than or equal to`
@@ -304,15 +338,25 @@ Supported operators:
 
 ## Rate Limits
 
-Export generation is rate-limited per plan to prevent system overload:
+All API routes share a per-minute rate limit and a monthly usage quota.
 
-| Plan | Exports per Hour | Concurrent Exports |
-|------|-----------------|-------------------|
-| Essentials | 5 | 2 |
-| Growth | 20 | 5 |
-| Enterprise | 100 | 20 |
+**Per-minute limit** (shared across all API routes):
 
-When a limit is exceeded, the API returns a `429` response.
+| Plan | Requests per Minute |
+|------|-------------------|
+| Essentials | 10 |
+| Growth | 60 |
+| Enterprise | 300 |
+
+**Monthly quota** (per route, resets on the first of each month):
+
+| Plan | Exports per Month |
+|------|------------------|
+| Essentials | 10,000 |
+| Growth | 30,000 |
+| Enterprise | 100,000 |
+
+When a limit is exceeded, the API returns a `429` response with `X-RateLimit-*` and `X-Usage-*` headers indicating current usage and reset timing.
 
 ## Examples
 
@@ -333,11 +377,11 @@ curl -X POST https://app.usehindsight.com/api/v1/deals/export \
   -H "Content-Type: application/json" \
   -d '{
     "columns": [
-      "name", "amount", "deal_status", "proposal_due", 
+      "name", "amount", "deal_status", "proposal_due",
       "drivers", "scorecard", "all_competitors", "summary"
     ],
     "filters": {
-      "status": ["Closed Won", "Closed Lost"],
+      "status": ["closedwon", "closedlost"],
       "close_date": {
         "from": "2026-01-01",
         "to": "2026-03-31"
@@ -357,9 +401,9 @@ curl -X POST https://app.usehindsight.com/api/v1/deals/export \
       "drivers", "scorecard"
     ],
     "filters": {
-      "competitor_ids": ["comp_competitor-x", "comp_competitor-y"],
-      "competitor_ids_filter_type": "is any of",
-      "status": ["Closed Lost"]
+      "competitors": ["comp_abc", "comp_xyz"],
+      "competitors_filter_type": "is any of",
+      "status": ["Lost"]
     }
   }'
 ```
@@ -379,7 +423,7 @@ const response = await fetch('https://app.usehindsight.com/api/v1/deals/export',
   body: JSON.stringify({
     columns: ['name', 'amount', 'deal_status', 'proposal_due', 'owner_id'],
     filters: {
-      status: ['Closed Won', 'Closed Lost'],
+      status: ['closedwon', 'closedlost'],
       close_date: {
         from: '2026-01-01',
         to: '2026-03-31'
@@ -436,7 +480,7 @@ response = requests.post(
     json={
         'columns': ['name', 'amount', 'deal_status', 'proposal_due'],
         'filters': {
-            'status': ['Closed Won', 'Closed Lost'],
+            'status': ['closewon', 'closedlost'],
             'analyzed': True
         }
     }
