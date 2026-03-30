@@ -1,0 +1,34 @@
+export const New = ({ category }) => (
+  <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px'}}>
+    <span style={{background: '#dcfce7', color: '#15803d', padding: '2px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: '600'}}>New</span>
+    {category && <span style={{color: '#6b7280', fontSize: '13px'}}>{category}</span>}
+  </div>
+);
+
+export const Improved = ({ category }) => (
+  <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px'}}>
+    <span style={{background: '#dbeafe', color: '#1d4ed8', padding: '2px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: '600'}}>Improved</span>
+    {category && <span style={{color: '#6b7280', fontSize: '13px'}}>{category}</span>}
+  </div>
+);
+
+export const Preview = ({ category }) => (
+  <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px'}}>
+    <span style={{background: '#f3e8ff', color: '#7e22ce', padding: '2px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: '600'}}>Preview</span>
+    {category && <span style={{color: '#6b7280', fontSize: '13px'}}>{category}</span>}
+  </div>
+);
+
+export const Beta = ({ category }) => (
+  <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px'}}>
+    <span style={{background: '#fef9c3', color: '#a16207', padding: '2px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: '600'}}>Beta</span>
+    {category && <span style={{color: '#6b7280', fontSize: '13px'}}>{category}</span>}
+  </div>
+);
+
+export const OpenBeta = ({ category }) => (
+  <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px'}}>
+    <span style={{background: '#fef9c3', color: '#a16207', padding: '2px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: '600'}}>Open Beta</span>
+    {category && <span style={{color: '#6b7280', fontSize: '13px'}}>{category}</span>}
+  </div>
+);
