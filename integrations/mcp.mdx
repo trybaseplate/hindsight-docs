@@ -1,0 +1,214 @@
+---
+title: "Hindsight MCP"
+description: "Connect AI assistants to your Hindsight deal data via the Model Context Protocol"
+---
+
+## Model Context Protocol (MCP) Integration
+
+Hindsight exposes its AI agent capabilities through the Model Context Protocol (MCP), allowing AI assistants to directly query your deal data, research competitors, and analyze pipeline metrics.
+
+**Compatible with:** Claude Desktop, Claude Code, ChatGPT, Cursor, Cline, and any MCP-compatible client.
+
+Generate an API key from **Settings → API Keys** in the Hindsight app before getting started.
+
+---
+
+## Setup
+
+<Tabs>
+  <Tab title="Claude">
+    ### One-Click Install (Preferred Method)
+
+    Download and double-click the Hindsight MCP bundle to install directly into Claude Desktop. No config file editing required.
+
+    [Download hindsight.mcpb](https://app.usehindsight.com/hindsight.mcpb)
+
+    When you open the file, Claude Desktop will show an installation dialog where you can review the integration and enter your Hindsight API key.
+
+    <Note>
+      During the beta period, users will have to authenticate using a Hindsight API key on a per user basis.
+    </Note>
+
+    ---
+
+    ### Manual Setup
+
+    If you prefer to configure manually, open your Claude Desktop config file:
+
+    - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+    - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+    ```json
+    {
+      "mcpServers": {
+        "hindsight": {
+          "command": "npx",
+          "args": ["-y", "mcp-remote", "https://app.usehindsight.com/api/mcp", "--header", "Authorization: Bearer YOUR_API_KEY"]
+        }
+      }
+    }
+    ```
+
+    Restart Claude Desktop after saving. For more details, see [Anthropic's MCP setup guide](https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop).
+
+    ### Claude Code
+
+    Run this command in your terminal:
+
+    ```bash
+    claude mcp add hindsight --transport http https://app.usehindsight.com/api/mcp \
+      --header "Authorization: Bearer YOUR_API_KEY"
+    ```
+  </Tab>
+
+  <Tab title="OpenAI / ChatGPT">
+    ### ChatGPT Developer Mode
+
+    ChatGPT's MCP support is available in beta via **Developer Mode** on Pro, Plus, Business, Enterprise, and Education accounts.
+
+    **1. Enable Developer Mode**
+
+    Go to **Settings → Apps → Advanced settings → Developer mode** and toggle it on.
+
+    **2. Create a Hindsight app**
+
+    1. Open **ChatGPT Apps settings**
+    2. Click **Create app** (only visible when Developer Mode is enabled)
+    3. Enter `https://app.usehindsight.com/api/mcp` as the MCP server URL
+    4. Set authentication to your API key
+
+    The app will appear under **Drafts** in your app settings.
+
+    **3. Use Hindsight in a conversation**
+
+    Select **Developer Mode** from the composer's Plus menu, choose the Hindsight app, and start your conversation. For best results, be explicit about which tool to use:
+
+    > "Use the Hindsight app's `research_deals` tool to find why we lost deals to Salesforce last quarter."
+
+    For more details, see [OpenAI's Developer Mode documentation](https://developers.openai.com/api/docs/guides/developer-mode).
+  </Tab>
+
+  <Tab title="Direct API">
+    ### HTTP / JSON-RPC
+
+    The Hindsight MCP server is a standard HTTP endpoint. Any HTTP client can call it directly using JSON-RPC 2.0.
+
+    **Endpoint:** `https://app.usehindsight.com/api/mcp`
+
+    **Required headers:**
+    ```
+    Authorization: Bearer YOUR_API_KEY
+    Content-Type: application/json
+    Accept: application/json, text/event-stream
+    ```
+
+    **List available tools:**
+    ```bash
+    curl -X POST https://app.usehindsight.com/api/mcp \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -H "Content-Type: application/json" \
+      -H "Accept: application/json, text/event-stream" \
+      -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}'
+    ```
+
+    **Call a tool:**
+    ```bash
+    curl -X POST https://app.usehindsight.com/api/mcp \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -H "Content-Type: application/json" \
+      -H "Accept: application/json, text/event-stream" \
+      -d '{
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "tools/call",
+        "params": {
+          "name": "research_competitive_intel",
+          "arguments": { "question": "Who are our top competitors?" }
+        }
+      }'
+    ```
+
+    This approach works with any language or framework — no MCP client library required.
+  </Tab>
+</Tabs>
+
+---
+
+## Available Tools
+
+### 1. pull_schema
+Fetch the schema of your deal grid — field names, types, and structure. Use this before `create_dataset` to understand what data is available.
+
+---
+
+### 2. create_dataset
+Export your deal grid data as a structured JSON dataset. Returns a `json_id` that you pass to `analyze_deal_data`.
+
+---
+
+### 3. analyze_deal_data
+Analyze quantitative deal data: win rates, trends, counts, and metrics across your pipeline. Requires a `json_id` from `create_dataset`.
+
+**Parameters:**
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `question` | string | The data analysis question to answer |
+| `json_id` | string | Dataset ID returned by `create_dataset` |
+
+**Example flow:**
+```
+1. Call pull_schema → understand your deal fields
+2. Call create_dataset → get a json_id
+3. Call analyze_deal_data with your question + json_id
+```
+
+**Example questions:**
+- "What is our win rate by industry?"
+- "Which competitors do we lose to most often?"
+- "What's the average deal size for closed won deals in Q1?"
+
+---
+
+### 4. research_competitive_intel
+Research competitive intelligence using Hindsight's knowledge base and live web search. Handles multi-step research internally.
+
+**Parameters:**
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `question` | string | The competitive intelligence question to research |
+
+**Example questions:**
+- "What are Salesforce's main weaknesses based on our deals?"
+- "How should we position against HubSpot?"
+- "What recent news is there about Gong?"
+
+---
+
+### 5. research_deals
+Research qualitative insights from deal transcripts, emails, call recordings, and CRM notes. Handles multi-step document retrieval internally.
+
+**Parameters:**
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `question` | string | The deal research question to investigate |
+
+**Example questions:**
+- "Why are we losing deals to Competitor X?"
+- "What objections come up most often in enterprise deals?"
+- "What did prospects say about our pricing in lost deals last quarter?"
+
+---
+
+## How It Works
+
+Each tool delegates to Hindsight's AI agent pipeline. When you call `research_competitive_intel` or `research_deals`, Hindsight runs a full multi-step agent behind the scenes — searching documents, querying your knowledge base, and synthesizing a response — and returns the final answer.
+
+For `analyze_deal_data`, Hindsight runs structured queries against your exported deal grid and computes the metrics you ask for.
+
+---
+
+## Authentication
+
+MCP requests authenticate using your Hindsight API key as a Bearer token. Keys are scoped to your organization — all tools operate on your org's data only.
+
+Generate an API key from **Settings → API Keys** in the Hindsight app.

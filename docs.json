@@ -59,6 +59,10 @@
             "pages": ["integrations/api"]
           },
           {
+            "group": "MCP",
+            "pages": ["integrations/mcp"]
+          },
+          {
             "group": "Endpoints",
             "pages": [
               "api-reference/responses",
