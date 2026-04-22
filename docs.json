@@ -20,14 +20,15 @@
           {
             "group": "Guides",
             "pages": [
+              "guides/deal-analysis",
+              "guides/win-loss-interviews",
+              "guides/competitive-enablement",
               "guides/recipes", 
               "guides/prompting",
-              "guides/deal-analysis",
               "guides/knowledge-base-setup",
               "guides/creating-assets",
               "guides/monitoring-competitors",
-              "guides/slack-ai-agent",
-              "guides/win-loss-interviews"
+              "guides/slack-ai-agent"
             ]
           },
           {
