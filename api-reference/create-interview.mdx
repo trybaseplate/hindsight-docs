@@ -1,0 +1,258 @@
+---
+title: 'Create Interview Request'
+openapi: 'POST /interviews'
+---
+
+<Accordion title="Copy for AI context">
+```text
+POST https://app.usehindsight.com/api/v1/interviews
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+
+Request body:
+{
+  "contact_email": "jane@acme.com",          // required
+  "contact_name": "Jane Smith",              // optional — creates/updates contact
+  "contact_context": {                       // optional — stored as contact notes, used by Paige
+    "title": "VP of Engineering",
+    "use_case": "Evaluating us for CI/CD automation"
+  },
+  "sequence_id": "seq_abc123",              // required if no interview_type_id
+  "interview_type_id": "type_abc123",       // required if no sequence_id
+  "deal_id": "deal_xyz789",                 // optional
+  "objective": "Understand loss to Competitor X"  // optional
+}
+
+201 Response:
+{
+  "interview_request_id": 4821,
+  "contact_id": "contact_abc123",
+  "deal_id": "deal_xyz789",
+  "survey_url": "https://app.usehindsight.com/survey?token=tok_xyz",
+  "survey_token": "tok_xyz",
+  "status": "sent"   // "sent" = enrolled in sequence | "created" = link only
+}
+
+Rate limits: 60 req/min (Essentials), 300 req/min (Growth), 1,000 req/min (Enterprise)
+```
+</Accordion>
+
+## Overview
+
+Use this endpoint to programmatically trigger win-loss interviews for your contacts. Two paths:
+
+- **Sequence path** (`sequence_id`) — Hindsight enrolls the contact and Paige handles email outreach automatically. The interview type, email template, and scheduling logic are inherited from the sequence.
+- **Link-only path** (`interview_type_id`) — Creates the interview request and returns a survey link. No email is sent; you control delivery.
+
+Contacts are upserted by email — if the contact already exists in your org, their record is updated with any new name or context you provide.
+
+## Request Parameters
+
+### Required
+
+You must provide either `sequence_id` or `interview_type_id`.
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `contact_email` | string | Email of the contact to interview. The contact is created if they don't exist, or updated if they do. |
+| `sequence_id` | string | ID of the outreach sequence to enroll the contact in. Paige sends the interview email automatically. |
+| `interview_type_id` | string | ID of the interview type (e.g. win-loss buyer, NPS). Use this for link-only requests where you handle delivery yourself. |
+
+### Optional
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `contact_name` | string | Full name of the contact. Used to create or update the contact record. |
+| `contact_context` | string \| object | Background context about the contact, passed to Paige when conducting the interview. Accepts a plain string or a JSON object (serialized automatically). Stored in the contact's notes and included in every interview prompt. |
+| `deal_id` | string | Hindsight deal ID to associate the interview with. |
+| `objective` | string | Custom goal for this interview. Paige uses this as additional context (e.g. "Understand why we lost to Competitor X on pricing"). |
+
+### Finding IDs
+
+- **Sequence IDs** — Settings → Sequences in your Hindsight dashboard
+- **Interview type IDs** — Settings → Interview Types
+- **Deal IDs** — Use the [Get Deals](/api-reference/get-deals) endpoint or find them in the dashboard URL
+
+## Contact Context
+
+The `contact_context` field is the primary way to give Paige background on who she's interviewing. This context is stored in the contact's notes field and used in every interview prompt for that contact.
+
+Pass anything relevant — role, company details, the deal they were involved in, why you're reaching out, or any other signal that helps Paige have a more informed conversation:
+
+```json
+{
+  "contact_context": {
+    "title": "VP of Engineering",
+    "company_size": "500-1000 employees",
+    "use_case": "Evaluating us for CI/CD pipeline automation",
+    "evaluation_stage": "Completed a 30-day POC",
+    "primary_concern": "Integration complexity with existing toolchain"
+  }
+}
+```
+
+You can also pass a plain string:
+
+```json
+{
+  "contact_context": "Jane led the technical evaluation at Acme. She was enthusiastic about the product but raised concerns about our Jira integration."
+}
+```
+
+## Response
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `interview_request_id` | integer | ID of the created interview request. |
+| `contact_id` | string | ID of the upserted contact record. |
+| `deal_id` | string \| null | Deal ID from the request, or null. |
+| `survey_url` | string \| null | Direct link to the survey. Share this if you're handling delivery yourself. |
+| `survey_token` | string \| null | Raw token used in the survey URL. |
+| `status` | `"created"` \| `"sent"` | `sent` when enrolled in a sequence; `created` for link-only requests. |
+
+## Rate Limits
+
+| Plan | Requests per Minute |
+|------|-------------------|
+| Essentials | 60 |
+| Growth | 300 |
+| Enterprise | 1,000 |
+
+Rate limit headers are included on every response:
+
+| Header | Description |
+|--------|-------------|
+| `X-RateLimit-Limit` | Your plan's request limit per window |
+| `X-RateLimit-Remaining` | Requests remaining in the current window |
+| `X-RateLimit-Reset` | Unix timestamp when the window resets |
+
+## Examples
+
+<RequestExample>
+
+```bash Sequence enrollment (with outreach)
+curl -X POST "https://app.usehindsight.com/api/v1/interviews" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "contact_email": "jane@acme.com",
+    "contact_name": "Jane Smith",
+    "contact_context": {
+      "title": "VP of Engineering",
+      "use_case": "Evaluating us for CI/CD pipeline automation"
+    },
+    "sequence_id": "seq_abc123",
+    "deal_id": "deal_xyz789"
+  }'
+```
+
+```bash Link-only (no outreach)
+curl -X POST "https://app.usehindsight.com/api/v1/interviews" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "contact_email": "jane@acme.com",
+    "contact_name": "Jane Smith",
+    "interview_type_id": "type_abc123",
+    "objective": "Understand why we lost this deal to Competitor X"
+  }'
+```
+
+```javascript Node.js - Trigger interview on deal close
+const response = await fetch('https://app.usehindsight.com/api/v1/interviews', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${process.env.HINDSIGHT_API_KEY}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    contact_email: deal.buyer_email,
+    contact_name: deal.buyer_name,
+    contact_context: {
+      title: deal.buyer_title,
+      company: deal.account_name,
+      deal_value: deal.amount,
+      close_reason: deal.close_reason,
+    },
+    sequence_id: process.env.HINDSIGHT_WL_SEQUENCE_ID,
+    deal_id: deal.hindsight_id,
+    objective: `Win-loss analysis for ${deal.name}`,
+  }),
+});
+
+const { interview_request_id, survey_url, status } = await response.json();
+console.log(`Interview ${status}: ${survey_url}`);
+```
+
+```python Python - Bulk trigger from CRM export
+import requests
+import os
+
+API_KEY = os.environ['HINDSIGHT_API_KEY']
+SEQUENCE_ID = os.environ['HINDSIGHT_WL_SEQUENCE_ID']
+
+def create_interview(contact_email, contact_name, deal_id=None, context=None):
+    response = requests.post(
+        'https://app.usehindsight.com/api/v1/interviews',
+        headers={'Authorization': f'Bearer {API_KEY}'},
+        json={
+            'contact_email': contact_email,
+            'contact_name': contact_name,
+            'contact_context': context,
+            'sequence_id': SEQUENCE_ID,
+            'deal_id': deal_id,
+        }
+    )
+    response.raise_for_status()
+    return response.json()
+
+# Trigger interviews for recently closed deals
+closed_deals = fetch_closed_deals_from_crm()
+
+for deal in closed_deals:
+    result = create_interview(
+        contact_email=deal['buyer_email'],
+        contact_name=deal['buyer_name'],
+        deal_id=deal['hindsight_id'],
+        context={
+            'title': deal['buyer_title'],
+            'company': deal['account_name'],
+            'deal_size': deal['amount'],
+        }
+    )
+    print(f"{deal['name']}: {result['status']} — {result['survey_url']}")
+```
+
+</RequestExample>
+
+## Common Patterns
+
+### Trigger on CRM deal close
+
+Connect Hindsight to your CRM via webhook or scheduled job to automatically send win-loss interviews whenever a deal closes. Pass the deal context so Paige has background on what was evaluated.
+
+### Manual outreach with custom delivery
+
+Use `interview_type_id` (no `sequence_id`) to get a survey link you can embed in your own email or send via your CRM. This is useful when you want full control over messaging or timing.
+
+### Enriching contact context over time
+
+If you call this endpoint multiple times for the same contact, `contact_context` overwrites the existing notes. To preserve prior context, read the contact's current notes first and merge before sending.
+
+## Error Responses
+
+| Code | Description |
+|------|-------------|
+| `bad_request` | Missing required field, or `sequence_id` / `interview_type_id` / `deal_id` not found in your org. |
+| `unauthorized` | Invalid or missing API key. |
+| `rate_limit_exceeded` | Too many requests. Check `X-RateLimit-Reset` and retry after. |
+| `internal_error` | Failed to create the contact record. |
+
+```json
+{
+  "error": {
+    "code": "bad_request",
+    "message": "sequence_id not found"
+  }
+}
+```

@@ -43,6 +43,8 @@ tags:
     description: Access and export deal data
   - name: Documents
     description: Upload and manage documents
+  - name: Interviews
+    description: Create and manage win-loss interview requests
 
 paths:
   /responses:
@@ -364,6 +366,65 @@ paths:
                 error:
                   code: "not_found"
                   message: "Deal with the specified ID was not found"
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /interviews:
+    post:
+      operationId: createInterview
+      summary: Create an interview request
+      description: |
+        Creates an interview request for a contact. Upserts the contact by email if they don't exist yet.
+        When a `sequence_id` is provided, the contact is enrolled in the sequence and Hindsight's
+        scheduling agent handles outreach automatically. When only `interview_type_id` is provided,
+        the request is created and the survey link is returned without any outreach.
+      tags:
+        - Interviews
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInterviewRequest'
+            examples:
+              withSequence:
+                summary: Enroll in a sequence (with outreach)
+                value:
+                  contact_email: "jane@acme.com"
+                  contact_name: "Jane Smith"
+                  contact_context:
+                    title: "VP of Engineering"
+                    company: "Acme Corp"
+                    use_case: "Evaluating us for CI/CD pipeline automation"
+                  sequence_id: "seq_abc123"
+                  deal_id: "deal_xyz789"
+              linkOnly:
+                summary: Create survey link only (no outreach)
+                value:
+                  contact_email: "jane@acme.com"
+                  contact_name: "Jane Smith"
+                  interview_type_id: "type_abc123"
+                  objective: "Understand why we lost this deal to Competitor X"
+      responses:
+        '201':
+          description: Interview request created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateInterviewResponse'
+              example:
+                interview_request_id: 4821
+                contact_id: "contact_abc123"
+                deal_id: "deal_xyz789"
+                survey_url: "https://app.usehindsight.com/survey?token=tok_xyz"
+                survey_token: "tok_xyz"
+                status: "sent"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         '429':
           $ref: '#/components/responses/RateLimitExceeded'
         '500':
@@ -853,6 +914,91 @@ components:
               type: object
               description: Additional error details
               additionalProperties: true
+
+    CreateInterviewRequest:
+      type: object
+      required: []
+      properties:
+        contact_email:
+          type: string
+          format: email
+          description: Email address of the contact. Required. The contact is upserted — created if new, updated if existing.
+          example: "jane@acme.com"
+        contact_name:
+          type: string
+          description: Full name of the contact. Used to create or update the contact record.
+          example: "Jane Smith"
+        contact_context:
+          oneOf:
+            - type: string
+            - type: object
+              additionalProperties: true
+          description: |
+            Unstructured context about this contact — passed to Paige as background information when conducting
+            the interview. Can be a plain string or a JSON object; objects are serialized automatically.
+            Stored in the contact's notes field and included in every interview prompt for this contact.
+          example:
+            title: "VP of Engineering"
+            use_case: "Evaluating us for CI/CD pipeline automation"
+            evaluation_stage: "POC completed"
+        interview_type_id:
+          type: string
+          description: |
+            ID of the interview type to use (e.g. win-loss buyer, NPS). Required if `sequence_id` is not provided.
+            Find interview type IDs in your Hindsight dashboard under Settings → Interview Types.
+          example: "type_abc123"
+        sequence_id:
+          type: string
+          description: |
+            ID of an outreach sequence. When provided, the contact is enrolled in the sequence and
+            Hindsight's scheduling agent handles email delivery automatically. The interview type is
+            inherited from the sequence. Required if `interview_type_id` is not provided.
+          example: "seq_abc123"
+        deal_id:
+          type: string
+          description: |
+            Hindsight deal ID to associate this interview with. The deal must belong to your organization.
+          example: "deal_xyz789"
+        objective:
+          type: string
+          description: |
+            Custom goal for this specific interview. Paige uses this as additional context when
+            conducting the interview (e.g. "Understand why we lost to Competitor X on pricing").
+          example: "Understand why we lost this deal to Competitor X"
+
+    CreateInterviewResponse:
+      type: object
+      properties:
+        interview_request_id:
+          type: integer
+          description: ID of the created interview request.
+          example: 4821
+        contact_id:
+          type: string
+          description: ID of the upserted contact record.
+          example: "contact_abc123"
+        deal_id:
+          type: string
+          nullable: true
+          description: Deal ID passed in the request, or null.
+          example: "deal_xyz789"
+        survey_url:
+          type: string
+          nullable: true
+          description: Direct link to the survey for this contact. Share this link manually if not using a sequence.
+          example: "https://app.usehindsight.com/survey?token=tok_xyz"
+        survey_token:
+          type: string
+          nullable: true
+          description: Raw token used in the survey URL.
+          example: "tok_xyz"
+        status:
+          type: string
+          enum: [created, sent]
+          description: |
+            `created` — interview request created, no outreach sent (link-only path).
+            `sent` — contact enrolled in sequence, outreach queued.
+          example: "sent"
 
   responses:
     BadRequest:
