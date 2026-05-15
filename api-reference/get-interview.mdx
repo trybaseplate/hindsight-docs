@@ -1,0 +1,181 @@
+---
+title: 'Get Interview Status & Transcript'
+openapi: 'GET /interviews/{id}'
+---
+
+<Accordion title="Copy for AI context">
+```text
+GET https://app.usehindsight.com/api/v1/interviews/{id}
+Authorization: Bearer YOUR_API_KEY
+
+Path parameter:
+  id: integer  — the interview_request_id returned from POST /interviews
+
+200 Response:
+{
+  "interview_request_id": 4821,
+  "contact_id": "contact_abc123",
+  "deal_id": "deal_xyz789",
+  "survey_url": "https://app.usehindsight.com/survey?token=tok_xyz",
+  "status": "created" | "sent" | "completed",
+  "objective": "string | null",
+  "email_sent_at": "2026-05-15T10:00:00Z | null",
+  "created_at": "2026-05-15T09:00:00Z",
+  "transcript": {               // null unless status = "completed"
+    "document_id": "doc_abc123",
+    "content": "**Paige:** ...\n\n**Jane:** ...",
+    "created_at": "2026-05-16T14:30:00Z"
+  } | null
+}
+
+Rate limits: 60 req/min (Essentials), 300 req/min (Growth), 1,000 req/min (Enterprise)
+```
+</Accordion>
+
+## Overview
+
+Returns the current status of an interview request and, once completed, its full transcript.
+
+Poll this endpoint to check whether a contact has responded. When `status` is `"completed"`, the `transcript.content` field contains the full conversation in markdown.
+
+## Status Values
+
+| Status | Meaning |
+|--------|---------|
+| `created` | Request exists but no outreach email has been sent yet. |
+| `sent` | Email sent; waiting for the contact to complete the interview. |
+| `completed` | Interview finished. `transcript` is populated. |
+
+## Path Parameter
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `id` | integer | The `interview_request_id` returned when the interview was created via `POST /interviews`. |
+
+## Response
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `interview_request_id` | integer | ID of the interview request. |
+| `contact_id` | string \| null | ID of the contact being interviewed. |
+| `deal_id` | string \| null | Associated deal ID, or null. |
+| `survey_url` | string \| null | Direct link to the survey for this contact. |
+| `status` | string | `created`, `sent`, or `completed`. |
+| `objective` | string \| null | Interview-specific goal, if set. |
+| `email_sent_at` | string \| null | ISO timestamp when the outreach email was sent. |
+| `created_at` | string | ISO timestamp when the request was created. |
+| `transcript` | object \| null | Populated when `status` is `"completed"`. See below. |
+
+### Transcript object
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `document_id` | string | ID of the document storing the transcript. |
+| `content` | string | Full interview conversation in markdown. Speaker turns are formatted as `**Name:** message`. |
+| `created_at` | string | ISO timestamp when the transcript was saved. |
+
+## Polling
+
+There is no webhook support yet — poll this endpoint to detect completion. A reasonable cadence for most use cases is every 5–15 minutes after sending.
+
+```
+POST /interviews         → store interview_request_id
+GET  /interviews/{id}   → poll until status = "completed"
+                        → read transcript.content
+```
+
+Avoid polling faster than once per minute — completions typically happen hours after the email is sent.
+
+## Rate Limits
+
+| Plan | Requests per Minute |
+|------|-------------------|
+| Essentials | 60 |
+| Growth | 300 |
+| Enterprise | 1,000 |
+
+## Examples
+
+<RequestExample>
+
+```bash Check interview status
+curl "https://app.usehindsight.com/api/v1/interviews/4821" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+```javascript Node.js - Poll until completed
+const API_KEY = process.env.HINDSIGHT_API_KEY;
+
+async function waitForInterview(interviewRequestId, { intervalMs = 5 * 60 * 1000, maxAttempts = 48 } = {}) {
+  for (let i = 0; i < maxAttempts; i++) {
+    const res = await fetch(`https://app.usehindsight.com/api/v1/interviews/${interviewRequestId}`, {
+      headers: { 'Authorization': `Bearer ${API_KEY}` },
+    });
+    const data = await res.json();
+
+    if (data.status === 'completed') {
+      return data.transcript;
+    }
+
+    console.log(`[${i + 1}/${maxAttempts}] Status: ${data.status} — checking again in ${intervalMs / 60000}m`);
+    await new Promise((r) => setTimeout(r, intervalMs));
+  }
+
+  return null; // timed out
+}
+
+const transcript = await waitForInterview(4821);
+if (transcript) {
+  console.log('Interview completed:', transcript.content);
+}
+```
+
+```python Python - Fetch transcript once ready
+import requests
+import time
+
+API_KEY = 'your_api_key_here'
+
+def get_interview(interview_request_id):
+    response = requests.get(
+        f'https://app.usehindsight.com/api/v1/interviews/{interview_request_id}',
+        headers={'Authorization': f'Bearer {API_KEY}'}
+    )
+    response.raise_for_status()
+    return response.json()
+
+def wait_for_completion(interview_request_id, interval_seconds=300, max_attempts=48):
+    for attempt in range(max_attempts):
+        data = get_interview(interview_request_id)
+
+        if data['status'] == 'completed':
+            return data['transcript']
+
+        print(f"[{attempt + 1}/{max_attempts}] Status: {data['status']}")
+        time.sleep(interval_seconds)
+
+    return None  # timed out
+
+transcript = wait_for_completion(4821)
+if transcript:
+    print('Transcript:', transcript['content'])
+```
+
+</RequestExample>
+
+## Error Responses
+
+| Code | Description |
+|------|-------------|
+| `unauthorized` | Invalid or missing API key. |
+| `not_found` | Interview request not found, or it belongs to a different org. |
+| `rate_limit_exceeded` | Too many requests. Check `X-RateLimit-Reset` and retry after. |
+
+```json
+{
+  "error": {
+    "code": "not_found",
+    "message": "Interview request not found"
+  }
+}
+```

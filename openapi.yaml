@@ -431,6 +431,75 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 
   /interviews/{id}:
+    get:
+      operationId: getInterview
+      summary: Get interview status and transcript
+      description: |
+        Returns the current status of an interview request and, once completed, its full transcript.
+
+        Poll this endpoint to check whether a contact has completed their interview.
+        When `status` is `"completed"`, the `transcript` field contains the full conversation content.
+      tags:
+        - Interviews
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: The `interview_request_id` returned when the interview was created.
+          example: 4821
+      responses:
+        '200':
+          description: Interview request found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetInterviewResponse'
+              examples:
+                pending:
+                  summary: Interview sent, awaiting response
+                  value:
+                    interview_request_id: 4821
+                    contact_id: "contact_abc123"
+                    deal_id: "deal_xyz789"
+                    survey_url: "https://app.usehindsight.com/survey?token=tok_xyz"
+                    status: "sent"
+                    objective: "Understand why we lost to Competitor X"
+                    email_sent_at: "2026-05-15T10:00:00Z"
+                    created_at: "2026-05-15T09:00:00Z"
+                    transcript: null
+                completed:
+                  summary: Interview completed
+                  value:
+                    interview_request_id: 4821
+                    contact_id: "contact_abc123"
+                    deal_id: "deal_xyz789"
+                    survey_url: "https://app.usehindsight.com/survey?token=tok_xyz"
+                    status: "completed"
+                    objective: "Understand why we lost to Competitor X"
+                    email_sent_at: "2026-05-15T10:00:00Z"
+                    created_at: "2026-05-15T09:00:00Z"
+                    transcript:
+                      document_id: "doc_abc123"
+                      content: "**Paige:** Thanks for taking the time today...\n\n**Jane:** Happy to help..."
+                      created_at: "2026-05-16T14:30:00Z"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Interview request not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error:
+                  code: "not_found"
+                  message: "Interview request not found"
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
     patch:
       operationId: updateInterview
       summary: Update an interview request
@@ -988,6 +1057,71 @@ components:
               type: object
               description: Additional error details
               additionalProperties: true
+
+    GetInterviewResponse:
+      type: object
+      properties:
+        interview_request_id:
+          type: integer
+          description: ID of the interview request.
+          example: 4821
+        contact_id:
+          type: string
+          nullable: true
+          description: ID of the contact being interviewed.
+          example: "contact_abc123"
+        deal_id:
+          type: string
+          nullable: true
+          description: Associated deal ID, or null.
+          example: "deal_xyz789"
+        survey_url:
+          type: string
+          nullable: true
+          description: Direct link to the survey for this contact.
+          example: "https://app.usehindsight.com/survey?token=tok_xyz"
+        status:
+          type: string
+          enum: [created, sent, completed]
+          description: |
+            `created` — request exists, no email sent yet.
+            `sent` — email sent, awaiting the contact's response.
+            `completed` — interview finished; `transcript` is populated.
+          example: "sent"
+        objective:
+          type: string
+          nullable: true
+          description: The interview-specific goal, if set.
+          example: "Understand why we lost to Competitor X"
+        email_sent_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: ISO timestamp when the outreach email was sent, or null.
+          example: "2026-05-15T10:00:00Z"
+        created_at:
+          type: string
+          format: date-time
+          description: ISO timestamp when the interview request was created.
+          example: "2026-05-15T09:00:00Z"
+        transcript:
+          nullable: true
+          description: Present when `status` is `"completed"`, null otherwise.
+          type: object
+          properties:
+            document_id:
+              type: string
+              description: ID of the document storing the transcript.
+              example: "doc_abc123"
+            content:
+              type: string
+              description: Full interview transcript in markdown format.
+              example: "**Paige:** Thanks for taking the time today...\n\n**Jane:** Happy to help..."
+            created_at:
+              type: string
+              format: date-time
+              description: ISO timestamp when the transcript was saved.
+              example: "2026-05-16T14:30:00Z"
 
     UpdateInterviewRequest:
       type: object
