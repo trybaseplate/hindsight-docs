@@ -1,0 +1,172 @@
+---
+title: 'Update Interview Request'
+openapi: 'PATCH /interviews/{id}'
+---
+
+<Accordion title="Copy for AI context">
+```text
+PATCH https://app.usehindsight.com/api/v1/interviews/{id}
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+
+Path parameter:
+  id: integer  — the interview_request_id returned from POST /interviews
+
+Request body (at least one field required):
+{
+  "contact_context": { ... } | "string",  // overwrites contact notes
+  "contact_name": "Jane Smith",            // updates contact display name
+  "objective": "string"                    // updates interview-specific goal
+}
+
+200 Response:
+{
+  "interview_request_id": 4821
+}
+
+Rate limits: 60 req/min (Essentials), 300 req/min (Growth), 1,000 req/min (Enterprise)
+```
+</Accordion>
+
+## Overview
+
+Use this endpoint to update context on an interview request after it has been created.
+
+- **`contact_context`** and **`contact_name`** update the contact record linked to the request. Context is stored in the contact's notes field and included in every future interview prompt Paige runs for that contact.
+- **`objective`** updates the interview-specific goal on the request itself, giving Paige a targeted focus for this particular interview.
+
+At least one field must be provided. Fields not included in the request are left unchanged.
+
+## Path Parameter
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `id` | integer | The `interview_request_id` returned when the interview was created via `POST /interviews`. |
+
+## Request Body
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `contact_context` | string \| object | Updated context about the contact. **Overwrites** the existing contact notes — merge manually if you want to preserve prior context. Accepts a plain string or JSON object (serialized automatically). |
+| `contact_name` | string | Updated display name for the contact. |
+| `objective` | string | Updated goal for this specific interview. Paige uses this when generating questions and conducting the conversation. |
+
+<Warning>
+`contact_context` overwrites the contact's existing notes rather than merging. If you want to preserve prior context, read the contact's current notes first and include them in your update.
+</Warning>
+
+## Response
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `interview_request_id` | integer | ID of the updated interview request. |
+
+## Rate Limits
+
+| Plan | Requests per Minute |
+|------|-------------------|
+| Essentials | 60 |
+| Growth | 300 |
+| Enterprise | 1,000 |
+
+## Examples
+
+<RequestExample>
+
+```bash Update contact context
+curl -X PATCH "https://app.usehindsight.com/api/v1/interviews/4821" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "contact_context": {
+      "title": "CTO",
+      "evaluation_notes": "Completed 30-day POC, main concern is pricing"
+    }
+  }'
+```
+
+```bash Update objective only
+curl -X PATCH "https://app.usehindsight.com/api/v1/interviews/4821" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "objective": "Focus on why pricing was a blocker vs. Competitor X"
+  }'
+```
+
+```bash Update all fields
+curl -X PATCH "https://app.usehindsight.com/api/v1/interviews/4821" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "contact_name": "Jane Smith",
+    "contact_context": {
+      "title": "CTO",
+      "evaluation_notes": "Completed POC, flagged pricing and Jira integration"
+    },
+    "objective": "Understand the pricing objection and Competitor X comparison"
+  }'
+```
+
+```javascript Node.js - Update after CRM enrichment
+const interviewRequestId = 4821; // stored from POST /interviews response
+
+await fetch(`https://app.usehindsight.com/api/v1/interviews/${interviewRequestId}`, {
+  method: 'PATCH',
+  headers: {
+    'Authorization': `Bearer ${process.env.HINDSIGHT_API_KEY}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    contact_context: {
+      title: enrichedContact.title,
+      linkedin: enrichedContact.linkedinUrl,
+      evaluation_notes: deal.internalNotes,
+    },
+    objective: `Win-loss: understand loss to ${deal.competitorName}`,
+  }),
+});
+```
+
+```python Python - Enrich context before interview sends
+import requests
+
+def update_interview_context(interview_request_id, contact_data, objective=None):
+    payload = {
+        'contact_context': {
+            'title': contact_data.get('title'),
+            'seniority': contact_data.get('seniority'),
+            'notes': contact_data.get('notes'),
+        }
+    }
+    if objective:
+        payload['objective'] = objective
+
+    response = requests.patch(
+        f'https://app.usehindsight.com/api/v1/interviews/{interview_request_id}',
+        headers={'Authorization': f'Bearer {API_KEY}'},
+        json=payload
+    )
+    response.raise_for_status()
+    return response.json()
+```
+
+</RequestExample>
+
+## Error Responses
+
+| Code | Description |
+|------|-------------|
+| `bad_request` | No fields provided, or invalid JSON. |
+| `unauthorized` | Invalid or missing API key. |
+| `not_found` | Interview request not found, or it belongs to a different org. |
+| `rate_limit_exceeded` | Too many requests. Check `X-RateLimit-Reset` and retry after. |
+
+```json
+{
+  "error": {
+    "code": "not_found",
+    "message": "Interview request not found"
+  }
+}
+```

@@ -430,6 +430,80 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
+  /interviews/{id}:
+    patch:
+      operationId: updateInterview
+      summary: Update an interview request
+      description: |
+        Updates context on an existing interview request. Accepts any combination of
+        `contact_context`, `contact_name`, and `objective`. At least one field must be provided.
+
+        - `contact_context` and `contact_name` update the contact record associated with the request.
+          Context is stored in the contact's notes field and used by Paige in every future interview prompt for that contact.
+        - `objective` updates the interview-specific goal on the request itself.
+      tags:
+        - Interviews
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: The `interview_request_id` returned when the interview was created.
+          example: 4821
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateInterviewRequest'
+            examples:
+              updateContext:
+                summary: Update contact context
+                value:
+                  contact_context:
+                    title: "CTO"
+                    evaluation_notes: "Completed POC, main concern is pricing"
+              updateObjective:
+                summary: Update interview objective
+                value:
+                  objective: "Focus on why pricing was a blocker vs. Competitor X"
+              updateAll:
+                summary: Update everything
+                value:
+                  contact_name: "Jane Smith"
+                  contact_context:
+                    title: "CTO"
+                    evaluation_notes: "Completed POC"
+                  objective: "Focus on pricing concerns"
+      responses:
+        '200':
+          description: Interview request updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateInterviewResponse'
+              example:
+                interview_request_id: 4821
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Interview request not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error:
+                  code: "not_found"
+                  message: "Interview request not found"
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
 components:
   securitySchemes:
     bearerAuth:
@@ -914,6 +988,37 @@ components:
               type: object
               description: Additional error details
               additionalProperties: true
+
+    UpdateInterviewRequest:
+      type: object
+      properties:
+        contact_context:
+          oneOf:
+            - type: string
+            - type: object
+              additionalProperties: true
+          description: |
+            Updated context about the contact. Overwrites the existing contact notes.
+            Used by Paige as background in every future interview prompt for this contact.
+          example:
+            title: "CTO"
+            evaluation_notes: "Completed 30-day POC, main concern is pricing"
+        contact_name:
+          type: string
+          description: Updated display name for the contact.
+          example: "Jane Smith"
+        objective:
+          type: string
+          description: Updated goal for this specific interview.
+          example: "Focus on why pricing was a blocker vs. Competitor X"
+
+    UpdateInterviewResponse:
+      type: object
+      properties:
+        interview_request_id:
+          type: integer
+          description: ID of the updated interview request.
+          example: 4821
 
     CreateInterviewRequest:
       type: object

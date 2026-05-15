@@ -70,7 +70,8 @@
               "api-reference/export-deals",
               "api-reference/upload-library-document",
               "api-reference/upload-deal-document",
-              "api-reference/create-interview"
+              "api-reference/create-interview",
+              "api-reference/update-interview"
             ]
           }
         ]
