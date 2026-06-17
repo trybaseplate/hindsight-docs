@@ -63,13 +63,28 @@
             "pages": ["integrations/mcp"]
           },
           {
-            "group": "Endpoints",
+            "group": "AI Responses",
             "pages": [
-              "api-reference/responses",
+              "api-reference/responses"
+            ]
+          },
+          {
+            "group": "Deals",
+            "pages": [
               "api-reference/get-deals",
-              "api-reference/export-deals",
+              "api-reference/export-deals"
+            ]
+          },
+          {
+            "group": "Document Uploads",
+            "pages": [
               "api-reference/upload-library-document",
-              "api-reference/upload-deal-document",
+              "api-reference/upload-deal-document"
+            ]
+          },
+          {
+            "group": "Interviews",
+            "pages": [
               "api-reference/create-interview",
               "api-reference/get-interview",
               "api-reference/update-interview"
