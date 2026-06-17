@@ -1,50 +1,55 @@
 ---
-title: "Quickstart: Competitive Intelligence"
-description: "Get up and running with Hindsight CI in four steps"
+title: "Quickstart: Competitive Enablement"
+description: "Stand up your competitive enablement agent in four steps"
 ---
 
-Get up and running with Hindsight CI in four steps. By the end, your team will have competitive content grounded in real deal data and a live Slack assistant they can query mid-deal.
+Get your competitive enablement agent live in four steps. By the end, your reps can tag **@Hindsight** in Slack and get answers grounded in your content and tracked competitor pages — without you maintaining a single battlecard by hand.
+
+Everything below happens in the [setup flow](https://app.usehindsight.com/competitors/setup). It saves as you go, so you can stop and come back anytime.
 
 <Steps>
-  <Step icon="crosshairs-simple" title="Add Your Competitors">
-    Your [competitors](https://app.usehindsight.com/competitors) are added during setup. Hindsight sets up a default "Monitoring" workflow for each competitor, which you can customize or turn off. This workflow automatically tracks competitor changes across the web, G2, news, and job postings — so you get a steady stream of updates without lifting a finger.
+  <Step icon="crosshairs-simple" title="Add your competitors">
+    Hindsight pre-fills the grid with **suggested competitors from your market**, so you usually start with a list already in front of you.
+
+    Review the suggestions, then:
+    - **Edit or remove** any that don't fit
+    - **Add competitors** manually — enter a name or website and Hindsight enriches the logo and description automatically
+    - **Import a CSV** (name, website, category) to add many at once
+    - Optionally set a **category** so reps still get guidance for competitors without a named card
+
+    Keep whatever's in the grid — those become your tracked competitors when you continue.
   </Step>
-  
-  <Step icon="sparkle" title="Run Your First Recipe">
-    With competitors added, the fastest way to see Hindsight's value is to run a recipe from the [chat](https://app.usehindsight.com/chat).
-    
-    1. Go to **Chat** in Hindsight
-    2. You'll see the "Getting Started - Battlecard Recipe"
-    3. Fill out the competitor name
-    4. Run it and review the output
-    
-    **Save pages to your intel library.** If the agent surfaces a URL you haven't tracked yet — a competitor's pricing page, a G2 profile, a recent blog post — you can save it directly to your [intel library](https://app.usehindsight.com/intel) from the chat.
-    
-    **Save assets to your library (optional).** If the output looks good, save it. Click **Save to Library** in the chat and tag it with the competitor. Title it specifically so reps know exactly when to use it.
+
+  <Step icon="cloud-arrow-up" title="Upload files and choose pages to track">
+    For each competitor, give the agent something to ground its answers in:
+
+    - **Upload your content** — battlecards, objection handling, one-pagers, decks. Connect **Google Drive, Notion, or Confluence**, or upload files directly. The agent draws from your library first, so the more you add, the better day-one answers are.
+    - **Choose web pages to track** — pick the pages Hindsight watches for changes (pricing, changelog, blog, G2). It scrapes them into your intel library and keeps them current automatically.
+    - **Add URL filters** (optional) — restrict the agent's web research to authoritative sources like their docs or pricing page, keeping answers grounded.
+
+    Files about your own company — playbook, messaging, ICP — go under **"You"**.
   </Step>
-  
-  <Step icon="cloud-arrow-up" title="Upload Your Existing Content">
-    If your team already has competitive content — battlecards, objection handling docs, one-pagers — bring it in now.
-    
-    Go to [Assets](https://app.usehindsight.com/assets) and connect your integration (Google Drive, Notion, or Confluence), or upload files directly. Tag each file with the relevant competitor. Files about your own company — your playbook, your messaging, your ICP — go under **"You"**.
-    
-    This seeds your knowledge base immediately. The AI assistant draws from your asset library first when answering rep questions, so the more complete it is on day one, the better the answers from the start.
-  </Step>
-  
-  <Step icon="slack" title="Connect Slack and Test Your First Question">
-    Hindsight works best when it meets reps where they already are.
-    
-    **To connect:**
-    1. Add the Hindsight Slack app to your workspace
-    2. Type `@Hindsight` in any channel and confirm the invite
-    
-    Once connected, test it. Ask a question a rep would actually ask mid-deal:
-    
+
+  <Step icon="sparkle" title="Add agent instructions">
+    Continue to the agent step, where you can test a real question against a **live Slack simulation** — ask exactly what a rep would mid-deal:
+
     > *@Hindsight how do we beat [Competitor X] in an enterprise deal?*
-    
-    > *@Hindsight what objections come up most against [Competitor Y]?*
-    
-    The answer will be grounded in your asset library and deal data. If the answer is thin, that's signal — go back to Step 2 and build out more content for that competitor.
+
+    Then shape how the agent responds:
+    - **Custom instructions** — tone, positioning rules, things to always (or never) say, so the agent stays on message
+    - **Notifications** — route feedback and answer activity to the right Slack channel or people
+
+    If an answer looks thin, that's signal — go back and add more content for that competitor.
+  </Step>
+
+  <Step icon="rocket" title="Deploy">
+    Put the agent where your reps already work:
+
+    - **Connect Slack** from the setup screen, then invite Hindsight to a channel like **#compete**
+    - Reps tag **@Hindsight** in any channel — or DM it directly — to get an answer grounded in your library and tracked pages
+    - **MCP endpoint** (optional) — use the same agent inside Claude, ChatGPT, or any other AI tool. See the [MCP docs](https://docs.usehindsight.com/integrations/mcp).
+
+    That's it — your competitive enablement agent is live.
   </Step>
 </Steps>
 
