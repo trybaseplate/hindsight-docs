@@ -685,10 +685,10 @@ components:
           nullable: true
           description: Previous deal stage ID
           example: "qualification"
-        proposal_due:
+        close_date:
           type: string
           format: date
-          description: Expected or actual close date
+          description: Expected or actual close date (internal field name: proposal_due)
           example: "2026-03-15"
         created_at:
           type: string

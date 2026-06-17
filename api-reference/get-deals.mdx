@@ -55,7 +55,7 @@ Query Parameters:
     "amount": 50000,
     "status_id": "negotiation",
     "previous_status_id": "qualification",
-    "proposal_due": "2026-03-15",
+    "close_date": "2026-03-15",
     "created_at": "2026-01-10T12:00:00Z",
     "owner_id": "user_abc",
     "salesforce_id": "006xxxxxxxxxxxx",
@@ -126,9 +126,13 @@ Limit returned data to only the fields you need to reduce response size and impr
 
 **Example:**
 ```
-GET /deals?columns=name,amount,deal_status,proposal_due,owner_id
+GET /deals?columns=name,amount,status_id,close_date,owner_id
 GET /deals?columns=*  # All columns (default)
 ```
+
+<Note>
+A set of internal columns is always omitted from the response, even when you request `*` or name them explicitly: full-text search vectors, sync bookkeeping, sharing configuration, and raw aggregate blobs (e.g. `fts`, `joined_fts`, `keywords`, `sync_run_id`, `client_id`, `org_sharing_enabled`, `processing_in_progress`). The `close_date` column is returned under that name (it maps to the internal `proposal_due` field); you may request it as either `close_date` or `proposal_due`.
+</Note>
 
 For a complete list of available columns (standard and dynamic), see the [Available Columns](/api-reference/export-deals#available-columns) section in the Bulk Export Deals documentation.
 
@@ -233,7 +237,7 @@ Filters for deal analysis scores (range queries):
 
 **Available sort columns:**
 - `created_at` - Creation date
-- `proposal_due` - Expected/actual close date
+- `close_date` - Expected/actual close date
 - `amount` - Deal value
 - `name` - Deal name
 - `wl_product_fit_score` - Product fit score
@@ -247,7 +251,7 @@ Filters for deal analysis scores (range queries):
 
 **Example:**
 ```
-GET /deals?sort=proposal_due&sort_order=asc
+GET /deals?sort=close_date&sort_order=asc
 GET /deals?sort=amount&sort_order=desc
 ```
 
@@ -265,7 +269,7 @@ Returns an array of deal objects with all requested fields:
     "amount": 50000,
     "status_id": "negotiation",
     "previous_status_id": "qualification",
-    "proposal_due": "2026-03-15",
+    "close_date": "2026-03-15",
     "created_at": "2026-01-10T12:00:00Z",
     "owner_id": "user_abc",
     "salesforce_id": "006xxxxxxxxxxxx",
