@@ -1,0 +1,79 @@
+---
+title: "MCP 2.0"
+description: "OAuth sign-in, direct tool calls, and the first stable release of the Hindsight MCP server"
+date: '2026-07-01'
+version: '2.0.2'
+---
+
+import { New, Improved, Fix, Preview } from '/snippets/release-tag.mdx';
+
+Hindsight MCP 2.0 is the **first stable release** of our Model Context Protocol server. It moves authentication to OAuth, replaces the old single-agent entry point with direct tool calls, and ships a round of reliability fixes.
+
+<Warning>
+  **This is a breaking change.** Connections built against the pre-2.0 server need to be reconnected. The upside: 2.0 is now our stable contract — tool names, auth, and behavior won't shift underneath you the way the preview server could. See [What you need to do](#what-you-need-to-do) below.
+</Warning>
+
+---
+
+## OAuth is now the primary sign-in
+
+<Improved category="Authentication" />
+
+The MCP server now authenticates with **OAuth** as the primary flow. When you install the [Hindsight connector](https://app.usehindsight.com/hindsight.mcpb), Claude opens your browser, you sign in to Hindsight, and you pick the workspace to use — no copying API keys into a config file.
+
+**What changed under the hood:** access is granted through Clerk-issued OAuth tokens, verified per request, with automatic token refresh. The server advertises an OAuth-protected-resource endpoint so compatible clients can discover and complete the sign-in flow on their own.
+
+**What it means for you:**
+- **Per-user access, not a shared key.** Each person signs in as themselves, and access is scoped to the workspace they select — better security and cleaner usage attribution.
+- **Simpler setup.** The one-click connector handles auth end-to-end; there's nothing to paste or rotate.
+- **API keys still work** for manual/headless setups. Bearer-key configs (`Authorization: Bearer YOUR_API_KEY`) remain supported as a fallback — useful for servers and CI. See the [MCP setup guide](/integrations/mcp).
+
+---
+
+## Direct tool calls
+
+<Improved category="Developer Tools" />
+
+The biggest architectural change: the server now exposes Hindsight's capabilities as **individual tools your assistant calls directly**, instead of routing everything through a single orchestrating agent that spun up sub-agents behind the scenes.
+
+Your assistant now calls focused tools like `fetch_hindsight_context`, `select_deal`, `get_deal`, `search_deal_documents`, `create_dataset`, and `analyze_dealgrid_subset` itself — and chains them as it sees fit.
+
+**What it means for you:**
+- **Faster responses.** Skipping the extra agent-orchestration layer cuts latency — simple questions don't pay for a full sub-agent spin-up.
+- **Fine-grained control.** You can see exactly which tool runs at each step, approve or deny individual calls, and disable tools you don't want exposed. Nothing happens inside an opaque agent loop.
+- **Better composability.** Your own model decides how to combine Hindsight's tools with everything else it can reach, which is what makes the server a clean building block for custom agents and skills.
+
+<Note>
+  The canonical tool list is generated from the live server. For the current surface and how the tools fit together, see the [Platform Overview](/overview#tools-available) and [MCP docs](/integrations/mcp).
+</Note>
+
+---
+
+## Fixes & reliability
+
+<Fix category="Developer Tools" />
+
+- **Cross-origin support** — added CORS handling (including preflight `OPTIONS`) so browser-based clients like Claude and ChatGPT on the web connect cleanly.
+- **OAuth resource resolution** — the protected-resource URL is now derived from the deployment's site URL, fixing discovery in production.
+- **Tool-result parsing** — more robust extraction of result summaries so responses render reliably across clients.
+- **Tool-call rendering** — corrected how in-progress tool calls display during a response.
+
+---
+
+## What you need to do
+
+If you connected to the preview server, reconnect against 2.0:
+
+1. **Reinstall the connector** — download the latest [hindsight.mcpb](https://app.usehindsight.com/hindsight.mcpb) and install it in Claude. You'll be prompted to sign in with OAuth and select your workspace.
+2. **Or update your manual config** to point at `https://app.usehindsight.com/api/mcp`. API-key Bearer auth still works for manual setups.
+3. **Re-check tool permissions** in your client — with direct tool calls, you control which tools are enabled.
+
+Full instructions live in the [MCP setup guide](/integrations/mcp).
+
+---
+
+## Coming soon
+
+<Preview category="Developer Tools" />
+
+**Web MCP as an official Claude connector.** We're working with Anthropic to offer Hindsight as a one-click connector inside Claude on the web — no local bundle to install. The OAuth flow in this release is the groundwork for it.

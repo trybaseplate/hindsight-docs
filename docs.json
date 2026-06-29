@@ -11,13 +11,17 @@
   "navigation": {
     "groups": [
       {
+        "group": "Overview",
+        "pages": ["overview"]
+      },
+      {
         "group": "Get Started",
         "pages": [
-          "overview",
-          "quickstart-ci",
           "deals-quickstart",
           "guides/knowledge-base-setup",
-          "guides/prompting"
+          "quickstart-ci",
+          "guides/build-custom-ai",
+          "guides/plays"
         ]
       },
       {
@@ -52,7 +56,7 @@
       },
       {
         "group": "Release Notes",
-        "pages": ["release-notes/release-notes"]
+        "pages": ["release-notes/release-notes", "release-notes/mcp-2.0"]
       }
     ]
   },

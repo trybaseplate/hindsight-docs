@@ -4,24 +4,89 @@ description: "Connect your sales tools and set up AI-powered deal analysis in 4 
 ---
 import DealReviewSetup from '/snippets/deal-review-setup.mdx'
 
-Get your deal intelligence system up and running by connecting your sales tools, configuring decision drivers, setting up features, and importing your deals for analysis.
+Deal analysis is the foundation of Hindsight. Connect your sources and Hindsight aggregates the calls, emails, CRM records, and documents for each deal into **one verified record** — a *Deal Review* — that powers everything else: your library, the Compete Agent, custom AI, and Plays.
 
-{/* <img alt="Deal Review" classname="block" src="/images/deals-home.png" /> */}
+<Frame caption="One verified record per deal — exec summary, scored decision drivers, competitors, and features, all cited back to source documents.">
+  <img alt="Deals home" src="/images/analyze/analyze-deal-report-individual.png" />
+</Frame>
+
 <DealReviewSetup />
 
+---
+
+## Sources for deal context
+
+Hindsight builds each Deal Review from whatever you connect. Your CRM is the only required source; everything else is optional enrichment.
+
+| Type | Sources |
+|---|---|
+| CRM (required) | Salesforce, HubSpot |
+| Calls | Gong, Clari, Outreach Kaia, Fathom, Fireflies, Avoma |
+| API | Push any document or transcript directly onto a deal |
+
+<Frame caption="Connect context sources using our native integrations, or use our API.">
+  <img alt="Deal documents from connected sources" src="/images/analyze/integrations.png" />
+</Frame>
+
+<Tip>
+  Need to bring in a source Hindsight doesn't integrate with natively — a data warehouse export, a custom note-taker, an internal tool? Use the **API** to attach documents and transcripts to a deal by `deal_id`, `salesforce_id`, or `hubspot_id`. PDFs, Office files, Markdown, audio, and video are all accepted, and recordings are transcribed automatically. See [Upload to a deal](/integrations/api#upload-to-deal).
+</Tip>
+
+---
+
+## When & how Deal Reviews run
+
+Deal analysis runs automatically — you don't trigger each review by hand.
+
+- **Sync cadence** — Hindsight pulls the latest from your connected integrations **every 12 hours** while a deal is open, and continues for **14 days after it closes**, so late-arriving calls and notes still make it in.
+- **Re-analysis triggers** — a Deal Review re-runs on **every stage change** (including a move to *Closed Won* / *Closed Lost*), when a deal meets your **auto-import criteria**, and whenever **new context is added** — an uploaded document, an API push, or a completed win-loss interview.
+- **Manual runs** — you can re-analyze any deal on demand after new information lands, or backfill historical deals that were never analyzed.
+
+Each review produces a structured deal story — executive summary, timeline, stakeholders, decision drivers, competitive landscape, key quotes, and lessons learned — and can sync win/loss reasons and custom fields back to your CRM. See the full [Deal Reviews guide](/platform/review/deal-reviews) for the complete breakdown.
+
+<Frame caption="One verified record per deal — exec summary, scored decision drivers, competitors, and features, all cited back to source documents.">
+  <img alt="Individual deal report" src="/images/analyze/analyze-deal-report-individual.png" />
+</Frame>
+
+---
+
+## Ways to analyze your deals
+
+Once your deals are analyzed, there are two ways to get insight out of them — pick based on whether you want an open-ended answer or a standing view.
+
+### 1. Ask AI
+
+Query the verified layer in natural language and let Hindsight pick the right tools across your deals, library, and the web.
+
+- **In-app** — use [Chat](https://app.usehindsight.com/chat) for ad-hoc questions ("why did we lose enterprise deals to Crayon last quarter?").
+- **Over MCP** — point Claude, ChatGPT, or your own agent at Hindsight's tools and analyze deals from inside your existing workflow. See [MCP](/integrations/mcp).
+- **Compose & schedule** — save a working prompt as a **Recipe** and run it on demand or on a recurring cadence, delivered to Slack or email. See [Build Your Custom AI](/guides/build-custom-ai).
+
+### 2. Dashboard
+
+For standing metrics, the dashboard turns your analyzed deals into **pre-built charts** — no prompting required. Filter by date, segment, or competitor and read win rate, revenue, and the drivers behind outcomes at a glance.
+
+<Frame caption="Executive Overview — win rate, revenue won, and the top win/loss drivers across your filtered deals.">
+  <img alt="Win-loss dashboard" src="/images/analyze/analyze-dashboard-win-loss.png" />
+</Frame>
+
+The dashboard also rolls up your custom **metric scores** and **answers** across every analyzed deal, so configured rubrics and free-form questions become trended, aggregate views.
+
+<Frame caption="Metric scores over time and answer rollups aggregated across all analyzed deals.">
+  <img alt="Metric scores and answer rollups" src="/images/analyze/analyze-metrics-answers.png" />
+</Frame>
+
+---
 
 ### What's Next?
 <CardGroup cols={3}>
-  <Card title="Analyze Deal Patterns" icon="chart-line" href="/workflows/analyze-deals">
-    Analyze a deal to understand how Hindsight identifies key insights and trends.
+  <Card title="Set Up Library" icon="books" href="/guides/knowledge-base-setup">
+    Seed the competitor-scoped knowledge base your AI draws from for battlecards and answers.
   </Card>
   <Card title="Generate Assets" icon="crosshairs-simple" href="/workflows/generate-custom-assets">
     Create competitive assets like battlecards, comparison sheets, and objection handlers.
   </Card>
-  <Card title="Win-Loss Interviews" icon="users-viewfinder" href="/platform/win-loss-interviews">
+  <Card title="Win-Loss Interviews" icon="users-viewfinder" href="/platform/collect/win-loss-interviews">
     Set up automated win-loss interviews to gather deeper insights from your deals.
   </Card>
 </CardGroup>
-
-For detailed information on deal analysis capabilities, see our [Deal Reviews Guide](/platform/deal-reviews).
-
