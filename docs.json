@@ -39,16 +39,6 @@
         ]
       },
       {
-        "group": "Objects",
-        "pages": [
-          "objects/deals",
-          "objects/features",
-          "objects/competitors",
-          "objects/metrics",
-          "objects/decision-drivers"
-        ]
-      },
-      {
         "group": "Integrations",
         "pages": [
           "integrations/slack",
