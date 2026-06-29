@@ -9,88 +9,60 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "tabs": [
+    "groups": [
       {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Welcome",
-            "pages": ["overview", "quickstart-ci", "deals-quickstart"]
-          },
-          {
-            "group": "Guides",
-            "pages": [
-              "guides/deal-analysis",
-              "guides/win-loss-interviews",
-              "guides/competitive-enablement",
-              "guides/recipes", 
-              "guides/prompting",
-              "guides/knowledge-base-setup",
-              "guides/creating-assets",
-              "guides/monitoring-competitors",
-              "guides/slack-ai-agent"
-            ]
-          },
-          {
-            "group": "Release Notes",
-            "pages": [
-              "release-notes/release-notes"
-            ]
-          },
-          {
-            "group": "Integrations",
-            "pages": [
-              "integrations/slack",
-              "integrations/gong",
-              "integrations/salesforce-integration",
-              "integrations/hubspot-integration",
-              "integrations/zapier",
-              "integrations/outreach-integration",
-              "integrations/okta-sso"
-            ]
-          }
+        "group": "Get Started",
+        "pages": [
+          "overview",
+          "quickstart-ci",
+          "deals-quickstart",
+          "guides/knowledge-base-setup",
+          "guides/prompting"
         ]
       },
       {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "Overview",
-            "pages": ["integrations/api"]
-          },
-          {
-            "group": "MCP",
-            "pages": ["integrations/mcp"]
-          },
-          {
-            "group": "AI Responses",
-            "pages": [
-              "api-reference/responses"
-            ]
-          },
-          {
-            "group": "Deals",
-            "pages": [
-              "api-reference/get-deals",
-              "api-reference/export-deals"
-            ]
-          },
-          {
-            "group": "Document Uploads",
-            "pages": [
-              "api-reference/upload-library-document",
-              "api-reference/upload-deal-document"
-            ]
-          },
-          {
-            "group": "Interviews",
-            "pages": [
-              "api-reference/create-interview",
-              "api-reference/get-interview",
-              "api-reference/update-interview"
-            ]
-          }
+        "group": "MCP",
+        "pages": ["integrations/mcp"]
+      },
+      {
+        "group": "REST API",
+        "pages": [
+          "integrations/api",
+          "api-reference/responses",
+          "api-reference/get-deals",
+          "api-reference/export-deals",
+          "api-reference/upload-library-document",
+          "api-reference/upload-deal-document",
+          "api-reference/create-interview",
+          "api-reference/get-interview",
+          "api-reference/update-interview"
         ]
+      },
+      {
+        "group": "Objects",
+        "pages": [
+          "objects/deals",
+          "objects/features",
+          "objects/competitors",
+          "objects/metrics",
+          "objects/decision-drivers"
+        ]
+      },
+      {
+        "group": "Integrations",
+        "pages": [
+          "integrations/slack",
+          "integrations/gong",
+          "integrations/salesforce-integration",
+          "integrations/hubspot-integration",
+          "integrations/zapier",
+          "integrations/outreach-integration",
+          "integrations/okta-sso"
+        ]
+      },
+      {
+        "group": "Release Notes",
+        "pages": ["release-notes/release-notes"]
       }
     ]
   },

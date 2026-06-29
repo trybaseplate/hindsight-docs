@@ -41,6 +41,76 @@ Rate limits: 10 req/min (Essentials), 60 req/min (Growth), 300 req/min (Enterpri
 ```
 </Accordion>
 
+## Overview
+
+The Responses endpoint is the highest-level way to use Hindsight. Send a natural-language question and Hindsight's AI orchestrates the underlying tools server-side — searching across deals, deal documents, competitive intel, and your knowledge base — then returns a single synthesized answer with inline citations.
+
+Use it when you want a **complete, cited answer** rather than raw tool output. It's the right fit for Glean, Slack bots, search interfaces, and any app that should hand the user a finished response. If instead you want *your own* model to decide which tools to call, use the [MCP integration](/integrations/mcp).
+
+```
+POST https://app.usehindsight.com/api/v1/responses
+```
+
+## Request Body
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `messages` | array | Yes | Conversation messages, oldest first. Each has a `role` and `content`. Include prior turns to give the AI context. |
+| `messages[].role` | string | Yes | One of `user`, `assistant`, or `system`. |
+| `messages[].content` | string | Yes | The message text. |
+| `stream` | boolean | No | Stream the response as Server-Sent Events. Defaults to `false`. |
+
+## Response
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `message.role` | string | Always `assistant`. |
+| `message.content` | string | The AI-generated answer, with inline citation markers. |
+| `message.citations` | array | Source documents referenced in the answer (see [Citations](#citations)). |
+| `tool_calls` | array | Names of the internal tools Hindsight called to produce the answer. |
+
+### Citations
+
+Each entry in `message.citations` traces a claim back to a source document:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `document_id` | string | Unique ID for the source document. |
+| `document_name` | string | Human-readable document name. |
+| `deal_id` | string \| null | Associated deal ID, if the document belongs to a deal. |
+| `deal_name` | string \| null | Associated deal name, if applicable. |
+| `url` | string | Link to view the document in Hindsight. |
+| `excerpt` | string | The relevant passage the answer draws from. |
+
+## Streaming
+
+Set `stream: true` to receive the answer incrementally as Server-Sent Events. This is recommended for chat UIs where you want to render tokens as they arrive.
+
+```json
+{
+  "messages": [{ "role": "user", "content": "..." }],
+  "stream": true
+}
+```
+
+Events follow the SSE format:
+
+```
+data: {"type": "content_delta", "content": "Based on security"}
+data: {"type": "content_delta", "content": " discussions"}
+data: {"type": "citation", "citation": { "...": "..." }}
+```
+
+## Rate Limits
+
+| Plan | Requests / minute | Requests / month |
+|------|-------------------|------------------|
+| Essentials | 10 | 10,000 |
+| Growth | 60 | 30,000 |
+| Enterprise | 300 | 100,000 |
+
+A `429` is returned when a limit is exceeded — back off and retry. See [Error Handling](/integrations/api#error-handling) for the full error format and codes.
+
 <RequestExample>
 ```bash cURL
 curl -X POST https://app.usehindsight.com/api/v1/responses \

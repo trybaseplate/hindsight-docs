@@ -80,7 +80,7 @@ Generate an API key from **Settings → API Keys** in the Hindsight app before g
 
     Select **Developer Mode** from the composer's Plus menu, choose the Hindsight app, and start your conversation. For best results, be explicit about which tool to use:
 
-    > "Use the Hindsight app's `research_deals` tool to find why we lost deals to Salesforce last quarter."
+    > "Use the Hindsight app's `search_across_deals` tool to find why we lost deals to Salesforce last quarter."
 
     For more details, see [OpenAI's Developer Mode documentation](https://developers.openai.com/api/docs/guides/developer-mode).
   </Tab>
@@ -119,13 +119,13 @@ Generate an API key from **Settings → API Keys** in the Hindsight app before g
         "id": 2,
         "method": "tools/call",
         "params": {
-          "name": "research_competitive_intel",
-          "arguments": { "question": "Who are our top competitors?" }
+          "name": "fetch_hindsight_context",
+          "arguments": {}
         }
       }'
     ```
 
-    This approach works with any language or framework — no MCP client library required.
+    Each tool's exact arguments are returned by `tools/list` above. `fetch_hindsight_context` takes no arguments and is the usual starting point — it returns the competitors and deal stages the other tools reference. This approach works with any language or framework — no MCP client library required.
   </Tab>
 </Tabs>
 
@@ -133,74 +133,70 @@ Generate an API key from **Settings → API Keys** in the Hindsight app before g
 
 ## Available Tools
 
-### 1. pull_schema
-Fetch the schema of your deal grid — field names, types, and structure. Use this before `create_dataset` to understand what data is available.
+The server exposes the verified deal layer as a focused set of tools, grouped below. Most workflows open with **`fetch_hindsight_context`** to learn the workspace's competitors and deal stages, then branch into the relevant group. For the exact current surface — including parameters — call `tools/list` against the endpoint (see the [Direct API](#direct-api) tab above).
 
----
+### Context & schema
 
-### 2. create_dataset
-Export your deal grid data as a structured JSON dataset. Returns a `json_id` that you pass to `analyze_deal_data`.
+| Tool | Description |
+|---|---|
+| `fetch_hindsight_context` | Fetch competitors and deal stages needed to use the other tools. Usually the first call. |
+| `pull_schema` | Fetch the CRM field schema for your workspace — field names and types for the deal grid. Use before `create_dataset`. |
 
----
+### Deals & pipeline
 
-### 3. analyze_deal_data
-Analyze quantitative deal data: win rates, trends, counts, and metrics across your pipeline. Requires a `json_id` from `create_dataset`.
+| Tool | Description |
+|---|---|
+| `select_deal` | Filter and list deals by criteria. Returns lean rows for fast triage. |
+| `get_deal` | Get full details for specific deals by ID. |
+| `search_across_deals` | Search all deal documents across the entire pipeline. |
+| `search_deal_documents` | Deep search within specific deals. |
+| `pull_full_document` | Fetch full document content by ID when retrieved chunks aren't enough. |
 
-**Parameters:**
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `question` | string | The data analysis question to answer |
-| `json_id` | string | Dataset ID returned by `create_dataset` |
+### Competitive intelligence
 
-**Example flow:**
-```
-1. Call pull_schema → understand your deal fields
-2. Call create_dataset → get a json_id
-3. Call analyze_deal_data with your question + json_id
-```
+| Tool | Description |
+|---|---|
+| `search_competitive_assets` | Search battlecards and competitive assets. |
+| `search_competitive_intel` | Search pre-saved competitive intelligence. |
 
-**Example questions:**
-- "What is our win rate by industry?"
-- "Which competitors do we lose to most often?"
-- "What's the average deal size for closed won deals in Q1?"
+### Knowledge base
 
----
+| Tool | Description |
+|---|---|
+| `search_knowledge_base` | Search your company's messaging docs, playbooks, and positioning. |
 
-### 4. research_competitive_intel
-Research competitive intelligence using Hindsight's knowledge base and live web search. Handles multi-step research internally.
+### Live web research
 
-**Parameters:**
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `question` | string | The competitive intelligence question to research |
+| Tool | Description |
+|---|---|
+| `search_web` | Live web search for competitive and market research. |
+| `scrape_url` | Extract content from a specific URL. |
+| `map_site_urls` | Discover and map the structure of a website. |
 
-**Example questions:**
-- "What are Salesforce's main weaknesses based on our deals?"
-- "How should we position against HubSpot?"
-- "What recent news is there about Gong?"
+### Quantitative analysis
 
----
+For win-rate, trend, and segment questions over the deal grid.
 
-### 5. research_deals
-Research qualitative insights from deal transcripts, emails, call recordings, and CRM notes. Handles multi-step document retrieval internally.
+| Tool | Description |
+|---|---|
+| `create_dataset` | Build a structured dataset from your deal pipeline. |
+| `analyze_dealgrid_subset` | Filter and analyze a quantitative subset of the deal grid. |
 
-**Parameters:**
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `question` | string | The deal research question to investigate |
+**Typical flow:** `pull_schema` → `create_dataset` → `analyze_dealgrid_subset`.
 
-**Example questions:**
-- "Why are we losing deals to Competitor X?"
-- "What objections come up most often in enterprise deals?"
-- "What did prospects say about our pricing in lost deals last quarter?"
+### Write back
+
+| Tool | Description |
+|---|---|
+| `upload_deal_document` | Upload a document to a deal by URL. |
 
 ---
 
 ## How It Works
 
-Each tool delegates to Hindsight's AI agent pipeline. When you call `research_competitive_intel` or `research_deals`, Hindsight runs a full multi-step agent behind the scenes — searching documents, querying your knowledge base, and synthesizing a response — and returns the final answer.
+The tools read from Hindsight's verified deal layer — one cross-referenced record per deal, built server-side by the Analyze Engine. Search and research tools return cited results grounded in your source documents and knowledge base; quantitative tools run structured queries against your exported deal grid and compute the metrics you ask for.
 
-For `analyze_deal_data`, Hindsight runs structured queries against your exported deal grid and computes the metrics you ask for.
+Because retrieval and verification happen up front, your agent orchestrates clean, cited tools rather than re-deriving context from raw transcripts on every call. See the [Platform Overview](/overview) for how the verified layer is built.
 
 ---
 

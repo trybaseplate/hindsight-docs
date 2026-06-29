@@ -3,7 +3,297 @@ title: "Release Notes"
 description: "Summary of major updates"
 ---
 
-import { New, Improved, Preview, Beta, OpenBeta } from '/snippets/release-tag.mdx';
+import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
+
+## June 2026
+
+Sales Plays, a unified usage analytics dashboard, role-based access control, win-loss feature charts, GDPR support for EU surveys, and the Hindsight MCP server in Claude and ChatGPT.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Opportunity Plays">
+  <Preview category="Sales Enablement" />
+
+  A new way to turn competitive intelligence into action on live deals.
+
+  **AI-generated plays** — Hindsight generates recommended plays for an opportunity based on deal context and competitive signals.
+
+  **Outreach drafting in Slack** — Draft tailored outreach directly from a Slack thread, with messaging adapted to the play type.
+
+  **Linked assets** — Attach enablement assets to a play so reps have the right collateral in hand.
+
+  **Email notifications** — Get notified by email when a new play opportunity is ready to act on.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Win-loss feature charts">
+  <New category="Win-Loss Analysis" />
+
+  New dashboard charts visualize how product features and tags drive deal outcomes.
+
+  **Win rate, revenue & tag mix** — Dedicated charts break down win rates, revenue, and tag mix by feature.
+
+  **Comparison & answer charts** — New comparison and answer visualizations make competitive trends easier to read at a glance, with collapsible sections for older sessions.
+
+</Card>
+
+<Card icon="gauge" iconType="solid" title="Unified usage analytics">
+  <New category="Admin" />
+
+  A single dashboard tracking usage across every channel — API, MCP, Slack, and web — so admins can see how their team and integrations are using Hindsight in one place.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="user-plus" iconType="solid" title="Competitor onboarding refresh">
+  <Improved category="Competitive Intelligence" />
+
+  Redesigned competitor onboarding and setup flow, plus new competitor enablement and setup pages for a smoother first-run experience.
+
+</Card>
+
+<Card icon="slack" iconType="solid" title="Slack Assistant improvements">
+  <Improved category="Slack" />
+
+  **Filtering & stats** — Filter questions by rating and see average questions per day, with a refreshed toolbar layout.
+
+  **Readable names** — Slack channels and users now resolve to their real names throughout the assistant view.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="bell" iconType="solid" title="Interview notification settings">
+  <New category="Buyer Interviews" />
+
+  Configure notification preferences per interview type from a new settings modal. The older interview-agent onboarding tour has been retired in favor of the streamlined setup.
+
+</Card>
+
+<Card icon="microphone-lines" iconType="solid" title="Voice interview reliability">
+  <Fix category="Buyer Interviews" />
+
+  Migrated voice interviews to the GA Azure real-time API for more stable connections, added automatic retry on connection errors, and clearer instructions for voice-only interviews. Removed the silent fallback to text mode so failures surface clearly.
+
+</Card>
+
+<Card icon="shield-check" iconType="solid" title="GDPR support for EU surveys">
+  <New category="Compliance" />
+
+  EU surveys now include GDPR-compliant consent capture and support for response deletion requests.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="user-lock" iconType="solid" title="Role-based access control">
+  <New category="Admin" />
+
+  Permissions now differentiate between admins, managers, and members. Admins have full access, managers can edit the documents they own, and members get read-only access — with edit actions hidden accordingly across the app.
+
+</Card>
+
+<Card icon="plug" iconType="solid" title="MCP in Claude & ChatGPT">
+  <Improved category="Developer Tools" />
+
+  The Hindsight MCP server now connects to Claude and ChatGPT, with new MCP tools and OAuth sign-in via Clerk-issued tokens for secure, per-user access.
+
+</Card>
+
+<Card icon="code" iconType="solid" title="Deals API endpoint">
+  <Improved category="Developer Tools" />
+
+  A new `/v1/deals` endpoint returns real-time, paginated deal data with filtering and rate limiting. The interview-types API also now supports custom guidelines and analysis fields.
+
+</Card>
+
+</CardGroup>
+
+## May 2026
+
+A new interview viewer with response analytics, a major audio and transcription overhaul, Google Meet recording, Snowflake deal-grid filtering, and in-chat feedback.
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="chart-simple" iconType="solid" title="Interview viewer & response analytics">
+  <New category="Buyer Interviews" />
+
+  **Detailed viewer** — A new per-interview page shows response analytics and takeaways for each respondent.
+
+  **Response stats** — The feedback page now shows total responses, completion count, completion rate, and last response time per interview type.
+
+  **Re-analyze** — Reprocess a document or interview on demand to refresh its analysis, with support for dynamic analysis fields per interview type.
+
+  **Better defaults** — Improved default analysis fields with placeholders and structured select/boolean options for cleaner setup.
+
+</Card>
+
+<Card icon="microphone" iconType="solid" title="Audio & transcription improvements">
+  <Improved category="Buyer Interviews" />
+
+  **ElevenLabs transcription** — Higher-quality transcription for voice interviews.
+
+  **Cleaner voice experience** — Microphone selection now persists across panel reopens, duplicate voice messages are eliminated, and an improved noise gate prevents the AI's own speech from cutting itself off.
+
+  **Recording fixes** — Corrected WebM recording durations and fixed video playback and scrubbing across the viewer.
+
+</Card>
+
+<Card icon="video" iconType="solid" title="Google Meet recording">
+  <New category="Buyer Interviews" />
+
+  The Google Meet bot now joins, records, and saves interview recordings, with improved session handling and webhook reliability.
+
+</Card>
+
+<Card icon="link" iconType="solid" title="Open interview links">
+  <New category="Buyer Interviews" />
+
+  Share public, open interview links for public interview types — no individual request required. Contact notes can now be viewed and edited inline, and partial responses are saved if a respondent closes the tab mid-interview.
+
+</Card>
+
+<Card icon="bell" iconType="solid" title="Sequence attention indicators">
+  <Improved category="Buyer Interviews" />
+
+  Sequences now surface attention indicators for pending approvals, outstanding rewards, and missing data, plus an upload-contacts dialog on the feedback page.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="salesforce" iconType="solid" title="Salesforce auto-import refinements">
+  <Fix category="CRM Integration" />
+
+  Better handling of `previous_status` filters and "import all closed deals," plus corrected stage ordering in opportunity-history queries.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="comment" iconType="solid" title="Share feedback from chat">
+  <New category="Chat & Analysis" />
+
+  A feedback bubble in the chat interface lets you share feedback in one click, with the current chat session captured as context.
+
+</Card>
+
+<Card icon="tags" iconType="solid" title="Product tagging overhaul">
+  <Improved category="Competitive Intelligence" />
+
+  A major upgrade to how Hindsight tags and organizes product feedback, making it far easier to track what buyers care about across your deals.
+
+  **Customizable feature tag types** — Define your own feature tag types instead of relying on fixed categories, so tagging maps to how your team actually thinks about the product.
+
+  **Smarter tagging logic** — Reworked tagging logic produces more accurate, consistent tags across interviews and documents.
+
+  **Cleaner tagging UI** — Updated components make reviewing and managing product tags faster and more intuitive.
+
+</Card>
+
+</CardGroup>
+
+## April 2026
+
+Interview Sequences, Snowflake CRM support, demo interview summaries, and the Hindsight MCP server with OAuth.
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Interview Sequences">
+  <New category="Buyer Interviews" />
+
+  A new way to manage multi-step interview campaigns end to end.
+
+  **Default templates & cloning** — Start from built-in sequence variants, clone existing sequences, and auto-save as you edit.
+
+  **Enrollments** — A new Enrollments tab on each sequence shows who's enrolled, with search and filtering. Queued enrollments process automatically when a sequence is enabled.
+
+  **Email logging** — An Emails tab on each sequence surfaces every message sent as part of that sequence.
+
+  **Approvals** — Approve interview requests inline; approval links now route through sequence-based URLs.
+
+</Card>
+
+<Card icon="paper-plane" iconType="solid" title="Demo interview summaries">
+  <New category="Buyer Interviews" />
+
+  Send demo interview summaries directly from Hindsight for quick sharing and review.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM support">
+  <Preview category="CRM Integration" />
+
+  Initial support for importing deals from a Snowflake data warehouse, including a sync orchestrator and ID mapping to align Snowflake records with internal deal IDs.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="plug" iconType="solid" title="Hindsight MCP server">
+  <Beta category="Developer Tools" />
+
+  Connect Hindsight directly to Claude, Cursor, and any other MCP-compatible client — bringing your competitive intelligence, win-loss insights, and deal data into the tools your team already works in.
+
+  **One-click OAuth sign-in** — Authenticate the MCP server with OAuth and org-membership validation, so only authorized users in your workspace get access — no manual API key handling required.
+
+  **Production-ready bundle** — A branded, production-configured MCPB bundle (`.mcpb`) makes installation a single step.
+
+  **Built on the Hindsight API** — The server exposes Hindsight's chat, library, and deal tools so agents can search and reason over your data in context.
+
+</Card>
+
+<Card icon="slack" iconType="solid" title="Enterprise Slack NPS">
+  <Fix category="Slack" />
+
+  Fixed NPS ratings for customers on Slack Enterprise Grid — messages now route to the correct workspace via `team_id` for enterprise installs.
+
+</Card>
+
+</CardGroup>
 
 ## March 2026
 

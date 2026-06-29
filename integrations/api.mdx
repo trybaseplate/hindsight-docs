@@ -7,13 +7,15 @@ description: 'Integrate Hindsight intelligence into your AI agents, MCP servers,
 
 The Hindsight API provides access to competitive intelligence, win-loss insights, and deal data through two integration methods:
 
-1. **REST API** - Hindsight's AI handles multiple tool calls and returns contextual text responses with citations
-2. **Model Context Protocol (MCP)** - Individual tools for AI assistants like Claude to orchestrate directly
+1. **REST API** - Hindsight's AI handles multiple tool calls and returns a complete, cited text response
+2. **[Model Context Protocol (MCP)](/integrations/mcp)** - Individual tools your AI assistant orchestrates directly
+
+This page covers the REST API. For the tool-by-tool surface, see the [MCP docs](/integrations/mcp).
 
 ### When to Use Each
 
-- **REST API**: For Glean, Slack bots, custom applications that need complete answers
-- **MCP (Coming Soon)**: For Claude Desktop, Cursor, or other MCP-compatible AI assistants that orchestrate tools themselves
+- **REST API**: For Glean, Slack bots, and search interfaces that want a finished, synthesized answer
+- **[MCP](/integrations/mcp)**: For Claude, ChatGPT, Cursor, or other MCP clients that orchestrate tools themselves
 
 ---
 
@@ -258,7 +260,7 @@ Use Claude with Hindsight tools to prepare for sales calls, analyze deals, and g
 ```
 You: "I have a call with a prospect considering Salesforce. Help me prepare."
 
-Claude: [Uses search_competitors and search_across_deals tools]
+Claude: [Uses search_competitive_intel and search_across_deals tools]
 "Here's what I found about competing with Salesforce..."
 ```
 
@@ -329,16 +331,16 @@ All errors follow this format:
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Get API Key" icon="key" href="https://app.usehindsight.com/settings/api">
+  <Card title="Get API Key" icon="key" href="https://app.usehindsight.com/settings/keys">
     Generate your API key from the dashboard
   </Card>
   <Card title="MCP Setup Guide" icon="plug" href="/integrations/mcp">
-    Detailed MCP configuration instructions
+    Detailed MCP configuration and the full tool reference
   </Card>
-  <Card title="Glean Integration" icon="search" href="/integrations/glean">
-    Connect Hindsight to Glean
+  <Card title="AI Responses" icon="message-bot" href="/api-reference/responses">
+    Full reference for the responses endpoint
   </Card>
-  <Card title="Example Code" icon="code" href="/api/examples">
-    REST API examples and MCP usage patterns
+  <Card title="Platform Overview" icon="layer-group" href="/overview">
+    How the verified deal layer is built
   </Card>
 </CardGroup>
