@@ -16,7 +16,7 @@ The first stable release of the Hindsight MCP server.
 
   OAuth is now the primary sign-in, capabilities are exposed as **direct tool calls** (faster responses and per-tool control) instead of a single orchestrating agent, plus CORS and reliability fixes. This is a **breaking change** and our first stable contract.
 
-  **Coming soon** — Web MCP as an official Claude connector.
+  Web MCP is now available as an official Claude.ai connector — connect Hindsight directly from Claude.ai using OAuth, no manual setup required.
 
   [Read the full MCP 2.0 notes →](/release-notes/mcp-2.0)
 
@@ -26,7 +26,7 @@ The first stable release of the Hindsight MCP server.
 
 ## June 2026
 
-Sales Plays, a unified usage analytics dashboard, role-based access control, win-loss feature charts, GDPR support for EU surveys, and the Hindsight MCP server in Claude and ChatGPT.
+Sales Plays, a unified usage analytics dashboard, role-based access control, win-loss feature charts, guided CRM onboarding, GDPR support for EU surveys, and the Hindsight MCP server in Claude and ChatGPT.
 
 ### Sales Plays
 
@@ -68,6 +68,19 @@ Sales Plays, a unified usage analytics dashboard, role-based access control, win
   <New category="Admin" />
 
   A single dashboard tracking usage across every channel — API, MCP, Slack, and web — so admins can see how their team and integrations are using Hindsight in one place.
+
+</Card>
+
+</CardGroup>
+
+### Setup & Onboarding
+
+<CardGroup cols={1}>
+
+<Card icon="circle-check" iconType="solid" title="Guided CRM setup for Analyze">
+  <New category="Admin" />
+
+  First-time access to the Analyze (Deals) section now walks admins through a step-by-step setup wizard covering CRM connection, context sources, customization, and deal import — ensuring the Deals page is ready to use from day one rather than landing on an empty state. Non-admins are redirected back until setup is complete.
 
 </Card>
 

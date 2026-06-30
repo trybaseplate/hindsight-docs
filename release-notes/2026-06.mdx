@@ -1,0 +1,146 @@
+---
+title: "Release Notes — June 2026"
+description: "Sales Plays, feature win-loss charts, unified usage analytics, guided CRM setup, role-based access, voice reliability, GDPR, and MCP in Claude & ChatGPT."
+---
+
+import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
+
+## June 2026
+
+Sales Plays, a unified usage analytics dashboard, role-based access control, win-loss feature charts, GDPR support for EU surveys, guided CRM onboarding, and the Hindsight MCP server in Claude and ChatGPT.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Opportunity Plays">
+  <Preview category="Sales Enablement" />
+
+  A new way to turn competitive intelligence into action on live deals.
+
+  **AI-generated plays** — Hindsight generates recommended plays for an opportunity based on deal context and competitive signals.
+
+  **Outreach drafting in Slack** — Draft tailored outreach directly from a Slack thread, with messaging adapted to the play type.
+
+  **Linked assets** — Attach enablement assets to a play so reps have the right collateral in hand.
+
+  **Email notifications** — Get notified by email when a new play opportunity is ready to act on.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Win-loss feature charts">
+  <New category="Win-Loss Analysis" />
+
+  New dashboard charts visualize how product features and tags drive deal outcomes.
+
+  **Win rate, revenue & tag mix** — Dedicated charts break down win rates, revenue, and tag mix by feature.
+
+  **Comparison & answer charts** — New comparison and answer visualizations make competitive trends easier to read at a glance, with collapsible sections for older sessions.
+
+</Card>
+
+<Card icon="gauge" iconType="solid" title="Unified usage analytics">
+  <New category="Admin" />
+
+  A single dashboard tracking usage across every channel — API, MCP, Slack, and web — so admins can see how their team and integrations are using Hindsight in one place.
+
+</Card>
+
+</CardGroup>
+
+### Setup & Onboarding
+
+<CardGroup cols={1}>
+
+<Card icon="circle-check" iconType="solid" title="Guided CRM setup for Analyze">
+  <New category="Admin" />
+
+  First-time access to the Analyze (Deals) section now walks admins through a step-by-step setup wizard. The flow covers CRM connection, context sources, customization preferences, and deal import — ensuring the Deals page is ready to use from day one rather than landing on an empty state.
+
+  Non-admins are redirected back to the main app until setup is complete.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="user-plus" iconType="solid" title="Competitor onboarding refresh">
+  <Improved category="Competitive Intelligence" />
+
+  Redesigned competitor onboarding and setup flow, plus new competitor enablement and setup pages for a smoother first-run experience.
+
+</Card>
+
+<Card icon="slack" iconType="solid" title="Slack Assistant improvements">
+  <Improved category="Slack" />
+
+  **Filtering & stats** — Filter questions by rating and see average questions per day, with a refreshed toolbar layout.
+
+  **Readable names** — Slack channels and users now resolve to their real names throughout the assistant view.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="bell" iconType="solid" title="Interview notification settings">
+  <New category="Buyer Interviews" />
+
+  Configure notification preferences per interview type from a new settings modal. The older interview-agent onboarding tour has been retired in favor of the streamlined setup.
+
+</Card>
+
+<Card icon="microphone-lines" iconType="solid" title="Voice interview reliability">
+  <Fix category="Buyer Interviews" />
+
+  Migrated voice interviews to the GA Azure real-time API for more stable connections, added automatic retry on connection errors, and clearer instructions for voice-only interviews. Removed the silent fallback to text mode so failures surface clearly.
+
+</Card>
+
+<Card icon="shield-check" iconType="solid" title="GDPR support for EU surveys">
+  <New category="Compliance" />
+
+  EU surveys now include GDPR-compliant consent capture and support for response deletion requests.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="user-lock" iconType="solid" title="Role-based access control">
+  <New category="Admin" />
+
+  Permissions now differentiate between admins, managers, and members. Admins have full access, managers can edit documents they own, and members get read-only access — with edit actions hidden accordingly across the app.
+
+</Card>
+
+<Card icon="plug" iconType="solid" title="MCP in Claude & ChatGPT">
+  <Improved category="Developer Tools" />
+
+  The Hindsight MCP server now connects to Claude and ChatGPT, with OAuth sign-in via Clerk-issued tokens for secure, per-user access. New MCP tools and Slack integration enhancements ship alongside.
+
+</Card>
+
+<Card icon="code" iconType="solid" title="Deals API endpoint">
+  <Improved category="Developer Tools" />
+
+  A new `/v1/deals` endpoint returns real-time, paginated deal data with filtering and rate limiting. Interview sequences now default to manual triggers when no deal filters are configured, and deal column exports handle hidden or internal fields more reliably.
+
+</Card>
+
+</CardGroup>

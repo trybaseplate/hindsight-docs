@@ -56,7 +56,7 @@
       },
       {
         "group": "Release Notes",
-        "pages": ["release-notes/release-notes", "release-notes/mcp-2.0"]
+        "pages": ["release-notes/release-notes", "release-notes/mcp-2.0", "release-notes/2026-06"]
       }
     ]
   },
