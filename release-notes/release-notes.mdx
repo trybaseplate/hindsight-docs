@@ -26,7 +26,7 @@ The first stable release of the Hindsight MCP server.
 
 ## June 2026
 
-Sales Plays, a unified usage analytics dashboard, role-based access control, win-loss feature charts, GDPR support for EU surveys, and the Hindsight MCP server in Claude and ChatGPT.
+Gong & Clari integrations, Sales Plays, a guided Analyze setup onboarding, a unified usage analytics dashboard, role-based access control, win-loss feature charts, GDPR support for EU surveys, and the Hindsight MCP server in Claude and ChatGPT.
 
 ### Sales Plays
 
@@ -95,6 +95,26 @@ Sales Plays, a unified usage analytics dashboard, role-based access control, win
 
 </CardGroup>
 
+### Integrations
+
+<CardGroup cols={1}>
+
+<Card icon="phone" iconType="solid" title="Gong & Clari integrations">
+  <New category="Call Intelligence" />
+
+  Gong and Clari can now be connected directly from the Analyze setup flow, bringing call and meeting recordings into your win-loss analysis. Both require a Growth or Enterprise plan.
+
+</Card>
+
+<Card icon="database" iconType="solid" title="Expanded CRM data types">
+  <Improved category="CRM Integration" />
+
+  HubSpot and Salesforce integrations now sync a broader set of object types, giving Hindsight a richer view of your deal pipeline without extra configuration.
+
+</Card>
+
+</CardGroup>
+
 ### Win-Loss Interviews
 
 <CardGroup cols={1}>
@@ -144,6 +164,20 @@ Sales Plays, a unified usage analytics dashboard, role-based access control, win
   <Improved category="Developer Tools" />
 
   A new `/v1/deals` endpoint returns real-time, paginated deal data with filtering and rate limiting. The interview-types API also now supports custom guidelines and analysis fields.
+
+</Card>
+
+<Card icon="rocket" iconType="solid" title="Analyze setup onboarding">
+  <New category="Admin" />
+
+  A new guided setup flow walks admins through connecting a CRM and configuring context sources before first access to the Analyze module. Non-admins see a holding screen while setup is in progress, so only fully-configured workspaces reach the deals view.
+
+</Card>
+
+<Card icon="bolt" iconType="solid" title="API & Zapier quick-start">
+  <New category="Developer Tools" />
+
+  The Analyze onboarding now includes direct links to API documentation and Zapier setup, so technical teams can connect Hindsight to their existing workflows in minutes.
 
 </Card>
 
