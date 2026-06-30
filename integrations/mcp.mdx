@@ -7,17 +7,53 @@ description: "Connect AI assistants to your Hindsight deal data via the Model Co
 
 Hindsight exposes its AI agent capabilities through the Model Context Protocol (MCP), allowing AI assistants to directly query your deal data, research competitors, and analyze pipeline metrics.
 
-**Compatible with:** Claude Desktop, Claude Code, ChatGPT, Cursor, Cline, and any MCP-compatible client.
-
-Generate an API key from **Settings → API Keys** in the Hindsight app before getting started.
+**Compatible with:** Claude.ai, Claude Desktop, Claude Code, ChatGPT, Cursor, Cline, and any MCP-compatible client.
 
 ---
 
 ## Setup
 
 <Tabs>
-  <Tab title="Claude">
-    ### One-Click Install (Preferred Method)
+  <Tab title="Claude Web (Recommended)">
+    ### Connect via Claude.ai
+
+    The easiest way to connect Hindsight is directly through the Claude.ai web app with no API keys or config files required.
+
+    **1. Open the sidebar customization panel**
+
+    Click the customize button in the Claude sidebar on the left.
+
+    ![Open the Claude sidebar](/images/mcp/1_claude_sidebar.png)
+
+    **2. Open Connectors**
+
+    Click the **Connectors** button in the panel that appears.
+
+    ![Click Connectors](/images/mcp/2_claude_connector.png)
+
+    **3. Add a new connector**
+
+    Click the **+** button to add a custom connector.
+
+    ![Click the plus button](/images/mcp/3_claude_plusbutton.png)
+
+    **4. Fill in the Hindsight connector details**
+
+    Set the name to `Hindsight` and the URL to `https://app.usehindsight.com/api/mcp`, then click **Add**.
+
+    ![Fill in connector details](/images/mcp/4_claude_add_modal.png)
+
+    **5. Connect**
+
+    Click **Connect** on the Hindsight connector. If your account belongs to multiple Hindsight organizations, you'll be prompted to select which org to associate with this connection.
+
+    ![Click Connect](/images/mcp/5_connect_button.png)
+
+    That's it — Hindsight is now available in your Claude.ai conversations.
+  </Tab>
+
+  <Tab title="Claude Desktop">
+    ### One-Click Install
 
     Download and double-click the Hindsight MCP bundle to install directly into Claude Desktop. No config file editing required.
 
@@ -47,6 +83,8 @@ Generate an API key from **Settings → API Keys** in the Hindsight app before g
 
     Restart Claude Desktop after saving. For more details, see [Anthropic's MCP setup guide](https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop).
 
+    Generate an API key from **Settings → API Keys** in the Hindsight app.
+
     ### Claude Code
 
     Run this command in your terminal:
@@ -55,6 +93,8 @@ Generate an API key from **Settings → API Keys** in the Hindsight app before g
     claude mcp add hindsight --transport http https://app.usehindsight.com/api/mcp \
       --header "Authorization: Bearer YOUR_API_KEY"
     ```
+
+    Generate an API key from **Settings → API Keys** in the Hindsight app.
   </Tab>
 
   <Tab title="OpenAI / ChatGPT">
