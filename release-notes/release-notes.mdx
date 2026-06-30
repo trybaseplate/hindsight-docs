@@ -7,7 +7,9 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+
+### Developer Tools
 
 <CardGroup cols={1}>
 
@@ -19,6 +21,40 @@ The first stable release of the Hindsight MCP server.
   **Coming soon** — Web MCP as an official Claude connector.
 
   [Read the full MCP 2.0 notes →](/release-notes/mcp-2.0)
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="list-check" iconType="solid" title="Guided setup for Deals">
+  <New category="CRM Integration" />
+
+  A new setup flow walks admins through connecting their data sources before bringing deals into Hindsight.
+
+  **CRM connection check** — Admins are guided to connect a CRM before the Deals page unlocks, so deal data is always backed by a live source.
+
+  **Gong & Clari** — Connect Gong or Clari directly from setup to bring call and meeting intelligence into your deals (Growth and Enterprise plans).
+
+  **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
+
+  **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="file-export" iconType="solid" title="Deal exports now respect your filters">
+  <Fix category="Deals" />
+
+  Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
 
 </Card>
 
