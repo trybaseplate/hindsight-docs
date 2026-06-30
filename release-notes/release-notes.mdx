@@ -7,7 +7,9 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server.
+Web MCP for Claude, Gong and Clari Copilot call recording integrations, and the first stable release of the Hindsight MCP server.
+
+### Developer Tools
 
 <CardGroup cols={1}>
 
@@ -16,9 +18,34 @@ The first stable release of the Hindsight MCP server.
 
   OAuth is now the primary sign-in, capabilities are exposed as **direct tool calls** (faster responses and per-tool control) instead of a single orchestrating agent, plus CORS and reliability fixes. This is a **breaking change** and our first stable contract.
 
-  **Coming soon** — Web MCP as an official Claude connector.
-
   [Read the full MCP 2.0 notes →](/release-notes/mcp-2.0)
+
+</Card>
+
+<Card icon="robot" iconType="solid" title="Web MCP — Hindsight in Claude on the web">
+  <New category="Developer Tools" />
+
+  Hindsight is now available as a native connector in Claude on the web — no `.mcpb` bundle to install. Sign in with OAuth in your browser, pick your workspace, and Hindsight's tools are live immediately. Works in any MCP-compatible client, not just Claude desktop.
+
+</Card>
+
+</CardGroup>
+
+### Integrations
+
+<CardGroup cols={1}>
+
+<Card icon="microphone" iconType="solid" title="Gong integration">
+  <New category="Integrations" />
+
+  Connect Gong to automatically import and sync call transcripts to your deals. Set up the org-level connection once from the Integrations page and recordings flow in automatically.
+
+</Card>
+
+<Card icon="headset" iconType="solid" title="Clari Copilot self-serve setup">
+  <Improved category="Integrations" />
+
+  Clari Copilot can now be connected self-serve from the Integrations page — enter your API key and secret and you're done. No manual onboarding from the Hindsight team required.
 
 </Card>
 

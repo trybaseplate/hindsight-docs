@@ -72,8 +72,16 @@ Full instructions live in the [MCP setup guide](/integrations/mcp).
 
 ---
 
-## Coming soon
+## Web MCP — Hindsight in Claude on the web
 
-<Preview category="Developer Tools" />
+<New category="Developer Tools" />
 
-**Web MCP as an official Claude connector.** We're working with Anthropic to offer Hindsight as a one-click connector inside Claude on the web — no local bundle to install. The OAuth flow in this release is the groundwork for it.
+Hindsight is now available as a native connector in **Claude on the web** — no `.mcpb` bundle to download or install. The OAuth server shipped in this release is what makes it possible.
+
+**How to connect:**
+1. In Claude on the web, open the connector settings and add a new MCP server.
+2. Enter `https://app.usehindsight.com/api/mcp` as the server URL.
+3. Claude will open a browser sign-in — authenticate with your Hindsight account and select your workspace.
+4. Done — Hindsight's tools are available in that Claude session immediately.
+
+The same OAuth server works for any other MCP-compatible client (Cursor, custom agents, etc.) alongside the existing `.mcpb` bundle for Claude desktop.
