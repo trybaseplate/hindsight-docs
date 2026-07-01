@@ -57,6 +57,9 @@ Your assistant now calls focused tools like `fetch_hindsight_context`, `select_d
 - **OAuth resource resolution** — the protected-resource URL is now derived from the deployment's site URL, fixing discovery in production.
 - **Tool-result parsing** — more robust extraction of result summaries so responses render reliably across clients.
 - **Tool-call rendering** — corrected how in-progress tool calls display during a response.
+- **Workspace selection** — fixed cases where picking your organization during sign-in wouldn't complete, including inside popup windows.
+- **Longer-lived sessions** — the server now issues refresh tokens, so you stay signed in without needing to reconnect as often.
+- **Clearer tool errors** — tools now report readable names and descriptive messages when a call fails, instead of a generic error.
 
 ---
 
