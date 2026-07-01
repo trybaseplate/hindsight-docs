@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, a fix for deal exports, and a Slack Assistant reliability fix.
 
 ### Developer Tools
 
@@ -55,6 +55,19 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="More reliable Slack Assistant responses">
+  <Fix category="Slack" />
+
+  Fixed a timing issue where the Slack Assistant could occasionally reply to an earlier message instead of the one you just sent, most noticeable right after the bot reconnected.
 
 </Card>
 
