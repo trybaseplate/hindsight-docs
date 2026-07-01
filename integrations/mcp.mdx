@@ -171,6 +171,81 @@ Hindsight exposes its AI agent capabilities through the Model Context Protocol (
 
 ---
 
+## Reconnecting after an update
+
+Hindsight MCP moved to OAuth sign-in in [MCP 2.0](/release-notes/mcp-2.0). If you connected against the older preview server, the old connection won't authenticate anymore — you need to reconnect once against the current server. A stale connection typically shows up as a login loop, a `401`/`invalid_token` error, or tools that silently return nothing.
+
+<Warning>
+  Claude has no in-place "reauthenticate" button for a custom connector. To re-sign-in you **remove the old connector and add it again** — editing an existing connector isn't supported. Reconnecting is safe: it doesn't touch your Hindsight data, only the local credential.
+</Warning>
+
+<Tabs>
+  <Tab title="Claude Web / Desktop">
+    **1. Remove the old connector**
+
+    Go to **Customize → Connectors**, find the old **Hindsight** entry, open the **⋯** menu, and click **Remove**.
+
+    **2. Add it again**
+
+    Click **+ → Add custom connector**, set the URL to `https://app.usehindsight.com/api/mcp`, and click **Add**. (Desktop users can instead reinstall the [hindsight.mcpb](https://app.usehindsight.com/hindsight.mcpb) bundle.)
+
+    **3. Connect and sign in**
+
+    Click **Connect**. Claude opens your browser to sign in to Hindsight; if you belong to multiple orgs, pick the workspace for this connection.
+
+    **4. Re-check tool permissions**
+
+    With 2.0's direct tool calls, you control which tools are exposed. After reconnecting, confirm the Hindsight tools you want are enabled in the connector's settings.
+  </Tab>
+
+  <Tab title="Manual config (mcp-remote)">
+    Manual setups that use `npx mcp-remote` cache their OAuth tokens on disk, so a fresh sign-in won't happen until you clear that cache. Removing and re-adding the connector in Claude is **not** enough here — clear the cache, then let the flow re-run.
+
+    Quit Claude Desktop / your client first, then delete the cache directory:
+
+    <CodeGroup>
+    ```bash macOS / Linux
+    rm -rf ~/.mcp-auth
+    ```
+
+    ```powershell Windows (PowerShell)
+    Remove-Item -Recurse -Force "$env:USERPROFILE\.mcp-auth"
+    ```
+    </CodeGroup>
+
+    Reopen your client — the next call runs the full OAuth flow and stores fresh tokens.
+
+    <Note>
+      If your manual config uses an **API key** (`Authorization: Bearer YOUR_API_KEY`) rather than OAuth, there's nothing to reauthenticate — just confirm the key is still valid under **Settings → API Keys** in Hindsight and that your config points at `https://app.usehindsight.com/api/mcp`.
+    </Note>
+  </Tab>
+</Tabs>
+
+---
+
+## Team & Enterprise workspaces
+
+On Claude **Team** and **Enterprise** plans, individual members usually **cannot** add a custom connector themselves — an **Owner** (or Primary Owner) has to approve it for the organization first. If you don't see an **Add custom connector** option, this is why.
+
+<Steps>
+  <Step title="An Owner adds Hindsight org-wide">
+    In Claude, go to **Organization settings → Connectors → Add**, hover **Custom**, and choose **Web**. Enter the URL `https://app.usehindsight.com/api/mcp` and click **Add**. (Leave **Advanced settings** / OAuth Client ID & Secret blank — Hindsight's OAuth is handled per user at connect time.)
+  </Step>
+  <Step title="Members connect individually">
+    Once the Owner has added it, each member goes to **Customize → Connectors**, finds the **Hindsight** entry (marked with a **Custom** label), and clicks **Connect** to run their own OAuth sign-in and pick their workspace.
+  </Step>
+</Steps>
+
+<Note>
+  Access stays **per user**, not shared. Each member signs in as themselves and only sees the Hindsight org they select — the Owner enabling the connector doesn't grant anyone access to Hindsight data. See the [MCP 2.0 notes](/release-notes/mcp-2.0#oauth-is-now-the-primary-sign-in).
+</Note>
+
+If your organization is on a plan where a member added a preview-era connector before Owner approval was required, that member should **remove** it (**Customize → Connectors → ⋯ → Remove**) and reconnect to the Owner-approved one so everyone is on the same server.
+
+For the authoritative admin steps, see Anthropic's guides on [getting started with custom connectors](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp) and [using connectors](https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities).
+
+---
+
 ## Available Tools
 
 The server exposes the verified deal layer as a focused set of tools, grouped below. Most workflows open with **`fetch_hindsight_context`** to learn the workspace's competitors and deal stages, then branch into the relevant group. For the exact current surface — including parameters — call `tools/list` against the endpoint (see the [Direct API](#direct-api) tab above).
