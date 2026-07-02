@@ -1,8 +1,8 @@
 ---
 title: "MCP 2.0"
 description: "OAuth sign-in, direct tool calls, and the first stable release of the Hindsight MCP server"
-date: '2026-07-01'
-version: '2.0.2'
+date: '2026-07-02'
+version: '2.0.3'
 ---
 
 import { New, Improved, Fix, Preview } from '/snippets/release-tag.mdx';
@@ -57,6 +57,7 @@ Your assistant now calls focused tools like `fetch_hindsight_context`, `select_d
 - **OAuth resource resolution** — the protected-resource URL is now derived from the deployment's site URL, fixing discovery in production.
 - **Tool-result parsing** — more robust extraction of result summaries so responses render reliably across clients.
 - **Tool-call rendering** — corrected how in-progress tool calls display during a response.
+- **Friendlier tool names** — tools now expose human-readable titles (e.g. "Search Deal Documents" instead of `search_deal_documents`), so clients that render tool titles show something more useful than raw function names.
 
 ---
 
@@ -77,3 +78,5 @@ Full instructions live in the [MCP setup guide](/integrations/mcp).
 <Preview category="Developer Tools" />
 
 **Web MCP as an official Claude connector.** We're working with Anthropic to offer Hindsight as a one-click connector inside Claude on the web — no local bundle to install. The OAuth flow in this release is the groundwork for it.
+
+**Org-level tool controls.** Admins will be able to turn individual tools on or off for the whole organization — for example, exposing read-only lookups to everyone while keeping dataset-creation tools limited to power users.

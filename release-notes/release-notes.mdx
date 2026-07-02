@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, honest N/A scoring for Custom Metrics, a quicker handoff from Slack to Claude or ChatGPT, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -55,6 +55,47 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="gauge-high" iconType="solid" title="Custom Metrics now say “N/A” instead of guessing">
+  <Improved category="Custom Metrics" />
+
+  When a deal doesn't have enough evidence to support a confident score, a Custom Metric now shows as **N/A** instead of forcing a misleading number.
+
+  N/A results are left out of averages, win-loss rollups, and dashboard charts, and CSV exports show them clearly as "N/A" — so your metric scores only reflect deals with something real behind them.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Continue a Slack answer in Claude or ChatGPT">
+  <New category="Slack" />
+
+  Answers from the Slack Assistant now include buttons to hand the conversation off to Claude or ChatGPT, with your question and Hindsight's answer pre-filled — so you can dig deeper without retyping context.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="square-plus" iconType="solid" title="Add answers straight from a group">
+  <Improved category="Custom Answers" />
+
+  You can now add a new Custom Answer directly from its group card in settings, with the group pre-selected — no more jumping between pages to build out a group.
 
 </Card>
 
