@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, longer-lived MCP sessions with per-tool access controls, a guided setup flow for connecting your CRM and call intelligence tools, Slack answers you can continue in Claude or ChatGPT, clearer "no evidence" scoring for Custom Metrics, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -21,6 +21,33 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Coming soon** — Web MCP as an official Claude connector.
 
   [Read the full MCP 2.0 notes →](/release-notes/mcp-2.0)
+
+</Card>
+
+<Card icon="key" iconType="solid" title="Longer-lived MCP sessions">
+  <Improved category="Developer Tools" />
+
+  The MCP server now supports OAuth refresh tokens, so clients like Claude stay connected without prompting you to sign in again as often.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Per-tool access controls for MCP">
+  <New category="Developer Tools" />
+
+  Admins can now enable or disable individual MCP tools for their organization, and tools show clearer names and descriptions in supported clients.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Continue Slack answers in Claude or ChatGPT">
+  <New category="Slack" />
+
+  Answers from the Slack Assistant now include buttons to open the same question in Claude or ChatGPT with your prompt pre-filled, so it's easy to keep digging outside Slack.
 
 </Card>
 
@@ -55,6 +82,26 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers & Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="square-plus" iconType="solid" title="Faster Custom Answer setup">
+  <Improved category="Custom Answers" />
+
+  Add a new Custom Answer directly from its group on the settings page, without leaving the page to get there.
+
+</Card>
+
+<Card icon="chart-simple" iconType="solid" title="Clearer scoring when there's no evidence">
+  <Improved category="Custom Metrics" />
+
+  Custom Metrics that lack enough evidence to score now show as "—" / N/A instead of a misleading score, and are excluded from averages, charts, and CSV exports.
 
 </Card>
 
