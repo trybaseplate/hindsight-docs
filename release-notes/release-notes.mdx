@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, smarter handling of Custom Metrics with no supporting evidence, one-click handoff from Slack plays to Claude or ChatGPT, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -47,9 +47,42 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </CardGroup>
 
+### Sales Enablement
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Continue plays in Claude or ChatGPT">
+  <New category="Sales Enablement" />
+
+  Slack messages for opportunity plays and AI-drafted outreach now include **Open in Claude** and **Open in ChatGPT** buttons, pre-filled with the deal context and draft — so reps can keep refining a play in the assistant they already use.
+
+</Card>
+
+</CardGroup>
+
 ### Deals
 
 <CardGroup cols={1}>
+
+<Card icon="calculator" iconType="solid" title="Custom Metrics now flag when there's no evidence">
+  <New category="Deals" />
+
+  Metrics without enough supporting evidence to score confidently now show as **no evidence** instead of a misleading number.
+
+  **Clearer deal view** — Scored and unscored metrics are now separated, so it's obvious at a glance which ones actually have data behind them.
+
+  **Cleaner analytics** — Metrics with no evidence are excluded from averages and chart bars instead of skewing them.
+
+  **Exports** — CSV exports now show "N/A" for metrics with no evidence, matching what you see in the app.
+
+</Card>
+
+<Card icon="circle-plus" iconType="solid" title="Add answers directly from a group">
+  <Improved category="Deals" />
+
+  A new **Add answer** button on each Custom Answer group lets you create an answer pre-assigned to that group, instead of creating it separately and assigning it after.
+
+</Card>
 
 <Card icon="file-export" iconType="solid" title="Deal exports now respect your filters">
   <Fix category="Deals" />
