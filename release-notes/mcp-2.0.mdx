@@ -1,8 +1,8 @@
 ---
 title: "MCP 2.0"
 description: "OAuth sign-in, direct tool calls, and the first stable release of the Hindsight MCP server"
-date: '2026-07-01'
-version: '2.0.2'
+date: '2026-07-02'
+version: '2.1.0'
 ---
 
 import { New, Improved, Fix, Preview } from '/snippets/release-tag.mdx';
@@ -26,6 +26,7 @@ The MCP server now authenticates with **OAuth** as the primary flow. When you in
 **What it means for you:**
 - **Per-user access, not a shared key.** Each person signs in as themselves, and access is scoped to the workspace they select — better security and cleaner usage attribution.
 - **Simpler setup.** The one-click connector handles auth end-to-end; there's nothing to paste or rotate.
+- **Stay signed in longer.** OAuth connections now support refresh tokens, so long-running sessions renew automatically instead of forcing you to reconnect.
 - **API keys still work** for manual/headless setups. Bearer-key configs (`Authorization: Bearer YOUR_API_KEY`) remain supported as a fallback — useful for servers and CI. See the [MCP setup guide](/integrations/mcp).
 
 ---
@@ -46,6 +47,14 @@ Your assistant now calls focused tools like `fetch_hindsight_context`, `select_d
 <Note>
   The canonical tool list is generated from the live server. For the current surface and how the tools fit together, see the [Platform Overview](/overview#tools-available) and [MCP docs](/integrations/mcp).
 </Note>
+
+---
+
+## Per-workspace tool access & clearer tool metadata
+
+<New category="Admin" />
+
+Admins can now choose which MCP tools are enabled for their workspace, so you can scope exactly what an assistant is allowed to call. Tools also carry readable titles and behavior hints (e.g. read-only vs. state-changing) instead of raw function names, and failed tool calls now return a clear error message instead of failing silently.
 
 ---
 

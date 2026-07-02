@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, a one-click hand-off from Slack to Claude and ChatGPT, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -18,9 +18,44 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
   OAuth is now the primary sign-in, capabilities are exposed as **direct tool calls** (faster responses and per-tool control) instead of a single orchestrating agent, plus CORS and reliability fixes. This is a **breaking change** and our first stable contract.
 
+  **Since launch** — refresh tokens keep sessions signed in longer, and admins can now choose which tools are enabled per workspace.
+
   **Coming soon** — Web MCP as an official Claude connector.
 
   [Read the full MCP 2.0 notes →](/release-notes/mcp-2.0)
+
+</Card>
+
+</CardGroup>
+
+### Slack Assistant
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Hand off Slack questions to Claude or ChatGPT">
+  <New category="Slack" />
+
+  Ask the Slack Assistant a question, then hand it off to Claude or ChatGPT with one click. The button carries your question over as a pre-filled prompt, so you can pick up a deeper follow-up in whichever AI tool you prefer.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers & Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="list-check" iconType="solid" title="Faster answer creation from groups">
+  <Improved category="Custom Answers" />
+
+  Group cards on the Custom Answers page now have an **Add Answer** button that pre-selects the group, so new answers land where you meant them to without extra clicks.
+
+</Card>
+
+<Card icon="gauge" iconType="solid" title="More reliable metric editing">
+  <Fix category="Custom Metrics" />
+
+  Fixed an issue where switching between creating and editing a metric could leave stale data in the form. Metric modals also no longer close accidentally if you click outside or hit Escape mid-edit.
 
 </Card>
 
