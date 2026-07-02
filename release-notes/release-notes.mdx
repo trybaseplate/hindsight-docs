@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, AI handoff buttons on Sales Plays, clearer handling of unscored custom metrics, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -42,6 +42,58 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+</CardGroup>
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Open plays in Claude or ChatGPT">
+  <New category="Sales Enablement" />
+
+  Outreach drafts posted to a play thread in Slack now come with **Open in Claude** and **Open in ChatGPT** buttons, pre-filled with the draft and deal context, so reps can keep refining the message in whichever assistant they already use.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="circle-question" iconType="solid" title="Unscored metrics now say so">
+  <New category="Custom Metrics" />
+
+  When there isn't enough evidence in a deal to score a custom metric, Hindsight no longer guesses.
+
+  **Clearly labeled** — Unscored metrics show as "no evidence to score" on the deal page instead of a misleading number.
+
+  **Excluded from math** — Unscored metrics are left out of averages, rollups, and score bars so they don't skew analytics.
+
+  **Exports** — Exported reports show "N/A" for unscored metrics.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="Metric edit windows reset properly">
+  <Fix category="Custom Metrics" />
+
+  Fixed an issue where switching between editing an existing metric and creating a new one could leave stale data in the form.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="square-plus" iconType="solid" title="Add answers directly from a group">
+  <Improved category="Custom Answers" />
+
+  Each group in **Settings → Custom Answers** now has its own "Add answer" button, and the new answer form opens with that group pre-selected.
 
 </Card>
 
