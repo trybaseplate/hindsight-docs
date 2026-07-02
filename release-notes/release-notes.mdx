@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server with per-tool access controls, a guided setup flow for connecting your CRM and call intelligence tools, a Slack-to-Claude/ChatGPT handoff, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -21,6 +21,15 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Coming soon** — Web MCP as an official Claude connector.
 
   [Read the full MCP 2.0 notes →](/release-notes/mcp-2.0)
+
+</Card>
+
+<Card icon="toggle-on" iconType="solid" title="Per-tool MCP access controls">
+  <New category="Developer Tools" />
+
+  Admins can now control which Hindsight tools are exposed over MCP for their organization, so you can scope exactly what Claude, ChatGPT, or any other connected client is allowed to call.
+
+  Tools also surface clearer titles and behavior hints (e.g. read-only) in clients that support them, so it's easier to see what a tool will do before approving it.
 
 </Card>
 
@@ -55,6 +64,39 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Slack Assistant
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Hand off to Claude or ChatGPT">
+  <New category="Slack" />
+
+  When the Slack Assistant answers a question, you can now send that conversation straight into Claude or ChatGPT with the context pre-filled, so you can keep digging without starting over.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="square-plus" iconType="solid" title="Faster Custom Answers setup">
+  <Improved category="Custom Answers" />
+
+  Add a new answer directly from a group's card on the Custom Answers page, with the group pre-selected — one less step to get set up.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="More reliable metric modals">
+  <Fix category="Custom Metrics" />
+
+  Fixed an issue where switching a metric modal between edit and create mode could leave stale data in the form. Modals also no longer close accidentally from a stray click or Escape key press.
 
 </Card>
 
