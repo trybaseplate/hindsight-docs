@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, a fix for deal exports, longer-lived MCP sessions, smarter custom metric scoring, and one-click handoff from Slack to Claude or ChatGPT.
 
 ### Developer Tools
 
@@ -21,6 +21,17 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Coming soon** — Web MCP as an official Claude connector.
 
   [Read the full MCP 2.0 notes →](/release-notes/mcp-2.0)
+
+</Card>
+
+<Card icon="key" iconType="solid" title="Longer-lived MCP sessions & admin tool controls">
+  <Improved category="Developer Tools" />
+
+  **Stay signed in longer** — MCP connections now support refresh tokens, so Claude, Cursor, and other MCP clients reconnect automatically instead of prompting you to sign in again.
+
+  **Admin tool controls** — Admins can now control which MCP tools are enabled for their organization.
+
+  **Clearer tool names** — Tools now show friendlier, more descriptive names in MCP clients.
 
 </Card>
 
@@ -55,6 +66,45 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-simple" iconType="solid" title="'No evidence' instead of guessed scores">
+  <Improved category="Custom Metrics" />
+
+  When a deal doesn't have enough evidence to confidently score a custom metric, Hindsight now marks it as **no evidence** instead of forcing a low-confidence guess. These metrics are excluded from averages, charts, and CSV exports (shown as "N/A") so your rollups stay accurate.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Continue Slack answers in Claude or ChatGPT">
+  <New category="Slack" />
+
+  Slack Assistant responses now include one-click buttons to continue the conversation in Claude or ChatGPT, with your question carried over automatically.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="square-plus" iconType="solid" title="Faster answer creation">
+  <Improved category="Custom Answers" />
+
+  Add a new custom answer directly from its group with the new **Add Answer** button — the group is pre-selected, so there's one less step.
 
 </Card>
 
