@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, smarter handling of low-evidence metric scores, a Slack-to-Claude/ChatGPT handoff, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -55,6 +55,43 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Answers
+
+<CardGroup cols={1}>
+
+<Card icon="chart-simple" iconType="solid" title="Clearer handling of low-evidence scores">
+  <Improved category="Custom Metrics" />
+
+  Custom Metrics now tell the difference between a deal that scored low and a deal there just wasn't enough evidence to score.
+
+  **No evidence, no guess** — Deals without enough supporting evidence now show as unscored instead of getting a shaky, low-confidence number.
+
+  **Cleaner charts & exports** — Unscored deals are excluded from averages and bar charts, and appear as "N/A" in CSV exports, so your numbers reflect only real signal.
+
+</Card>
+
+<Card icon="list-check" iconType="solid" title="Faster custom answer creation">
+  <Improved category="Custom Answers" />
+
+  Add a new custom answer directly from its group card, with the group pre-selected, so it lands in the right place without extra clicks.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Continue a Slack answer in Claude or ChatGPT">
+  <New category="Slack" />
+
+  Hindsight's Slack replies now include one-click buttons to continue the conversation in Claude or ChatGPT, with your question and context carried over automatically.
 
 </Card>
 
