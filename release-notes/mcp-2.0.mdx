@@ -1,8 +1,8 @@
 ---
 title: "MCP 2.0"
 description: "OAuth sign-in, direct tool calls, and the first stable release of the Hindsight MCP server"
-date: '2026-07-01'
-version: '2.0.2'
+date: '2026-07-02'
+version: '2.0.3'
 ---
 
 import { New, Improved, Fix, Preview } from '/snippets/release-tag.mdx';
@@ -57,6 +57,18 @@ Your assistant now calls focused tools like `fetch_hindsight_context`, `select_d
 - **OAuth resource resolution** — the protected-resource URL is now derived from the deployment's site URL, fixing discovery in production.
 - **Tool-result parsing** — more robust extraction of result summaries so responses render reliably across clients.
 - **Tool-call rendering** — corrected how in-progress tool calls display during a response.
+
+---
+
+## Tool access controls & longer sessions
+
+<New category="Developer Tools" />
+
+Follow-up improvements based on early feedback from the 2.0 launch.
+
+- **Admin tool access controls** — Admins can now choose which Hindsight tools are exposed through MCP for their organization, instead of exposing the full set to everyone.
+- **Friendlier tools** — Tools show clearer names and descriptions in your assistant's tool picker, and error messages are more helpful when a call doesn't go through.
+- **Stay signed in longer** — MCP connections now refresh automatically in the background, so you won't be prompted to reauthenticate as often.
 
 ---
 
