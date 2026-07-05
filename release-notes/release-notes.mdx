@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, smarter custom metric scoring, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -55,6 +55,45 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-line" iconType="solid" title="Metrics show “no evidence” instead of guessing">
+  <Improved category="Custom Metrics" />
+
+  When a deal doesn't have enough evidence to support a score, Hindsight now marks the metric **N/A** instead of forcing a low-confidence guess.
+
+  **Called out separately** — Unscored metrics show up in their own "no evidence to score" section on the deal overview, so they're easy to spot.
+
+  **Cleaner rollups** — N/A metrics are excluded from deal-grid bars, averages, and CSV exports, so team-wide scores aren't skewed by guesses.
+
+  Editing and creating metrics is also steadier now — the form resets properly when you switch between edit and create, and won't close if you accidentally click outside or hit Escape.
+
+</Card>
+
+<Card icon="square-plus" iconType="solid" title="Add answers straight from a group">
+  <Improved category="Custom Answers" />
+
+  The Custom Answers settings page now has an **Add Answer** button on each group card, with that group pre-selected — no more hunting through a dropdown to file a new answer under the right group.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Hand off Slack answers to Claude or ChatGPT">
+  <New category="Slack" />
+
+  Slack Assistant responses now include buttons to continue the conversation in Claude or ChatGPT, with your original question carried over automatically so you don't have to retype it.
 
 </Card>
 
