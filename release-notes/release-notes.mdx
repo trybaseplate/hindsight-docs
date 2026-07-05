@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, smarter handling of Custom Metrics with no supporting evidence, and one-click hand-off to Claude or ChatGPT from Slack.
 
 ### Developer Tools
 
@@ -21,6 +21,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Coming soon** — Web MCP as an official Claude connector.
 
   [Read the full MCP 2.0 notes →](/release-notes/mcp-2.0)
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Configurable MCP tool access">
+  <Improved category="Developer Tools" />
+
+  Admins can now control which MCP tools are enabled for their organization. Tools also have clearer names and descriptions, plus more helpful error messages when a call can't complete.
 
 </Card>
 
@@ -55,6 +62,52 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-line" iconType="solid" title="Clearer handling when there's no evidence to score">
+  <Improved category="Custom Metrics" />
+
+  Custom Metrics no longer force a score when there isn't enough evidence in a deal. Metrics without sufficient support now show a clear "No evidence to score" state instead of a low-confidence guess, so your averages, charts, and exports stay accurate.
+
+</Card>
+
+<Card icon="pen-to-square" iconType="solid" title="Metric editor polish">
+  <Fix category="Custom Metrics" />
+
+  Fixed an issue where the metric editor could show stale data when switching between creating and editing a metric, and added a confirmation step so in-progress edits aren't lost accidentally.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="square-plus" iconType="solid" title="Faster answer creation">
+  <Improved category="Custom Answers" />
+
+  A new "Add Answer" button on each group card lets you create a new Custom Answer with the group pre-selected, cutting out a few clicks.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Ask Claude or ChatGPT, right from Slack">
+  <New category="Slack" />
+
+  New buttons on Hindsight's Slack messages let you continue the conversation in Claude or ChatGPT with the context already filled in, so you can dig deeper without retyping anything.
 
 </Card>
 
