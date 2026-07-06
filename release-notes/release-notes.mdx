@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, longer-lived MCP connections with configurable tool access, a guided setup flow for connecting your CRM and call intelligence tools, clearer custom metric scoring when evidence is missing, quick handoffs from Slack into Claude or ChatGPT, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -21,6 +21,20 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Coming soon** — Web MCP as an official Claude connector.
 
   [Read the full MCP 2.0 notes →](/release-notes/mcp-2.0)
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="Longer-lived MCP connections">
+  <Improved category="Developer Tools" />
+
+  Web MCP sign-ins for Claude and ChatGPT now support refresh tokens, so your connection stays active without needing to reauthenticate as often. Users on more than one organization can also choose which org to connect during setup.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Configurable MCP tools & custom instructions">
+  <New category="Developer Tools" />
+
+  Admins can now control which MCP tools are available to their team and write custom instructions that guide how the AI assistant uses each one. Tools also show clearer, more descriptive titles.
 
 </Card>
 
@@ -55,6 +69,45 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="gauge-high" iconType="solid" title="Clearer scoring when there's no evidence">
+  <Improved category="Custom Metrics" />
+
+  Metrics without enough supporting evidence now show as "N/A" instead of a forced score, and are kept out of averages, rollups, and charts — so your metric trends only reflect scores backed by real evidence. Unscored metrics are grouped separately on the deal so it's still clear what's missing.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="plus" iconType="solid" title="Faster answer creation">
+  <Improved category="Custom Answers" />
+
+  Add a new custom answer directly from a group's card on the Custom Answers page, with the group already selected for you.
+
+</Card>
+
+</CardGroup>
+
+### Slack Assistant
+
+<CardGroup cols={1}>
+
+<Card icon="comment-dots" iconType="solid" title="Continue in Claude or ChatGPT">
+  <New category="Slack" />
+
+  Ask Hindsight's Slack Assistant a question, then jump straight into Claude or ChatGPT with your question pre-filled to keep exploring outside Slack.
 
 </Card>
 
