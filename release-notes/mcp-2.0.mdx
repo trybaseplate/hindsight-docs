@@ -49,6 +49,22 @@ Your assistant now calls focused tools like `fetch_hindsight_context`, `select_d
 
 ---
 
+## Longer-lived sessions
+
+<Improved category="Authentication" />
+
+MCP connections now refresh their access automatically in the background, so you stay signed in without repeating the OAuth flow every session. We also extended OAuth sign-in to browser-based (web) MCP connections, with a round of fixes for a smoother first connect.
+
+---
+
+## Admin control over which tools are available
+
+<New category="Developer Tools" />
+
+Admins can now choose which Hindsight tools are exposed to their team's MCP connections from the organization settings. Tools also carry clearer, human-readable titles so they're easier to recognize inside your AI client instead of showing raw function names.
+
+---
+
 ## Fixes & reliability
 
 <Fix category="Developer Tools" />

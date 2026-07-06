@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, a fix for deal exports, plus admin controls for MCP tools, longer-lived sign-ins, Slack-to-AI handoff, and metrics that no longer guess when there's no evidence.
 
 ### Developer Tools
 
@@ -21,6 +21,33 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Coming soon** — Web MCP as an official Claude connector.
 
   [Read the full MCP 2.0 notes →](/release-notes/mcp-2.0)
+
+</Card>
+
+<Card icon="key" iconType="solid" title="Longer-lived MCP sessions">
+  <Improved category="Developer Tools" />
+
+  MCP connections now refresh access automatically in the background, so you stay signed in without repeating the OAuth flow every session. The web-based OAuth flow used by browser clients (like Claude and ChatGPT on the web) also got a round of fixes for a smoother first connect.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Admin control over MCP tools">
+  <New category="Developer Tools" />
+
+  Admins can now choose which Hindsight tools are exposed to their team's MCP connections. Tools also show clearer, human-readable names in your AI client instead of raw function names.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="arrow-up-right-from-square" iconType="solid" title="Jump into Claude or ChatGPT from Slack">
+  <New category="Slack" />
+
+  Slack Assistant answers now include buttons to continue the conversation in Claude or ChatGPT, with your question pre-filled so you don't have to retype it.
 
 </Card>
 
@@ -55,6 +82,32 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="circle-minus" iconType="solid" title="Metrics no longer guess when there's no evidence">
+  <Improved category="Custom Metrics" />
+
+  When a deal doesn't have enough evidence to score a metric, Hindsight now shows **N/A** instead of forcing a low-confidence score. These metrics are broken out separately on the deal overview and excluded from averages, charts, and exports, so your rollups stay accurate.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="square-plus" iconType="solid" title="Add answers straight from a group">
+  <Improved category="Custom Answers" />
+
+  A new **Add Answer** button on each group card creates the answer pre-assigned to that group. We also fixed the metric editor so switching between editing and creating a metric no longer carries over stale form values.
 
 </Card>
 
