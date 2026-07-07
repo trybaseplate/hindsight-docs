@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, custom instructions for MCP tools, a redesigned Agent Setup hub, early Snowflake CRM support, and fixes for deal exports and manager deal access.
 
 ### Developer Tools
 
@@ -39,6 +39,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="message-pen" iconType="solid" title="Custom instructions for MCP tools">
+  <New category="Developer Tools" />
+
+  Set org-level custom instructions that shape how Hindsight's MCP tools respond in Claude, ChatGPT, and other MCP clients — useful for steering tone, priorities, or context specific to your team. Manage them from the new Agent Setup page.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +67,26 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM integration">
+  <Preview category="CRM Integration" />
+
+  Early access to a Snowflake connector for bringing deal data into Hindsight, built on the same import flow as our other CRM integrations. Preview and choose exactly which records to import before they land in your pipeline. Reach out to your Hindsight contact to get it enabled for your org.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="compass" iconType="solid" title="Agent Setup: your integrations in one place">
+  <Improved category="Competitive Intelligence" />
+
+  The competitor enablement setup page is now **Agent Setup** — a single hub for connecting Hindsight to the rest of your stack. Quick links to MCP, the API, and Slack now live right at the top, and each competitor row shows how many assets are already saved for it.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +97,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="user-check" iconType="solid" title="Managers can now open individual deals">
+  <Fix category="Deals" />
+
+  Fixed a permissions issue that blocked managers from opening a deal's detail page.
 
 </Card>
 
