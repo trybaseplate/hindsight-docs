@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server (now with custom tool instructions), a guided setup flow for connecting your CRM and call intelligence tools, Snowflake as a supported CRM source, clearer custom metric scoring, one-click handoff to Claude and ChatGPT from Slack, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -21,6 +21,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Coming soon** — Web MCP as an official Claude connector.
 
   [Read the full MCP 2.0 notes →](/release-notes/mcp-2.0)
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Custom instructions for MCP tools">
+  <New category="Developer Tools" />
+
+  Admins can now add custom instructions to MCP tools, so you can steer how Claude, ChatGPT, and other connected assistants use Hindsight's tools to match your team's workflow.
 
 </Card>
 
@@ -42,6 +49,39 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake as a CRM source">
+  <Improved category="CRM Integration" />
+
+  Snowflake now works like any other CRM connection — preview deals and choose which ones to bring in, with the same import experience as HubSpot and Salesforce.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-bar" iconType="solid" title="Clearer scoring when there's no evidence">
+  <Improved category="Custom Metrics" />
+
+  Metrics that don't have enough supporting evidence now show as "no evidence to score" instead of a misleading number, and are left out of averages, rollups, and exports so your metric trends stay accurate.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Hand off to Claude & ChatGPT from Slack">
+  <New category="Slack" />
+
+  Send a Slack conversation straight to Claude or ChatGPT with the context pre-filled, so you can continue with your AI assistant of choice without retyping anything.
 
 </Card>
 
