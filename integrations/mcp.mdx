@@ -261,7 +261,7 @@ The server exposes the verified deal layer as a focused set of tools, grouped be
 
 | Tool | Description |
 |---|---|
-| `select_deal` | Filter and list deals by criteria. Returns lean rows for fast triage. |
+| `select_deal` | Filter and list deals by criteria (competitor, stage, amount, date, owner, and more). Pass a conceptual `semantic_query` to rank matches by similarity to a description instead of paging by date. Returns lean rows for fast triage. |
 | `get_deal` | Get full details for specific deals by ID. |
 | `search_across_deals` | Search all deal documents across the entire pipeline. |
 | `search_deal_documents` | Deep search within specific deals. |
@@ -303,7 +303,9 @@ For win-rate, trend, and segment questions over the deal grid.
 
 | Tool | Description |
 |---|---|
-| `upload_deal_document` | Upload a document to a deal by URL. |
+| `upload_deal_document` | Attach a document to a deal — pass the text directly or a downloadable file URL (PDF, DOCX, audio, video). |
+| `upload_to_knowledge_base` | Upload your own company's docs, playbooks, case studies, or approved messaging to the knowledge base. |
+| `upload_competitive_intel` | Save competitor pricing, positioning, feature notes, or gathered news to the knowledge base. |
 
 ---
 
