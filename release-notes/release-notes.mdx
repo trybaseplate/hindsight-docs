@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server with admin controls over which tools are exposed, smarter "no evidence" handling in Custom Metrics, one-click handoff from Slack into Claude or ChatGPT, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server with custom instructions and admin controls over which tools are exposed, smarter "no evidence" handling in Custom Metrics, one-click handoff from Slack into Claude or ChatGPT, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -36,6 +36,13 @@ The first stable release of the Hindsight MCP server with admin controls over wh
   **`upload_competitive_intel`** — save competitor pricing, positioning, or gathered news.
 
   See the [MCP tool reference](/integrations/mcp#available-tools).
+
+</Card>
+
+<Card icon="pen-to-square" iconType="solid" title="Custom instructions for the MCP server">
+  <New category="Developer Tools" />
+
+  Add custom instructions that shape how the Hindsight MCP tools respond — for example, always include the deal owner in summaries, or focus on enterprise-segment deals unless asked otherwise. Set them once from **Settings**, and they're applied automatically whenever your assistant fetches Hindsight context.
 
 </Card>
 
