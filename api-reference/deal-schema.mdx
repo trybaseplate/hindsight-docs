@@ -1,0 +1,192 @@
+---
+title: 'Deal Schema'
+description: 'Complete reference of every field a deal object can return'
+---
+
+This is the full list of fields returned by the [Get Deals](/api-reference/get-deals) and [Bulk Export Deals](/api-reference/export-deals) endpoints. Use the `columns` parameter to request a subset; `*` (the default) returns every scalar field plus the relational arrays (`drivers`, `competitors`, `features`).
+
+Types are given as JSON types. Timestamps are ISO 8601 strings (e.g. `2026-01-10T12:00:00Z`). A field is `null` when it hasn't been set or generated yet.
+
+<Note>
+Several internal columns are **never** returned, even with `*` or when named explicitly: full-text search vectors, sync bookkeeping, sharing config, and raw aggregate blobs — `fts`, `joined_fts`, `keywords`, `mention_ids`, `sync_run_id`, `client_id`, `proposal`, `next_steps*`, `requirements*`, `summary_context`/`summary_all`, `engagements_*`, `slack_channel_id`, `org_sharing_*`, `reports_event_run_id`, `processing_in_progress`, `last_processing_started`, `questions_due`.
+</Note>
+
+## Core deal
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | string | Deal identifier (e.g. `deal_123`). |
+| `name` | string | Deal name. |
+| `org_id` | string | Owning organization ID. |
+| `owner_id` | string | Deal owner (user ID). |
+| `type` | string | Deal type (e.g. `New Business`, `Expansion`). |
+| `region` | string | Region (e.g. `North America`). |
+| `industry` | string | Industry of the account. |
+| `amount` | number | Deal value. |
+| `status` | string | Deal stage (display value). |
+| `status_id` | string | Deal stage ID. |
+| `previous_status_id` | string | Prior stage ID. |
+| `close_date` | string | Expected/actual close date (aliased from the internal `proposal_due`; requestable as either name). |
+| `last_status_updated` | string | When the stage last changed. |
+| `created_at` | string | Creation timestamp. |
+| `updated_at` | string | Last update timestamp. |
+| `last_synced` | string | Last CRM sync timestamp. |
+| `archived` | boolean | Whether the deal is archived. |
+| `deal_analyzed` | boolean | Whether win-loss analysis has run. |
+| `summary` | string | The deal's **executive summary**, `null` until analyzed. |
+| `website_url` | string | Account website. |
+| `collaborators` | string[] | Collaborator user IDs. |
+| `contact_ids` | string[] | Associated contact IDs. |
+| `metadata` | object | Free-form metadata (e.g. `{ "source": "..." }`). |
+
+## CRM
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `hubspot_id` | string | HubSpot deal ID. |
+| `hubspot_url` | string | HubSpot deal URL. |
+| `salesforce_id` | string | Salesforce opportunity ID. |
+| `salesforce_url` | string | Salesforce opportunity URL. |
+| `hubspot_custom_properties` | object | Custom HubSpot deal properties. |
+| `hubspot_custom_properties_account` | object | Custom HubSpot account properties. |
+| `salesforce_custom_properties` | object | Custom Salesforce opportunity properties. |
+| `salesforce_custom_properties_account` | object | Custom Salesforce account properties. |
+
+## Account / company
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `client_name` | string | Account/company name. |
+| `logo_url` | string | Company logo URL. |
+| `short_description` | string | Short company description. |
+| `linkedin_url` | string | Company LinkedIn URL. |
+| `twitter_url` | string | Company Twitter/X URL. |
+| `phone` | string | Company phone. |
+| `city` | string | Company city. |
+| `state` | string | Company state/region. |
+| `country` | string | Company country. |
+| `founded_year` | number | Year founded. |
+| `num_employees` | number | Employee count. |
+| `annual_revenue` | number | Annual revenue. |
+| `total_funding` | number | Total funding raised. |
+
+## Competitors
+
+Scalar references plus the flattened `competitors` array.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `competitor_ids` | string[] | All competitor IDs on the deal. |
+| `primary_competitor_id` | string | Primary competitor ID. |
+| `incumbent_competitor_id` | string | Incumbent competitor ID. |
+| `selected_competitor_id` | string | Competitor that won (if lost to a competitor). |
+| `competitors` | object[] | Flattened competitor detail — see below. |
+
+**`competitors[]`** (highest threat first):
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `competitor_id` | string | Competitor ID. |
+| `name` | string | Competitor name. |
+| `is_primary` | boolean | Primary competitor on the deal. |
+| `is_incumbent` | boolean | Incumbent vendor. |
+| `threat_level` | number | Competitive threat level (1–5). |
+| `outcome` | string | Competitive outcome. |
+| `positioning_summary` | string | How we positioned against them. |
+| `key_differentiators` | string | Key differentiators cited. |
+
+## Drivers
+
+Decision drivers behind the outcome. Flat arrays plus the flattened `drivers` array.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `driver_ids` | string[] | Driver (reason) IDs. |
+| `driver_names` | string[] | Driver names, parallel to `driver_ids`. |
+| `drivers` | object[] | Flattened driver detail — see below. |
+
+**`drivers[]`** (strongest first):
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `name` | string | Driver / reason name. |
+| `tag` | string | Category tag (e.g. `Product`, `Pricing`, `Relationship`). |
+| `score` | number | Influence score. |
+| `sentiment` | string | `positive`, `negative`, or `neutral`. |
+| `summary` | string | How this driver impacted the deal. |
+
+## Features
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `feature_ids` | string[] | Associated feature IDs. |
+| `features` | object[] | Flattened feature detail — see below. |
+
+**`features[]`** (highest impact first):
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `name` | string | Feature name. |
+| `product` | string | Product the feature belongs to. |
+| `impact_score` | number | Impact on the deal (1–5). |
+| `sentiment` | string | Sentiment toward the feature. |
+| `influence_summary` | string | How the feature influenced the deal. |
+
+## Metrics (win-loss scorecard)
+
+Eight default metrics, each a score (1–5) plus a text explanation.
+
+| Score field | Explanation field |
+|-------------|-------------------|
+| `wl_product_fit_score` | `wl_product_fit_explanation` |
+| `wl_sales_execution_score` | `wl_sales_execution_explanation` |
+| `wl_relationship_score` | `wl_relationship_explanation` |
+| `wl_price_sensitivity_score` | `wl_price_sensitivity_explanation` |
+| `wl_competitive_intensity_score` | `wl_competitive_intensity_explanation` |
+| `wl_customer_fit_score` | `wl_customer_fit_explanation` |
+| `wl_messaging_fit_score` | `wl_messaging_fit_explanation` |
+| `wl_messaging_accuracy_score` | `wl_messaging_accuracy_explanation` |
+
+Plus org-defined custom metrics:
+
+**`custom_metrics`** — `object[]`:
+
+```json
+{
+  "id": "uuid",
+  "name": "Customer AI Readiness",
+  "score": 2,
+  "explanation": "…",
+  "created_at": "2026-01-10T12:00:00Z"
+}
+```
+
+<Tip>
+You can also request an individual metric as a top-level column by name: `custom_metric_score_{name}` and `custom_metric_explanation_{name}` (matched case-insensitively, spaces ignored).
+</Tip>
+
+## Answers (custom insights)
+
+**`custom_answers`** — `object[]`:
+
+```json
+{
+  "id": "uuid",
+  "name": "Persona",
+  "type": "insight",
+  "answer": "Market Intel / Competitive Intel",
+  "length": "select | boolean | sentence | paragraph",
+  "prompt": "Pick the best persona fit",
+  "confidence": 70,
+  "group_id": "uuid",
+  "group_name": "Persona",
+  "generated_at": "2026-01-10T12:00:00Z",
+  "evidence_used": ["…", "…"]
+}
+```
+
+`group_id` / `group_name` appear only on grouped answers.
+
+<Tip>
+Request a single answer as a top-level column with `custom_answer_{name}` (matched case-insensitively, spaces ignored).
+</Tip>

@@ -34,6 +34,7 @@
           "integrations/api",
           "api-reference/responses",
           "api-reference/get-deals",
+          "api-reference/deal-schema",
           "api-reference/export-deals",
           "api-reference/upload-library-document",
           "api-reference/upload-deal-document",

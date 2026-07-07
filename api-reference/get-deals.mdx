@@ -64,23 +64,42 @@ Query Parameters:
     "analysis_verified": true,
     "type": "New Business",
     "region": "North America",
-    "deal_competitor_associations": [
-      {
-        "competitor_id": "comp_123",
-        "is_primary": true,
-        "is_incumbent": false
-      }
-    ],
+    "summary": "Executive summary text for the deal…",
+    "driver_ids": ["reason_456", "reason_789"],
+    "driver_names": ["Strong product fit", "Pricing competitiveness"],
     "drivers": [
       {
-        "reason_id": "reason_456",
-        "positive": true,
-        "summary": "Strong product fit"
+        "name": "Strong product fit",
+        "tag": "Product",
+        "score": 3,
+        "sentiment": "positive",
+        "summary": "Unified survey + interview data favored our approach"
+      }
+    ],
+    "competitors": [
+      {
+        "competitor_id": "comp_123",
+        "name": "Crayon",
+        "is_primary": true,
+        "is_incumbent": false,
+        "threat_level": 4,
+        "outcome": "lost_to_us",
+        "positioning_summary": "Positioned on price and AI-driven analysis",
+        "key_differentiators": "Executive-grade reporting"
+      }
+    ],
+    "features": [
+      {
+        "name": "AI-driven interview analysis",
+        "product": "Core",
+        "impact_score": 3,
+        "sentiment": "positive",
+        "influence_summary": "Automated transcript synthesis was a differentiator"
       }
     ],
     "wl_product_fit_score": 4.2,
     "wl_sales_execution_score": 3.8,
-    "wl_relationship_score": 4.5,
+    "wl_relationship_score": 4.5
     // ... additional fields based on columns parameter
   }
 ]
@@ -132,6 +151,8 @@ GET /deals?columns=*  # All columns (default)
 
 <Note>
 A set of internal columns is always omitted from the response, even when you request `*` or name them explicitly: full-text search vectors, sync bookkeeping, sharing configuration, and raw aggregate blobs (e.g. `fts`, `joined_fts`, `keywords`, `sync_run_id`, `client_id`, `org_sharing_enabled`, `processing_in_progress`). The `close_date` column is returned under that name (it maps to the internal `proposal_due` field); you may request it as either `close_date` or `proposal_due`.
+
+The relational columns `drivers`, `competitors`, and `features` return flattened arrays (see [Drivers, competitors, and features](#response-format) below) and are included with `*`. `summary` returns only the deal's executive-summary string, not the full internal deal-story object.
 </Note>
 
 For a complete list of available columns (standard and dynamic), see the [Available Columns](/api-reference/export-deals#available-columns) section in the Bulk Export Deals documentation.
@@ -278,19 +299,37 @@ Returns an array of deal objects with all requested fields:
     "analysis_verified": true,
     "type": "New Business",
     "region": "North America",
-    "deal_competitor_associations": [
-      {
-        "competitor_id": "comp_123",
-        "is_primary": true,
-        "is_incumbent": false,
-        "positioning_summary": "Main competitor evaluation"
-      }
-    ],
+    "summary": "Executive summary text for the deal…",
+    "driver_ids": ["reason_456"],
+    "driver_names": ["Price"],
     "drivers": [
       {
-        "reason_id": "reason_456",
-        "positive": false,
+        "name": "Price",
+        "tag": "Pricing",
+        "score": 2,
+        "sentiment": "negative",
         "summary": "Price too high compared to competitor"
+      }
+    ],
+    "competitors": [
+      {
+        "competitor_id": "comp_123",
+        "name": "Crayon",
+        "is_primary": true,
+        "is_incumbent": false,
+        "threat_level": 4,
+        "outcome": "lost",
+        "positioning_summary": "Main competitor evaluation",
+        "key_differentiators": null
+      }
+    ],
+    "features": [
+      {
+        "name": "Executive-grade reporting",
+        "product": "Core",
+        "impact_score": 2,
+        "sentiment": "positive",
+        "influence_summary": "Filled a gap noted in incumbent tools"
       }
     ],
     "wl_product_fit_score": 4.2,
@@ -299,6 +338,20 @@ Returns an array of deal objects with all requested fields:
   }
 ]
 ```
+
+### Drivers, competitors, and features
+
+These three are **relational** fields, returned as flattened arrays (included with `*`, or by requesting the `drivers`, `competitors`, and `features` columns):
+
+| Field | Shape |
+|-------|-------|
+| `drivers` | `[{ name, tag, score, sentiment, summary }]` — decision drivers, strongest first. `sentiment` is `"positive" \| "negative" \| "neutral"`. `driver_ids` / `driver_names` are also returned as flat parallel arrays. |
+| `competitors` | `[{ competitor_id, name, is_primary, is_incumbent, threat_level, outcome, positioning_summary, key_differentiators }]` — highest threat first. |
+| `features` | `[{ name, product, impact_score, sentiment, influence_summary }]` — highest impact first. |
+
+### Summary
+
+`summary` returns only the deal's **executive summary** string (extracted from the internal deal-story JSON). It is `null` for deals that haven't been analyzed yet.
 
 ### Count Response
 
