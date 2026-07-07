@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server with admin controls over which tools are exposed, smarter "no evidence" handling in Custom Metrics, one-click handoff from Slack into Claude or ChatGPT, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -36,6 +36,39 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **`upload_competitive_intel`** — save competitor pricing, positioning, or gathered news.
 
   See the [MCP tool reference](/integrations/mcp#available-tools).
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Admin controls for MCP tool access">
+  <New category="Developer Tools" />
+
+  Admins can now choose which MCP tools are exposed to their organization, so your assistant's toolset matches what you actually want it to touch. Tools also carry clearer titles and usage hints (e.g. read-only vs. write) to make it easier to review what's enabled.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="gauge" iconType="solid" title="Metrics show 'no evidence' instead of guessing">
+  <Improved category="Custom Metrics" />
+
+  When a deal doesn't have enough evidence to support a confident score, Custom Metrics now mark it as unscored instead of forcing a low-confidence number. Unscored metrics are called out separately on the deal overview, excluded from averages and rollups, and shown as "N/A" in exports — so your team's analytics reflect real signal, not noise.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="brands" title="Continue in Claude or ChatGPT">
+  <New category="Slack" />
+
+  Relevant Slack messages from Hindsight now include buttons to hand off the conversation directly into Claude or ChatGPT, with the context pre-filled as a prompt — so you can dig deeper without leaving your flow to copy and paste.
 
 </Card>
 
