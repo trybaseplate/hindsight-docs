@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, smarter "no evidence" handling in Custom Metrics, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -36,6 +36,46 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **`upload_competitive_intel`** — save competitor pricing, positioning, or gathered news.
 
   See the [MCP tool reference](/integrations/mcp#available-tools).
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Per-tool MCP controls for admins">
+  <New category="Developer Tools" />
+
+  Admins can now control which MCP tools are available to their organization and add custom instructions for how each tool should be used, so agents behave consistently with team conventions. Tools also surface clearer titles and hints (e.g. read-only) in MCP clients.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Hand off Slack answers to Claude or ChatGPT">
+  <New category="Slack" />
+
+  Hindsight's Slack Assistant responses now include buttons to continue the conversation in Claude or ChatGPT, with the relevant context pre-filled as a prompt — no more copy-pasting to keep digging in your AI tool of choice.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="circle-question" iconType="solid" title="Metrics show 'no evidence' instead of guessing">
+  <Improved category="Custom Metrics" />
+
+  When a deal doesn't have enough evidence to confidently score a Custom Metric, Hindsight now marks it as **N/A** instead of forcing a low-confidence score. Unscored metrics are called out separately in the deal overview, excluded from averages and charts, and shown as "N/A" in exports — so your metric averages reflect real signal, not guesses.
+
+</Card>
+
+<Card icon="list" iconType="solid" title="Faster answer creation in Custom Answers">
+  <Improved category="Custom Answers" />
+
+  Add a new answer directly from a group card, with the group pre-selected. Metric and answer creation modals also reset cleanly when switching between edit and create, so leftover data no longer carries over between edits.
 
 </Card>
 
