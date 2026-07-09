@@ -62,6 +62,34 @@ We recommend filtering to Closed Won and Lost opportunities. You can also filter
 <img alt="slack deal" classname="block" src="/images/salesforce/salesforce-import-auto.png" />
 
 
+## Security
+
+Hindsight treats your Salesforce credentials and data as sensitive by default. The integration is built to meet the OAuth hardening controls that modern security programs (including Salesforce's own partner requirements) expect.
+
+### OAuth Token Controls
+
+| Control | Status | What it does |
+|---|---|---|
+| **PKCE** (Proof Key for Code Exchange) | Enforced | The authorization flow uses PKCE (S256), preventing authorization-code interception. |
+| **Refresh Token Rotation** | Enforced | Each token refresh issues a new refresh token and invalidates the previous one, so a stolen token stops working after its first use. |
+| **Idle Token TTL (30 days)** | Enforced | Refresh tokens expire after 30 days of inactivity, eliminating indefinitely-lived credentials. |
+| **IP-Bound Token Refresh** | {/* PICK ONE — see note below */} Available | Token-refresh requests originate exclusively from Hindsight's dedicated, self-hosted integration layer, enabling refresh requests to be bound to an approved IP range. |
+
+{/*
+  IP-Bound Token Refresh — choose the accurate wording before publishing:
+  - If static egress + Salesforce IP restrictions are LIVE in production: set Status to "Enforced"
+    and reword to "...are bound to an approved static IP range."
+  - If not yet provisioned: keep "Available" as written (true: the architecture supports it,
+    it is not yet enforced). Do NOT claim "Enforced" until it is.
+*/}
+
+### How Credentials Are Handled
+
+- **Never exposed to the browser.** OAuth is brokered entirely server-side. Access and refresh tokens are held only by Hindsight's integration layer and are never returned to the client.
+- **Encrypted at rest.** Tokens are stored encrypted in an internal-only database with no public network exposure.
+- **Least-privilege scopes.** Hindsight requests only the specific Salesforce API scopes required for the features you use, not broad or full-account access.
+- **Revocable at any time.** Disconnecting Salesforce from the [Integrations](https://app.usehindsight.com/settings/integrations) page immediately revokes Hindsight's access.
+
 ## Customization
 
 ### Opportunity Stages
