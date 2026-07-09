@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, a fix for deal exports, custom metric N/A scoring, Snowflake sync reliability improvements, and Slack handoff to Claude & ChatGPT.
 
 ### Developer Tools
 
@@ -39,6 +39,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="sliders" iconType="solid" title="Custom instructions for MCP tools">
+  <New category="Developer Tools" />
+
+  Add custom instructions to individual MCP tools to steer how your assistant uses them — for example, telling a deal-search tool to prioritize recent transcripts. Tools also show clearer, human-readable titles so it's easier to see what's running.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +67,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake sync reliability">
+  <Improved category="CRM Integration" />
+
+  Snowflake import now correctly refreshes previously imported deals instead of only picking up new ones, avoids creating duplicates, and keeps the deal grid's filters and sorting in sync automatically while you preview an import.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +84,26 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="chart-simple" iconType="solid" title="Custom Metrics support N/A scores">
+  <New category="Custom Metrics" />
+
+  Metrics with no supporting evidence in a deal now show as **N/A** instead of a misleading low score. Unscored metrics are called out separately on the deal overview, excluded from averages and rollups, and marked "N/A" in exports — so your metric averages only reflect deals with real evidence behind them.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Hand off questions to Claude & ChatGPT">
+  <New category="Slack" />
+
+  Slack Assistant replies now include buttons to continue a question directly in Claude or ChatGPT, with the original prompt pre-filled so you don't have to retype context.
 
 </Card>
 
