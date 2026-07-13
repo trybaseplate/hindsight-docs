@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, per-tool access controls, a guided setup flow for connecting your CRM and call intelligence tools, Custom Metrics on the dashboard, Slack handoffs to Claude and ChatGPT, and a round of CRM and metrics fixes.
 
 ### Developer Tools
 
@@ -39,6 +39,15 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="sliders" iconType="solid" title="Per-tool access & custom instructions for MCP">
+  <New category="Developer Tools" />
+
+  Admins can now control which MCP tools are exposed to their team, tool by tool, and add custom instructions to steer how the assistant uses them. Tools also surface clearer, human-readable names in-client.
+
+  See the [MCP tool reference](/integrations/mcp#available-tools).
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +69,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake sync improvements">
+  <Improved category="CRM Integration" />
+
+  The Snowflake integration now works the same way as our other CRM connections for every organization. Sync is smarter about refreshing deals that already exist versus pulling in new ones, and manual-import filtering now matches what you see in the deal grid.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +86,58 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Custom Metrics on the dashboard">
+  <New category="Dashboard & Analytics" />
+
+  Dashboard charts now plot your Custom Metrics right alongside the default ones. Segment filters also support selecting multiple segments at once ("is any of"), so you're not limited to a single segment per chart.
+
+</Card>
+
+</CardGroup>
+
+### Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="circle-question" iconType="solid" title="Metrics show “N/A” instead of guessing">
+  <Fix category="Metrics" />
+
+  Custom Metrics no longer force a low-confidence score when a deal doesn't have enough evidence to support one — they now show **N/A** and are left out of averages and rollups, so your trends only reflect deals with real signal behind the score.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Ask in Claude or ChatGPT from Slack">
+  <New category="Slack" />
+
+  Slack Assistant answers now include one-click buttons that hand your question off to Claude or ChatGPT with the context pre-filled, so you can keep digging in the assistant you prefer.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="wrench" iconType="solid" title="Assorted fixes">
+  <Fix category="Platform" />
+
+  Fixed a handful of rough edges: broken competitor-suggestion cards, deals showing up with no owner assigned, and unsubscribe links that weren't taking effect.
 
 </Card>
 
