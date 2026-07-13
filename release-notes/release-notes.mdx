@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, smarter custom metrics, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -39,6 +39,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="sliders" iconType="solid" title="Custom instructions per MCP tool">
+  <New category="Developer Tools" />
+
+  Admins can now write custom instructions for individual MCP tools and control which tools are available to their organization, right from Settings — so the assistant follows your team's conventions out of the box.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -62,6 +69,26 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </CardGroup>
 
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Custom metrics on dashboard charts">
+  <New category="Custom Metrics" />
+
+  Plot your custom metrics directly alongside the default metrics on dashboard charts. Segment filters also now support selecting multiple values at once — for example, "stage is any of" instead of one stage at a time.
+
+</Card>
+
+<Card icon="circle-question" iconType="solid" title="Clearer signal when there's no evidence to score">
+  <Improved category="Custom Metrics" />
+
+  When a deal doesn't have enough evidence to score a custom metric, Hindsight now shows it as "no evidence to score" instead of guessing at a number. These unscored deals are excluded from averages, rollups, and CSV exports so your reporting stays accurate.
+
+</Card>
+
+</CardGroup>
+
 ### Deals
 
 <CardGroup cols={1}>
@@ -70,6 +97,32 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="circle-plus" iconType="solid" title="Faster answer creation">
+  <Improved category="Custom Answers" />
+
+  Add a new custom answer directly from a group card on the Custom Answers page, with the group pre-selected — no need to navigate elsewhere first.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Continue in Claude or ChatGPT from Slack">
+  <New category="Slack" />
+
+  New buttons on Slack Assistant answers let you continue the conversation in Claude or ChatGPT with the full context pre-filled, so you can dig deeper without retyping everything.
 
 </Card>
 
