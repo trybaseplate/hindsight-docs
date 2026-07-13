@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, Custom Metrics in dashboard charts, and a one-click unsubscribe option for interview emails.
 
 ### Developer Tools
 
@@ -39,6 +39,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="filter" iconType="solid" title="Filter usage logs by source">
+  <Improved category="Developer Tools" />
+
+  The usage log under **Settings → Usage** now lets you filter tool calls by source — API or MCP — with clearer labels and CSV exports scoped to whichever source you're viewing.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -57,6 +64,54 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake sync improvements">
+  <Improved category="CRM Integration" />
+
+  The Snowflake sync now refreshes previously imported deals in place instead of re-importing them, and filters in the deal import preview update automatically as you adjust them — no more manual re-search needed to see matching deals.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Custom Metrics in dashboard charts">
+  <Improved category="Dashboard & Analytics" />
+
+  **Plot Custom Metrics** — Custom Metrics can now be plotted directly alongside default metrics in dashboard charts.
+
+  **Multi-select segments** — Segment filters now support "is any of" logic, so you can compare several segments in a single view instead of switching between them one at a time.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="tag" iconType="solid" title="Feature tag colors & larger CSV imports">
+  <Improved category="Competitive Intelligence" />
+
+  Feature tags now get sensible default colors automatically, and we removed the row-count limit on CSV imports so bigger datasets upload without hitting an artificial cap. We also fixed a bug where accepting a suggested feature didn't carry over its product and product area.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="envelope-open" iconType="solid" title="Unsubscribe from interview emails">
+  <New category="Buyer Interviews" />
+
+  Recipients can now opt out of interview request emails with a single click. Once unsubscribed, that email address won't receive further interview outreach, so your buyer communications automatically respect individual preferences.
 
 </Card>
 
