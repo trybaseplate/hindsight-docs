@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, custom MCP instructions and per-role tool permissions, a guided setup flow for connecting your CRM and call intelligence tools, and fixes for deal exports and Snowflake sync.
 
 ### Developer Tools
 
@@ -39,6 +39,20 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="sliders" iconType="solid" title="Custom instructions for MCP">
+  <New category="Developer Tools" />
+
+  Add your own custom instructions to shape how the Hindsight MCP server responds for your workspace — for example, house terminology, formatting preferences, or how to handle specific request types. Manage them from the MCP settings page.
+
+</Card>
+
+<Card icon="user-lock" iconType="solid" title="Per-role MCP tool permissions">
+  <New category="Developer Tools" />
+
+  Admins can now control which roles are allowed to use which MCP tools from a new settings page, so MCP access can be scoped the same way as everything else in Hindsight.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +74,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="More reliable Snowflake sync">
+  <Fix category="CRM Integration" />
+
+  Fixed filters for manually importing Snowflake deals and improved the sync orchestrator so existing deals refresh correctly alongside newly discovered ones, without creating duplicates.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +91,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="user-check" iconType="solid" title="Fixed manager access to individual deals">
+  <Fix category="Deals" />
+
+  Fixed an issue that prevented managers from opening individual deal pages.
 
 </Card>
 
