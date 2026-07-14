@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, smarter agentic scoring for metrics and Custom Answers, and a round of fixes across CRM sync, competitor setup, and file uploads.
 
 ### Developer Tools
 
@@ -41,6 +41,30 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </CardGroup>
 
+### Metrics & Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="sparkles" iconType="solid" title="Smarter scoring for metrics and answers">
+  <Improved category="Chat & Analysis" />
+
+  Metric and Custom Answer scoring now runs through an agentic analysis step instead of a single retrieval pass, for more accurate results grounded in the full deal context.
+
+  **No more forced guesses** — When a deal genuinely lacks supporting evidence, a metric is left unscored and shown separately as "no evidence" instead of dragging down your averages with a low-confidence guess.
+
+  **Re-analyze on demand** — Reprocess a single metric or answer to refresh its score without re-running the whole deal.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Chat & Analysis" />
+
+  Point a Custom Answer at specific reference documents — a pricing sheet, battlecard, or playbook — so the AI grounds its answer in the exact source you choose, not just general deal context.
+
+</Card>
+
+</CardGroup>
+
 ### CRM Integration
 
 <CardGroup cols={1}>
@@ -60,6 +84,52 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="More reliable Snowflake sync">
+  <Improved category="CRM Integration" />
+
+  Snowflake-connected orgs get more dependable syncing: existing deals now refresh in place instead of duplicating, and the deal grid's filters and sorting stay in sync automatically as you adjust them.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Suggested competitor fix">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed an issue where confirming a suggested competitor could drop you into the wrong step of the setup flow.
+
+</Card>
+
+</CardGroup>
+
+### Feature Tracking
+
+<CardGroup cols={1}>
+
+<Card icon="palette" iconType="solid" title="Default colors for feature tags">
+  <Improved category="Feature Tracking" />
+
+  Feature tags now get sensible default colors automatically, so tag charts and lists are easier to scan without any manual setup.
+
+</Card>
+
+</CardGroup>
+
+### Buyer Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="bell-slash" iconType="solid" title="Unsubscribe from interview requests">
+  <New category="Buyer Interviews" />
+
+  Recipients of win-loss interview request emails can now opt out with a one-click unsubscribe link. Suppressed addresses are automatically skipped on future sends.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +140,26 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="file-csv" iconType="solid" title="Bigger CSV imports">
+  <Improved category="Deals" />
+
+  Removed the file size and row-count limits on CSV deal imports, so you can bring in your full deal history in one upload.
+
+</Card>
+
+</CardGroup>
+
+### Assets
+
+<CardGroup cols={1}>
+
+<Card icon="file-lines" iconType="solid" title="Fixed Markdown uploads">
+  <Fix category="Assets" />
+
+  Fixed an issue where Markdown (`.md`) files failed to upload correctly through the document upload modal.
 
 </Card>
 
