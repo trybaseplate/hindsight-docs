@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, custom metric groups with smarter AI-driven scoring, reference documents for custom answers, a smoother Snowflake import experience, and a round of reliability fixes.
 
 ### Developer Tools
 
@@ -39,6 +39,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="rotate" iconType="solid" title="Custom instructions stay in sync">
+  <Fix category="Developer Tools" />
+
+  Fixed an issue where the custom instructions dialog for MCP and Slack could show stale data. Reopening it now always reflects your latest saved instructions.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +67,55 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Smoother Snowflake sync">
+  <Improved category="CRM Integration" />
+
+  Snowflake import now works like our other CRM integrations, with a per-organization setup toggle and a **preview step** — review the opportunities found in your warehouse and choose exactly which ones to bring in.
+
+  Re-syncing is smarter too: deals you've already imported are refreshed in place instead of being duplicated, and grid filters and sorting now stay in sync automatically as you adjust them.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your custom metrics">
+  <New category="Custom Metrics" />
+
+  Organize related metrics into groups so they're easier to manage and compare, both in Settings and on your Analytics dashboard charts. Default metrics are now off out of the box, so new orgs start with a clean slate built entirely around the metrics that matter to them.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="More accurate metric & answer scoring">
+  <Improved category="Custom Metrics" />
+
+  Custom Metrics and Custom Answers now use a more agentic analysis approach when scoring deals, giving more accurate, context-aware results than the previous retrieval-based method.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Filter dashboards by multiple segments at once">
+  <Improved category="Dashboard & Analytics" />
+
+  Segment filters on dashboard charts now support "is any of" logic — compare, for example, several regions or deal sizes together in a single filter instead of one at a time.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="paperclip" iconType="solid" title="Attach reference documents to custom answers">
+  <New category="Custom Answers" />
+
+  Attach playbooks, product docs, or other reference material directly to a Custom Answer so the AI has the right context on hand when it generates a response.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +126,39 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="file-lines" iconType="solid" title="Markdown upload fix">
+  <Fix category="Deals" />
+
+  Fixed an issue where uploading a Markdown file to a deal could fail.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="bug" iconType="solid" title="Competitor suggestions fix">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed a bug affecting suggested competitors.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-slash" iconType="solid" title="Unsubscribe fix">
+  <Fix category="Win-Loss Interviews" />
+
+  Fixed an issue that could prevent recipients from unsubscribing from interview requests.
 
 </Card>
 
