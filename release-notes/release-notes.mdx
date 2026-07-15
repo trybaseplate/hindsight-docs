@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, groupable Custom Metrics, reference documents for Custom Answers, Snowflake import improvements, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -39,6 +39,20 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="sliders" iconType="solid" title="Per-tool MCP access control">
+  <New category="Developer Tools" />
+
+  Admins can now turn individual MCP tools on or off for their organization instead of exposing the full toolset. Tools also show clearer, human-readable titles.
+
+</Card>
+
+<Card icon="message-lines" iconType="solid" title="Custom instructions for MCP tools">
+  <New category="Developer Tools" />
+
+  Add custom instructions to steer how MCP tools behave for your organization — the same capability already available for the Slack Assistant.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +74,90 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake import improvements">
+  <Improved category="CRM Integration" />
+
+  **Preview before you import** — See exactly which deals will come in, then choose which ones to bring over.
+
+  **Smarter syncing** — Deals already in Hindsight refresh automatically and no longer create duplicates when they're re-synced.
+
+  **Live filters** — Filters and sorting in the import preview update automatically as you adjust them, no manual re-search required.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related metrics into groups on the settings page for a cleaner setup experience and easier-to-scan dashboards. Default metrics are now off by default, so your dashboard only shows the frameworks your team has actually configured.
+
+</Card>
+
+<Card icon="circle-question" iconType="solid" title="Clearer handling of missing evidence">
+  <Improved category="Custom Metrics" />
+
+  Metrics with no supporting evidence in a deal now show as "—" (no evidence to score) instead of a misleading number, and are excluded from averages and rollups. We also tightened our confidence bar so low-confidence guesses are left unscored rather than recorded.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents to a Custom Answer so the AI has the right context when generating it — the same idea as scoring guidelines for Custom Metrics. We also removed the limit on CSV import size and fixed a bug where markdown files failed to upload in the document modal.
+
+</Card>
+
+<Card icon="brain" iconType="solid" title="Smarter Custom Metrics & Answers">
+  <Improved category="Custom Metrics" />
+
+  Custom Metrics and Custom Answers now reason over your deal data with an agentic analysis approach instead of retrieval alone, for more accurate scores and answers.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-line" iconType="solid" title="Custom Metrics on your dashboard">
+  <New category="Dashboard & Analytics" />
+
+  Plot your Custom Metrics alongside Hindsight's default metrics directly on the dashboard.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Multi-select segment filters">
+  <Improved category="Dashboard & Analytics" />
+
+  Segment filters now support "is any of" logic, so you can compare several segments at once instead of one at a time.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="arrow-up-right-from-square" iconType="solid" title="Continue in Claude or ChatGPT">
+  <New category="Slack" />
+
+  New buttons on Slack Assistant answers let you hand off the conversation straight into Claude or ChatGPT with context pre-filled, so you can keep digging without retyping anything.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +168,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Bug fixes">
+  <Fix category="Platform" />
+
+  Fixed competitor suggestions not showing up correctly, a bug causing broken cards for deals with no assigned owner, and an issue with the Slack unsubscribe flow.
 
 </Card>
 
