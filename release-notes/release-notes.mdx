@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, grouped and smarter Custom Metrics, and a round of fixes across Deals and Competitive Intelligence.
 
 ### Developer Tools
 
@@ -70,6 +70,65 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Combine segments when filtering">
+  <Improved category="Deals" />
+
+  Segment filters now support "is any of" logic, so you can filter your deals to several segments at once instead of one at a time.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Analytics" />
+
+  Organize related Custom Metrics into groups from Settings, with a cleaner grouped view on the dashboard.
+
+  **Custom Metrics on dashboard charts** — Plot Custom Metrics alongside default metrics for a fuller picture of deal performance.
+
+  **Leaner defaults** — Default metrics are now off by default, so your dashboard only shows the metrics your team actually configured.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Smarter analysis behind Metrics & Answers">
+  <Improved category="Analytics" />
+
+  Custom Metrics and Custom Answers now run through a more thorough, agentic analysis pass instead of simple retrieval, for more accurate scores and answers across your deals.
+
+  **Reference documents for Custom Answers** — Attach specific documents, like a playbook or scoring guide, so the AI grounds its answer in your team's own material.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="tags" iconType="solid" title="Feature tag & suggestion improvements">
+  <Improved category="Competitive Intelligence" />
+
+  Feature tags now get default colors for easier scanning, and feature suggestions are matched more accurately to the right product and product area. Also fixed an issue where some competitor suggestions weren't appearing correctly.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="wrench" iconType="solid" title="Reliability fixes">
+  <Fix category="Platform" />
+
+  Fixed a markdown file upload issue in the document upload modal, an issue where AI-generated insights could keep processing longer than needed, and a broken unsubscribe flow. Also removed the row limit on CSV imports.
 
 </Card>
 
