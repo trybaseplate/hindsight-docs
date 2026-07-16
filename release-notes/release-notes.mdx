@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, grouped and more accurate Custom Metrics, Snowflake CRM refinements, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -39,6 +39,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="sliders" iconType="solid" title="Custom instructions for MCP tools">
+  <New category="Developer Tools" />
+
+  Configure custom instructions per MCP tool so agents follow your team's conventions automatically, backed by more granular role-based permissions controlling which tools each member can access.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -57,6 +64,73 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM refinements">
+  <Improved category="CRM Integration" />
+
+  Snowflake import now works the same way as our other CRM integrations. Syncing is smarter about combining refreshed and newly-discovered deals without creating duplicates, and manual-import filtering is more reliable.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your custom metrics">
+  <New category="Custom Metrics" />
+
+  Organize related custom metrics into groups for cleaner dashboards and settings pages. You can also turn off Hindsight's default metrics entirely if you'd rather run only your own scoring framework.
+
+</Card>
+
+<Card icon="circle-question" iconType="solid" title="Clearer scoring when there's no evidence">
+  <Improved category="Custom Metrics" />
+
+  Metrics with insufficient supporting evidence now show as "N/A" — both in the app and in exports — instead of a misleading score, and are excluded from averages and rollups. The deal overview separates unscored metrics from scored ones so it's obvious at a glance which is which.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Smarter metric & answer analysis">
+  <Improved category="Custom Metrics" />
+
+  Custom Metrics and Custom Answers now use a more agentic analysis approach for higher-quality scoring. You can also attach reference documents — like a sales playbook or coaching guide — so the AI has the right context to score consistently.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Custom metrics on the dashboard">
+  <New category="Dashboard & Analytics" />
+
+  Plot your Custom Metrics right alongside Hindsight's default metrics in dashboard charts.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Multi-select segment filters">
+  <Improved category="Dashboard & Analytics" />
+
+  Segment filters now support "is any of," so you can combine multiple segments in a single view instead of switching between them one at a time.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Hand off to Claude or ChatGPT">
+  <New category="Slack" />
+
+  New buttons in the Slack Assistant open a conversation in Claude or ChatGPT with a pre-filled prompt, so you can keep digging in the AI tool you prefer.
 
 </Card>
 
