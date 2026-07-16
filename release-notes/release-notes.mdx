@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, groupable Custom Metrics with AI-powered scoring, reference documents for Custom Answers, and Snowflake CRM improvements.
 
 ### Developer Tools
 
@@ -39,6 +39,81 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="toggle-on" iconType="solid" title="Control which MCP tools are enabled">
+  <New category="Developer Tools" />
+
+  Admins can now choose which Hindsight MCP tools are available to their workspace, so you can scope exactly what a connected assistant is allowed to do.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Custom instructions for MCP tools">
+  <New category="Developer Tools" />
+
+  Add your own custom instructions to MCP tools, the same way you can for the Slack Assistant, so connected assistants follow your team's conventions.
+
+</Card>
+
+<Card icon="rotate" iconType="solid" title="Longer-lived MCP sessions">
+  <Improved category="Developer Tools" />
+
+  MCP OAuth sessions now refresh automatically in the background, so you stay signed in without having to reconnect as often.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="arrow-up-right-from-square" iconType="solid" title="Hand off Slack answers to Claude or ChatGPT">
+  <New category="Slack" />
+
+  Jump from a Slack Assistant answer straight into Claude or ChatGPT, with your question pre-filled so you can keep digging in your assistant of choice.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups, and turn off Hindsight's default metrics entirely if you'd rather run only your own.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Custom Metrics in dashboard charts">
+  <New category="Dashboard & Analytics" />
+
+  Plot your Custom Metrics alongside the built-in ones in dashboard charts, and combine multiple segments in a single filter with the new "is any of" option.
+
+</Card>
+
+<Card icon="circle-half-stroke" iconType="solid" title="Clearer scoring when there's no evidence">
+  <Improved category="Custom Metrics" />
+
+  Metrics without enough supporting evidence now show as unscored ("—") instead of a misleading low score, and are excluded from averages and exports.
+
+</Card>
+
+<Card icon="file-lines" iconType="solid" title="Attach reference documents to Custom Answers">
+  <New category="Custom Answers" />
+
+  Give the AI extra context for a Custom Answer by attaching reference documents, like a playbook or pricing sheet, for it to draw from when generating a response.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Smarter AI analysis for metrics and answers">
+  <Improved category="Custom Metrics" />
+
+  Custom Metrics and Custom Answers now use an AI agent that reasons over deal context, instead of a simpler retrieval-only lookup, for more accurate scores and answers.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -57,6 +132,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM sync improvements">
+  <Improved category="CRM Integration" />
+
+  Snowflake import filters and previews now stay in sync with the deal grid automatically, syncing no longer creates duplicate deals, and Snowflake is rolling out more broadly alongside Salesforce and HubSpot.
 
 </Card>
 
