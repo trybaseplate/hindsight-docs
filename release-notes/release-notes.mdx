@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, groupable Custom Metrics, reference documents for Custom Answers, and Snowflake sync improvements.
 
 ### Developer Tools
 
@@ -60,6 +60,46 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake sync improvements">
+  <Improved category="CRM Integration" />
+
+  The Snowflake integration now rolls out the same way as our other CRM connections, org by org. Sync accuracy is improved — previously imported deals are refreshed even if they've moved outside your current filters, with duplicate detection so the same opportunity is never imported twice. The import preview also keeps filters and sort order in sync automatically as you adjust them.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups for a cleaner settings page and dashboard. Default metrics are now off unless you opt in, so your dashboard reflects only the scoring frameworks your team actually uses.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Custom Metrics on your dashboard charts">
+  <New category="Custom Metrics" />
+
+  Plot your own Custom Metrics alongside Hindsight's default metrics in Analytics, and combine multiple segments in a single filter for more flexible comparisons.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach specific Library documents — like a sales playbook or product spec — to a Custom Answer so the AI grounds its response in the sources you trust. Custom Answers and Metrics also now run through a deeper, multi-step analysis rather than a single retrieval pass, for more accurate results.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +110,26 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Smaller fixes">
+  <Fix category="Deals" />
+
+  Fixed markdown file uploads in the document upload dialog, applied default colors to feature tags, and resolved bugs affecting competitor suggestions and email unsubscribes.
+
+</Card>
+
+</CardGroup>
+
+### Admin
+
+<CardGroup cols={1}>
+
+<Card icon="gauge" iconType="solid" title="Cleaner usage analytics">
+  <Improved category="Admin" />
+
+  The Web tab in Usage Analytics now shows chat sessions only, cutting out noise from the activity view.
 
 </Card>
 
