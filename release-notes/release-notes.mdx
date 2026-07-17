@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, grouped Custom Metrics, reference documents for Custom Answers, and richer Feature Tracking charts.
 
 ### Developer Tools
 
@@ -62,6 +62,93 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </CardGroup>
 
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups for cleaner settings pages and dashboards, instead of managing them as one long list.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Plot Custom Metrics on your dashboard">
+  <New category="Custom Metrics" />
+
+  Custom Metrics can now be added directly to dashboard charts alongside Hindsight's default metrics.
+
+</Card>
+
+<Card icon="circle-question" iconType="solid" title="Clearer scoring when there's no evidence">
+  <Improved category="Custom Metrics" />
+
+  Metrics without enough supporting evidence now show **"—"** instead of a misleading low score, and are left out of averages, charts, and exports. Scoring criteria are also stricter, so the scores you do see are more trustworthy.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="paperclip" iconType="solid" title="Attach reference documents to Custom Answers">
+  <New category="Custom Answers" />
+
+  Give the AI more context by attaching reference documents — like a pricing sheet or playbook — directly to a Custom Answer.
+
+</Card>
+
+<Card icon="folder-plus" iconType="solid" title="Add answers straight from a group">
+  <Improved category="Custom Answers" />
+
+  A new **Add Answer** button on each group card creates a Custom Answer pre-assigned to that group.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Richer Feature Tracking charts">
+  <Improved category="Competitive Intelligence" />
+
+  New tag, sentiment, and revenue charts on the Feature deals page make it easier to see which features are driving deal outcomes. The Competitors and Decision Drivers pages also gained collapsible trend sections for cleaner browsing.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="More reliable suggestion management">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed errors when confirming, editing, or declining suggested competitors, decision drivers, and features, with clearer messages when something goes wrong. Also fixed deals showing a blank owner and a broken email unsubscribe link.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Slack
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="Cleaner reasoning in Chat">
+  <Improved category="Chat & Analysis" />
+
+  The AI's reasoning now renders as a single collapsible "Thinking…" block instead of raw inline text, making it easier to follow how an answer was reached.
+
+</Card>
+
+<Card icon="slack" iconType="solid" title="Hand off to Claude or ChatGPT from Slack">
+  <New category="Slack" />
+
+  New Slack buttons open a conversation in Claude or ChatGPT with your question pre-filled, so you can dig deeper outside Hindsight without retyping context.
+
+</Card>
+
+</CardGroup>
+
 ### Deals
 
 <CardGroup cols={1}>
@@ -70,6 +157,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Combine multiple segments in one filter">
+  <Improved category="Deals" />
+
+  Segment filters on the deal grid now support "is any of" logic, so you can filter to several segments at once instead of one at a time.
 
 </Card>
 
