@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, new dashboard analytics, Custom Metric grouping, and Snowflake CRM improvements.
 
 ### Developer Tools
 
@@ -57,6 +57,80 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM improvements">
+  <Improved category="CRM Integration" />
+
+  Snowflake import now works the same way as our other CRM integrations, with better filtering for manual imports and smarter syncing that refreshes existing deals in place instead of creating duplicates.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Custom Metrics in dashboard charts">
+  <New category="Dashboard & Analytics" />
+
+  Plot your Custom Metrics right alongside default metrics on the dashboard. Segment toggles also now support selecting multiple segments at once, so you can compare across broader groups in a single view.
+
+</Card>
+
+<Card icon="chart-simple" iconType="solid" title="Feature tag, sentiment & revenue charts">
+  <New category="Dashboard & Analytics" />
+
+  New charts on the feature deals page break down tag mix, sentiment, and revenue impact. The Competitors and Drivers pages also gained collapsible trend sections, keeping older data out of the way until you need it.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Answers
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups for easier navigation across your dashboard and settings. Default metrics can also be turned off entirely if you'd rather run only your own custom configuration.
+
+</Card>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents — like a pricing sheet or product spec — to a Custom Answer so the AI has the right context when generating it.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Smarter analysis for Metrics & Answers">
+  <Improved category="Custom Metrics" />
+
+  Metrics and Custom Answers now run a deeper, agentic analysis pass instead of relying on retrieval alone, giving more accurate scoring and answers grounded in fuller deal context.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="comment-dots" iconType="solid" title="See the assistant's reasoning in chat">
+  <Improved category="Chat & Analysis" />
+
+  Chat responses now show a collapsible "Thinking..." section so you can follow the assistant's reasoning, with cleaner formatting throughout.
+
+</Card>
+
+<Card icon="file-arrow-up" iconType="solid" title="Markdown upload fix">
+  <Fix category="Platform" />
+
+  Fixed an issue where uploading markdown files through the document upload dialog could fail.
 
 </Card>
 
