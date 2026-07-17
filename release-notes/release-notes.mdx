@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, groupable Custom Metrics, a smarter analysis engine, and richer feature analytics.
 
 ### Developer Tools
 
@@ -60,6 +60,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM improvements">
+  <Improved category="CRM Integration" />
+
+  Snowflake CRM import is now easier to roll out account by account, with a more reliable sync that keeps previously imported deals current alongside newly discovered ones. Filters and sorting in the import preview also update live as you adjust them, so the preview always matches what you're about to import.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +77,86 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Analytics" />
+
+  Organize related Custom Metrics into groups for cleaner dashboards and settings pages. Create, edit, and manage groups so scoring is organized the way your team actually thinks about it.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Plot Custom Metrics on the dashboard">
+  <New category="Analytics" />
+
+  Custom Metrics can now be charted directly alongside Hindsight's default metrics on the Analytics dashboard. Segment filters also support selecting multiple values at once — for example, comparing several regions or plans in a single view.
+
+</Card>
+
+<Card icon="tags" iconType="solid" title="Richer feature analytics">
+  <Improved category="Analytics" />
+
+  The Features, Competitors, and Decision Drivers pages now include additional trend charts — tag mix, sentiment, and revenue impact — with collapsible sections to keep older history out of the way until you need it.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers & AI Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents — like a sales playbook or product spec — to a Custom Answer so the AI has the right context on hand when it evaluates each deal.
+
+</Card>
+
+<Card icon="brain" iconType="solid" title="Smarter analysis engine for Metrics and Answers">
+  <Improved category="AI Analysis" />
+
+  Custom Metrics and Custom Answers now run on an agentic analysis engine rather than retrieval-only search, so the AI reasons through deal context more thoroughly before scoring or answering.
+
+</Card>
+
+<Card icon="upload" iconType="solid" title="Markdown upload fix">
+  <Fix category="Assets" />
+
+  Fixed an issue that could prevent markdown files from uploading correctly in the document upload dialog.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comment" iconType="solid" title="See the AI's reasoning in chat">
+  <New category="Chat & Analysis" />
+
+  Chat responses now show a collapsible "Thinking..." step, so you can see the AI's reasoning before it lands on an answer.
+
+</Card>
+
+</CardGroup>
+
+### Admin
+
+<CardGroup cols={1}>
+
+<Card icon="chart-bar" iconType="solid" title="More accurate usage analytics">
+  <Fix category="Admin" />
+
+  The Usage Analytics dashboard now counts only real chat activity, excluding automated background sessions that were previously inflating the numbers.
 
 </Card>
 
