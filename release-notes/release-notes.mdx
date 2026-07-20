@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, custom metric grouping backed by a smarter agentic analysis engine, new Feature Tracking charts, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -57,6 +57,100 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM sync improvements">
+  <Improved category="CRM Integration" />
+
+  Importing deals from Snowflake now works just like other CRM integrations — preview matching deals, choose which ones to bring in, and let filters and sorting stay in sync automatically as you refine your selection. The sync process also refreshes deals you've already imported alongside newly matching ones, without creating duplicates.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Custom metrics on the dashboard">
+  <New category="Dashboard & Analytics" />
+
+  Plot your Custom Metrics alongside the default metrics on the dashboard, so the scores that matter most to your team sit right next to your existing charts.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Combine segments in one view">
+  <Improved category="Dashboard & Analytics" />
+
+  Segment filters now support "is any of" logic, so you can select multiple segments at once instead of switching between them one at a time.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Answers
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group related metrics together">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups, making them easier to review and manage together in settings and on the dashboard.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Full control over which metrics are active">
+  <Improved category="Custom Metrics" />
+
+  Default metrics are no longer turned on automatically, so new configurations start from exactly the metrics your team chooses.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Attach reference documents to Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents — like a sales playbook or product one-pager — to a Custom Answer so the AI has the right context when generating a response.
+
+</Card>
+
+<Card icon="brain" iconType="solid" title="Smarter answers and metric scoring">
+  <Improved category="Custom Answers" />
+
+  Custom Metrics and Custom Answers now run on an upgraded, agentic analysis engine rather than search-only retrieval, producing more accurate scores and answers. CSV import size limits have also been removed.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="chart-line" iconType="solid" title="New charts for Feature Tracking">
+  <New category="Competitive Intelligence" />
+
+  The feature deals page now includes tag, sentiment, and revenue charts, and the Competitors and Drivers pages have collapsible trend sections for a cleaner view.
+
+</Card>
+
+<Card icon="circle-check" iconType="solid" title="Clearer feedback when reviewing suggestions">
+  <Fix category="Competitive Intelligence" />
+
+  Confirming, editing, or declining suggested competitors, drivers, and features now shows clear success and error messages, so you always know whether your action went through.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comment-dots" iconType="solid" title="Cleaner reasoning display in chat">
+  <Improved category="Chat & Analysis" />
+
+  The AI's step-by-step reasoning now renders as a single, collapsible "Thinking..." block in chat — easier to scan, and shown consistently whether you're in a live conversation or reviewing an older session.
 
 </Card>
 
