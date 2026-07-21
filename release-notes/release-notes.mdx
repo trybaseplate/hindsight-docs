@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server with new admin controls, a guided setup flow for connecting your CRM and call intelligence tools, Snowflake sync improvements, custom metric groups, refreshed feature charts, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -39,6 +39,22 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="sliders" iconType="solid" title="Admin controls for MCP tools">
+  <New category="Developer Tools" />
+
+  Admins can now decide exactly which MCP tools are available to their organization, and give each tool custom instructions to steer how it's used — for example, telling the deal-lookup tool to always prefer a specific CRM field.
+
+  Tools also now surface friendlier names and read-only/write hints in MCP clients, making it clearer what each one does before you call it.
+
+</Card>
+
+<Card icon="key" iconType="solid" title="Smoother MCP sign-in for multi-org accounts">
+  <Improved category="Developer Tools" />
+
+  Signing in to the Hindsight MCP server now prompts you to pick an organization if you belong to more than one, and sessions stay signed in longer thanks to refresh token support — no more re-authenticating as often.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +76,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake sync improvements">
+  <Improved category="CRM Integration" />
+
+  Snowflake CRM import is now available to any organization (previously limited to an early pilot), and syncs are smarter: existing deals are refreshed even if they no longer match your current filters, new deals are pulled in without duplicates, and filter/sort changes in the import preview now stay in sync automatically.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +93,86 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your custom metrics">
+  <New category="Custom Metrics" />
+
+  Organize related custom metrics into groups so your dashboard and deal pages stay tidy as your metric library grows. Manage groups from **Settings → Metrics**.
+
+</Card>
+
+<Card icon="circle-exclamation" iconType="solid" title="Clearer signal when there's no evidence to score">
+  <Improved category="Custom Metrics" />
+
+  Custom Metrics and Custom Answers now show a plain "—" / "no evidence" state instead of guessing at a score or answer when a deal simply doesn't have supporting evidence. These are excluded from averages, rollups, and exports so your aggregate numbers aren't skewed by low-confidence guesses.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Custom metrics on your dashboard">
+  <New category="Custom Metrics" />
+
+  Plot your own Custom Metrics on dashboard charts alongside the defaults, and combine multiple segments in one view with the new "is any of" filter toggle.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Refreshed feature charts">
+  <Improved category="Competitive Intelligence" />
+
+  Updated tag, sentiment, and revenue charts on the feature deals page, plus collapsible trend sections on the Competitors and Decision Drivers pages to keep older sessions out of the way until you need them.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Attach reference docs to Custom Answers">
+  <New category="Custom Answers" />
+
+  Point a Custom Answer at specific documents in your Library — like a playbook or messaging guide — so the AI has the right context on hand when it generates that answer.
+
+</Card>
+
+<Card icon="list-check" iconType="solid" title="More reliable competitor, driver & feature edits">
+  <Fix category="Competitive Intelligence" />
+
+  Confirming, editing, and deleting suggested competitors, drivers, and features is now faster and more reliable, with clearer error messages when something goes wrong. The competitor table's sorting and pagination were also fixed to sort accurately across your full list, not just the current page.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="See the AI's reasoning">
+  <Improved category="Chat & Analysis" />
+
+  Chat responses now include a collapsible "Thinking..." section so you can peek at the AI's reasoning process before it lands on an answer.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Hand off Slack answers to Claude or ChatGPT">
+  <New category="Slack" />
+
+  Continue a conversation from the Slack Assistant in Claude or ChatGPT with one click — a new button carries the original question over as a pre-filled prompt.
 
 </Card>
 
