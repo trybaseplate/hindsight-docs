@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, smarter Custom Metrics, expanded Snowflake CRM support, and a round of dashboard, chat, and Slack improvements.
 
 ### Developer Tools
 
@@ -39,6 +39,20 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="key" iconType="solid" title="Longer-lived MCP sessions">
+  <Improved category="Developer Tools" />
+
+  The MCP server now supports refresh tokens, so a signed-in session stays connected longer without needing to repeat the OAuth sign-in flow.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Configurable MCP tools & custom instructions">
+  <New category="Developer Tools" />
+
+  Admins can now control which MCP tools are exposed to their organization, and add custom instructions to any tool to steer how it's used. Tool names shown in MCP clients are also easier to read.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +74,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM sync improvements">
+  <Improved category="CRM Integration" />
+
+  Fixed filter accuracy in manual Snowflake imports, so the deal preview always matches your chosen filters, and improved the sync process to keep existing deals up to date even if they no longer match your current filters. Snowflake support is now aligned with our other CRM integrations, including a dedicated import flow.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +91,106 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="file-csv" iconType="solid" title="No more CSV import limits">
+  <Improved category="Deals" />
+
+  Removed the previous size limit on CSV deal imports, so larger deal lists can be imported in one pass.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-simple" iconType="solid" title="No-evidence scoring for Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Metrics no longer force a score when a deal doesn't have enough evidence to support one. Those metrics now show as "no evidence to score" instead of a guess, and are excluded from averages and rollups so your metric trends stay accurate.
+
+</Card>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups for a cleaner settings page and dashboard. Default metrics can now be turned off in favor of a fully custom set.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="More feature analytics on the Dashboard">
+  <Improved category="Dashboard & Analytics" />
+
+  New tag, sentiment, and revenue charts on the feature deals page. Custom Metrics can now be plotted alongside default metrics, and segment filters support selecting multiple segments at once ("is any of").
+
+</Card>
+
+<Card icon="gauge" iconType="solid" title="Cleaner usage analytics">
+  <Fix category="Dashboard & Analytics" />
+
+  Usage analytics now counts only your team's actual chat conversations — automated background agent runs are no longer mixed into the totals.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="Agentic analysis for Metrics & Custom Answers">
+  <Improved category="Chat & Analysis" />
+
+  Metrics and Custom Answers now use a more thorough, agentic analysis process instead of relying on retrieval alone, giving more accurate, better-reasoned scores and answers. You can also attach reference documents — like a playbook or scoring guideline — to a Custom Answer to steer the AI's context.
+
+</Card>
+
+<Card icon="comment-dots" iconType="solid" title="Cleaner Thinking-block display in chat">
+  <Improved category="Chat & Analysis" />
+
+  Reasoning steps in AI responses now render as a single collapsible "Thinking..." section for a cleaner, more consistent chat experience.
+
+</Card>
+
+<Card icon="file-lines" iconType="solid" title="Markdown file uploads fixed">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where uploading markdown files through the document upload dialog could fail.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Continue in Claude or ChatGPT from Slack">
+  <New category="Slack" />
+
+  Slack Assistant answers now include buttons to continue the conversation directly in Claude or ChatGPT, carrying the context over automatically.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="lightbulb" iconType="solid" title="More reliable suggestion management">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed issues confirming, updating, and deleting suggested competitors, drivers, and features. These actions now show clear feedback if something goes wrong.
 
 </Card>
 
