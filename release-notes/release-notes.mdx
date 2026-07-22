@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, custom metric grouping, new feature analytics charts, and clearer AI reasoning in chat.
 
 ### Developer Tools
 
@@ -60,6 +60,79 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM improvements">
+  <Improved category="CRM Integration" />
+
+  Snowflake sync now refreshes deals you've already imported in addition to picking up new ones, with more accurate filtering for manual imports and steadier behavior as your filters and sort order change.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your custom metrics">
+  <New category="Custom Metrics" />
+
+  Organize related custom metrics into named groups from Settings, so larger scoring frameworks stay easy to manage. You can also turn off Hindsight's default metrics entirely and run purely on your own custom configuration.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Custom metrics in dashboard charts">
+  <Improved category="Custom Metrics" />
+
+  Plot your custom metrics alongside the built-in ones on dashboard charts, and combine multiple values in a single segment filter (e.g. "is any of") for more flexible comparisons.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents — like a scoring rubric or messaging guide — to a Custom Answer so the AI has the right context when it answers. Also removed the row limit on CSV imports and fixed a bug that could block markdown file uploads.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="More charts on the Features page">
+  <New category="Competitive Intelligence" />
+
+  New tag, sentiment, and revenue charts on the feature deals view, plus collapsible trend sections on the Competitors and Drivers pages to keep long lists easier to scan.
+
+</Card>
+
+<Card icon="table" iconType="solid" title="Competitor list fixes">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed sorting on the Competitors table so it orders correctly across your full list instead of just the current page, and improved error messages when confirming, editing, or deleting suggested competitors, drivers, and features.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="quote-right" iconType="solid" title="Clearer citations and reasoning in chat">
+  <Improved category="Chat & Analysis" />
+
+  Answers with citations now render more reliably, and the AI's reasoning is shown in a collapsible "Thinking..." section so you can see how it got to an answer without cluttering the response.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +143,26 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="rotate" iconType="solid" title="More reliable reanalysis">
+  <Fix category="Deals" />
+
+  Re-analyzing a metric or answer on a deal now uses the same logic as the original analysis. Hindsight also no longer auto-submits low-confidence results — those are flagged for your review instead — and better recognizes when a question can't be confidently answered rather than forcing a guess.
+
+</Card>
+
+</CardGroup>
+
+### Admin
+
+<CardGroup cols={1}>
+
+<Card icon="gauge" iconType="solid" title="More accurate usage analytics">
+  <Fix category="Admin" />
+
+  The usage analytics dashboard's web tab now only counts actual chat sessions, so automated background runs no longer inflate your usage numbers.
 
 </Card>
 
