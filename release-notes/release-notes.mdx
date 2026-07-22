@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, grouped Custom Metrics, reference documents on Custom Answers, new feature charts, and a round of reliability fixes across CRM imports, competitor tables, and deal exports.
 
 ### Developer Tools
 
@@ -39,6 +39,26 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="sliders" iconType="solid" title="Custom instructions & tool controls for MCP">
+  <New category="Developer Tools" />
+
+  Admins can now shape how the MCP server behaves for their org, without waiting on a client-side change.
+
+  **Custom instructions** — Add org-specific guidance that's injected into every MCP session, the same way you can for the Slack Assistant.
+
+  **Tool access control** — Turn off individual MCP tools for your organization from Settings if you want a narrower surface exposed to connected clients.
+
+  **Longer-lived connections** — The server now issues refresh tokens, so your MCP client can silently renew access instead of prompting you to reconnect.
+
+</Card>
+
+<Card icon="share-nodes" iconType="solid" title="Hand off Slack answers to Claude or ChatGPT">
+  <New category="Slack" />
+
+  When the Slack Assistant answers a question, you can now continue the conversation in Claude or ChatGPT with one click — the question and Hindsight's context carry over as a pre-filled prompt.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +80,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake import reliability fixes">
+  <Fix category="CRM Integration" />
+
+  Deals already in Hindsight now refresh from Snowflake even if they no longer match your current import filters, duplicate imports between refreshed and newly-discovered deals are prevented, and changing a filter in the deal grid now updates results immediately instead of requiring a manual re-search.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +97,111 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="sort" iconType="solid" title="Competitor table sorting fix">
+  <Fix category="Competitive Intelligence" />
+
+  Sorting the competitor table now sorts across your entire competitor list, not just the deals currently loaded on the page.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups instead of one flat list, both on the dashboard and in Settings. Existing metrics are grouped automatically, and you can create, edit, and delete groups from the metrics settings page.
+
+</Card>
+
+<Card icon="circle-minus" iconType="solid" title="Clearer scoring when there's no evidence">
+  <Improved category="Custom Metrics" />
+
+  Metrics without enough supporting evidence in a deal now show as "—" instead of being forced into a score, and are excluded from averages, rollups, and exports (shown as N/A). Low-confidence AI results are now held back for review rather than submitted automatically.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents & clearer 'no answer' handling">
+  <New category="Custom Answers" />
+
+  **Attach reference documents** — Link source documents to a Custom Answer so the AI has the right context on hand when generating it.
+
+  **No answer found** — Answers now clearly indicate when there's no supporting evidence in a deal, instead of guessing at a value.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-line" iconType="solid" title="Plot Custom Metrics on your dashboard">
+  <New category="Dashboard & Analytics" />
+
+  **Custom Metrics on charts** — Add your own Custom Metrics alongside default metrics in dashboard charts.
+
+  **Multi-select segment filters** — Segment filters now support "is any of," so you can filter to several values at once instead of one at a time.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="New feature charts: tags, sentiment & revenue">
+  <New category="Feature Tracking" />
+
+  New charts break down feature tag mix, sentiment, and revenue impact, with collapsible trend sections added to the Competitors and Drivers pages.
+
+</Card>
+
+<Card icon="gauge" iconType="solid" title="More accurate usage analytics">
+  <Fix category="Admin" />
+
+  Automated agent runs (e.g. scheduled workflows) no longer count as user-initiated sessions in usage analytics — the web tab and session counts now reflect actual chat usage.
+
+</Card>
+
+</CardGroup>
+
+### AI Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="See the AI's reasoning, and cleaner citations">
+  <Improved category="Chat & Analysis" />
+
+  **Reasoning view** — Chat responses now include a collapsible "Thinking…" section showing the model's reasoning steps.
+
+  **Citation fix** — Fixed a rendering issue where cited text in the session view didn't display correctly.
+
+</Card>
+
+</CardGroup>
+
+### Assets
+
+<CardGroup cols={1}>
+
+<Card icon="swatchbook" iconType="solid" title="Feature tag colors & upload fix">
+  <Fix category="Assets" />
+
+  Feature tags now get a sensible default color instead of appearing blank, and fixed a bug that prevented markdown files from uploading in the document upload modal.
 
 </Card>
 
