@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, smarter Snowflake CRM syncing, groupable Custom Metrics, deeper feature analytics, visible AI reasoning in chat, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -57,6 +57,94 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Smarter Snowflake syncing">
+  <Improved category="CRM Integration" />
+
+  Snowflake CRM import is now available to any organization, with a more reliable sync underneath.
+
+  **Auto-refresh** — Deals already imported from Snowflake are kept up to date automatically, even if they no longer match your current filters.
+
+  **Live filter preview** — Filters and sorting in the import preview now update instantly, so what you see is exactly what gets imported.
+
+</Card>
+
+</CardGroup>
+
+### Deal Scoring & Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Deal Scoring" />
+
+  Organize related Custom Metrics into named groups so your dashboard and settings stay tidy as you add more scoring frameworks.
+
+  **Custom Metrics in dashboard charts** — Plot any Custom Metric alongside Hindsight's defaults for easier comparison.
+
+  **Optional defaults** — Hindsight's default metrics can now be turned off entirely if you'd rather build a fully custom scoring setup from scratch.
+
+</Card>
+
+<Card icon="file-lines" iconType="solid" title="Ground Custom Answers in your own documents">
+  <New category="Custom Answers" />
+
+  Attach reference documents — like scoring rubrics or product one-pagers — to a Custom Answer so the AI has the right context on hand when it answers.
+
+</Card>
+
+<Card icon="sparkles" iconType="solid" title="More accurate AI scoring and answers">
+  <Improved category="Deal Scoring" />
+
+  **Agentic analysis** — Custom Metrics and Custom Answers now use an agentic approach instead of pure retrieval, giving the AI more room to reason before it scores or answers.
+
+  **"No answer found" handling** — When the AI can't confidently answer a true/false or multiple-choice question from the available deal context, it now says so instead of guessing.
+
+  **Review for low-confidence results** — Low-confidence AI results are held for review instead of being auto-submitted, so you always get a chance to check them first.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Deeper feature analytics">
+  <Improved category="Feature Tracking" />
+
+  **New charts** — Tag, sentiment, and revenue-impact charts on the feature deals page make it easier to see how a feature is performing.
+
+  **Collapsible trends** — Trend sections on the Competitors and Decision Drivers pages now collapse, so older data doesn't crowd out what's current.
+
+</Card>
+
+<Card icon="circle-check" iconType="solid" title="More reliable competitor, driver & feature management">
+  <Fix category="Competitive Intelligence" />
+
+  Confirming, editing, and deleting suggested competitors, decision drivers, and features is now more reliable, with clear error messages if something goes wrong. Sorting the competitor table now sorts your full list, not just the current page.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="comment" iconType="solid" title="See the AI's reasoning in chat">
+  <New category="Chat & Analysis" />
+
+  Chat responses now include a collapsible **"Thinking…"** section so you can see the reasoning behind an answer when you want to dig deeper, without cluttering the main response.
+
+</Card>
+
+<Card icon="gauge" iconType="solid" title="More accurate usage analytics">
+  <Fix category="Admin" />
+
+  The Usage Analytics web tab now counts chat conversations only — automated agent runs (like deal reviews and workflows) are excluded, so your usage numbers reflect actual team activity.
 
 </Card>
 
