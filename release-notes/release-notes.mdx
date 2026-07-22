@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, a more accurate agentic engine behind Custom Metrics and Custom Answers, new analytics charts, and a batch of reliability fixes.
 
 ### Developer Tools
 
@@ -60,6 +60,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Smoother Snowflake sync">
+  <Improved category="CRM Integration" />
+
+  Snowflake deal sync now refreshes existing deals and imports newly matching ones without creating duplicates. Filters and sorting in the import preview update automatically as you adjust them, so you no longer need to re-run the search by hand.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +77,134 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="shield-check" iconType="solid" title="More reliable AI Deal Review">
+  <Improved category="Deals" />
+
+  AI Deal Review no longer auto-submits low-confidence metric or answer results — they're now flagged for your review instead of being accepted automatically. Deal review sessions also show more detail on each step, including catalog-matching traces, so it's easier to see how a result was reached.
+
+</Card>
+
+</CardGroup>
+
+### Analytics & Dashboards
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Custom metrics in dashboard charts">
+  <New category="Analytics" />
+
+  Plot your Custom Metrics alongside default metrics right on the dashboard. Segment filters also now support "is any of," so you can combine multiple segments in one view instead of switching between them.
+
+</Card>
+
+<Card icon="layer-group" iconType="solid" title="Metric groups">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups so your dashboard and settings stay readable as your scoring frameworks grow. Default metrics can now be turned off entirely for teams that want a fully custom scoring setup.
+
+</Card>
+
+<Card icon="chart-pie" iconType="solid" title="Feature analytics charts">
+  <New category="Feature Tracking" />
+
+  New tag, sentiment, and revenue charts on the feature deals page make it easier to see how a feature is performing. Trend sections on the Competitors and Drivers pages are now collapsible, so older data doesn't crowd out what matters right now.
+
+</Card>
+
+<Card icon="gauge" iconType="solid" title="More accurate usage analytics">
+  <Fix category="Admin" />
+
+  The usage analytics web tab now only counts real chat sessions — automated agent runs (like scheduled deal reviews) are excluded, so your usage numbers reflect actual team activity.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Answers
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="A more accurate engine behind Custom Metrics & Answers">
+  <Improved category="Custom Metrics" />
+
+  Custom Metrics and Custom Answers now run on full agentic analysis instead of retrieval-based search alone. The AI reasons across deal context more thoroughly, producing more accurate scores and answers.
+
+</Card>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents — like a scoring rubric or product doc — to a Custom Answer so the AI has the right context when generating a response.
+
+</Card>
+
+<Card icon="magnifying-glass" iconType="solid" title='Clearer "No Answer Found" handling'>
+  <Improved category="Custom Answers" />
+
+  When the AI can't determine a boolean or select answer from the available deal data, it now says so explicitly instead of guessing.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comment-dots" iconType="solid" title="See the AI's reasoning in chat">
+  <New category="Chat & Analysis" />
+
+  Chat responses now include a collapsible "Thinking..." view, so you can see the AI's reasoning steps alongside its answer.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="table" iconType="solid" title="Fixed competitor table sorting">
+  <Fix category="Competitive Intelligence" />
+
+  Sorting the competitor table now sorts across your full list, not just the page that happened to be loaded.
+
+</Card>
+
+<Card icon="triangle-exclamation" iconType="solid" title="Clearer errors when managing suggestions">
+  <Fix category="Competitive Intelligence" />
+
+  Confirming, editing, or deleting suggested competitors, drivers, or features now shows a clear message if something goes wrong, instead of failing silently.
+
+</Card>
+
+<Card icon="palette" iconType="solid" title="Default feature tag colors">
+  <Fix category="Feature Tracking" />
+
+  Feature tags without a custom color now get a sensible default instead of appearing blank.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="file-upload" iconType="solid" title="Markdown upload fix">
+  <Fix category="Library" />
+
+  Fixed an error uploading Markdown files through the document upload dialog.
+
+</Card>
+
+<Card icon="bell-slash" iconType="solid" title="Unsubscribe fix">
+  <Fix category="Admin" />
+
+  Fixed a bug where unsubscribing from email notifications didn't always take effect.
 
 </Card>
 
