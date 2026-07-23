@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server with new admin controls, general availability for Snowflake CRM sync, smarter custom metrics, upgraded feature analytics, clearer AI answers in chat, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -39,6 +39,26 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="sliders" iconType="solid" title="Admin controls for MCP tools">
+  <New category="Developer Tools" />
+
+  Give admins more say over how the Hindsight MCP server is used across the org.
+
+  **Tool access controls** — Turn individual MCP tools on or off, and restrict tool access by role.
+
+  **Custom tool instructions** — Attach your own guidance text to a tool so the AI uses it the way your team expects.
+
+  **Usage log** — Review MCP tool calls in a new admin-facing log, with clearer error messages when a tool call fails.
+
+</Card>
+
+<Card icon="slack" iconType="solid" title="Ask Claude or ChatGPT from Slack">
+  <New category="Slack" />
+
+  New buttons in Slack hand off a pre-filled prompt straight to Claude or ChatGPT, so you can keep exploring a question in your assistant of choice.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +80,98 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM sync, now for everyone">
+  <New category="CRM Integration" />
+
+  Import and keep deals in sync from a Snowflake data warehouse — previously limited to early-access customers, now available org-wide.
+
+  **Keeps existing deals fresh** — Sync now updates deals you've already imported, not just new ones, and skips duplicates automatically.
+
+  **Live filtering** — The deals grid updates its filters and sorting immediately as Snowflake data comes in.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="circle-question" iconType="solid" title="Metrics no longer guess">
+  <Improved category="Custom Metrics" />
+
+  When there isn't enough evidence to support a score, a custom metric now shows **N/A** instead of forcing a 1–5 rating. N/A scores are left out of averages and trend charts, and marked clearly in exports, so your metric data reflects only real signal.
+
+</Card>
+
+<Card icon="layer-group" iconType="solid" title="Group your custom metrics">
+  <New category="Custom Metrics" />
+
+  Organize custom metrics into groups on your dashboard and in Settings. Default metrics (Sales Execution, Relationship, Pricing Fit, Product Fit, Competitive Performance) can now be turned off entirely for teams running a fully custom set.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comment-dots" iconType="solid" title="Clearer AI reasoning and citations">
+  <Improved category="Chat & Analysis" />
+
+  Replaced raw reasoning text with a clean, collapsible "Thinking…" view in chat, and citations in agent sessions now render the same polished way as everywhere else in Hindsight.
+
+</Card>
+
+<Card icon="circle-check" iconType="solid" title="No more guessed answers">
+  <Improved category="Chat & Analysis" />
+
+  When there isn't enough evidence to answer a question, Hindsight now clearly shows **"No answer found"** instead of guessing. Low-confidence analysis results also stop short of auto-submitting, so you can review them before they're accepted.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Reference documents on custom answers">
+  <New category="Chat & Analysis" />
+
+  Attach reference documents directly to a custom answer so the AI has the right context on hand when generating it.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Group features by product">
+  <New category="Competitive Intelligence" />
+
+  A new grouped view organizes features by Product or Product Area, with better column and feature-tag filtering across the deals grid — including support for multiple tags per deal.
+
+</Card>
+
+<Card icon="chart-pie" iconType="solid" title="New feature analytics charts">
+  <New category="Competitive Intelligence" />
+
+  New tag, sentiment, and revenue charts on the feature-deals page, aggregate counts showing how often each tag is applied across deals, and collapsible trend sections on the Competitors and Drivers pages.
+
+</Card>
+
+<Card icon="arrow-down-a-z" iconType="solid" title="Competitor table sorting fixed">
+  <Fix category="Competitive Intelligence" />
+
+  Sorting and paging through the competitors table now applies across your full list, not just the deals currently on screen.
+
+</Card>
+
+<Card icon="triangle-exclamation" iconType="solid" title="Clearer errors when managing suggestions">
+  <Fix category="Competitive Intelligence" />
+
+  Confirming, editing, or deleting suggested competitors, drivers, and features now shows a clear error message if something goes wrong instead of failing silently.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +182,26 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="file-csv" iconType="solid" title="Bigger CSV imports">
+  <Improved category="Deals" />
+
+  Removed the row limit on CSV imports, so larger deal lists can be brought in at once.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="bell-slash" iconType="solid" title="Unsubscribe from email notifications">
+  <New category="Platform" />
+
+  Recipients can now unsubscribe from Hindsight email notifications directly from the email itself, with existing preferences migrated automatically.
 
 </Card>
 
