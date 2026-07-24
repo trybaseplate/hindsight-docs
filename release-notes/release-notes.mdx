@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, a fix for deal exports, plus Snowflake CRM sync improvements and clearer Custom Metrics scoring.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, Custom Metric groups, reference documents for Custom Answers, and new feature-level analytics.
 
 ### Developer Tools
 
@@ -36,6 +36,20 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **`upload_competitive_intel`** — save competitor pricing, positioning, or gathered news.
 
   See the [MCP tool reference](/integrations/mcp#available-tools).
+
+</Card>
+
+<Card icon="key" iconType="solid" title="Longer-lived MCP sessions">
+  <Improved category="Developer Tools" />
+
+  The MCP server now supports refresh tokens, so connected clients can stay signed in for the long haul instead of re-authenticating as often.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Per-tool permissions and custom instructions for MCP">
+  <New category="Developer Tools" />
+
+  Admins can now control which MCP tools are available to which roles in their organization, and every tool now surfaces a clear title and description for easier discovery. You can also attach custom instructions to guide how MCP and Slack use cached data.
 
 </Card>
 
@@ -86,7 +100,27 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </CardGroup>
 
-### Analytics
+### Features
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group features by product area">
+  <New category="Features" />
+
+  Browse and filter features grouped by product or product area, with a refreshed column selector and multi-feature filtering across the Deals and Features pages.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="New feature charts and tag counts">
+  <New category="Features" />
+
+  New tag, sentiment, and revenue charts on each feature's page make it easier to see how a capability is landing with buyers, and the analyze deal grid now shows tag counts alongside each feature.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
 
 <CardGroup cols={1}>
 
@@ -95,7 +129,7 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
   Custom Metrics now recognize when a deal doesn't have enough evidence to score.
 
-  **No more forced scores** — Metrics without supporting evidence show as "no evidence to score" instead of being assigned a low score.
+  **No more forced scores** — Metrics without supporting evidence show as "no evidence to score" instead of being assigned a low or unreliable score, and low-confidence results are no longer auto-submitted.
 
   **Cleaner averages** — Unscored metrics are excluded from averages, rollups, and charts so they no longer drag down your numbers.
 
@@ -103,10 +137,60 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
-<Card icon="tags" iconType="solid" title="Feature tags in deal grid analysis">
-  <New category="Analytics" />
+<Card icon="layer-group" iconType="solid" title="Group your metrics">
+  <New category="Custom Metrics" />
 
-  The analyze deal grid now shows tag counts alongside each feature, so you can see which specific attributes are driving mentions at a glance.
+  Organize related Custom Metrics into groups for a cleaner settings page and dashboard, and plot custom metrics alongside default ones in dashboard charts.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents & clearer 'no answer' handling">
+  <Improved category="Custom Answers" />
+
+  Attach reference documents to a Custom Answer so the AI has the right context on hand when generating it.
+
+  **No answer found** — Boolean and single-select answers now clearly show when there isn't enough evidence to answer, instead of guessing.
+
+  **Faster setup** — Add a new answer directly from its group card, and fixed an issue that could prevent markdown files from uploading.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comment" iconType="solid" title="Visible AI reasoning in chat">
+  <Improved category="Chat & Analysis" />
+
+  Chat responses now show a collapsible "Thinking…" section so you can see the AI's reasoning process alongside its answer, and citations render more reliably throughout the session view.
+
+</Card>
+
+<Card icon="gauge" iconType="solid" title="More accurate usage analytics">
+  <Fix category="Admin" />
+
+  Automated background runs are no longer counted as user sessions in usage analytics, so the numbers reflect actual chat activity.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Hand off to Claude or ChatGPT">
+  <New category="Slack" />
+
+  Continue a conversation in Claude or ChatGPT directly from a Slack button, with the relevant prompt pre-filled so you don't lose context switching tools.
 
 </Card>
 
