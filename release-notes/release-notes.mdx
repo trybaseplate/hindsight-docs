@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature analytics, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature analytics, and fixes for deal exports and competitor list sorting.
 
 ### Developer Tools
 
@@ -71,6 +71,19 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Improved category="CRM Integration" />
 
   Snowflake import now works the same way as our other CRM integrations, with a dedicated preview step so you can see exactly which deals will come in before you import. Filters and sorting also stay in sync automatically, and refreshed deals are matched more accurately against ones you've already imported so you don't end up with duplicates or missing deals.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="arrow-down-a-z" iconType="solid" title="Competitor table sorting fix">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed an issue where sorting the Competitors table only sorted the currently loaded page instead of your full competitor list.
 
 </Card>
 
