@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, grouped Custom Metrics, richer Feature Tracking charts, and Recipes reborn as Skills.
 
 ### Developer Tools
 
@@ -57,6 +57,108 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake sync improvements">
+  <Improved category="CRM Integration" />
+
+  Snowflake CRM sync is more reliable and easier to manage.
+
+  **Resync on demand** — Trigger a resync for any Snowflake-connected deal directly from the deal grid.
+
+  **Smarter refresh** — Existing deals stay up to date automatically alongside newly discovered opportunities, with duplicates filtered out.
+
+  **More accurate filtering** — Manual import filters now match the deals you'd expect, with filter and sort state staying in sync as you adjust them.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups for a cleaner settings page and dashboard. Default metrics can now be turned off entirely in favor of a fully custom scoring setup.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Custom Metrics on the dashboard">
+  <Improved category="Dashboard & Analytics" />
+
+  Plot your Custom Metrics on dashboard charts right alongside the built-in ones, and combine multiple segments in a single filter for easier comparisons.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="tags" iconType="solid" title="Feature Tracking gets new charts">
+  <Improved category="Competitive Intelligence" />
+
+  **Tag, sentiment & revenue charts** — New charts break down how each feature is tagged, its sentiment, and its revenue impact, with tag counts now included when analyzing features in bulk.
+
+  **Group by product** — Features can now be grouped by product or product area, with collapsible trend sections on the Competitors and Drivers pages.
+
+</Card>
+
+<Card icon="user-tag" iconType="solid" title="Custom instructions per competitor">
+  <New category="Competitive Intelligence" />
+
+  Add custom tagging instructions for a specific competitor to guide how Hindsight filters and tags product mentions for that competitor, so results better match how your team categorizes their product.
+
+</Card>
+
+<Card icon="check-double" iconType="solid" title="More reliable suggestions">
+  <Fix category="Competitive Intelligence" />
+
+  Confirming, editing, and deleting suggested competitors, drivers, and features is now faster and more reliable, with clearer error messages when something goes wrong. Also fixed a bug where the competitor table could lose its sort order.
+
+</Card>
+
+</CardGroup>
+
+### Insights & AI Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents to a Custom Answer so the AI has the right context when generating a response — useful for grounding answers in your own playbooks or guidelines.
+
+</Card>
+
+<Card icon="comment-dots" iconType="solid" title="See the AI's reasoning in chat">
+  <Improved category="Chat & Analysis" />
+
+  Chat responses now show a collapsible "Thinking..." section so you can see how the AI worked through its answer.
+
+</Card>
+
+<Card icon="quote-left" iconType="solid" title="Clearer citations and safer reviews">
+  <Improved category="Deals" />
+
+  Deal analysis now renders cited sources inline when displaying reasoning, and low-confidence metric or answer results are held for manual review instead of being auto-submitted, with more detail shown on how each result was reached.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Recipes are now Skills">
+  <Improved category="Sales Enablement" />
+
+  Recipes have been renamed to **Skills**, as reusable analysis workflows move to a new Skills page.
 
 </Card>
 
