@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, visible reasoning and more reliable answers from Paige, custom metric groups, new feature charts, and per-competitor custom instructions.
 
 ### Developer Tools
 
@@ -57,6 +57,134 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake import">
+  <Beta category="CRM Integration" />
+
+  Bring deals in directly from Snowflake. Sync now refreshes existing deals alongside newly discovered ones without creating duplicates, and grid filters stay in sync with your deal preview automatically.
+
+</Card>
+
+</CardGroup>
+
+### Assistant
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="See Paige's reasoning as it works">
+  <Improved category="Assistant" />
+
+  Answers now include a collapsible "Thinking..." section showing the reasoning behind the result, in place of the old inline format.
+
+</Card>
+
+<Card icon="circle-question" iconType="solid" title="Clearer answers when the evidence isn't there">
+  <Improved category="Assistant" />
+
+  Paige now says explicitly when it can't find enough evidence to answer, instead of guessing. Low-confidence results are held for your review rather than submitted automatically, and session views show more detail on how each metric or answer was reached.
+
+</Card>
+
+<Card icon="quote-right" iconType="solid" title="More reliable citations">
+  <Improved category="Assistant" />
+
+  Citations render more consistently in answers, and reanalyzing a single answer or metric now follows the same logic as the original analysis.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Answers
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your custom metrics">
+  <New category="Custom Metrics" />
+
+  Organize related custom metrics into groups for a cleaner dashboard and settings experience.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Plot custom metrics on dashboard charts">
+  <New category="Custom Metrics" />
+
+  Custom metrics can now be charted alongside default metrics, and segment filters support combining multiple values at once ("is any of").
+
+</Card>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents — playbooks, pricing sheets, case studies — to a Custom Answer prompt so Paige has more context when generating it, alongside improvements to deal selection.
+
+</Card>
+
+</CardGroup>
+
+### Feature Tracking
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="New feature charts: tags, sentiment, revenue">
+  <New category="Feature Tracking" />
+
+  The feature deals page now includes dedicated tag, sentiment, and revenue charts, with collapsible trend sections on the Competitors and Decision Drivers pages.
+
+</Card>
+
+<Card icon="folder-tree" iconType="solid" title="Group features by product or product area">
+  <Improved category="Feature Tracking" />
+
+  Filter and navigate features grouped by product or product area, including features that span more than one product.
+
+</Card>
+
+<Card icon="tags" iconType="solid" title="Tag counts in Analyze">
+  <Improved category="Feature Tracking" />
+
+  The Analyze deal grid now shows tag counts for each feature, so you can see which tags are driving it.
+
+</Card>
+
+<Card icon="arrow-up-wide-short" iconType="solid" title="Fixed competitor table sorting">
+  <Fix category="Competitive Intelligence" />
+
+  Sorting the competitor table now correctly orders the full list instead of just the current page.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="sliders" iconType="solid" title="Custom instructions per competitor">
+  <New category="Competitive Intelligence" />
+
+  Add competitor-specific tagging instructions and product filtering so competitive analysis reflects how each competitor actually shows up across your deals.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Recipes are now Skills">
+  <Improved category="Competitive Intelligence" />
+
+  What were "Recipes" are now called "Skills," with a refreshed page for creating and managing them.
+
+</Card>
+
+</CardGroup>
+
+### Account & Billing
+
+<CardGroup cols={1}>
+
+<Card icon="credit-card" iconType="solid" title="Clear prompts when a feature needs a plan upgrade">
+  <Improved category="Account & Billing" />
+
+  Actions that require an active subscription — deal export/import, HubSpot/Salesforce sync, document upload, and insights generation — now show a clear upgrade prompt instead of failing silently.
 
 </Card>
 
