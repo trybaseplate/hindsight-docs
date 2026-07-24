@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, grouped custom metrics, feature grouping and richer charts in Deals, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -60,6 +60,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Smoother Snowflake CRM imports">
+  <Improved category="CRM Integration" />
+
+  Snowflake now uses the same guided preview-and-select import flow as our other CRM integrations, so you can see exactly which deals will come in before confirming. Deals already in Hindsight also refresh automatically to reflect the latest Snowflake data, and grid filters stay in sync with your preview without a manual re-search.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +77,80 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="layer-group" iconType="solid" title="Group features by product">
+  <New category="Deals" />
+
+  Features can now be grouped and filtered by product or product area, making it easier to navigate large feature libraries and see how each product line is performing across your deals.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Richer charts for features">
+  <Improved category="Deals" />
+
+  The feature deals page now includes tag, sentiment, and revenue charts, plus tag counts right in the Analyze deal grid and collapsible trend sections on the Competitors and Decision Drivers pages — all giving you a faster read on what's driving deal outcomes.
+
+</Card>
+
+<Card icon="chart-simple" iconType="solid" title="Clearer view of unscored metrics">
+  <Improved category="Deals" />
+
+  Metrics without enough supporting evidence now show as "no evidence to score" instead of a guessed value, and are kept separate from your scored metrics so averages and trends stay accurate.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="object-group" iconType="solid" title="Group your custom metrics">
+  <New category="Custom Metrics" />
+
+  Organize related custom metrics into groups for a cleaner settings page and dashboard. Default metrics are now off by default so your metric set reflects only what your team has configured.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Metrics" />
+
+  Attach reference documents — like a sales playbook or messaging guide — to a Custom Answer so the AI has the right context when generating it, the same way you can for Custom Metrics.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="circle-check" iconType="solid" title="More reliable suggestion management">
+  <Fix category="Competitive Intelligence" />
+
+  Confirming, editing, or deleting auto-suggested competitors, decision drivers, and features is now more reliable, with clear error messages if something goes wrong instead of a silent failure.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comment-dots" iconType="solid" title="See the AI's reasoning">
+  <Improved category="Chat & Analysis" />
+
+  Chat responses now include a collapsible "Thinking..." section so you can see the AI's reasoning behind an answer when you want it, without cluttering the response.
+
+</Card>
+
+<Card icon="quote-right" iconType="solid" title="Clickable citations in AI answers">
+  <Improved category="Chat & Analysis" />
+
+  AI-generated answers in deal analysis now render with clickable citations, making it easier to trace an insight back to its source.
 
 </Card>
 
