@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, a fix for deal exports, plus Snowflake CRM sync improvements and clearer Custom Metrics scoring.
 
 ### Developer Tools
 
@@ -60,6 +60,17 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM improvements">
+  <Improved category="CRM Integration" />
+
+  Snowflake import now aligns with how our other CRM integrations work end to end.
+
+  **Smarter sync** — Refreshes deals already in Hindsight while also picking up newly discovered opportunities, without creating duplicates.
+
+  **More accurate filters** — Manual import filters now reliably match the deals you'd expect, and the deal preview stays in sync as you adjust filters or sorting.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +81,32 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-simple" iconType="solid" title="Clearer scoring for Custom Metrics">
+  <Improved category="Custom Metrics" />
+
+  Custom Metrics now recognize when a deal doesn't have enough evidence to score.
+
+  **No more forced scores** — Metrics without supporting evidence show as "no evidence to score" instead of being assigned a low score.
+
+  **Cleaner averages** — Unscored metrics are excluded from averages, rollups, and charts so they no longer drag down your numbers.
+
+  **Exports** — CSV exports show "N/A" for unscored metrics rather than a misleading value.
+
+</Card>
+
+<Card icon="tags" iconType="solid" title="Feature tags in deal grid analysis">
+  <New category="Analytics" />
+
+  The analyze deal grid now shows tag counts alongside each feature, so you can see which specific attributes are driving mentions at a glance.
 
 </Card>
 
