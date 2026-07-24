@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, smarter Custom Answers with visible reasoning, expanded feature tracking, and support for interview email unsubscribes.
 
 ### Developer Tools
 
@@ -60,6 +60,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="More reliable Snowflake sync">
+  <Improved category="CRM Integration" />
+
+  Snowflake imports now refresh existing deals in place instead of creating duplicates, and the manual-import preview updates automatically as you change filters or sorting — no more re-running the search by hand.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +77,113 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="file-csv" iconType="solid" title="Bigger CSV imports, smaller bugs">
+  <Fix category="Deals" />
+
+  Removed file size and row-count limits on CSV deal imports. Also fixed suggested features not carrying over their product and product area, and asset owner names not displaying correctly in some cases.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers & Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="file-lines" iconType="solid" title="Attach reference documents to Custom Answers">
+  <New category="Custom Answers" />
+
+  Ground a Custom Answer in your own material — link playbooks, case studies, or other Library documents as reference context so answers reflect your team's actual guidance, not just what's in the deal.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Smarter, more transparent deal analysis">
+  <Improved category="Custom Answers" />
+
+  Custom Metrics and Custom Answers now run through a more agentic analysis step instead of pure retrieval, giving more consistent scoring and answers across deals. Reasoning and citations are now visible in the analysis view, and metrics and answers reliably return "No Answer Found" instead of guessing when the data isn't there.
+
+</Card>
+
+<Card icon="boxes-stacked" iconType="solid" title="Filter Metrics & Answers by product line item">
+  <New category="Custom Answers" />
+
+  For Snowflake CRM customers, Custom Metrics and Custom Answers can now be scoped to specific product line items, so analysis reflects the right product on multi-product deals.
+
+</Card>
+
+</CardGroup>
+
+### Feature Tracking
+
+<CardGroup cols={1}>
+
+<Card icon="sitemap" iconType="solid" title="Group and filter features by product">
+  <New category="Feature Tracking" />
+
+  The Features page and deal grid can now group and filter by product and product area, with an updated column selector for choosing exactly the data you want to see.
+
+</Card>
+
+<Card icon="tags" iconType="solid" title="Tag counts on the Analyze grid">
+  <New category="Feature Tracking" />
+
+  Feature tag mentions are now aggregated and shown directly in the Analyze deal grid, so you can spot which tags are driving a feature without leaving the grid.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="New feature charts">
+  <Improved category="Feature Tracking" />
+
+  Feature pages now include dedicated tag, sentiment, and revenue charts, plus collapsible trend sections on the Competitors and Drivers pages to keep the view focused.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-slash" iconType="solid" title="Unsubscribe from interview emails">
+  <New category="Buyer Interviews" />
+
+  Interview request emails can now include an unsubscribe link. Respondents who opt out are automatically suppressed from future requests.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="thumbs-up" iconType="solid" title="More reliable suggested tags">
+  <Improved category="Competitive Intelligence" />
+
+  Confirming or deleting suggested competitors, drivers, and features is now more reliable, with clearer error messages when something goes wrong. Also fixed a bug where confirming a suggested competitor could skip past setup, and a sorting bug on the Competitors table.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comments" iconType="solid" title="See the AI's reasoning in Chat">
+  <Improved category="Chat & Analysis" />
+
+  Chat now shows the assistant's reasoning as a collapsible "Thoughts" section while it works, instead of a single opaque response.
+
+</Card>
+
+<Card icon="file-arrow-up" iconType="solid" title="Markdown upload fix">
+  <Fix category="Library" />
+
+  Fixed an issue where Markdown files failed to upload through the document upload modal.
 
 </Card>
 
