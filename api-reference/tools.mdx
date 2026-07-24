@@ -1,0 +1,76 @@
+---
+title: 'Direct Tool API'
+---
+
+Use the Direct Tool API when your application controls the retrieval workflow and needs structured JSON rather than a synthesized AI answer. Every endpoint accepts `POST` JSON requests at:
+
+```
+https://app.usehindsight.com/api/v1/tools/{tool-name}
+```
+
+Include your API key with every call:
+
+```http
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+```
+
+Tool calls share authorization, role checks, rate limits, and usage accounting with their MCP equivalents. See [Rate Limits](/integrations/api#rate-limits) for the shared per-organization limits and returned headers.
+
+The access column below shows the default role policy. Organization administrators can further restrict individual tools.
+
+## Deal Research
+
+| Endpoint | Required input | What it returns | Default access |
+|----------|----------------|-----------------|--------|
+| [`/tools/select-deal`](/api-reference/select-deal) | None; filters are optional | Lean, paginated analyzed-deal rows. Filter by name, semantic theme, competitor, stage, amount, close date, type, region, owner, or segment. | All roles |
+| [`/tools/get-deal`](/api-reference/get-deal) | `deal_ids` (1–10) | Full deal records, including summaries and per-competitor positioning. | All roles |
+| `/tools/search-across-deals` | `query` | Relevant source-document chunks across all deal documents. Optional: `limit` (up to 25), `include_deal_metadata`. | All roles |
+| `/tools/search-deal-documents` | `deal_ids`, `query` | Relevant chunks within specified deals. Optional: `document_types`, `limit` (up to 30). | All roles |
+
+For a typical deal lookup, call `select-deal`, then pass its returned `deal_id` values to `get-deal`. Use either document-search tool when you need source evidence rather than the deal record itself.
+
+## Competitive Intelligence and Knowledge
+
+| Endpoint | Required input | What it returns | Default access |
+|----------|----------------|-----------------|--------|
+| `/tools/search-competitive-assets` | `query`, `competitor_id` | Relevant approved competitive assets and battlecards. Optional: `date_filter`, `limit` (up to 25). | All roles |
+| `/tools/search-competitive-intel` | `query`, `competitor_id` | Relevant saved competitive intelligence. Optional: `limit` (up to 25). | All roles |
+| `/tools/search-knowledge-base` | `query` | Relevant company knowledge-base content, such as messaging and playbooks. Optional: `limit` (up to 25). | All roles |
+| `/tools/pull-full-document` | `doc_ids` (1–5) | Full content for documents returned by a search tool. | All roles |
+
+## Web Research
+
+| Endpoint | Required input | What it returns | Default access |
+|----------|----------------|-----------------|--------|
+| `/tools/search-web` | `query` | Public web search results. Optional: competitor name/ID, domain, search type, time filter, result limit, and `search_only`. | All roles |
+| `/tools/scrape-url` | `urls` (1–5) | Markdown and optional metadata from specific public URLs. Optional: `competitor_id` to apply that competitor's approved-domain scope. | All roles |
+| `/tools/map-site-urls` | `url` | Discovered, filtered URLs from a site. Optional: competitor name/ID, `limit` (up to 100), and `aggressive_filter`. | All roles |
+
+`search-web`, `scrape-url`, and `map-site-urls` access public web content. When a competitor ID is supplied, Hindsight applies that competitor's configured allowed-domain restrictions.
+
+## Data Analysis
+
+| Endpoint | Required input | What it returns | Default access |
+|----------|----------------|-----------------|--------|
+| `/tools/pull-schema` | None | The Deal Grid schema and available column IDs. Optional: `sample_size` (1–200). | Admin, manager |
+| `/tools/create-dataset` | None | A materialized dataset with schema and a download URL. Optional: `column_ids`, `date_range`. | Admin, manager |
+| `/tools/analyze-dealgrid-subset` | None | Aggregated analysis tables for a Deal Grid subset. Optional: `json_id`, `filters`, `requested_tables`. | Admin, manager |
+
+Call `pull-schema` before `create-dataset` when you need custom columns. `create-dataset` creates a dataset record; the other listed tools are read operations.
+
+## Error Handling
+
+All tool endpoints return JSON errors in this shape:
+
+```json
+{
+  "error": {
+    "code": "bad_request",
+    "message": "Invalid parameters",
+    "details": {}
+  }
+}
+```
+
+Common status codes are `400` for invalid input, `401` for an invalid API key, `403` for a role without access to the tool, and `429` for a rate or monthly usage limit. For exact request and response examples of the deal lookup flow, see [Select Deal](/api-reference/select-deal) and [Get Deal](/api-reference/get-deal).

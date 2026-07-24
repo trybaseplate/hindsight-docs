@@ -1,0 +1,81 @@
+---
+title: 'Select Deal'
+openapi: 'POST /tools/select-deal'
+---
+
+Find analyzed deals using structured filters. This endpoint returns lean rows for triage; use [Get Deal](/api-reference/get-deal) with the returned `deal_id` values when you need summaries and competitor positioning.
+
+```
+POST https://app.usehindsight.com/api/v1/tools/select-deal
+```
+
+## Request Body
+
+All fields are optional. `query`, `semantic_query`, and `segment_id` have compatibility constraints described below.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `query` | string | Fuzzy match against the deal or client name. Cannot be combined with `semantic_query` or `segment_id`. |
+| `semantic_query` | string | Search deal content by meaning, such as `deals lost over security compliance`. Returns a single ranked top-N result set and cannot be combined with `query` or `segment_id`. |
+| `segment_id` | string | Filter by a segment ID. Cannot be combined with `query`. |
+| `competitor_id` | string | Filter by competitor ID. |
+| `deal_stage` | string or string[] | One or more stage names, such as `Closed Won`. |
+| `amount` | object | `{ "min": number, "max": number }`. |
+| `close_date` | object | `{ "from": "YYYY-MM-DD", "to": "YYYY-MM-DD" }`. |
+| `type` | string | Filter by deal type. |
+| `region` | string | Filter by region. |
+| `owner_name` | string | Owner name or email. Use `me`, `my`, or `mine` for the authenticated user's deals. |
+| `limit` | number | Results per page, from 1 to 50. Defaults to 20. |
+| `page` | number | One-indexed page number. Defaults to 1. |
+
+## Response
+
+Each response contains a `results` array and paging metadata. A row is intentionally lean and includes identifiers and common deal attributes, not the full summary or competitor positioning.
+
+```json
+{
+  "total_returned": 1,
+  "limit_applied": 20,
+  "page": 1,
+  "page_size": 20,
+  "has_more": false,
+  "next_page": null,
+  "results": [
+    {
+      "type": "deal",
+      "id": "deal_123",
+      "deal_id": "deal_123",
+      "name": "Acme Enterprise Renewal",
+      "client_name": "Acme Corp",
+      "stage": "Closed Lost",
+      "amount": 50000,
+      "close_date": "2026-06-30",
+      "deal_type": "Renewal",
+      "region": "North America",
+      "primary_competitor": "Example Competitor",
+      "url": "https://app.usehindsight.com/deals/deal_123/home"
+    }
+  ]
+}
+```
+
+When `has_more` is `true`, call the endpoint again with `page` set to `next_page`. Use `deal_id` from a result as input to [Get Deal](/api-reference/get-deal).
+
+<RequestExample>
+```bash cURL
+curl -X POST https://app.usehindsight.com/api/v1/tools/select-deal \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "competitor_id": "comp_123",
+    "deal_stage": ["Closed Won", "Closed Lost"],
+    "close_date": { "from": "2026-01-01", "to": "2026-06-30" },
+    "limit": 20,
+    "page": 1
+  }'
+```
+</RequestExample>
+
+## Limits and Errors
+
+Each successful, valid request consumes one read from the shared organization read bucket. See [Rate Limits](/integrations/api#rate-limits) for plan limits, returned headers, and retry guidance. Invalid input returns `400`; unauthorized or disallowed calls return `401` or `403` without consuming read usage.

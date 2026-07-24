@@ -7,14 +7,15 @@ description: 'Integrate Hindsight intelligence into your AI agents, MCP servers,
 
 The Hindsight API provides access to competitive intelligence, win-loss insights, and deal data through two integration methods:
 
-1. **REST API** - Hindsight's AI handles multiple tool calls and returns a complete, cited text response
+1. **REST API** - either receive a complete, cited AI response or call supported Hindsight tools directly
 2. **[Model Context Protocol (MCP)](/integrations/mcp)** - Individual tools your AI assistant orchestrates directly
 
-This page covers the REST API. For the tool-by-tool surface, see the [MCP docs](/integrations/mcp).
+This page covers the REST API. Direct REST tool calls and MCP calls use the same authorization, validation, limits, and underlying tool execution.
 
 ### When to Use Each
 
-- **REST API**: For Glean, Slack bots, and search interfaces that want a finished, synthesized answer
+- **REST API responses**: For Glean, Slack bots, and search interfaces that want a finished, synthesized answer
+- **REST API tools**: For server-side applications that need structured search or retrieval results without an LLM-generated response
 - **[MCP](/integrations/mcp)**: For Claude, ChatGPT, Cursor, or other MCP clients that orchestrate tools themselves
 
 ---
@@ -35,7 +36,7 @@ Get your API keys from the [Hindsight dashboard](https://app.usehindsight.com/se
 
 ## REST API
 
-The REST API is designed for applications that need complete, synthesized answers with citations. Hindsight's AI automatically orchestrates multiple searches and returns formatted responses.
+The REST API has two surfaces. Use **Responses** when you want Hindsight's AI to orchestrate multiple searches and return a synthesized, cited answer. Use **Tools** when your application needs structured results and controls the workflow itself.
 
 **Best for:** Glean, Slack bots, search interfaces, custom applications
 
@@ -101,6 +102,26 @@ data: {"content": "Based on security", "type": "content_delta"}
 data: {"content": " discussions", "type": "content_delta"}
 data: {"citation": {...}, "type": "citation"}
 ```
+
+---
+
+## Direct Tool API
+
+Direct tool endpoints accept JSON input and return structured JSON. They are useful when you know the retrieval step you need and want to compose the workflow in your own service.
+
+The recommended deal-research flow is:
+
+1. Call [`select-deal`](/api-reference/select-deal) to filter and triage analyzed deals.
+2. Pass the returned `deal_id` values to [`get-deal`](/api-reference/get-deal) for summaries and competitor positioning.
+
+| Endpoint | Use it for |
+|----------|------------|
+| [`POST /tools/select-deal`](/api-reference/select-deal) | Finding analyzed deals by name, competitor, stage, amount, date, owner, and other filters. Returns lean, paginated rows. |
+| [`POST /tools/get-deal`](/api-reference/get-deal) | Getting full details for one to ten known deal IDs. |
+
+See the [Direct Tool API reference](/api-reference/tools) for the complete list of available deal research, competitive intelligence, web research, and data-analysis tools.
+
+For a client-side AI assistant that should choose and sequence tools itself, use [MCP](/integrations/mcp) instead.
 
 ---
 
@@ -296,11 +317,29 @@ app.message(async ({ message, say }) => {
 
 ## Rate Limits
 
-| Plan | Requests/minute | Requests/month |
+All API and MCP calls are limited **per organization**, not per user, API key, or endpoint. The per-minute limit is shared across the organization's API and MCP traffic and uses a 60-second sliding window.
+
+| Plan | Requests/minute | Monthly reads |
 |------|----------------|----------------|
 | Essentials | 10 | 10,000 |
 | Growth | 60 | 30,000 |
 | Enterprise | 300 | 100,000 |
+
+`select-deal` and `get-deal` each consume one read from the shared monthly **reads** bucket after authorization and input validation succeed. That bucket is also shared with other read-class Hindsight tools, whether called over REST or MCP. Organization-specific allowances may differ from the plan defaults.
+
+Successful direct-tool responses include these headers:
+
+| Header | Meaning |
+|--------|---------|
+| `X-RateLimit-Limit` | Requests allowed in the current 60-second window. |
+| `X-RateLimit-Remaining` | Requests remaining in that window. |
+| `X-RateLimit-Reset` | Unix timestamp in milliseconds when the rate-limit window resets. |
+| `X-Usage-Used` | Reads used in the current calendar month. |
+| `X-Usage-Limit` | Monthly read allowance. |
+| `X-Usage-Remaining` | Reads remaining this month. |
+| `X-Usage-Period-End` | ISO timestamp for the next monthly reset. |
+
+On a `429`, inspect the same headers and retry after the stated reset time. A rate-limited call does not consume monthly usage.
 
 ---
 
@@ -323,7 +362,7 @@ All errors follow this format:
 - `401` - Unauthorized (invalid API key)
 - `403` - Forbidden (insufficient permissions)
 - `404` - Not Found (resource doesn't exist)
-- `429` - Too Many Requests (rate limit exceeded)
+- `429` - Too Many Requests (rate limit or monthly usage quota exceeded)
 - `500` - Internal Server Error
 
 ---
@@ -339,6 +378,9 @@ All errors follow this format:
   </Card>
   <Card title="AI Responses" icon="message-bot" href="/api-reference/responses">
     Full reference for the responses endpoint
+  </Card>
+  <Card title="Direct Tool API" icon="magnifying-glass" href="/api-reference/tools">
+    Browse every structured-search and analysis tool
   </Card>
   <Card title="Platform Overview" icon="layer-group" href="/overview">
     How the verified deal layer is built

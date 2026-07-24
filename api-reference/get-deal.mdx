@@ -1,0 +1,67 @@
+---
+title: 'Get Deal'
+openapi: 'POST /tools/get-deal'
+---
+
+Get full details for one or more known deals. Use [Select Deal](/api-reference/select-deal) first when you need to find the relevant IDs.
+
+```
+POST https://app.usehindsight.com/api/v1/tools/get-deal
+```
+
+## Request Body
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `deal_ids` | string[] | Yes | One to ten deal IDs returned by `select-deal` or another Hindsight search. Duplicate IDs are ignored. |
+
+```json
+{
+  "deal_ids": ["deal_123", "deal_456"]
+}
+```
+
+## Response
+
+The response includes the same identifying fields as `select-deal`, plus the deal summary and per-competitor positioning.
+
+```json
+{
+  "total_returned": 1,
+  "limit_applied": null,
+  "results": [
+    {
+      "type": "deal",
+      "id": "deal_123",
+      "deal_id": "deal_123",
+      "name": "Acme Enterprise Renewal",
+      "client_name": "Acme Corp",
+      "stage": "Closed Lost",
+      "summary": "Acme selected the incumbent after raising pricing and implementation concerns.",
+      "competitors": [
+        {
+          "name": "Example Competitor",
+          "positioning_summary": "Positioned as the lower-risk incumbent.",
+          "key_differentiators": "Existing integration and implementation support"
+        }
+      ],
+      "url": "https://app.usehindsight.com/deals/deal_123/home"
+    }
+  ]
+}
+```
+
+If a requested ID is not accessible to the authenticated organization or does not exist, it is omitted from `results`.
+
+<RequestExample>
+```bash cURL
+curl -X POST https://app.usehindsight.com/api/v1/tools/get-deal \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{ "deal_ids": ["deal_123"] }'
+```
+</RequestExample>
+
+## Limits and Errors
+
+Each successful, valid request consumes one read from the shared organization read bucket. See [Rate Limits](/integrations/api#rate-limits) for plan limits, returned headers, and retry guidance. A request with no IDs or more than ten IDs returns `400` and does not consume read usage.

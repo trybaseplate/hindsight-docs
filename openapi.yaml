@@ -14,7 +14,10 @@ info:
     
     ## Rate Limits
     
-    API requests are rate-limited per plan:
+    API and MCP requests are rate-limited per organization. The per-minute rate limit is
+    shared across API and MCP traffic and uses a 60-second sliding window. Direct tool
+    calls also consume a monthly usage bucket; `select-deal` and `get-deal` consume one
+    read each from the shared reads bucket after authorization and validation succeed.
     
     | Plan | Per Minute | Per Month |
     |------|-----------|----------|
@@ -22,7 +25,10 @@ info:
     | Growth | 60 | 30,000 |
     | Enterprise | 300 | 100,000 |
     
-    When a limit is exceeded, the API returns a `429` response. Check the `Retry-After` header for when to retry.
+    Successful direct-tool responses include `X-RateLimit-Limit`, `X-RateLimit-Remaining`,
+    `X-RateLimit-Reset` (Unix milliseconds), `X-Usage-Used`, `X-Usage-Limit`,
+    `X-Usage-Remaining`, and `X-Usage-Period-End`. When a limit is exceeded, the API
+    returns a `429` response with the relevant headers.
   version: 1.0.0
   contact:
     name: Hindsight Support
@@ -45,8 +51,72 @@ tags:
     description: Upload and manage documents
   - name: Interviews
     description: Create and manage win-loss interview requests
+  - name: Tools
+    description: Structured Hindsight tool calls for application-controlled workflows
 
 paths:
+  /tools/select-deal:
+    post:
+      operationId: selectDeal
+      summary: Filter and list analyzed deals
+      description: Returns lean, paginated deal rows for triage. Use `get-deal` to retrieve the full details for returned deal IDs.
+      tags:
+        - Tools
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SelectDealRequest'
+      responses:
+        '200':
+          description: Matching deal rows
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SelectDealResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /tools/get-deal:
+    post:
+      operationId: getDeal
+      summary: Get full details for known deal IDs
+      description: Retrieves the summary and per-competitor positioning for one to ten deal IDs.
+      tags:
+        - Tools
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetDealRequest'
+      responses:
+        '200':
+          description: Detailed deal records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDealResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
   /responses:
     post:
       operationId: createResponse
@@ -581,6 +651,169 @@ components:
       description: API key from Hindsight dashboard
 
   schemas:
+    SelectDealRequest:
+      type: object
+      properties:
+        query:
+          type: string
+          nullable: true
+          description: Fuzzy deal or client-name match. Cannot be used with semantic_query or segment_id.
+        semantic_query:
+          type: string
+          nullable: true
+          description: Conceptual search over deal content. Cannot be used with query or segment_id.
+        segment_id:
+          type: string
+          nullable: true
+          description: Segment ID. Cannot be used with query.
+        competitor_id:
+          type: string
+          nullable: true
+        deal_stage:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+          nullable: true
+          description: One or more deal-stage names.
+        amount:
+          type: object
+          nullable: true
+          properties:
+            min:
+              type: number
+              nullable: true
+            max:
+              type: number
+              nullable: true
+        close_date:
+          type: object
+          nullable: true
+          properties:
+            from:
+              type: string
+              nullable: true
+            to:
+              type: string
+              nullable: true
+        type:
+          type: string
+          nullable: true
+        region:
+          type: string
+          nullable: true
+        owner_name:
+          type: string
+          nullable: true
+          description: Owner name, email, or `me`, `my`, or `mine`.
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 50
+          default: 20
+        page:
+          type: integer
+          minimum: 1
+          default: 1
+
+    GetDealRequest:
+      type: object
+      required: [deal_ids]
+      properties:
+        deal_ids:
+          type: array
+          minItems: 1
+          maxItems: 10
+          items:
+            type: string
+
+    DealToolRow:
+      type: object
+      properties:
+        type:
+          type: string
+          example: deal
+        id:
+          type: string
+          nullable: true
+        deal_id:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        client_name:
+          type: string
+          nullable: true
+        stage:
+          type: string
+          nullable: true
+        amount:
+          type: number
+          nullable: true
+        close_date:
+          type: string
+          nullable: true
+        url:
+          type: string
+          nullable: true
+
+    SelectDealResponse:
+      type: object
+      properties:
+        total_returned:
+          type: integer
+        limit_applied:
+          type: integer
+          nullable: true
+        page:
+          type: integer
+        page_size:
+          type: integer
+        has_more:
+          type: boolean
+        next_page:
+          type: integer
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DealToolRow'
+
+    GetDealResponse:
+      type: object
+      properties:
+        total_returned:
+          type: integer
+        limit_applied:
+          type: integer
+          nullable: true
+        results:
+          type: array
+          items:
+            allOf:
+              - $ref: '#/components/schemas/DealToolRow'
+              - type: object
+                properties:
+                  summary:
+                    type: string
+                    nullable: true
+                  competitors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          nullable: true
+                        positioning_summary:
+                          type: string
+                          nullable: true
+                        key_differentiators:
+                          type: string
+                          nullable: true
+
     ChatCompletionRequest:
       type: object
       required:
@@ -1264,8 +1497,19 @@ components:
               code: "unauthorized"
               message: "Invalid API key"
 
+    Forbidden:
+      description: Forbidden - the API key's role cannot use this tool
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "forbidden"
+              message: "Your role does not have permission to use this tool."
+
     RateLimitExceeded:
-      description: Too many requests - rate limit exceeded
+      description: Too many requests - per-minute rate limit or monthly usage quota exceeded
       content:
         application/json:
           schema:
@@ -1273,12 +1517,38 @@ components:
           example:
             error:
               code: "rate_limit_exceeded"
-              message: "Rate limit exceeded. Limits are 10/min on Essentials, 60/min on Growth, and 300/min on Enterprise. Check the Retry-After header."
+              message: "Rate limit exceeded. Please retry after the reset time in the response headers."
       headers:
-        Retry-After:
+        X-RateLimit-Limit:
           schema:
             type: integer
-          description: Number of seconds to wait before retrying
+          description: Requests allowed in the current 60-second window.
+        X-RateLimit-Remaining:
+          schema:
+            type: integer
+          description: Requests remaining in the current 60-second window.
+        X-RateLimit-Reset:
+          schema:
+            type: integer
+            format: int64
+          description: Unix timestamp in milliseconds when the rate-limit window resets.
+        X-Usage-Used:
+          schema:
+            type: integer
+          description: Requests consumed from the applicable monthly bucket.
+        X-Usage-Limit:
+          schema:
+            type: integer
+          description: Monthly allowance for the applicable usage bucket.
+        X-Usage-Remaining:
+          schema:
+            type: integer
+          description: Requests remaining in the applicable monthly usage bucket.
+        X-Usage-Period-End:
+          schema:
+            type: string
+            format: date-time
+          description: ISO timestamp when the monthly usage period resets.
 
     InternalServerError:
       description: Internal server error
