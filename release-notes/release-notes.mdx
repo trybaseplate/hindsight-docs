@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, expanded Snowflake CRM support with product-line filtering, grouped Custom Metrics, deeper feature analytics, and an unsubscribe option for interview emails.
 
 ### Developer Tools
 
@@ -57,6 +57,119 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM: preview & selective import">
+  <Improved category="CRM Integration" />
+
+  Snowflake deal imports are now available to any organization, with a new preview step before you commit.
+
+  **Preview before you import** — See exactly which deals will come in before confirming, instead of importing everything sight-unseen.
+
+  **Import only what you need** — Select specific deals to bring in rather than pulling in your entire warehouse.
+
+  **Product-line filtering** — Once connected, filter Custom Metric and Custom Answer analysis down to specific product lines pulled from Snowflake.
+
+  **More reliable syncing** — Ongoing syncs now correctly refresh existing deals and pick up newly created ones without creating duplicates.
+
+</Card>
+
+</CardGroup>
+
+### Sales Enablement
+
+<CardGroup cols={1}>
+
+<Card icon="object-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups so your dashboard and settings stay easy to navigate as your scoring frameworks grow.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Attach reference documents to Custom Answers">
+  <New category="Custom Answers" />
+
+  Give the AI more context by attaching your own reference documents — playbooks, guides, or approved messaging — directly to a Custom Answer, so its evaluation is grounded in your team's standards.
+
+</Card>
+
+<Card icon="circle-question" iconType="solid" title="Clearer signal when there's not enough evidence">
+  <Improved category="Deal Analysis" />
+
+  Custom Answers and Custom Metrics now consistently flag when a deal doesn't have enough evidence to answer or score confidently, instead of guessing. Citations in AI-generated analysis are also easier to read, with cleaner inline formatting throughout the deal and chat views.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Deeper feature analytics">
+  <Improved category="Competitive Intelligence" />
+
+  **Tag rollups** — The Analyze deal grid now aggregates feature tag counts, so you can see tag distribution at a glance.
+
+  **Group by product** — Features can now be grouped by product and product area, with matching filters and column options across the Deals and Features pages.
+
+  **New charts** — Added tag, sentiment, and revenue charts to the feature detail page, plus collapsible trend sections on the Competitors and Drivers pages to keep older data out of the way.
+
+</Card>
+
+<Card icon="arrows-up-down" iconType="solid" title="Competitor list sorting and suggestions">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed sorting and pagination on the Competitors table so columns like deal count sort correctly, and fixed an issue where confirming a suggested competitor could fail to carry the suggestion through.
+
+</Card>
+
+<Card icon="file-csv" iconType="solid" title="Bigger CSV imports">
+  <Improved category="Data Import" />
+
+  Removed row-count limits on CSV imports, so larger lists of competitors, drivers, and features can be imported in a single upload.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="bell-slash" iconType="solid" title="Unsubscribe from interview emails">
+  <New category="Buyer Interviews" />
+
+  Interview request emails now include an unsubscribe link. Recipients who opt out are automatically suppressed from future requests, and admins can enable this per interview sequence.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="comment-dots" iconType="solid" title="See Paige's reasoning as it thinks">
+  <Improved category="Chat & Analysis" />
+
+  Chat responses now show a collapsible "Thinking..." block with the assistant's reasoning as it works, replacing the older raw-text format.
+
+</Card>
+
+<Card icon="clipboard-list" iconType="solid" title="Filter and export tool call activity">
+  <Improved category="Developer Tools" />
+
+  The tool call activity log now lets you filter by source (API or MCP) and export results to CSV, so you can see exactly how your integrations are being used.
+
+</Card>
+
+<Card icon="file-lines" iconType="solid" title="Markdown file uploads fixed">
+  <Fix category="Library" />
+
+  Fixed an issue where Markdown files failed to upload correctly in the document upload flow.
 
 </Card>
 
