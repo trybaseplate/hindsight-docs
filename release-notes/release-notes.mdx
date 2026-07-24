@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, visible reasoning in chat, custom metric groups, new feature analytics, and a refreshed Competitive Intelligence toolkit with Skills and custom competitor instructions.
 
 ### Developer Tools
 
@@ -60,6 +60,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake sync improvements">
+  <Improved category="CRM Integration" />
+
+  Snowflake syncing is smarter about keeping deals current — it refreshes existing deals and picks up newly discovered opportunities in the same pass, with filters that stay in sync with your search. A new **Resync** button in the deal grid lets Snowflake-connected teams pull the latest data on demand.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +77,79 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Clearer re-analysis and citations">
+  <Improved category="Deals" />
+
+  Re-running an answer or metric now follows the same logic as the original analysis, so results stay consistent. Citations render inline wherever Hindsight cites a source, and answers Hindsight can't support are now labeled "No answer found" instead of a low-confidence guess.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your custom metrics">
+  <New category="Custom Metrics" />
+
+  Organize related custom metrics into groups on your dashboard and in settings, and turn off default metrics entirely to keep the dashboard focused on what you track.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="New feature charts and grouping">
+  <New category="Analytics" />
+
+  Feature pages now include tag, sentiment, and revenue charts, and you can group features by product or product area for faster navigation. The analyze deal grid also shows tag counts alongside each feature.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="user-plus" iconType="solid" title="Skills and custom competitor instructions">
+  <New category="Competitive Intelligence" />
+
+  "Recipes" is now called **Skills**. You can also add custom instructions per competitor to control how Hindsight tags and evaluates mentions of them.
+
+</Card>
+
+<Card icon="table-list" iconType="solid" title="Competitor table and suggestion fixes">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed sorting in the competitor table so it now sorts across your full list, not just the visible page. Confirming, editing, or deleting suggested competitors, drivers, and features now shows a clear message if something goes wrong.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="paperclip" iconType="solid" title="Attach reference documents to custom answers">
+  <New category="Custom Answers" />
+
+  Custom answers can now include attached reference documents, giving Hindsight more context to draw from, along with support for answer packs and choosing which deals an answer applies to. Also fixed an issue where markdown files failed to upload in the document upload modal.
+
+</Card>
+
+</CardGroup>
+
+### AI Assistant
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="See Hindsight's reasoning">
+  <Improved category="AI Assistant" />
+
+  Chat responses now include a collapsible "Thinking..." section so you can see the reasoning behind an answer before it's given.
 
 </Card>
 
