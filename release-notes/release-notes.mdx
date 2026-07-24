@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, deeper Snowflake CRM sync, reference documents for custom answers, and a round of fixes across competitors, feature tags, and asset uploads.
 
 ### Developer Tools
 
@@ -57,6 +57,105 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="Smarter Snowflake sync">
+  <Improved category="CRM Integration" />
+
+  Snowflake CRM import now works like every other CRM integration in Hindsight. Preview deals before importing, filters stay in sync with what you see on screen, and deals you've already imported refresh automatically alongside newly discovered ones.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Filter answers & metrics by product line">
+  <New category="CRM Integration" />
+
+  Growth and Enterprise teams on Snowflake CRM can now scope custom answers and metrics to specific product line items, so an analysis only reflects the products it should.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers & Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="paperclip" iconType="solid" title="Attach reference documents to custom answers">
+  <New category="Custom Answers & Metrics" />
+
+  Point a custom answer at specific playbooks, docs, or case studies from your asset library, and Hindsight uses them as grounding context when generating the answer.
+
+</Card>
+
+<Card icon="brain" iconType="solid" title="Deeper, more careful analysis">
+  <Improved category="Custom Answers & Metrics" />
+
+  Custom answers and metrics now run through a more thorough analysis pass instead of a single retrieval step. They more reliably return "No answer found" instead of guessing when there's no supporting evidence, and citations render more clearly inline.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Competitor suggestion & sorting fixes">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed a bug where confirming a suggested competitor could open the wrong setup screen. Also fixed column sorting in the competitor comparison table.
+
+</Card>
+
+</CardGroup>
+
+### Feature Tracking
+
+<CardGroup cols={1}>
+
+<Card icon="tags" iconType="solid" title="Feature tag polish">
+  <Improved category="Feature Tracking" />
+
+  Feature tags now get sensible default colors out of the box, suggested features correctly tag their product and product area, and CSV feature imports no longer hit row-count or file-size limits.
+
+</Card>
+
+</CardGroup>
+
+### Buyer Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="envelope" iconType="solid" title="Unsubscribe from interview requests">
+  <New category="Buyer Interviews" />
+
+  Recipients can now unsubscribe from interview request emails, and Hindsight honors that preference for future outreach.
+
+</Card>
+
+</CardGroup>
+
+### AI Assistant
+
+<CardGroup cols={1}>
+
+<Card icon="comments" iconType="solid" title="See the assistant's reasoning">
+  <Improved category="AI Assistant" />
+
+  Chat responses now show a clear, collapsible "Thinking" section when the assistant reasons through a question, replacing the older raw-text format.
+
+</Card>
+
+</CardGroup>
+
+### Assets
+
+<CardGroup cols={1}>
+
+<Card icon="file-lines" iconType="solid" title="Markdown uploads fixed">
+  <Fix category="Assets" />
+
+  Fixed an issue where Markdown files couldn't be uploaded to the asset library.
 
 </Card>
 
