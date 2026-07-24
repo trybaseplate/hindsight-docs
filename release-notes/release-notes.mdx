@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, a wave of improvements to Custom Metrics, Custom Answers, and Feature Tracking, and smarter handling of low-confidence AI results.
 
 ### Developer Tools
 
@@ -39,6 +39,20 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="globe" iconType="solid" title="Web MCP sign-in, with longer sessions">
+  <Improved category="Developer Tools" />
+
+  Signing in to the Hindsight MCP server over the web now supports organization selection for teams on multiple workspaces, and sessions stay signed in longer thanks to refresh-token support — so you won't need to reconnect as often.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Control which MCP tools are available">
+  <New category="Developer Tools" />
+
+  Admins can now turn individual MCP tools on or off for their organization, and add custom instructions that steer how Claude, ChatGPT, or any MCP client should use Hindsight's tools.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -57,6 +71,119 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM integration improvements">
+  <Improved category="CRM Integration" />
+
+  Continued work on our Snowflake CRM integration (Preview) — imports now stay in sync with previously-refreshed deals, filters for manual imports are fixed, and the connector is now aligned with our other CRM integrations.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="circle-question" iconType="solid" title="Clearer 'no evidence' scoring">
+  <Improved category="Custom Metrics" />
+
+  When a deal doesn't have enough evidence to support a Custom Metric score, Hindsight now shows "—" instead of guessing, and separates unscored metrics into their own section on the deal overview so it's obvious what still needs attention.
+
+</Card>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups for a cleaner settings page and dashboard view.
+
+</Card>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents — playbooks, pricing sheets, competitive guides — to a Custom Answer so the AI has the right context when generating it. A new **Add Answer** button on each group card also makes it quicker to create answers in the right place.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-line" iconType="solid" title="Custom Metrics in dashboard charts">
+  <Improved category="Dashboard & Analytics" />
+
+  Plot your Custom Metrics alongside default metrics on the dashboard, and combine multiple segments in a single filter instead of switching between them one at a time.
+
+</Card>
+
+</CardGroup>
+
+### Feature Tracking
+
+<CardGroup cols={1}>
+
+<Card icon="diagram-project" iconType="solid" title="Group Features by product or product area">
+  <New category="Feature Tracking" />
+
+  View the Features page grouped by product or product area, with tag counts shown alongside each feature and new sentiment and revenue charts on the feature-deals view.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="arrow-down-a-z" iconType="solid" title="Competitor table sorting fix">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed an issue where sorting the Competitors table only sorted the currently loaded page instead of your full competitor list.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Hand off to Claude or ChatGPT from Slack">
+  <New category="Slack" />
+
+  Slack Assistant messages now include buttons that hand off the conversation to Claude or ChatGPT with context pre-filled, so you can keep going in the AI tool you already use.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="lightbulb" iconType="solid" title="See the AI's reasoning">
+  <Improved category="Chat & Analysis" />
+
+  AI responses in chat now show a collapsible "Thinking…" section so you can see the reasoning behind an answer without cluttering the main response.
+
+</Card>
+
+<Card icon="shield-check" iconType="solid" title="More trustworthy AI answers"> 
+  <Improved category="Chat & Analysis" />
+
+  Metrics and Custom Answers with low confidence are no longer auto-submitted, and cases where there's genuinely no answer in the data are now shown clearly instead of the AI guessing.
+
+</Card>
+
+<Card icon="quote-right" iconType="solid" title="Citation rendering fix">
+  <Fix category="Chat & Analysis" />
+
+  Fixed citation rendering in the deal analysis view, and made re-analyzing an answer or metric behave consistently with a fresh analysis.
 
 </Card>
 
