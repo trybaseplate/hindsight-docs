@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, richer feature analytics, grouped Custom Metrics, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -39,6 +39,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="sliders" iconType="solid" title="Custom instructions for MCP tools">
+  <New category="Developer Tools" />
+
+  Add custom instructions that shape how MCP tools behave for your organization, with role-based permissions controlling which tools each teammate can access.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +67,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM integration">
+  <Preview category="CRM Integration" />
+
+  Import deals from a Snowflake data warehouse with the same preview-before-import experience as our other CRM integrations — review matched deals and filters before anything is brought into Hindsight. Rolling out to select accounts.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +84,85 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Analytics & Feature Tracking
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group features by product and product area">
+  <New category="Analytics" />
+
+  View and filter features grouped by product or product area, making it easier to see which parts of your product come up most often in deals.
+
+</Card>
+
+<Card icon="tags" iconType="solid" title="Feature tag insights">
+  <New category="Analytics" />
+
+  The Features dashboard and Analyze grid now surface tag counts alongside dedicated tag, sentiment, and revenue charts, plus collapsible trend sections on the Competitors and Drivers pages.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Custom Metrics in your dashboards">
+  <Improved category="Analytics" />
+
+  Plot your Custom Metrics alongside default metrics right on the dashboard, and combine multiple values in a single filter using "is any of."
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="object-group" iconType="solid" title="Organize metrics into groups">
+  <New category="Custom Metrics" />
+
+  Group related Custom Metrics together for cleaner settings pages and dashboards. Default metrics can now be turned off entirely in favor of your own custom scoring.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="paperclip" iconType="solid" title="Attach reference documents to Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents — like a scoring guide or approved messaging — to a Custom Answer so the AI has the right context every time it evaluates a deal.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comment-dots" iconType="solid" title="Clearer AI reasoning in chat">
+  <Improved category="Chat & Analysis" />
+
+  Responses now show a collapsible "Thinking..." section so you can follow the AI's reasoning without cluttering the answer, alongside cleaner rendering of cited sources.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="check" iconType="solid" title="More reliable suggestion management">
+  <Fix category="Competitive Intelligence" />
+
+  Confirming, editing, and deleting suggested competitors, drivers, and features is now more reliable, with clearer error messages when something goes wrong.
 
 </Card>
 
