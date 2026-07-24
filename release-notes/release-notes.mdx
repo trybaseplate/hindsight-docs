@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, grouping and richer analytics for Features and Custom Metrics, and a round of reliability fixes across AI analysis, chat, and competitive intelligence.
 
 ### Developer Tools
 
@@ -57,6 +57,106 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake sync improvements">
+  <Improved category="CRM Integration" />
+
+  Snowflake syncing now refreshes previously imported deals in addition to pulling in new ones, with de-duplication so a deal never shows up twice. Filters for manual imports are more accurate, and deal filtering for Snowflake-connected orgs is more robust.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups instead of one flat list, making it easier to manage a growing set of scoring frameworks. Dashboard charts also now support plotting Custom Metrics alongside your default ones, and segment filters let you select multiple segments at once.
+
+</Card>
+
+</CardGroup>
+
+### Features
+
+<CardGroup cols={1}>
+
+<Card icon="boxes-stacked" iconType="solid" title="Group features by product">
+  <New category="Features" />
+
+  Feature dashboards can now be grouped by product or product area, with an improved column selector and richer filtering to slice by feature, product, or product area.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="New feature charts and tag counts">
+  <New category="Features" />
+
+  Feature deal pages now include tag, sentiment, and revenue charts, and the Competitors and Drivers pages show collapsible trend sections so historical data doesn't crowd the page. Generated feature reports and exports also include tag breakdowns with counts, so you can see which tags are most associated with each feature.
+
+</Card>
+
+</CardGroup>
+
+### AI Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents to a Custom Answer so the AI has the right context on hand — like a playbook or scoring guide — when generating a response.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="More consistent reanalysis">
+  <Improved category="Deals" />
+
+  Reanalyzing an answer or metric now runs through the same analysis pipeline as the original pass, so results stay consistent. Low-confidence results are held for review instead of being auto-submitted, and the analysis session view shows clearer detail for each metric and answer.
+
+</Card>
+
+<Card icon="brain" iconType="solid" title="See the AI's reasoning in chat">
+  <New category="Chat & Analysis" />
+
+  Chat responses now include a collapsible "Thinking..." section, so you can peek at the reasoning behind an answer without cluttering the response itself.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="arrow-down-wide-short" iconType="solid" title="Fixed competitor table sorting">
+  <Fix category="Competitive Intelligence" />
+
+  Sorting the competitor table now orders your entire list correctly, instead of only the deals currently loaded on screen.
+
+</Card>
+
+<Card icon="check-double" iconType="solid" title="More reliable suggestion management">
+  <Fix category="Competitive Intelligence" />
+
+  Confirming, editing, and deleting suggested competitors, drivers, and features is more reliable, with clearer error messages if something goes wrong.
+
+</Card>
+
+</CardGroup>
+
+### Admin
+
+<CardGroup cols={1}>
+
+<Card icon="gauge" iconType="solid" title="More accurate usage analytics">
+  <Fix category="Admin" />
+
+  The usage analytics web tab now counts only real chat conversations with your team, excluding automated agent runs, for a more accurate picture of adoption.
 
 </Card>
 
