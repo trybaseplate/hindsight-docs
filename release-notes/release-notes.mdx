@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, agentic reasoning for Custom Metrics and Custom Answers, grouping for metrics and features, a new Snowflake CRM integration, and a guided setup flow for connecting your CRM and call intelligence tools.
 
 ### Developer Tools
 
@@ -60,6 +60,20 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM integration">
+  <Beta category="CRM Integration" />
+
+  Preview opportunities from a connected Snowflake instance and choose which ones to import, using the same workflow as our other CRM integrations.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="Smarter Snowflake sync">
+  <Improved category="CRM Integration" />
+
+  Syncing now refreshes deals already in Hindsight and imports newly matching opportunities without creating duplicates. Filters in the deal import view also update the preview instantly, without a manual re-search.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +84,88 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="file-csv" iconType="solid" title="No more CSV import limits">
+  <Improved category="Deals" />
+
+  Removed the row limit on CSV deal imports, so larger books of business can be brought into Hindsight in a single upload.
+
+</Card>
+
+<Card icon="file-lines" iconType="solid" title="Markdown uploads fixed">
+  <Fix category="Deals" />
+
+  Fixed an issue where uploading a Markdown file in the document upload modal could fail.
+
+</Card>
+
+</CardGroup>
+
+### AI Assistant
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="Agentic reasoning for Custom Metrics and Custom Answers">
+  <New category="AI Assistant" />
+
+  Custom Metrics and Custom Answers now use the same step-by-step agentic reasoning as full deal reviews, instead of a single retrieval pass. This produces more accurate, evidence-backed scores and answers, and keeps results consistent whether they come from a full review or a one-off re-analysis.
+
+  **Reference documents** — Attach supporting documents directly to a Custom Answer so the assistant has the right context on hand.
+
+</Card>
+
+<Card icon="comment-dots" iconType="solid" title="See the assistant's reasoning">
+  <Improved category="AI Assistant" />
+
+  Chat responses now include a collapsible "Thinking…" section so you can see how the assistant arrived at an answer, and citations render more clearly inline.
+
+</Card>
+
+</CardGroup>
+
+### Feature Tracking
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group features by product and product area">
+  <New category="Feature Tracking" />
+
+  Roll features up by product or product area to see trends at a higher level, with matching filters across the deals and features views.
+
+</Card>
+
+<Card icon="chart-pie" iconType="solid" title="New feature charts and tag counts">
+  <New category="Feature Tracking" />
+
+  Added sentiment and revenue charts to the feature detail page, plus tag counts directly in the deal grid, for a fuller picture of how a feature is performing.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="object-group" iconType="solid" title="Organize metrics into groups">
+  <New category="Custom Metrics" />
+
+  Group related Custom Metrics together for easier organization, with grouped metrics reflected on both the settings page and dashboard charts. Default metrics can now be turned off in favor of fully custom configurations.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="check-double" iconType="solid" title="Clearer feedback when managing suggestions">
+  <Improved category="Competitive Intelligence" />
+
+  Confirming, editing, and deleting suggested competitors, decision drivers, and features now gives clear success and error messages, and several related bugs in competitor setup and unsubscribing were fixed.
 
 </Card>
 
