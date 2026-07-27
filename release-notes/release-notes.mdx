@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature analytics, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature analytics, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
 
 ### Developer Tools
 
@@ -73,6 +73,20 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   Snowflake import now works the same way as our other CRM integrations, with a dedicated preview step so you can see exactly which deals will come in before you import. Filters and sorting stay in sync automatically, and refreshed deals are matched more accurately against ones you've already imported — plus stronger duplicate detection on synced notes, meetings, and emails — so you don't end up with duplicate or missing deal data.
 
   **On-demand resync** — Snowflake-connected orgs can now trigger a manual resync of their deals right from the deal grid instead of waiting for the next scheduled sync.
+
+</Card>
+
+<Card icon="cloud-arrow-down" iconType="solid" title="Google Drive sync is live">
+  <New category="CRM Integration" />
+
+  Assets and documents linked from Google Drive can now be kept up to date automatically or on demand — resync an individual asset from its menu, or kick off an org-wide sync, and Hindsight pulls in the latest version from Drive.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="HubSpot previous-stage filtering">
+  <New category="CRM Integration" />
+
+  Import deals from HubSpot filtered by the stage they were in *before* their current one — matching the filtering already available for Salesforce and Snowflake. The import dialog also now only shows filter properties that come from your CRM, so there's less noise when narrowing down which deals to bring in.
 
 </Card>
 
