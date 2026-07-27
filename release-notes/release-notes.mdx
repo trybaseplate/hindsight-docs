@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, grouped Custom Metrics, feature-level analytics, and Recipes' rename to Skills.
 
 ### Developer Tools
 
@@ -57,6 +57,120 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="More reliable Snowflake sync">
+  <Improved category="CRM Integration" />
+
+  A **Resync** button on the deal grid lets Snowflake customers refresh selected deals on demand instead of waiting for the next scheduled sync. Hindsight also now recognizes when a document has already come in from Snowflake, Salesforce, or HubSpot and skips re-uploading it, keeping deal timelines free of duplicates.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Cleaner HubSpot imports">
+  <Improved category="CRM Integration" />
+
+  Filter HubSpot deals by their previous stage when importing, and the import dialog now shows only properties relevant to your CRM instead of the full property list.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="HubSpot contact sync fix">
+  <Fix category="CRM Integration" />
+
+  Fixed a timing issue where HubSpot sync could briefly use outdated contact details right after a new contact was added.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="sliders" iconType="solid" title="Custom competitor instructions">
+  <New category="Competitive Intelligence" />
+
+  Give the research agent custom instructions for how to tag and filter product mentions for a specific competitor, so results match how your team actually talks about the market.
+
+</Card>
+
+<Card icon="arrow-down-wide-short" iconType="solid" title="Competitor table sorting fix">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed sorting on the Competitors table so it now sorts across your full list instead of just the rows currently loaded on screen.
+
+</Card>
+
+</CardGroup>
+
+### Feature Tracking
+
+<CardGroup cols={1}>
+
+<Card icon="boxes-stacked" iconType="solid" title="Group features by product">
+  <New category="Feature Tracking" />
+
+  View and filter features grouped by product or product area on the Features page. Each feature's page now includes tag, sentiment, and revenue charts, and the analyze view shows which tags come up most often alongside a feature.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Answers
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Metric groups">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups so your dashboard and settings stay easy to navigate as you add more scoring frameworks.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Custom Metrics on the dashboard">
+  <Improved category="Dashboard & Analytics" />
+
+  Plot Custom Metrics right alongside default metrics on dashboard charts, and combine multiple values in a single segment filter — like viewing two regions at once — instead of switching back and forth.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach a reference document — like your pricing guide or playbook — to a Custom Answer so the AI scores every deal against that same source.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="See the AI's reasoning">
+  <Improved category="Chat & Analysis" />
+
+  Chat now shows a collapsible "Thinking" section while the AI works through your question. Re-analyzed answers and metrics also display inline citations the same way chat responses do.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Recipes are now Skills">
+  <Improved category="Platform" />
+
+  Recipes have been renamed to Skills, with a refreshed Skills page. Same automated analysis workflows, new name.
+
+</Card>
+
+<Card icon="google-drive" iconType="solid" title="Manual Google Drive sync">
+  <New category="Platform" />
+
+  Trigger a Google Drive sync on demand from Settings instead of waiting for the next scheduled run.
 
 </Card>
 
