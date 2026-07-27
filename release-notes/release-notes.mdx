@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, deeper Snowflake and HubSpot sync improvements, custom metric groups, and a new way to jump from Slack straight into Claude or ChatGPT.
 
 ### Developer Tools
 
@@ -57,6 +57,104 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="Snowflake & HubSpot sync improvements">
+  <Improved category="CRM Integration" />
+
+  **Snowflake resync** — A new **Resync** button on the deal grid refreshes existing Snowflake-sourced deals on demand, and the sync now automatically picks up newly created opportunities alongside refreshed ones without creating duplicates.
+
+  **HubSpot stage filtering** — Filter HubSpot deals by their previous pipeline stage when importing.
+
+  **Cleaner import dialog** — The import dialog now only shows properties relevant to your connected CRM, cutting down on clutter.
+
+  **Google Drive sync** — New controls let you kick off a Google Drive sync directly from Hindsight.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your custom metrics">
+  <New category="Custom Metrics" />
+
+  Organize related metrics into named groups on the dashboard and settings page, so scoring frameworks with several dimensions stay easy to navigate. You can also turn off Hindsight's default metrics entirely if you'd rather run on fully custom scoring.
+
+</Card>
+
+<Card icon="circle-question" iconType="solid" title="Clearer 'no evidence' scoring">
+  <Improved category="Custom Metrics" />
+
+  Metrics without enough supporting evidence now show as **N/A** instead of being forced into a score. N/A metrics are excluded from averages, rollups, and CSV exports so they don't skew your numbers.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="paperclip" iconType="solid" title="Attach reference documents to Custom Answers">
+  <New category="Custom Answers" />
+
+  Give the AI more context when generating a Custom Answer by attaching reference documents, like a sales playbook or product guide, so answers are grounded in your own materials. Answer groups also got a quicker "Add Answer" button and steadier create/edit forms.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="sliders" iconType="solid" title="Custom competitor instructions">
+  <New category="Competitive Intelligence" />
+
+  Add your own instructions to guide how Hindsight tags and filters product mentions for a specific competitor, so competitive tagging better reflects how your team categorizes the market.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Hand off from Slack to Claude or ChatGPT">
+  <New category="Slack" />
+
+  Jump straight from a Slack Assistant answer into Claude or ChatGPT with your question pre-filled, so you can keep digging in your AI tool of choice.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="See the AI's reasoning">
+  <Improved category="Chat & Analysis" />
+
+  Chat responses now include a collapsible "Thinking" section so you can see how Hindsight's AI worked through your question, plus more reliable citation rendering throughout.
+
+</Card>
+
+</CardGroup>
+
+### Product & Features
+
+<CardGroup cols={1}>
+
+<Card icon="object-group" iconType="solid" title="Group features by product">
+  <New category="Product & Features" />
+
+  Browse the Features page grouped by product or product area, with new tag, sentiment, and revenue charts so it's easier to see what's driving mentions for a given feature.
 
 </Card>
 
