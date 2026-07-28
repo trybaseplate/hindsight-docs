@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, smarter Snowflake and HubSpot sync, metric groups, visible AI reasoning in chat, and a refreshed Skills page.
 
 ### Developer Tools
 
@@ -57,6 +57,142 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Smarter Snowflake sync">
+  <Improved category="CRM Integration" />
+
+  Snowflake sync now refreshes existing deals and picks up newly matching opportunities in the same pass, without creating duplicates. Filters and sorting in the import view update automatically as you change them, and a one-click **Resync** button next to Snowflake-connected deals lets you refresh on demand. Large syncs now run in batches for better reliability.
+
+</Card>
+
+<Card icon="hubspot" iconType="solid" title="Filter HubSpot imports by deal stage">
+  <New category="CRM Integration" />
+
+  Import deals from HubSpot filtered by their previous stage history, and the import dialog now only shows CRM-native properties for a cleaner setup. Also fixed a bug where HubSpot contact syncs could briefly show stale contact info right after syncing.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="More reliable HubSpot & Salesforce sync">
+  <Improved category="CRM Integration" />
+
+  Syncs now wait for call recordings and documents to finish processing before generating insights, and automatically retry failed uploads. Insights also regenerate automatically after your first sync and whenever new documents come in.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Answers
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Metric groups">
+  <New category="Custom Metrics" />
+
+  Organize related custom metrics into groups from Settings. Scores for grouped metrics are now generated together, so explanations and confidence stay consistent across the group.
+
+</Card>
+
+<Card icon="clipboard-check" iconType="solid" title="Low-confidence scores held for review">
+  <Improved category="Custom Metrics" />
+
+  Metrics and answers that come back with low confidence are now held for manual review instead of being submitted automatically.
+
+</Card>
+
+<Card icon="file-lines" iconType="solid" title="Attach reference docs to Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents — playbooks, pricing sheets, and more — to a Custom Answer so the AI has the right context when generating it. Also removed the row limit on CSV imports and fixed an issue with markdown file uploads.
+
+</Card>
+
+<Card icon="circle-question" iconType="solid" title="Clearer 'not enough information' answers">
+  <Improved category="Custom Answers" />
+
+  True/false and multiple-choice Custom Answers now clearly flag when Hindsight can't determine an answer from the available deal data, instead of guessing.
+
+</Card>
+
+<Card icon="list-check" iconType="solid" title="Scope Custom Answer runs to specific deals">
+  <New category="Custom Answers" />
+
+  Run Custom Answers against a hand-picked set of deals instead of your whole pipeline.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="table" iconType="solid" title="Competitor table sorting fix">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed an issue where sorting the competitor table only sorted the currently loaded page instead of the full list.
+
+</Card>
+
+<Card icon="user-pen" iconType="solid" title="Custom instructions for competitor tagging">
+  <New category="Competitive Intelligence" />
+
+  Add custom instructions per competitor to control how Hindsight tags and filters product mentions for that competitor.
+
+</Card>
+
+<Card icon="boxes-stacked" iconType="solid" title="Group features by product">
+  <New category="Competitive Intelligence" />
+
+  The Features page can now group by product or product area, with matching filters added to the deals grid so you can slice feature data the same way across the app.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="More feature analytics">
+  <Improved category="Competitive Intelligence" />
+
+  Feature deal pages now include tag, sentiment, and revenue charts, and AI-generated feature reports show tag breakdowns alongside win/loss and revenue data. Competitor and driver pages also gained collapsible trend sections to keep the view tidy.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comment-dots" iconType="solid" title="See the assistant's reasoning">
+  <New category="Chat & Analysis" />
+
+  Chat responses now include a collapsible "Thinking..." section showing the assistant's reasoning before its answer.
+
+</Card>
+
+<Card icon="quote-right" iconType="solid" title="Cleaner citations in analysis">
+  <Improved category="Chat & Analysis" />
+
+  Cited sources in deal analysis sessions now render consistently alongside the AI's explanation.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Recipes are now Skills">
+  <Improved category="Platform" />
+
+  The former Recipes section has been renamed to **Skills** with its own dedicated page. Built-in Hindsight skills are hidden by default, so your workspace starts with just the skills your team creates.
+
+</Card>
+
+<Card icon="credit-card" iconType="solid" title="Clearer upgrade prompts">
+  <New category="Billing" />
+
+  Deal export/import, insights generation, HubSpot/Salesforce sync, and document uploads now show a clear upgrade prompt if your plan doesn't include that feature, instead of failing silently.
 
 </Card>
 
