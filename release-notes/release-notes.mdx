@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, Recipes relaunched as Skills, Custom Metric groups, deeper feature analytics, and a round of CRM sync and import improvements for Snowflake and HubSpot.
 
 ### Developer Tools
 
@@ -41,6 +41,117 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </CardGroup>
 
+### Skills
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Recipes are now Skills">
+  <Improved category="Skills" />
+
+  Recipes have been renamed and relaunched as **Skills** — Hindsight's library of reusable AI workflows you can run across your deals. Existing recipes carry over automatically; only the name and home page have changed.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Metric groups">
+  <New category="Custom Metrics" />
+
+  Group related Custom Metrics together so they're scored consistently and explained as a set, instead of one at a time. Useful for metrics that share context, like several angles on sales execution or product fit.
+
+</Card>
+
+<Card icon="shield-check" iconType="solid" title="Safer AI review">
+  <Improved category="Custom Metrics" />
+
+  Low-confidence AI answers no longer auto-submit during review — they're flagged for a human to confirm instead. New detail views make it easier to see how a metric or answer was derived before approving it.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="tags" iconType="solid" title="Custom competitor tagging instructions">
+  <New category="Competitive Intelligence" />
+
+  Add your own instructions to control how Hindsight tags mentions of a competitor, so tagging matches the way your team actually talks about the market.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Feature analytics upgrade">
+  <Improved category="Feature Tracking" />
+
+  **New charts** — Tag, sentiment, and revenue-impact charts on the feature detail page, plus collapsible trend sections on competitor and driver pages.
+
+  **Group by product** — Group features by product or product area, filter by multiple features at once, and use an improved column selector in the deal grid.
+
+  **Tag counts at a glance** — The deal grid's generated features table now shows how many deals each feature tag appears in.
+
+</Card>
+
+<Card icon="sort" iconType="solid" title="Competitor list sorting fix">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed competitor list sorting so it applies across all deals, not just the deals on the current page.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="paperclip" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents to a Custom Answer so the AI has the right context to draw from when generating it. You can also scope an answer to specific deals, and the CSV import limit has been removed.
+
+</Card>
+
+<Card icon="circle-question" iconType="solid" title="Clearer \"can't answer\" handling">
+  <Improved category="Custom Answers" />
+
+  When a question or metric genuinely can't be answered from the available deal data, Hindsight now says so clearly instead of guessing.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="quote-right" iconType="solid" title="Clickable citations in chat">
+  <Improved category="Chat & Analysis" />
+
+  Chat responses now link citations directly to their source, so you can jump straight to the deal, document, or transcript a claim came from.
+
+</Card>
+
+<Card icon="brain" iconType="solid" title="See the AI's thinking">
+  <Improved category="Chat & Analysis" />
+
+  Reasoning steps now show up as a clean, collapsible "Thinking…" block in chat instead of raw text.
+
+</Card>
+
+<Card icon="robot" iconType="solid" title="More reliable insight generation">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where the insight assistant could keep running instead of stopping once it had what it needed.
+
+</Card>
+
+</CardGroup>
+
 ### CRM Integration
 
 <CardGroup cols={1}>
@@ -60,6 +171,76 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="hubspot" iconType="solid" title="HubSpot bulk import and filtering">
+  <New category="CRM Integration" />
+
+  **Bulk import** — Import any HubSpot deals that are missing from Hindsight in one action, with a pipeline health check to flag issues first.
+
+  **Previous-stage filtering** — Filter HubSpot deals by their previous pipeline stage, and the import dialog now only shows properties relevant to your connected CRM.
+
+</Card>
+
+<Card icon="google-drive" iconType="solid" title="Google Drive sync">
+  <New category="Integrations" />
+
+  Sync documents from Google Drive directly into your Hindsight library.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake sync accuracy and resync">
+  <Improved category="CRM Integration" />
+
+  Fixed an issue where the Snowflake sync could miss updates to existing deals or create duplicates. Snowflake-connected orgs also get a new **Resync** button in the deal grid to refresh data on demand.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="HubSpot sync fixes">
+  <Fix category="CRM Integration" />
+
+  Fixed stale contact data appearing after an initial HubSpot sync. Trial organizations now get full API access instead of being blocked while trialing.
+
+</Card>
+
+</CardGroup>
+
+### Admin
+
+<CardGroup cols={1}>
+
+<Card icon="user-lock" iconType="solid" title="Role-based permissions for Settings">
+  <New category="Admin" />
+
+  Role-based access now extends to Settings — members with limited roles no longer see admin-only configuration screens.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-simple" iconType="solid" title="Custom Metrics on your dashboard">
+  <New category="Dashboard" />
+
+  Add your Custom Metrics as charts directly on the dashboard alongside your other analytics.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Multi-select segment filters">
+  <Improved category="Dashboard" />
+
+  Segment filters now support selecting multiple values at once (e.g. "is any of"), instead of one at a time.
+
+</Card>
+
+<Card icon="envelope-open" iconType="solid" title="Self-serve unsubscribe">
+  <New category="Platform" />
+
+  Recipients of Hindsight emails can now unsubscribe themselves from a link in the email, no support request required.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +251,20 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="gauge-high" iconType="solid" title="Faster deal pages">
+  <Improved category="Deals" />
+
+  Improved load performance on the deal home page.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="\"Medium\" analysis depth fix">
+  <Fix category="Deals" />
+
+  Fixed an issue where the "medium" analysis depth setting didn't behave as expected when analyzing a deal.
 
 </Card>
 
