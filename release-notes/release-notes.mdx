@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, deeper Snowflake and HubSpot sync improvements, feature grouping by product, Custom Metric Groups, and a first look at the AI's reasoning in chat.
 
 ### Developer Tools
 
@@ -60,6 +60,100 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake sync improvements">
+  <Improved category="CRM Integration" />
+
+  Snowflake deals now sync the same way as your other CRM integrations, with more accurate filtering and deduplication when refreshing an import.
+
+  **Resync on demand** — Growth and Enterprise orgs on Snowflake can trigger a manual resync from the deal grid instead of waiting for the next scheduled sync.
+
+</Card>
+
+<Card icon="file-import" iconType="solid" title="Bulk HubSpot import & pipeline health checks">
+  <New category="CRM Integration" />
+
+  Import every missing HubSpot deal in a single action instead of one at a time, and run a pipeline health check to catch sync issues before they affect your data.
+
+</Card>
+
+<Card icon="broom" iconType="solid" title="Cleaner CRM imports & on-demand Drive sync">
+  <Improved category="CRM Integration" />
+
+  Import dialogs now show only the properties relevant to your connected CRM, and HubSpot deals can be filtered by previous stage.
+
+  **Google Drive sync** — Trigger a Drive sync manually instead of waiting for the scheduled run.
+
+  **More reliable syncing** — Document and recording syncing for HubSpot and Salesforce is more resilient end to end.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="diagram-project" iconType="solid" title="Group features by product or product area">
+  <New category="Competitive Intelligence" />
+
+  New pages let you view features grouped by product or product area, each with its own win rate, revenue, and tag-mix charts, plus tag counts on the generated features table.
+
+</Card>
+
+<Card icon="circle-check" iconType="solid" title="More reliable suggestion management">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed error handling when confirming, editing, or deleting suggested competitors, drivers, or features — failures now show a clear message instead of failing silently.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Custom Metric Groups">
+  <New category="Custom Metrics" />
+
+  Group related custom metrics together so they're scored and explained consistently, with clearer detail in the review UI. Low-confidence results are now held back for review instead of auto-submitted.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Multi-select segments & custom metrics in charts">
+  <Improved category="Analytics" />
+
+  Dashboard charts can now plot your custom metrics alongside the defaults, and segment filters support selecting multiple values at once.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="See the AI's reasoning as it works">
+  <New category="Chat & Analysis" />
+
+  Chat responses now include a collapsible "Thinking..." section so you can see the model's reasoning before the final answer.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Chat & Analysis" />
+
+  Attach reference documents — playbooks, guides, past examples — to a Custom Answer so the AI has the right context when generating it. Also fixes an issue uploading markdown files.
+
+</Card>
+
+<Card icon="circle-question" iconType="solid" title="Smarter &quot;no answer found&quot; handling">
+  <Fix category="Chat & Analysis" />
+
+  Custom Answers now correctly report when there's no answer in the data instead of guessing.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +164,19 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Recipes are now Skills">
+  <Improved category="Platform" />
+
+  Recipes have been renamed to Skills throughout Hindsight — same functionality, clearer name. Competitor tagging instructions also gained a custom filter prompt for finer control over how product tags get applied.
 
 </Card>
 
