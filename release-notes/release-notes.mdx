@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, bulk HubSpot import and Snowflake sync upgrades, custom metric grouping, feature grouping by product, and Recipes relaunched as Skills.
 
 ### Developer Tools
 
@@ -60,6 +60,31 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="hubspot" iconType="solid" title="Bulk HubSpot import & pipeline health">
+  <New category="CRM Integration" />
+
+  Catch up in one click — import every matching deal you haven't brought in yet, filtered by pipeline stage, and check pipeline health before you commit. The import dialog itself is also cleaner, now showing only the CRM properties that actually matter for import.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake sync improvements">
+  <Improved category="CRM Integration" />
+
+  **Resync on demand** — a new Resync button lets Snowflake-connected orgs refresh their data anytime, not just on the scheduled cadence.
+
+  **Cleaner imports** — the import flow now works the same way for every org, with a preview step and control over exactly which deals to bring in.
+
+  **Smarter refresh** — re-running a sync updates deals you've already imported and adds newly matching ones without creating duplicates, and grid filters and sorting now stay in sync automatically.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="More reliable CRM document sync">
+  <Fix category="CRM Integration" />
+
+  Recordings and transcripts synced in from HubSpot or Salesforce now retry automatically on failure, and Hindsight kicks off insight generation as soon as your first sync completes or new documents arrive. We also fixed a bug where HubSpot syncs could pull stale contact info, and duplicate document uploads are now caught automatically across Snowflake, Salesforce, and HubSpot.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +95,113 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group features by product">
+  <New category="Competitive Intelligence" />
+
+  Features can now be grouped by product or product area, with matching filters and navigation so you can drill into deals for a specific product line. The generated features table also now shows how many times each feature was tagged.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Trend charts, everywhere">
+  <Improved category="Competitive Intelligence" />
+
+  Competitor and driver pages now have collapsible trend sections, and the feature-deals page has new tag, sentiment, and revenue charts to help you see what's actually driving outcomes.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Custom competitor tagging instructions">
+  <New category="Competitive Intelligence" />
+
+  Give Hindsight custom instructions for how to tag and filter mentions of a specific competitor, so tagging matches how your team actually talks about them.
+
+</Card>
+
+<Card icon="list-check" iconType="solid" title="More reliable competitor & driver management">
+  <Fix category="Competitive Intelligence" />
+
+  Confirming, editing, and deleting competitors, decision drivers, and features is now more reliable, with clear error messages when something goes wrong instead of a silent failure. The competitor table also now sorts correctly across your entire list, not just the visible page.
+
+</Card>
+
+</CardGroup>
+
+### Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="object-group" iconType="solid" title="Group your custom metrics">
+  <New category="Analytics" />
+
+  Organize related custom metrics into groups, and see them scored and displayed together for a more consistent read across your dashboard and deal reports.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Chart any custom metric">
+  <Improved category="Analytics" />
+
+  Dashboard charts can now plot any of your custom metrics, and segment filters support selecting multiple values at once — for example, several regions or deal stages in one view.
+
+</Card>
+
+</CardGroup>
+
+### Skills
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Recipes are now Skills">
+  <Improved category="Skills" />
+
+  We've renamed Recipes to **Skills** and given them a dedicated page — the same reusable analysis workflows you know, with a name that better reflects what they do.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Insights
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="See the AI's reasoning">
+  <New category="Chat & Analysis" />
+
+  Chat responses now show the model's reasoning as a collapsible "Thinking..." block instead of raw formatting tags.
+
+</Card>
+
+<Card icon="shield-check" iconType="solid" title="More trustworthy AI answers">
+  <Improved category="Deal Analysis" />
+
+  Low-confidence AI-generated answers and metric scores are now held for your review instead of being auto-submitted, and insights that lack real evidence now return "No Answer Found" instead of guessing. Re-analyzing an answer or metric now uses the same logic as the original analysis, for more consistent results.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Attach reference docs to Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents to a Custom Answer so the AI has the right context when generating it. We also removed the row limit on CSV imports for Custom Answers.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="gauge" iconType="solid" title="More accurate usage analytics">
+  <Fix category="Admin" />
+
+  Usage analytics on the Web tab now count only real user-initiated chat sessions — automated agent runs are excluded, and the redundant session-type filter has been removed for a cleaner view.
 
 </Card>
 
