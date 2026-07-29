@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, bulk HubSpot import, grouped Custom Metrics, and a cleaner reasoning view in chat.
 
 ### Developer Tools
 
@@ -60,6 +60,141 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="database" iconType="solid" title="Bulk import for HubSpot">
+  <New category="CRM Integration" />
+
+  Bring in every deal HubSpot knows about, not just new ones going forward.
+
+  **Import missing deals** — Backfill any HubSpot deals that predate your Hindsight connection in one action.
+
+  **Pipeline health check** — See a summary of your HubSpot pipeline before importing, so you know what's coming in.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="HubSpot import refinements">
+  <Improved category="CRM Integration" />
+
+  **Filter by previous stage** — Import HubSpot deals based on the stage they moved through previously, not just their current stage.
+
+  **Cleaner import dialog** — The import dialog now only shows HubSpot-specific properties, cutting out noise from unrelated fields.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake sync improvements">
+  <Improved category="CRM Integration" />
+
+  Continued improvements to our Snowflake CRM integration ahead of broader availability.
+
+  **On-demand resync** — A new **Resync** button in the deal grid lets Snowflake customers refresh deals without waiting for the next scheduled sync.
+
+  **More reliable product matching** — Products synced from Snowflake now match existing records more accurately, reducing duplicate or mismatched line items.
+
+</Card>
+
+<Card icon="google-drive" iconType="solid" title="On-demand Google Drive sync">
+  <New category="CRM Integration" />
+
+  Trigger a Google Drive sync directly from Hindsight whenever you need fresh files pulled in, instead of waiting for the scheduled run.
+
+</Card>
+
+<Card icon="users" iconType="solid" title="Fixed stale contact data on HubSpot sync">
+  <Fix category="CRM Integration" />
+
+  Fixed an issue where a contact's initial sync from HubSpot could save outdated contact info instead of the latest record.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups that are scored and reviewed together, instead of one at a time.
+
+  **Grouped scoring** — Metrics in a group share consistent explanations and confidence levels for easier side-by-side review.
+
+  **Cleaner defaults** — Default metrics are no longer added automatically, so new setups start from your own configuration instead of a preset list.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Custom Metrics in your dashboards">
+  <Improved category="Dashboard & Analytics" />
+
+  **Plot Custom Metrics** — Custom Metrics can now be charted right alongside Hindsight's default metrics on the dashboard.
+
+  **Compare multiple segments** — Segment filters now support "is any of," so you can compare several segments on the same chart at once.
+
+</Card>
+
+<Card icon="chart-pie" iconType="solid" title="Feature analytics upgrades">
+  <Improved category="Competitive Intelligence" />
+
+  **New charts** — Tag, sentiment, and revenue charts on the feature deals page make it easier to see how a feature is performing.
+
+  **Group by product** — Features can now be grouped and browsed by product or product area.
+
+  **Tag counts in Analyze** — The Analyze deal grid now surfaces feature tag counts alongside each feature.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="paperclip" iconType="solid" title="Attach reference documents to Custom Answers">
+  <New category="Custom Answers" />
+
+  Ground a Custom Answer in your own material by attaching specific reference documents — like a playbook or scoring guide — for the AI to draw on when generating a response.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="message-lines" iconType="solid" title="Custom tagging instructions per competitor">
+  <New category="Competitive Intelligence" />
+
+  Add your own instructions for a specific competitor to guide how Hindsight tags and filters mentions of them across your deals.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Recipes are now Skills">
+  <Improved category="Platform" />
+
+  Recipes have been renamed to Skills, with an updated management page. Your existing recipes carried over automatically — no action needed.
+
+</Card>
+
+<Card icon="user-lock" iconType="solid" title="Role-based permissions extend to Settings">
+  <Improved category="Admin" />
+
+  Role-based access control now applies to Settings pages too, so Members and Managers see the same permission boundaries there as they do everywhere else in Hindsight.
+
+</Card>
+
+<Card icon="comment-dots" iconType="solid" title="Cleaner reasoning view in chat">
+  <Improved category="Chat & Analysis" />
+
+  The AI's reasoning now appears in a single collapsible "Thinking..." section, replacing the older inline formatting for a tidier chat view.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +205,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="quote-left" iconType="solid" title="More reliable citations in deal analysis">
+  <Fix category="Deals" />
+
+  Fixed cases where cited text in deal analysis and reanalysis could render incorrectly.
 
 </Card>
 
