@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM tools, Snowflake and HubSpot sync improvements, grouped Custom Metrics, visible AI reasoning in chat, and a fix for deal exports.
 
 ### Developer Tools
 
@@ -57,6 +57,110 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake sync improvements">
+  <Improved category="CRM Integration" />
+
+  Snowflake CRM import (Preview) now keeps previously imported deals refreshed alongside newly discovered ones, and a new **Resync** button in the deal grid lets you pull the latest Snowflake data for selected deals on demand.
+
+</Card>
+
+<Card icon="database" iconType="solid" title="Bulk import & pipeline health for HubSpot">
+  <New category="CRM Integration" />
+
+  **Bulk import** — Pull in every HubSpot deal that hasn't synced yet in a single action, instead of importing one at a time.
+
+  **Pipeline health check** — See which stages of your HubSpot pipeline are syncing cleanly and which need attention.
+
+  **Cleaner import dialog** — The import dialog now only shows CRM-specific fields, and you can filter by a deal's previous stage.
+
+</Card>
+
+<Card icon="google-drive" iconType="solid" title="Manual Google Drive sync">
+  <New category="CRM Integration" />
+
+  Kick off a Google Drive sync on demand from the app instead of waiting for the next scheduled run.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Group Custom Metrics">
+  <New category="Custom Metrics" />
+
+  Organize related Custom Metrics into groups for cleaner setup and more consistent scoring — grouped metrics are evaluated together and shown together on the dashboard.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Custom Metrics on the dashboard">
+  <Improved category="Dashboard & Analytics" />
+
+  Dashboard charts can now plot Custom Metrics alongside the default metrics, and segment filters support combining multiple segments in a single view.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="paperclip" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents — like a scoring rubric or messaging guide — to a Custom Answer so the AI has the right context in hand when it answers.
+
+</Card>
+
+</CardGroup>
+
+### Feature Tracking
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Feature analytics, grouped by product">
+  <Improved category="Feature Tracking" />
+
+  Group and filter the Features page by product or product area, and see new tag, sentiment, and revenue charts on each feature's detail page.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comment-dots" iconType="solid" title="See the AI's reasoning">
+  <Improved category="Chat & Analysis" />
+
+  Chat responses now show a collapsible "Thinking..." section, so you can see the reasoning behind an answer, not just the final result.
+
+</Card>
+
+<Card icon="quote-right" iconType="solid" title="Citations when reanalyzing">
+  <Improved category="Chat & Analysis" />
+
+  Re-running an answer or metric now shows cited sources inline, matching the citation experience everywhere else in Hindsight.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="arrow-up-a-z" iconType="solid" title="Competitor table sorting">
+  <Fix category="Competitive Intelligence" />
+
+  Sorting the competitors table now sorts across your entire list, not just the rows currently loaded on screen.
 
 </Card>
 
