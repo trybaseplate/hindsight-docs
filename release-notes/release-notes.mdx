@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, bulk HubSpot import and on-demand Snowflake resync, a round of feature and competitor analytics upgrades, Recipes rebuilt as Skills, and a batch of reliability fixes.
 
 ### Developer Tools
 
@@ -60,6 +60,34 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="cloud-arrow-up" iconType="solid" title="Bulk HubSpot import & pipeline health">
+  <New category="CRM Integration" />
+
+  Catch deals that slipped past your regular sync. Run a bulk import to bring in any missing HubSpot deals, and check the health of your HubSpot pipelines from the same view.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="More control over what gets imported">
+  <Improved category="CRM Integration" />
+
+  Filter which previous-stage HubSpot deals get pulled in, and the import dialog now only shows properties relevant to your CRM. Google Drive sync can be kicked off directly from the app, and re-uploading the same file no longer creates a duplicate document.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="On-demand Snowflake resync">
+  <New category="CRM Integration" />
+
+  Snowflake customers can trigger a resync for selected deals directly from the deal grid, alongside reliability improvements to the underlying batch sync workflow.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="More reliable syncing">
+  <Fix category="CRM Integration" />
+
+  Fixed document upload errors during HubSpot and Salesforce syncs and corrected when new insights get regenerated after a sync, so your data stays current without unnecessary reprocessing.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +98,120 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Enrollment fixes for internal interviews">
+  <Fix category="Buyer Interviews" />
+
+  Fixed an issue where some internal team members weren't correctly enrolled in win-loss interviews, including better support for Salesforce record types during enrollment.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="tags" iconType="solid" title="Feature tag aggregation in Analyze">
+  <New category="Competitive Intelligence" />
+
+  The Analyze deal grid now aggregates feature tags across your selected deals, so you can quickly see which tags come up most often for any feature.
+
+</Card>
+
+<Card icon="object-group" iconType="solid" title="Group features by product or product area">
+  <Improved category="Competitive Intelligence" />
+
+  Browse and filter features grouped by product or product area, with an improved column selector across the Features and Deals grids.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Refreshed feature charts">
+  <Improved category="Competitive Intelligence" />
+
+  New tag, sentiment, and revenue charts on the feature deals page, plus collapsible trend sections on the Competitors and Drivers pages for a cleaner view.
+
+</Card>
+
+<Card icon="sort" iconType="solid" title="Competitor table sorting fix">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed an issue where sorting the competitor table only sorted the deals on the current page instead of your full competitor list.
+
+</Card>
+
+<Card icon="lightbulb" iconType="solid" title="Confirming and deleting suggestions">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed error handling when confirming, updating, or deleting suggested competitors, drivers, and features, with clearer feedback when something goes wrong.
+
+</Card>
+
+</CardGroup>
+
+### Metrics & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="compress" iconType="solid" title="Grouped metric scoring">
+  <New category="Custom Metrics" />
+
+  Related custom metrics can now be scored together in a single pass, giving you more consistent explanations and confidence levels across the group.
+
+</Card>
+
+<Card icon="clipboard-check" iconType="solid" title="Safer low-confidence reviews">
+  <Improved category="Chat & Analysis" />
+
+  Low-confidence answers and metric scores are no longer auto-submitted during review, so you get a chance to check them before they're finalized.
+
+</Card>
+
+<Card icon="brain" iconType="solid" title="See the AI's reasoning">
+  <Improved category="Chat & Analysis" />
+
+  Chat responses now show a collapsible "Thinking..." section so you can follow the AI's reasoning, plus more accurate citation rendering throughout.
+
+</Card>
+
+</CardGroup>
+
+### Skills
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Recipes are now Skills">
+  <Improved category="Sales Enablement" />
+
+  Recipes have been rebuilt and renamed to Skills, with custom competitor instructions, deal-selection for Custom Answers, and improved product filtering.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="user-lock" iconType="solid" title="Role-based settings permissions">
+  <New category="Admin" />
+
+  Settings pages now respect your role — admins get full access, while other roles get a read-only view, consistent with permissions elsewhere in Hindsight.
+
+</Card>
+
+<Card icon="bolt" iconType="solid" title="Faster deal pages">
+  <Improved category="Performance" />
+
+  Deal home pages now load more efficiently, especially for deals with a large amount of data.
 
 </Card>
 
