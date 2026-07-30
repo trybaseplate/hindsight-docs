@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, expanded HubSpot and Snowflake import tools, Custom Metric Groups, a Recipes-to-Skills relaunch, and a broad set of trust and reliability improvements across deal analysis.
 
 ### Developer Tools
 
@@ -39,6 +39,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="sliders" iconType="solid" title="Custom instructions and per-tool access for MCP">
+  <New category="Developer Tools" />
+
+  Admins can now configure custom instructions for how MCP tools behave, and restrict which user roles can access which tools — giving finer control over what AI agents connected via MCP can do inside your workspace.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +67,31 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake sync, brought up to par">
+  <Improved category="CRM Integration" />
+
+  Snowflake import now works just like HubSpot and Salesforce, with no special-cased setup. A new **Resync** button lets Snowflake-connected orgs pull the latest CRM data on demand, and the manual import view now keeps filters and sorting in sync automatically instead of needing a manual re-search.
+
+</Card>
+
+<Card icon="file-import" iconType="solid" title="Bulk HubSpot import & smarter filtering">
+  <New category="CRM Integration" />
+
+  **Bulk import** — Pull in all missing HubSpot deals at once, with a pipeline health check shown before you import.
+
+  **Filter by previous stage** — Scope a HubSpot import to deals that previously sat in a specific pipeline stage.
+
+  The import dialog also now shows only the CRM properties relevant to Hindsight instead of your full HubSpot property list.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="More reliable HubSpot & Salesforce sync">
+  <Fix category="CRM Integration" />
+
+  Fixed a bug where HubSpot contact syncs could read stale data before an update was applied. Document syncs from HubSpot and Salesforce now retry automatically on failure, and Salesforce sync now captures each record's `RecordTypeId`, improving field mapping for custom Salesforce record types.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +102,100 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="shield-check" iconType="solid" title="More trustworthy AI answers and metrics">
+  <Improved category="Deals" />
+
+  Low-confidence AI-generated answers and metrics are no longer auto-submitted during review — they now require your explicit confirmation before being saved. Reanalyzing a single answer or metric now runs through the same engine as full deal analysis, so results stay consistent, and citations in the analysis session view now link properly back to their source.
+
+</Card>
+
+<Card icon="brain" iconType="solid" title="More visibility into how Paige analyzes a deal">
+  <Improved category="Deals" />
+
+  The analysis session view now shows step-by-step detail for how answers and metrics were generated, including a new "catalog matching" trace on the deal home page. Paige's reasoning is now shown in a collapsible "Thinking…" panel instead of inline text.
+
+</Card>
+
+</CardGroup>
+
+### Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Custom Metric Groups">
+  <New category="Analytics" />
+
+  Group related Custom Metrics together instead of managing them one by one, and plot custom metrics directly on dashboard charts alongside Hindsight's default metrics. Segment filters throughout Analytics now support multi-select ("is any of") instead of a single value at a time.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Deeper feature and tag analytics">
+  <New category="Analytics" />
+
+  The Analyze Deal Grid now shows tag counts per generated feature, and the Features page can group by Product or Product Area with an improved column selector. New charts on each feature's detail page break down tag distribution, sentiment, and revenue impact, and Competitor and Driver pages now have collapsible trend sections.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Recipes are now Skills">
+  <Improved category="Competitive Intelligence" />
+
+  Recipes have been renamed and relaunched as **Skills**, with a dedicated Skills page. You can now add custom instructions to guide how Hindsight tags competitors and products during analysis, and Custom Answers can be scoped to specific deals and given reference documents for extra context.
+
+</Card>
+
+<Card icon="list-ol" iconType="solid" title="Cleaner competitor management">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed competitor table sorting so it applies across your full list, not just the visible page, and cleaned up error messages when confirming or declining suggested competitors, drivers, and features. Yes/no and multiple-choice questions can now be explicitly marked "No Answer Found" instead of forcing a response.
+
+</Card>
+
+</CardGroup>
+
+### Admin & Integrations
+
+<CardGroup cols={1}>
+
+<Card icon="user-lock" iconType="solid" title="Restrict Settings pages by role">
+  <New category="Admin" />
+
+  Certain Settings pages can now be restricted by user role, building on Hindsight's existing role-based access control.
+
+</Card>
+
+<Card icon="credit-card" iconType="solid" title="Clearer billing prompts">
+  <Improved category="Admin" />
+
+  If your org's subscription lapses, actions like deal export/import, insight generation, CRM sync, and document upload now show a clear payment prompt instead of failing silently.
+
+</Card>
+
+<Card icon="hard-drive" iconType="solid" title="Manual Google Drive sync">
+  <New category="Integrations" />
+
+  Trigger a Google Drive sync on demand from the UI, instead of waiting for the next scheduled sync.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="microphone-lines" iconType="solid" title="Interview reliability improvements">
+  <Fix category="Buyer Interviews" />
+
+  Fixed several reliability issues in automated interview scheduling and voice sessions, including contact-matching edge cases during enrollment.
 
 </Card>
 
