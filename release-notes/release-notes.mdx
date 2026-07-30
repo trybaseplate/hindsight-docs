@@ -5,6 +5,113 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Bulk HubSpot deal imports, on-demand Snowflake resyncs, more accurate competitor matching, and a round of reliability fixes across deal analysis and tagging.
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="hubspot" iconType="solid" title="Bulk HubSpot import">
+  <New category="CRM Integration" />
+
+  Bring in HubSpot deals you missed the first time around. A new bulk-import flow finds and imports deals that weren't previously synced, plus a pipeline health check to spot gaps in your HubSpot connection.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="On-demand Snowflake resync">
+  <New category="CRM Integration" />
+
+  Snowflake customers can now trigger a manual resync straight from the deal grid instead of waiting for the next scheduled sync.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="More reliable CRM sync">
+  <Improved category="CRM Integration" />
+
+  **Better product matching** — Snowflake product line items now match against a stable product ID instead of product name, so imports stay accurate even as product names change.
+
+  **Fewer duplicate imports** — Notes, meetings, calls, and emails synced from Snowflake, Salesforce, and HubSpot are now checked against existing content before import, cutting down on duplicate documents.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Cleaner HubSpot import options">
+  <Improved category="CRM Integration" />
+
+  Filter HubSpot deals by previous pipeline stage when importing, and the import dialog now only shows CRM-specific properties for a less cluttered setup experience.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="table-cells" iconType="solid" title="More stable deal grid">
+  <Fix category="Deals" />
+
+  Fixed inconsistent row ordering in the deal grid, and pagination now correctly resets to the first page whenever filters, sorting, or search change.
+
+</Card>
+
+<Card icon="tags" iconType="solid" title="Feature tag totals in Analyze">
+  <New category="Deals" />
+
+  The Analyze deal grid now shows how often each feature tag comes up, so you can quickly gauge which product themes show up most across a set of deals.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Filter analysis by product line">
+  <New category="Deals" />
+
+  Customers with Snowflake CRM data can now scope Custom Metrics and Custom Answers to specific product line items, so scoring and answers reflect only the products you care about.
+
+</Card>
+
+<Card icon="quote-right" iconType="solid" title="Clearer reasoning and citations in deal analysis">
+  <Improved category="Deals" />
+
+  Deal analysis answers now show clearer source citations, and reanalysis behaves more consistently across Custom Answers and Custom Metrics.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="crosshairs" iconType="solid" title="More accurate competitor matching">
+  <Fix category="Competitive Intelligence" />
+
+  Improved how Hindsight matches mentions to the right competitor, reducing mismatched or duplicate competitor labels.
+
+</Card>
+
+<Card icon="check-double" iconType="solid" title="More reliable suggestions">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed a bug where confirming a suggested competitor could fail to carry over correctly, along with duplicate-label issues when tagging competitors, drivers, and features.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="envelope" iconType="solid" title="Unsubscribe from interview emails">
+  <New category="Buyer Interviews" />
+
+  Recipients can now opt out of interview request emails via an unsubscribe link. Once unsubscribed, they're automatically skipped on future sends.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
