@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, grouped Custom Metrics, a new Skills library, richer feature and competitor intelligence, and visible AI reasoning in chat.
 
 ### Developer Tools
 
@@ -57,6 +57,151 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
 
   **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
+
+</Card>
+
+<Card icon="database" iconType="solid" title="Bulk HubSpot import & pipeline health">
+  <New category="CRM Integration" />
+
+  Bulk-import any HubSpot deals that are missing from Hindsight in a single action, and run a pipeline health check to spot sync gaps before they become a problem.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Smarter HubSpot deal filtering">
+  <Improved category="CRM Integration" />
+
+  Filter by previous pipeline stage when importing HubSpot deals, and the import dialog now only shows properties that are actually relevant to your CRM.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="One-click Snowflake resync">
+  <New category="CRM Integration" />
+
+  Snowflake-connected organizations can trigger a manual resync for selected deals directly from the deal grid, instead of waiting for the next scheduled sync.
+
+</Card>
+
+<Card icon="salesforce" iconType="solid" title="Win-loss interview enrollment fix">
+  <Fix category="CRM Integration" />
+
+  Fixed an issue where win-loss interviews could fail to enroll internal contacts. Salesforce syncs also now bring in the Opportunity Record Type field for more accurate deal data.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Metric Groups">
+  <New category="Custom Metrics" />
+
+  Group related Custom Metrics together so they're scored with unified explanations and confidence — useful when several metrics should be judged against the same rubric or reference material.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Custom metrics on the dashboard">
+  <Improved category="Analytics" />
+
+  Plot your Custom Metrics alongside default metrics in dashboard charts, so your own scoring frameworks show up right next to the built-in ones.
+
+</Card>
+
+</CardGroup>
+
+### Custom Answers
+
+<CardGroup cols={1}>
+
+<Card icon="file-lines" iconType="solid" title="Reference documents for Custom Answers">
+  <New category="Custom Answers" />
+
+  Attach reference documents — like a playbook or scoring guide — to a Custom Answer so it's generated with the right context in mind.
+
+</Card>
+
+<Card icon="circle-question" iconType="solid" title="Clearer &quot;no answer found&quot; handling">
+  <Improved category="Custom Answers" />
+
+  Boolean and multiple-choice Custom Answers now clearly flag when no answer could be determined from the deal, instead of guessing at the closest option.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="New feature charts & grouping">
+  <New category="Feature Tracking" />
+
+  **Tag, sentiment & revenue charts** — New charts on each feature's page show tag mix, sentiment, and revenue impact at a glance.
+
+  **Group by product** — Group features by product or product area to see trends at the right level of detail.
+
+  **Tag counts in Analyze** — The Analyze deal grid now shows tag counts alongside each feature.
+
+</Card>
+
+<Card icon="tags" iconType="solid" title="Cleaner competitor names">
+  <Improved category="Competitive Intelligence" />
+
+  Generic mentions like "DIY" or "manual process" are now standardized into consistent competitor labels instead of creating noisy one-off entries, so your competitor list stays clean.
+
+</Card>
+
+<Card icon="tag" iconType="solid" title="Fixed duplicate tags">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed a bug that could create duplicate tags when labeling deals.
+
+</Card>
+
+</CardGroup>
+
+### Skills
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Skills library">
+  <New category="Platform" />
+
+  A new Skills library lets you save reusable prompt templates for use in chats and workflows. Start from a Hindsight-created template, remix one from your organization, or build your own from scratch — then share it with your team.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="See the AI's reasoning">
+  <New category="Chat & Analysis" />
+
+  Chat responses now include a collapsible "Thinking..." section so you can follow the AI's reasoning steps behind an answer.
+
+</Card>
+
+<Card icon="quote-left" iconType="solid" title="More reliable citations">
+  <Improved category="Chat & Analysis" />
+
+  Citations now render more consistently throughout deal analysis and agent runs.
+
+</Card>
+
+</CardGroup>
+
+### Integrations
+
+<CardGroup cols={1}>
+
+<Card icon="google-drive" iconType="solid" title="Manual Google Drive sync">
+  <New category="Integrations" />
+
+  Trigger a Google Drive sync on demand from Hindsight instead of waiting for the next scheduled run.
 
 </Card>
 
