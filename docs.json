@@ -33,9 +33,7 @@
         "pages": [
           "integrations/api",
           "api-reference/responses",
-          "api-reference/tools",
           "api-reference/select-deal",
-          "api-reference/get-deal",
           "api-reference/get-deals",
           "api-reference/export-deals",
           "api-reference/upload-library-document",

@@ -26,15 +26,17 @@ Query Parameters:
   # Search
   searchQuery: string (fuzzy search across deal names)
   
-  # Filters (same as bulk export)
+  # Filters (same canonical names as bulk export; arrays/objects are JSON-encoded)
+  deal_ids: string (JSON array of Hindsight deal IDs)
   owner_ids: string (JSON array of owner IDs)
   owner_filter_type: "is any of" | "is not"
   status: string (JSON array of deal stages)
   status_filter_type: "is any of" | "is not"
   close_date: string (JSON object: {"from": "2026-01-01", "to": "2026-03-31"})
   amount: string (JSON object: {"min": 10000, "max": 100000})
-  competitor: string (JSON array of competitor IDs)
-  competitor_filter_type: "is any of" | "is not"
+  competitors: string (JSON array of any competitor IDs)
+  competitors_filter_type: "is any of" | "is not" | "include all of"
+  primary_competitor: string (JSON array of primary competitor IDs)
   deal_type: string (JSON array)
   deal_type_filter_type: "is any of" | "is not"
   region: string (JSON array)
@@ -43,8 +45,8 @@ Query Parameters:
   industry_filter_type: "is any of" | "is not"
   product_labels: string (JSON array of product IDs)
   product_filter_type: "is any of" | "is not" | "include all of"
-  deal_analyzed: string (JSON array: ["true"] or ["false"])
-  analysis_verified: string (JSON array: ["true"] or ["false"])
+  analyzed: boolean
+  verified: boolean
   # ... and more (see full filter list below)
 
 200 Response:
@@ -61,10 +63,18 @@ Query Parameters:
     "salesforce_id": "006xxxxxxxxxxxx",
     "hubspot_id": "789123456",
     "deal_analyzed": true,
-    "analysis_verified": true,
+    "analysis_verified": null,
     "type": "New Business",
     "region": "North America",
-    "summary": "Executive summary text for the deal…",
+    "summary": {
+      "executive_summary": "Executive summary text for the deal…",
+      "deal_overview": { "timeline": "…", "stakeholders": [], "deal_context": "…" },
+      "decision_drivers": [],
+      "competitive_landscape": [],
+      "key_quotes": [],
+      "lessons_learned": [],
+      "recommendations": []
+    },
     "driver_ids": ["reason_456", "reason_789"],
     "driver_names": ["Strong product fit", "Pricing competitiveness"],
     "drivers": [
@@ -104,7 +114,7 @@ Query Parameters:
   }
 ]
 
-Rate limits: 60 req/min (Essentials), 300 req/min (Growth), 1000 req/min (Enterprise)
+Rate limits: 10 req/min (Essentials), 60 req/min (Growth), 300 req/min (Enterprise)
 ```
 </Accordion>
 
@@ -139,23 +149,62 @@ GET /deals?count=true                  # Get total deal count
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `columns` | string | Comma-separated column names to return. Use `*` for all columns. See [Available Columns](/api-reference/export-deals#available-columns) for the full list. |
+| `columns` | string | Comma-separated column IDs to return. The same IDs are accepted by bulk export. Use `*` for all columns. See [Available Columns](/api-reference/export-deals#available-columns). |
 
 Limit returned data to only the fields you need to reduce response size and improve performance.
 
 **Example:**
 ```
-GET /deals?columns=name,amount,status_id,close_date,owner_id
+GET /deals?columns=deal_id,name,amount,deal_status,close_date,scorecard
 GET /deals?columns=*  # All columns (default)
 ```
 
 <Note>
 A set of internal columns is always omitted from the response, even when you request `*` or name them explicitly: full-text search vectors, sync bookkeeping, sharing configuration, and raw aggregate blobs (e.g. `fts`, `joined_fts`, `keywords`, `sync_run_id`, `client_id`, `org_sharing_enabled`, `processing_in_progress`). The `close_date` column is returned under that name (it maps to the internal `proposal_due` field); you may request it as either `close_date` or `proposal_due`.
 
-The relational columns `drivers`, `competitors`, and `features` return flattened arrays (see [Drivers, competitors, and features](#response-format) below) and are included with `*`. `summary` returns only the deal's executive-summary string, not the full internal deal-story object.
+The relational columns `drivers`, `competitors`, and `features` return flattened arrays (see [Drivers, competitors, and features](#response-format) below) and are included with `*`. `summary` returns the complete structured deal-story object.
 </Note>
 
 For a complete list of available columns (standard and dynamic), see the [Available Columns](/api-reference/export-deals#available-columns) section in the Bulk Export Deals documentation.
+
+### CRM properties, custom metrics, and custom answers
+
+GET `/deals` and bulk export accept the same dynamic column selectors:
+
+| Data | Column selector | Uses |
+|---|---|---|
+| CRM deal property | `crm_{property_id}` | CRM property ID |
+| Salesforce account property | `crm_salesforce_account_{property_id}` | Salesforce Account property ID |
+| HubSpot account property | `crm_hubspot_account_{property_id}` | HubSpot Company property ID |
+| Custom metric score | `custom_metric_score_{metric_name}` | Hindsight metric name |
+| Custom metric explanation | `custom_metric_explanation_{metric_name}` | Hindsight metric name |
+| Custom answer | `custom_answer_{answer_name}` | Hindsight answer name |
+
+CRM selectors use the underlying CRM property ID, not its display label. Custom metric and answer selectors use the names configured in Hindsight. Name matching is case-insensitive and ignores spaces.
+
+Only CRM properties synced into Hindsight are available. A requested property, metric, or answer returns `null` when the deal has no corresponding value.
+
+```bash Dynamic columns
+curl --get https://app.usehindsight.com/api/v1/deals \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  --data-urlencode "columns=deal_id,name,crm_LeadSource,crm_salesforce_account_Industry,custom_metric_score_Strategic Fit,custom_metric_explanation_Strategic Fit,custom_answer_Champion identified"
+```
+
+The JSON response uses the requested selector as the property name:
+
+```json
+[
+  {
+    "deal_id": "deal_123",
+    "name": "Acme Corp",
+    "crm_LeadSource": "Event",
+    "crm_salesforce_account_Industry": "Software",
+    "custom_metric_score_Strategic Fit": 4,
+    "custom_metric_explanation_Strategic Fit": "Strong alignment with the target market.",
+    "custom_answer_Champion identified": "Yes"
+  }
+]
+```
 
 ## Search
 
@@ -170,13 +219,13 @@ GET /deals?searchQuery=acme
 
 ## Filters
 
-All filters from the bulk export endpoint are supported. Filters are passed as query parameters with JSON-encoded values for arrays and objects.
+GET and bulk export use the same canonical filter names and semantics. GET passes arrays and objects as JSON-encoded query parameters; bulk export sends the same values as native JSON in its request body. Simple booleans such as `analyzed=true` do not need JSON array encoding.
 
 ### Deal Identification
 
 | Filter | Type | Description | Example |
 |--------|------|-------------|---------|
-| `ids` | string | JSON array of specific deal IDs | `["deal_123","deal_456"]` |
+| `deal_ids` | string | JSON array of specific deal IDs | `["deal_123","deal_456"]` |
 | `owner_ids` | string | JSON array of owner IDs | `["user_abc"]` |
 | `owner_filter_type` | string | Filter type for owners | `is any of` |
 | `collaborators` | string | JSON array of collaborator IDs | `["user_def"]` |
@@ -208,16 +257,34 @@ All filters from the bulk export endpoint are supported. Filters are passed as q
 
 | Filter | Type | Description | Example |
 |--------|------|-------------|---------|
-| `competitor` | string | JSON array of competitor IDs | `["comp_123"]` |
-| `competitor_filter_type` | string | Filter type | `is any of` |
-| `any_competitor` | string | JSON array: `["true"]` or `["false"]` | `["true"]` |
+| `competitors` | string | JSON array of IDs for competitors appearing anywhere on the deal | `["comp_123"]` |
+| `competitors_filter_type` | string | `is any of` \| `is not` \| `include all of` | `is any of` |
+| `primary_competitor` | string | JSON array of primary competitor IDs | `["comp_123"]` |
+| `primary_competitor_filter_type` | string | `is any of` \| `is not` | `is any of` |
+| `has_competitor` | boolean | Whether the deal has any competitor | `true` |
 
 ### Analysis
 
 | Filter | Type | Description | Example |
 |--------|------|-------------|---------|
-| `deal_analyzed` | string | JSON array: `["true"]` or `["false"]` | `["true"]` |
-| `analysis_verified` | string | JSON array: `["true"]` or `["false"]` | `["true"]` |
+| `analyzed` | boolean | Whether the deal has been analyzed | `true` |
+| `verified` | boolean | Whether the analysis has been verified | `true` |
+
+### Legacy filter aliases
+
+Existing integrations do not need to change immediately. Both GET and bulk export continue to accept these earlier internal names:
+
+| Legacy GET name | Canonical name |
+|---|---|
+| `ids` | `deal_ids` |
+| `any_competitor` | `competitors` |
+| `any_competitor_filter_type` | `competitors_filter_type` |
+| `competitor` | `primary_competitor` |
+| `competitor_filter_type` | `primary_competitor_filter_type` |
+| `deal_analyzed` | `analyzed` |
+| `analysis_verified` | `verified` |
+
+Legacy boolean filters may still use JSON arrays such as `deal_analyzed=["true"]`.
 
 ### Win-Loss Scores
 
@@ -296,10 +363,18 @@ Returns an array of deal objects with all requested fields:
     "salesforce_id": "006xxxxxxxxxxxx",
     "hubspot_id": "789123456",
     "deal_analyzed": true,
-    "analysis_verified": true,
+    "analysis_verified": null,
     "type": "New Business",
     "region": "North America",
-    "summary": "Executive summary text for the deal…",
+    "summary": {
+      "executive_summary": "Executive summary text for the deal…",
+      "deal_overview": { "timeline": "…", "stakeholders": [], "deal_context": "…" },
+      "decision_drivers": [],
+      "competitive_landscape": [],
+      "key_quotes": [],
+      "lessons_learned": [],
+      "recommendations": []
+    },
     "driver_ids": ["reason_456"],
     "driver_names": ["Price"],
     "drivers": [
@@ -351,7 +426,7 @@ These three are **relational** fields, returned as flattened arrays (included wi
 
 ### Summary
 
-`summary` returns only the deal's **executive summary** string (extracted from the internal deal-story JSON). It is `null` for deals that haven't been analyzed yet.
+`summary` returns the complete structured deal story, including `executive_summary`, `deal_overview`, `decision_drivers`, `competitive_landscape`, `key_quotes`, `lessons_learned`, and `recommendations`. It is `null` for deals that haven't been analyzed yet. Legacy plain-text summaries are returned as strings.
 
 ### Count Response
 
@@ -389,9 +464,9 @@ Supported operators:
 
 | Plan | Requests per Minute |
 |------|-------------------|
-| Essentials | 60 |
-| Growth | 300 |
-| Enterprise | 1,000 |
+| Essentials | 10 |
+| Growth | 60 |
+| Enterprise | 300 |
 
 ## Examples
 
@@ -403,7 +478,7 @@ curl "https://app.usehindsight.com/api/v1/deals?page_size=20&sort=created_at&sor
 ```
 
 ```bash Get Closed Deals with Analysis
-curl "https://app.usehindsight.com/api/v1/deals?status=%5B%22Closed%20Won%22%2C%22Closed%20Lost%22%5D&deal_analyzed=%5B%22true%22%5D&page_size=50" \
+curl "https://app.usehindsight.com/api/v1/deals?status=%5B%22Closed%20Won%22%2C%22Closed%20Lost%22%5D&analyzed=true&page_size=50" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
@@ -448,7 +523,7 @@ console.log(`Retrieved ${deals.length} deals`);
 const filters = {
   status: JSON.stringify(['Closed Won', 'Closed Lost']),
   status_filter_type: 'is any of',
-  any_competitor: JSON.stringify(['true']),
+  has_competitor: 'true',
   close_date: JSON.stringify({
     from: '2026-01-01',
     to: '2026-03-31'
@@ -532,7 +607,7 @@ def get_all_deals(filters=None):
 
 # Get all analyzed deals from Q1 2026
 filters = {
-    'deal_analyzed': json.dumps(['true']),
+    'analyzed': 'true',
     'close_date': json.dumps({
         'from': '2026-01-01',
         'to': '2026-03-31'
@@ -588,7 +663,7 @@ for deal in deals[:5]:
 | **Use Case** | Real-time access, integrations | Reports, analysis, backups |
 | **Pagination** | Built-in | N/A (single file) |
 | **Max Records** | Unlimited (paginated) | Unlimited |
-| **Rate Limits** | 60-1000 req/min | 5-100 exports/hour |
+| **Rate Limits** | 10-300 req/min | 10-300 req/min plus monthly export quota |
 | **Data Freshness** | Real-time | Snapshot at export time |
 
 ## Error Responses

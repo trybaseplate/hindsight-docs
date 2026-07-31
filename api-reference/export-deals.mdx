@@ -79,7 +79,7 @@ The bulk export API allows you to generate CSV files of your deal data with cust
 
 ### Optional Filters
 
-All filters are optional. If no filters are provided, all deals in your organization will be exported.
+All filters are optional. If no filters are provided, all deals in your organization will be exported. These are the same canonical filter names and semantics used by GET `/deals`; export values are native JSON rather than JSON-encoded query strings.
 
 #### Deal Identification
 
@@ -162,12 +162,16 @@ To use filter modifiers, append `_filter_type` to the filter name:
 
 Supported `_filter_type` suffixes: `owner_filter_type`, `collaborator_filter_type`, `competitors_filter_type`, `primary_competitor_filter_type`, `product_filter_type`, `status_filter_type`, `deal_type_filter_type`, `region_filter_type`, `industry_filter_type`.
 
+Existing integrations may continue using the [legacy filter aliases documented on GET `/deals`](/api-reference/get-deals#legacy-filter-aliases).
+
 ## Available Columns
 
 ### Standard Columns
 
 | Column ID | Description |
 |-----------|-------------|
+| `deal_id` | Hindsight deal ID (alias of `id`) |
+| `salesforce_id` | Salesforce Opportunity ID |
 | `name` | Deal name |
 | `owner_id` | Deal owner ID |
 | `all_competitors` | All competitors involved in the deal |
@@ -180,10 +184,10 @@ Supported `_filter_type` suffixes: `owner_filter_type`, `collaborator_filter_typ
 | `close_date` | Expected/actual close date (CSV header: "Close Date") |
 | `created_at` | Deal creation date |
 | `deal_analyzed` | Whether deal has been analyzed |
-| `analysis_verified` | Whether analysis has been verified |
+| `analysis_verified` | Reserved verification field; currently returns an empty value |
 | `type` | Deal type (New Business, Expansion, Renewal) |
 | `region` | Geographic region |
-| `summary` | Executive summary of the deal |
+| `summary` | Complete structured deal summary |
 
 > **Note:** The `scorecard` column includes all win-loss metrics (product fit, sales execution, relationship, price sensitivity, competitive intensity, customer fit, messaging fit, and messaging accuracy) with both scores and explanations.
 
@@ -216,6 +220,34 @@ Organization-specific metrics you've configured. Use the metric's **name** (not 
 Custom questions you've set up for deal analysis. Use the question's **name** (not its internal ID):
 - Format: `custom_answer_{answer_name}`
 - Example: `custom_answer_Champion identified` or `custom_answer_ChampionIdentified` for a custom question called "Champion identified"
+
+### Dynamic column example
+
+The dynamic selector formats above are identical for GET `/deals` and bulk export. CRM selectors use the underlying CRM property ID; custom metrics and answers use their configured Hindsight names. Custom metric and answer name matching is case-insensitive and ignores spaces.
+
+Only CRM properties synced into Hindsight are available. If a deal has no value for a requested CRM property, metric, or answer, its CSV cell is empty.
+
+```bash
+curl -X POST https://app.usehindsight.com/api/v1/deals/export \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "columns": [
+      "deal_id",
+      "name",
+      "crm_LeadSource",
+      "crm_salesforce_account_Industry",
+      "custom_metric_score_Strategic Fit",
+      "custom_metric_explanation_Strategic Fit",
+      "custom_answer_Champion identified"
+    ],
+    "filters": {
+      "analyzed": true
+    }
+  }'
+```
+
+Nested values such as `summary`, `scorecard`, `drivers`, `features`, and competitor data are JSON-encoded inside their CSV cells. Dynamic CRM properties, metric scores, metric explanations, and custom answers are emitted as individual CSV columns.
 
 ## Response
 
@@ -311,11 +343,19 @@ Use CRM filters to filter deals based on properties from your Salesforce or HubS
 | `hubspot_filters` | Deal (deal-level) |
 | `hubspot_filters_account` | Company (account-level) |
 
-**The `property` field is an object**, not a string:
+The `property` field accepts either a string or an object:
 
 ```json
 { "property": { "id": "field_name" } }
 ```
+
+For ordinary CRM properties, the shorter string form is also accepted and is canonical:
+
+```json
+{ "property": "field_name" }
+```
+
+Use the object form when a standard account property requires `map_to`.
 
 **`map_to` for standard account properties:**
 
