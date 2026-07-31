@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, Snowflake and HubSpot import upgrades, grouped custom metrics, new competitive intelligence charts, and a smoother chat experience.
 
 ### Developer Tools
 
@@ -39,6 +39,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="key" iconType="solid" title="MCP tool access controls">
+  <New category="Developer Tools" />
+
+  Admins can now control which MCP tools are available to their org, see clearer tool names inside MCP clients, and review a log of MCP calls for visibility into how the integration is being used.
+
+</Card>
+
 </CardGroup>
 
 ### CRM Integration
@@ -60,6 +67,37 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="snowflake" iconType="solid" title="Snowflake CRM support">
+  <Preview category="CRM Integration" />
+
+  Snowflake is now available as a CRM data source for any org.
+
+  **Preview before you import** — See exactly which deals will come in before committing to an import.
+
+  **Choose what to sync** — Select specific deals to import instead of pulling in everything.
+
+  **One-click resync** — Refresh Snowflake-sourced deals directly from the deal grid with a new Resync button.
+
+</Card>
+
+<Card icon="hubspot" iconType="solid" title="HubSpot bulk import & pipeline health">
+  <New category="CRM Integration" />
+
+  **Bulk import** — Catch up on any HubSpot deals that didn't come in automatically, all at once, instead of one at a time.
+
+  **Pipeline health check** — A new check surfaces sync issues before they turn into missing data.
+
+  **Deal-stage filtering** — Import deals from specific HubSpot stages, with a cleaner import dialog.
+
+</Card>
+
+<Card icon="salesforce" iconType="solid" title="Salesforce Record Type support">
+  <Improved category="CRM Integration" />
+
+  Opportunity imports now respect Salesforce Record Types, so opportunities tied to your custom record types sync in correctly.
+
+</Card>
+
 </CardGroup>
 
 ### Deals
@@ -70,6 +108,133 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Fix category="Deals" />
 
   Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
+
+</Card>
+
+<Card icon="arrow-down-a-z" iconType="solid" title="Stable deal grid ordering">
+  <Fix category="Deals" />
+
+  Fixed an issue where the deal grid's sort order could shift unexpectedly between loads. Sorting is now stable, and pagination resets cleanly whenever you change filters, sort, or search.
+
+</Card>
+
+<Card icon="gauge-high" iconType="solid" title="Faster deal home page">
+  <Improved category="Deals" />
+
+  The deal home page now loads noticeably faster.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Answers
+
+<CardGroup cols={1}>
+
+<Card icon="layer-group" iconType="solid" title="Grouped metrics">
+  <New category="Custom Metrics" />
+
+  Organize custom metrics into groups for a cleaner scorecard — grouped metrics now collapse into a single summary column in the deal grid's compact view.
+
+</Card>
+
+<Card icon="circle-question" iconType="solid" title="Clearer handling when there's not enough data">
+  <Improved category="Custom Metrics" />
+
+  Metrics without enough supporting evidence now show **N/A** instead of a misleading score, and custom answers show **No answer found** instead of a guess. Low-confidence results are now flagged for review rather than submitted automatically.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Attach reference docs to custom answers">
+  <New category="Custom Answers" />
+
+  Attach playbooks, guides, or other reference documents to a custom answer so the AI has the right context on hand when generating it.
+
+</Card>
+
+</CardGroup>
+
+### Analytics & Dashboards
+
+<CardGroup cols={1}>
+
+<Card icon="chart-line" iconType="solid" title="Custom metrics in dashboard charts">
+  <New category="Analytics" />
+
+  Custom metrics now appear in dashboard charts, with multi-select segment filters for slicing results across deal segments.
+
+</Card>
+
+<Card icon="chart-simple" iconType="solid" title="Tag, sentiment & revenue trend charts">
+  <New category="Analytics" />
+
+  New trend charts on the Features, Competitors, and Decision Drivers pages break down tag mix, sentiment, and revenue impact over time, with collapsible sections to keep older data out of the way.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Group and filter features by product">
+  <New category="Competitive Intelligence" />
+
+  Group and filter features by product or product area across the Deals and Features pages, making it easier to focus on the part of your offering a deal actually touched.
+
+</Card>
+
+<Card icon="tags" iconType="solid" title="Feature tag counts in the deal grid">
+  <New category="Competitive Intelligence" />
+
+  The Analyze deal grid now shows aggregated tag counts per feature, so you can see at a glance which tags are driving each feature's mentions.
+
+</Card>
+
+<Card icon="magnifying-glass" iconType="solid" title="Competitor matching & table fixes">
+  <Fix category="Competitive Intelligence" />
+
+  Tightened competitor name matching to cut down on mis-tagged competitors, and fixed sorting and pagination in the competitor table so large lists stay correctly ordered.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comment-dots" iconType="solid" title="Cleaner reasoning view in Chat">
+  <Improved category="Chat & Analysis" />
+
+  Chat now shows the AI's reasoning in a collapsible "Thinking..." block instead of raw reasoning text, so you can peek at the logic without it cluttering the conversation.
+
+</Card>
+
+</CardGroup>
+
+### Sales Enablement
+
+<CardGroup cols={1}>
+
+<Card icon="flask" iconType="solid" title="Recipes are now Skills">
+  <Improved category="Sales Enablement" />
+
+  Recipes have been renamed to **Skills**, with a refreshed dedicated page. Competitors can now also carry custom research instructions, so the AI knows how you want that competitor covered.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Interview enrollment fixes">
+  <Fix category="Buyer Interviews" />
+
+  Fixed enrollment for interview contacts added internally or by email, and corrected CRM field mapping so contact and deal data line up correctly when interviews are triggered from a sync.
 
 </Card>
 
