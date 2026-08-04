@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters and product filtering, more precise and competitor-aware AI answers, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, Snowflake sync reliability, and chat session loading.
 
 ### Developer Tools
 
@@ -148,6 +148,27 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Improved category="Chat & Analysis" />
 
   Metrics and Custom Answers now use full agentic analysis — actively digging through deal context in multiple steps — instead of a single retrieval pass, for more accurate scores and answers on complex questions.
+
+</Card>
+
+<Card icon="magnifying-glass" iconType="solid" title="More precise search results">
+  <Improved category="Chat & Analysis" />
+
+  Chat, Metrics, and Custom Answers now match on exact keywords first before falling back to broader semantic search, so answers stay precise even when you're asking about specific terms. Searches across your whole deal library are also more consistent for large organizations.
+
+</Card>
+
+<Card icon="bullseye" iconType="solid" title="Sharper competitor context in AI answers">
+  <Improved category="Chat & Analysis" />
+
+  Chat and analysis answers now automatically factor in your organization's most relevant competitors, so responses about competitive positioning are more targeted without any extra setup.
+
+</Card>
+
+<Card icon="comments" iconType="solid" title="Steadier chat sessions">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where the chat page could behave inconsistently when loading a brand-new or empty session.
 
 </Card>
 
