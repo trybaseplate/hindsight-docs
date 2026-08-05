@@ -5,6 +5,63 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Filter deals by product, cleaner AI-suggested competitors and features, and reliability fixes for chat and Salesforce filtering.
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="circle-minus" iconType="solid" title="\"Is empty\" filtering for Salesforce">
+  <Improved category="CRM Integration" />
+
+  Custom Salesforce import filters now support "is empty" and "is not empty" conditions, so you can bring in deals based on whether a field has been filled out rather than its exact value.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Sharper competitor recognition in chat">
+  <Improved category="Chat & Analysis" />
+
+  Chat now factors in your organization's most frequently encountered competitors, so questions that mention one by name are recognized and resolved more reliably.
+
+</Card>
+
+<Card icon="comments" iconType="solid" title="Chat page loading fixes">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where the chat page could get stuck or behave inconsistently when opening an empty or newly created conversation.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="boxes-stacked" iconType="solid" title="Quick filter by product">
+  <New category="Deals" />
+
+  Filter your deals grid by product using a new one-click quick filter, alongside the existing Stage, Owner, and Segment filters.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Cleaner competitor, driver, and feature suggestions">
+  <Fix category="Deals" />
+
+  Fixed a regression that could let invalid suggestions through when reviewing AI-suggested competitors, decision drivers, and features on a deal — for example, pricing or contract terms mislabeled as product features, or suggestions combining multiple ideas into one.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
