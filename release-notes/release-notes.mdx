@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
+The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability. Also new: quick filtering deals by product and more reliable chat search for large document libraries.
 
 ### Developer Tools
 
@@ -131,6 +131,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
+<Card icon="bullseye" iconType="solid" title="Sharper competitor context in AI answers">
+  <Improved category="Competitive Intelligence" />
+
+  Chat and analysis now take your organization's most-tracked competitors into account when reasoning about a deal, so competitor-related answers stay more consistently on-topic and grounded.
+
+</Card>
+
 </CardGroup>
 
 ### Chat & Analysis
@@ -148,6 +155,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Improved category="Chat & Analysis" />
 
   Metrics and Custom Answers now use full agentic analysis — actively digging through deal context in multiple steps — instead of a single retrieval pass, for more accurate scores and answers on complex questions.
+
+</Card>
+
+<Card icon="comment-dots" iconType="solid" title="More reliable chat search for large document libraries">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where chat search could time out for organizations with large document libraries. The chat page also now shows clear messaging while a new session is loading or has no messages yet, instead of a blank screen.
 
 </Card>
 
@@ -310,6 +324,13 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
   <Improved category="Deals" />
 
   Refined the layout and section headers used when filtering deals, metrics, and answers by product — a more consistent experience across the app.
+
+</Card>
+
+<Card icon="boxes-stacked" iconType="solid" title="Quick filter deals by product">
+  <New category="Deals" />
+
+  Filter the deal grid by product with a single click, using the product labels synced in from your CRM — no need to build a custom filter first.
 
 </Card>
 
