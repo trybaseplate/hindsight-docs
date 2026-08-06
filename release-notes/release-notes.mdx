@@ -5,6 +5,96 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Product-based quick filters, smarter competitor context and keyword search in chat, faster dashboard and deal loading, and fixes for chat reliability and suggestion quality.
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="users" iconType="solid" title="Smarter competitor context in chat">
+  <Improved category="Chat & Analysis" />
+
+  Chat now brings your organization's top competitors into context automatically and resolves competitor mentions more reliably by name, so competitive comparisons and answers are more accurate.
+
+</Card>
+
+<Card icon="magnifying-glass" iconType="solid" title="More precise search in chat">
+  <Improved category="Chat & Analysis" />
+
+  Chat can now search using specific keywords alongside natural-language questions for more exact matches, and searches across all your deals are faster and more reliable for larger organizations.
+
+</Card>
+
+<Card icon="circle-check" iconType="solid" title="Chat session fixes">
+  <Fix category="Chat & Analysis" />
+
+  Fixed avatar rendering for messages without associated user data, and fixed a bug where a teammate replying in an existing chat thread could unintentionally reassign who owns that session.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="boxes-stacked" iconType="solid" title="Product quick filters">
+  <New category="CRM Integration" />
+
+  Quickly filter your deals by product, using the product labels synced in from your CRM — alongside your existing quick filters.
+
+</Card>
+
+<Card icon="salesforce" iconType="solid" title="More flexible Salesforce filters">
+  <Improved category="CRM Integration" />
+
+  Salesforce import filters now support "is empty" and "is not empty" conditions, giving you more precise control over which deals get imported.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Cleaner suggested competitors, drivers & features">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed a regression that could surface invalid or low-quality suggested competitors, drivers, and features. Stricter validation keeps suggestions relevant and worth reviewing.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Deals
+
+<CardGroup cols={1}>
+
+<Card icon="gauge-high" iconType="solid" title="Faster dashboard and deal loading">
+  <Improved category="Dashboard & Analytics" />
+
+  Dashboard queries and the deals API are now faster and more resilient for large organizations, with pagination that avoids timeouts when loading big deal lists.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="More reliable Slack previews">
+  <Fix category="Slack" />
+
+  Fixed an issue that could cause errors when previewing a Slack Assistant answer before sending it.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
