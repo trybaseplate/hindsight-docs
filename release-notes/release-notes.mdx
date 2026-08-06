@@ -5,6 +5,96 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Unlimited scheduled Snowflake imports, richer Salesforce and product filtering, faster and more reliable AI answers, and fixes for chat sessions, deal suggestions, and the Slack Assistant.
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="snowflake" iconType="solid" title="No more caps on scheduled Snowflake imports">
+  <Improved category="CRM Integration" />
+
+  Scheduled Snowflake syncs now bring in every matching deal instead of stopping at a fixed limit, so large pipelines stay fully up to date without manual intervention.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Filter Salesforce imports by empty or filled fields">
+  <New category="CRM Integration" />
+
+  The Salesforce import dialog now supports filtering on whether a field is empty or has a value, on top of the exact-match filters already available — handy for finding deals missing a key property before you bring them in.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="box" iconType="solid" title="Quick-filter deals by product">
+  <New category="Dashboard & Analytics" />
+
+  Product is now available as a one-click quick filter, so you can jump straight to deals tied to a specific product line synced from your CRM.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="Faster, more relevant answers on broad searches">
+  <Improved category="Chat & Analysis" />
+
+  Questions that search across your entire deal library now prioritize keyword matches first, so broad queries return relevant answers noticeably faster.
+
+</Card>
+
+<Card icon="gauge-high" iconType="solid" title="More reliable answers on complex questions">
+  <Improved category="Chat & Analysis" />
+
+  Long-running chat questions now wrap up with a complete answer instead of occasionally timing out empty-handed, with progress saved along the way so nothing gets lost if a question takes a while to work through.
+
+</Card>
+
+<Card icon="comments" iconType="solid" title="Chat session and avatar fixes">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where a teammate replying in a shared chat thread could unexpectedly take over ownership of the session, and fixed avatars not showing correctly for some teammate messages.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="circle-check" iconType="solid" title="Cleaner competitor, feature, and driver suggestions">
+  <Fix category="Deals" />
+
+  Fixed a regression that could surface invalid or redundant suggested competitors, features, and drivers for confirmation on a deal.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Fixed errors on some Slack Assistant requests">
+  <Fix category="Slack" />
+
+  Fixed an issue that could cause errors when the Slack Assistant handled certain quick, one-off requests.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
