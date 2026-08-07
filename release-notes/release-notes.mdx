@@ -5,6 +5,90 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Product quick filters, cleaner feature and driver suggestions, unlimited scheduled Snowflake imports, competitor-aware chat answers, and fixes for Slack Assistant previews and shared chat sessions.
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Empty/not-empty filters for Salesforce imports">
+  <New category="CRM Integration" />
+
+  Filter Salesforce import criteria by whether a field is empty or has any value ("is empty" / "is not empty"), matching the flexibility already available for other filter types.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="No more cap on scheduled Snowflake imports">
+  <Improved category="CRM Integration" />
+
+  Scheduled Snowflake syncs now bring in every matching deal instead of stopping at a fixed limit, so your pipeline stays fully up to date without manual re-imports.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="bolt" iconType="solid" title="Filter by product">
+  <New category="Dashboard & Analytics" />
+
+  Added Product as a quick filter, so you can narrow deals and charts down to a specific product in one click.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Cleaner feature & driver suggestions">
+  <Fix category="Dashboard & Analytics" />
+
+  Fixed a regression that could surface low-quality suggestions for the Features and Decision Drivers catalogs, and tightened validation so pricing terms, support/onboarding services, and combined concepts no longer get suggested as if they were product features or decision drivers.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="brain" iconType="solid" title="Chat answers now factor in your top competitors">
+  <Improved category="Chat & Analysis" />
+
+  Paige automatically considers your organization's most relevant competitors when answering questions, so you get sharper competitive context without having to name competitors yourself.
+
+</Card>
+
+<Card icon="circle-check" iconType="solid" title="More reliable answers on complex questions">
+  <Improved category="Chat & Analysis" />
+
+  Long-running chat questions now checkpoint their progress and guarantee a complete answer, instead of risking a cut-off response when a question needs more time to fully process.
+
+</Card>
+
+<Card icon="users" iconType="solid" title="Fixed shared chat session ownership and avatars">
+  <Fix category="Chat & Analysis" />
+
+  Fixed a bug where a teammate replying in someone else's chat thread could take over ownership of that session, and fixed avatars not displaying correctly for messages without linked user data.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Fixed Slack Assistant preview errors">
+  <Fix category="Slack" />
+
+  Fixed an issue that could cause errors when previewing a Slack Assistant answer before it's posted to a channel.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
