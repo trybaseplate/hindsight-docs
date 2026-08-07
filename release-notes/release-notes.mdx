@@ -5,6 +5,131 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+A new Product quick filter for your deals list, a faster and more reliable Paige AI assistant, smarter validation of AI-suggested features and decision drivers, and no more caps on Snowflake deal imports.
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Filter deals by Product">
+  <New category="Dashboard & Analytics" />
+
+  Added a "Product" quick filter to the deals grid, so you can narrow your view to deals tied to a specific product line synced from your CRM.
+
+</Card>
+
+<Card icon="gauge" iconType="solid" title="Faster, more reliable deals list for large teams">
+  <Fix category="Dashboard & Analytics" />
+
+  Fixed the deals list and dashboard timing out or failing to load for larger organizations by paginating deal data and streamlining dashboard queries.
+
+</Card>
+
+<Card icon="circle-check" iconType="solid" title="Analyzed filter fix">
+  <Fix category="Dashboard & Analytics" />
+
+  Fixed the "Analyzed" status filter on the deals list so combinations like analyzed, not analyzed, and not yet set now filter correctly.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="Paige search reliability">
+  <Fix category="Chat & Analysis" />
+
+  Fixed Paige timing out or failing to return results when searching across many documents in larger organizations, including broad searches on common terms.
+
+</Card>
+
+<Card icon="chess-knight" iconType="solid" title="Automatic competitor context">
+  <Improved category="Chat & Analysis" />
+
+  Paige now automatically includes your org's top tracked competitors as context when answering questions, and matches competitor mentions by name for more accurate answers.
+
+</Card>
+
+<Card icon="brain" iconType="solid" title="More reliable answers on complex questions">
+  <Improved category="Chat & Analysis" />
+
+  Paige now checkpoints its progress and reliably delivers a final answer on complex, multi-step questions instead of occasionally timing out with no response.
+
+</Card>
+
+<Card icon="triangle-exclamation" iconType="solid" title="Clearer handling of failed responses">
+  <Fix category="Chat & Analysis" />
+
+  Failed or interrupted AI responses now show clearly in chat instead of leaving a session stuck in a loading state.
+
+</Card>
+
+<Card icon="comment" iconType="solid" title="Chat thread & UI fixes">
+  <Fix category="Chat & Analysis" />
+
+  Fixed shared chat threads occasionally reassigning to the wrong owner, missing avatars on some messages, and bugs around loading and empty chat sessions. The "export to deal" action was removed from chat message options as part of these cleanups.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Paige Slack preview fix">
+  <Fix category="Slack" />
+
+  Fixed an error that occurred when asking Paige questions from Slack message previews.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="shield-check" iconType="solid" title="More accurate feature & driver suggestions">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed AI deal analysis occasionally suggesting invalid entries as product features or decision drivers, like pricing terms or vague, combined labels. Suggestions are now validated before they're proposed.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="More reliable analysis on older deals">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed deal analysis failing on deals containing older documents that were missing token-count data.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="salesforce" iconType="solid" title="New Salesforce filter conditions">
+  <New category="CRM Integration" />
+
+  Salesforce-based deal imports and grid filters now support "is empty" and "is not empty" conditions.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="No more caps on Snowflake imports">
+  <Improved category="CRM Integration" />
+
+  Removed the per-run limit on new deals imported from Snowflake, so a large backlog of new deals now comes in during a single sync instead of trickling in across multiple cycles.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
