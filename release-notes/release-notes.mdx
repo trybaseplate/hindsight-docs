@@ -5,6 +5,56 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Filter deals by product, slice by analysis status more precisely, and fixes for Salesforce import filtering and Slack Assistant previews.
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="boxes-stacked" iconType="solid" title="Filter deals by product">
+  <New category="Deals" />
+
+  A new quick filter lets you narrow the deals grid down by product, using the product labels synced in from your CRM — alongside the existing industry, owner, and status filters.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="More ways to filter by analysis status">
+  <Improved category="Deals" />
+
+  The Analyzed filter on Deals and the Dashboard now supports include, include any of, and exclude conditions, not just is, so you can slice by analysis status more precisely.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Salesforce import filters now handle empty fields">
+  <Fix category="CRM Integration" />
+
+  Filtering Salesforce imports by "is empty" or "is not empty" now works correctly, so you can catch deals with missing data before they come into Hindsight.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="More reliable Slack Assistant previews">
+  <Fix category="Slack" />
+
+  Fixed an issue that could cause errors when previewing a Slack Assistant answer before it's saved to a conversation.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
