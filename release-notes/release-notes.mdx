@@ -5,6 +5,84 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Product-based quick filters, more flexible analysis-status filtering, steadier chat responses on longer questions, sharper search across your deals, and fixes for chat sessions, Custom Answer/Metric filters, and the Slack Assistant preview.
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Product quick filters">
+  <New category="Deals" />
+
+  Filter your deal grid by product with a new one-click quick filter, using the product labels synced in from your CRM.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="More ways to filter by analysis status">
+  <Improved category="Deals" />
+
+  Filtering deals by analysis status now supports "include," "include any of," and "do not include," giving you finer control when narrowing down which deals to look at.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Custom Answer & Metric filters fixed">
+  <Fix category="Deals" />
+
+  Fixed a bug where filtering deals by a Custom Answer or Custom Metric could fail to match deals that should have been included.
+
+</Card>
+
+<Card icon="table-columns" iconType="solid" title="Cleaner accounts & deals navigation">
+  <Improved category="Deals" />
+
+  Refined the layout and navigation on the accounts and deals pages for a more consistent experience.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="hourglass-half" iconType="solid" title="More reliable responses on longer questions">
+  <Improved category="Chat & Analysis" />
+
+  Chat now checkpoints its progress as it works, so longer or more complex questions are less likely to time out mid-answer and pick up more reliably if something goes wrong.
+
+</Card>
+
+<Card icon="magnifying-glass" iconType="solid" title="Sharper search across your deals">
+  <Improved category="Chat & Analysis" />
+
+  Search across your deals now weighs keywords alongside meaning, so broad or common terms (like a competitor or product name) return more relevant results.
+
+</Card>
+
+<Card icon="user-check" iconType="solid" title="Chat session fixes">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where a teammate replying in a shared chat thread could unintentionally change who owns the session, plus avatar display fixes for older messages.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Slack Assistant preview fix">
+  <Fix category="Slack" />
+
+  Fixed an error that could occur when previewing an Assistant answer in Slack before it's posted.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
