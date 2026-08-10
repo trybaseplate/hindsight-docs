@@ -5,6 +5,56 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+More flexible deal filtering, uncapped Snowflake syncs, and improvements to search accuracy and AI response reliability.
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="snowflake" iconType="solid" title="No more caps on scheduled Snowflake imports">
+  <Fix category="CRM Integration" />
+
+  Scheduled Snowflake syncs now bring in every deal that matches your filters instead of stopping at a fixed batch size, so new opportunities don't get left behind between manual resyncs.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="More precise Analyzed filtering">
+  <Improved category="Deals" />
+
+  The Analyzed filter now supports the same include, "include any of," and exclude logic as your other filters, so you can narrow down to unanalyzed deals, deals missing analysis, or any combination you need.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="More accurate search across large knowledge bases">
+  <Improved category="Chat & Analysis" />
+
+  Improved how Hindsight searches across very large sets of documents, so answers pull from the most relevant matches first — with better accuracy and speed on large accounts and knowledge bases.
+
+</Card>
+
+<Card icon="comment-dots" iconType="solid" title="More reliable Paige responses">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where longer AI analysis could occasionally fail to finish and return a response, and fixed an error that could occur when using Paige from Slack.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
