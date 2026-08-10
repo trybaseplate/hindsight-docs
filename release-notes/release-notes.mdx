@@ -5,6 +5,43 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Quick-filter deals by product, more precise filtering for analyzed deals, and a fix for Custom Answer and Custom Metric filters.
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="tags" iconType="solid" title="Quick-filter deals by product">
+  <New category="Deals" />
+
+  A new quick filter lets you narrow the deal grid down to one or more products synced from your CRM, right alongside the existing owner, industry, and status quick filters.
+
+</Card>
+
+<Card icon="list-check" iconType="solid" title="More precise filtering for analyzed deals">
+  <Improved category="Deals" />
+
+  Filtering by whether a deal has been analyzed now supports **include**, **include any of**, and **do not include**, matching the filter options available elsewhere in Hindsight, with more consistent results for deals that haven't been analyzed yet.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Answers
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Custom Answer & Metric filter fix">
+  <Fix category="Custom Metrics & Answers" />
+
+  Fixed an issue where filtering deals by a specific Custom Answer or Custom Metric value could fail to match, so saved filters now return the deals you expect.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
