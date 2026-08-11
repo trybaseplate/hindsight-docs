@@ -5,6 +5,63 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+A new quick filter for products, more flexible filtering for Analyzed status and custom answers/metrics, uncapped Snowflake imports, and a fix for shared chat threads.
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Quick filter deals by product">
+  <New category="CRM Integration" />
+
+  A new **Product** quick filter lets you narrow deals down to a specific product line synced from your CRM, alongside your existing Industry, Owner, and Status filters.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake imports no longer capped">
+  <Improved category="CRM Integration" />
+
+  Scheduled Snowflake syncs now bring in every deal that matches your import filters instead of stopping at a fixed limit, so busy syncs no longer leave deals behind.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="sliders" iconType="solid" title="More flexible Analyzed filtering">
+  <Improved category="Deals" />
+
+  The Analyzed filter now supports **Include**, **Include any of**, and **Do not include**, so you can build more precise views of which deals have (or haven't) been processed.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="More reliable custom answer & metric filters">
+  <Fix category="Deals" />
+
+  Fixed a bug where filtering deals by custom answers or custom metrics could miss matches that should have shown up.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="users" iconType="solid" title="Steadier shared chat threads">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where a teammate replying in a shared chat thread could take over ownership of the session, and cleaned up how their avatar appears alongside their messages.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
