@@ -5,6 +5,110 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Smarter chat search with automatic competitor context, steadier performance for large deal libraries, and fixes across deal filtering, Slack, and demo surveys.
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="users" iconType="solid" title="Chat brings in your top competitors automatically">
+  <Improved category="Chat & Analysis" />
+
+  Chat now automatically pulls in your organization's most relevant competitors as context, and search blends keyword and semantic matching — so broad queries (like a company or product name) return more precise results without slowing down.
+
+</Card>
+
+<Card icon="magnifying-glass" iconType="solid" title="More reliable chat search for large organizations">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where searching across deal documents could fail for organizations with very large document libraries.
+
+</Card>
+
+<Card icon="floppy-disk" iconType="solid" title="Long-running chat questions save progress as they go">
+  <Improved category="Chat & Analysis" />
+
+  Chat now checkpoints its progress while generating a response, so long-running or complex questions are less likely to lose their place if interrupted.
+
+</Card>
+
+<Card icon="user-group" iconType="solid" title="Fixed avatars in shared chat threads">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where avatars could render incorrectly, and thread ownership could shift unexpectedly, when teammates replied in a shared chat session.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Fixed Custom Answer and Metric filters">
+  <Fix category="Deals" />
+
+  Fixed an issue where filtering deals by Custom Answer or Custom Metric values didn't always match correctly against stored values.
+
+</Card>
+
+<Card icon="list-check" iconType="solid" title="More precise deal-analyzed filtering">
+  <Improved category="Deals" />
+
+  Filtering deals by whether they've been analyzed now supports more precise include/exclude options.
+
+</Card>
+
+<Card icon="gauge-high" iconType="solid" title="Faster deals list and dashboard for large organizations">
+  <Fix category="Deals" />
+
+  Fixed the deals list and dashboard slowing down or timing out for organizations with a large number of deals.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Fixed low-quality auto-suggested tags">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed a regression that could cause invalid or low-quality auto-suggested competitors, drivers, and features to appear.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="More reliable Slack Assistant previews">
+  <Fix category="Slack" />
+
+  Fixed an error that could interrupt the Slack Assistant's preview replies before they reached you.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="microphone" iconType="solid" title="Demo survey respondent names">
+  <Fix category="Buyer Interviews" />
+
+  Fixed an issue where the demo survey could show a placeholder name instead of the respondent's actual name.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
