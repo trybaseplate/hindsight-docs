@@ -5,6 +5,134 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+A preview of Comparable Deals — see how similar past opportunities played out, right from the deal you're working — plus faster dashboard and deal loading, more accurate filters across Deals and Salesforce imports, and fixes for chat reliability, Slack previews, and competitor/feature suggestions.
+
+### Comparable Deals
+
+<CardGroup cols={1}>
+
+<Card icon="clone" iconType="solid" title="Comparable Deals">
+  <Preview category="Comparable Deals" />
+
+  See how similar past opportunities played out, right from the deal you're working on.
+
+  **Similar deal matching** — Hindsight surfaces the most comparable historical deals for an opportunity, prioritizing recent, closely-matched outcomes.
+
+  **Evidence-backed scoring** — Matches are scored against real call and document evidence rather than deal fields alone, so only genuinely relevant comparisons surface.
+
+  **Research briefs** — Each comparison includes a short AI-generated research brief you can review alongside its score.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="gauge" iconType="solid" title="Faster dashboard and deal loading">
+  <Improved category="Dashboard & Analytics" />
+
+  Dashboard and deals queries were optimized to reduce load times and avoid timeouts on larger accounts, with steadier pagination when applying filters.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="More accurate custom filters">
+  <Fix category="Deals" />
+
+  Fixed Custom Answer, Custom Metric, and "Deal Analyzed" filters so they correctly match by name and handle true/false/blank values. Filtering also gained new **include**, **include any of**, and **do not include** options for more precise results.
+
+</Card>
+
+<Card icon="building" iconType="solid" title="Cleaner accounts and deals navigation">
+  <Improved category="Deals" />
+
+  Refined the layout and navigation across the Accounts and Deals pages for easier browsing.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="salesforce" iconType="solid" title="Null and not-null filters for Salesforce imports">
+  <New category="CRM Integration" />
+
+  Filter Salesforce deal imports by whether a field is empty or populated, using new "is null" and "is not null" conditions.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="More accurate competitor, feature & driver suggestions">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed a regression that could produce bad or duplicate suggestions for new competitors, features, and decision drivers, with stricter validation to keep suggestions relevant.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="hourglass-half" iconType="solid" title="More reliable long-running chat responses">
+  <Improved category="Chat & Analysis" />
+
+  Complex chat questions now track progress against a time budget and save completed steps along the way, so you're less likely to see a stalled or failed response on deep analysis.
+
+</Card>
+
+<Card icon="users" iconType="solid" title="Fixed avatars and ownership in shared chat threads">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where a teammate replying in an existing chat thread could reassign session ownership, and corrected avatar rendering for messages without full user data.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Fixed errors on Slack previews">
+  <Fix category="Slack" />
+
+  Fixed an error that could occur when generating an ephemeral Slack preview for a question that isn't saved as a chat session.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="id-badge" iconType="solid" title="Fixed respondent name in demo surveys">
+  <Fix category="Buyer Interviews" />
+
+  Fixed an issue where the interview demo survey could show a placeholder name instead of the respondent's own name.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
