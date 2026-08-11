@@ -5,6 +5,123 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Faster, more accurate search and chat answers, unlimited scheduled Snowflake imports, new deal filter options, and fixes for AI suggestions, chat sessions, and Slack.
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="Faster, more accurate search">
+  <Improved category="Chat & Analysis" />
+
+  Search now checks for exact keyword matches before falling back to broader semantic search, and caps how many results get scored for broad terms (like a company name), so wide searches come back faster without losing accuracy.
+
+</Card>
+
+<Card icon="hourglass-half" iconType="solid" title="More reliable answers on complex questions">
+  <Improved category="Chat & Analysis" />
+
+  Long, multi-step questions now save progress as they go and are guided toward a synthesized answer before hitting internal time limits, so you're far less likely to get an incomplete or empty response.
+
+</Card>
+
+<Card icon="chess" iconType="solid" title="Sharper competitor context in chat">
+  <Improved category="Chat & Analysis" />
+
+  Chat now references your organization's most relevant competitors more consistently when reasoning about a deal, for more grounded competitive answers.
+
+</Card>
+
+<Card icon="user-group" iconType="solid" title="Chat session and avatar fixes">
+  <Fix category="Chat & Analysis" />
+
+  Fixed a bug where a teammate replying in an existing chat thread could reassign ownership of that thread, and fixed avatars not displaying correctly for some in-progress messages.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="More reliable Slack Assistant previews">
+  <Fix category="Slack" />
+
+  Fixed an error that could occur when the Slack Assistant generated a preview answer before a chat session existed.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Fixed a regression in AI suggestions">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed a bug that could produce inaccurate suggested competitors, features, and decision drivers, with stricter checks to keep future suggestions clean.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="snowflake" iconType="solid" title="Unlimited scheduled Snowflake imports">
+  <Improved category="CRM Integration" />
+
+  Scheduled Snowflake syncs no longer cap how many matching deals come in per run, so your CRM data catches up faster.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Product quick filter">
+  <New category="Dashboard & Analytics" />
+
+  Added a one-click Product quick filter on the Dashboard and Settings pages, alongside your existing quick filters.
+
+</Card>
+
+<Card icon="gauge-high" iconType="solid" title="Faster dashboard and deal list loading">
+  <Improved category="Dashboard & Analytics" />
+
+  Sped up dashboard queries and added safeguards to the deals list so large accounts no longer risk timeouts when loading data.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="New filter types for deal analysis status">
+  <New category="Deals" />
+
+  Filter deals by whether they've been AI-analyzed using new "include," "include any of," and "do not include" filter types, with corrected handling of true/false/no-value cases.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Fixed Custom Answer and Metric filters">
+  <Fix category="Deals" />
+
+  Fixed a bug where filtering deals by a Custom Answer or Custom Metric value wouldn't correctly match your saved options.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
