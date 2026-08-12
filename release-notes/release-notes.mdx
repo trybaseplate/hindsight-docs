@@ -5,6 +5,128 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+A preview of Comparable Deals for benchmarking your live opportunities against similar past wins and losses, more flexible deal filtering, and reliability fixes across chat, search, and Slack.
+
+### Comparable Deals
+
+<CardGroup cols={1}>
+
+<Card icon="scale-balanced" iconType="solid" title="Comparable Deals">
+  <Preview category="Competitive Intelligence" />
+
+  A new way to see how a live opportunity stacks up against similar deals you've already won or lost.
+
+  **AI-matched shortlists** — Hindsight finds the most similar past deals using semantic matching across your deal data, prioritizing your most relevant and recent opportunities.
+
+  **Evidence-backed scoring** — Each match comes with an auditable trail of supporting evidence and a usefulness rating, so you can see exactly why a deal was surfaced.
+
+  **AI research briefs** — Hindsight researches each comparable deal before scoring it, adding context beyond what's already in your CRM.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="More flexible deal, answer & metric filters">
+  <Improved category="Deals" />
+
+  Filtering by "Analyzed" status now lets you include or exclude deals that haven't been analyzed yet, and Custom Answer and Custom Metric filters gained **include**, **include any of**, and **do not include** options — plus a fix for filters that weren't matching your saved values correctly.
+
+</Card>
+
+<Card icon="gauge-high" iconType="solid" title="Faster dashboard and deals loading">
+  <Improved category="Dashboard & Analytics" />
+
+  The dashboard and deals pages load faster, and paginated deal requests are now validated to prevent timeouts on large result sets.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="salesforce" iconType="solid" title="Salesforce null-value filters">
+  <New category="CRM Integration" />
+
+  Import filters for Salesforce now support "is null" and "is not null" conditions, so you can target deals with missing or populated fields when setting up your import.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Cleaner auto-suggested labels">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed a regression that could produce bad or duplicate auto-suggested competitors, drivers, and features, with stricter validation before a suggestion is shown.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="clock" iconType="solid" title="More reliable long-running chat responses">
+  <Improved category="Chat & Analysis" />
+
+  Chat now saves progress as it works and steers longer, research-heavy questions toward a complete answer instead of timing out partway through.
+
+</Card>
+
+<Card icon="user" iconType="solid" title="Chat avatar & ownership fixes">
+  <Fix category="Chat & Analysis" />
+
+  Fixed avatars not displaying correctly for some messages in shared chat threads, and stopped a thread's ownership from being reassigned when a teammate replied to it.
+
+</Card>
+
+<Card icon="magnifying-glass" iconType="solid" title="Faster search on broad terms">
+  <Fix category="Chat & Analysis" />
+
+  Fixed slow results when searching your whole workspace for broad terms, like a well-known product or company name.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Slack preview fix">
+  <Fix category="Slack" />
+
+  Fixed an error that could occur when generating a preview answer in Slack before a conversation is saved.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Interview respondent name fix">
+  <Fix category="Buyer Interviews" />
+
+  Fixed an issue where a demo interview could show a placeholder name instead of the respondent's actual name.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
