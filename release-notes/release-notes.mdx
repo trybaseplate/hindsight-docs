@@ -5,6 +5,96 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Quick-filter deals by CRM product labels, more precise "Analyzed" filtering, steadier answers on longer chat questions, and reliability fixes for deal deletion, interview emails, and document uploads.
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="tags" iconType="solid" title="Quick-filter by product">
+  <New category="CRM Integration" />
+
+  A new quick filter lets you narrow deals down by the product labels synced from your CRM, so you can jump straight to a specific product line without building a custom filter.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="More precise \"Analyzed\" filtering">
+  <Improved category="Deals" />
+
+  The "Analyzed" filter now supports "include any of" and "do not include" conditions in addition to the existing options, so you can build more precise deal datasets.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Custom Answer and Metric filter fix">
+  <Fix category="Deals" />
+
+  Fixed a bug where filtering deals by a Custom Answer or Custom Metric value could fail to match deals that actually had that value set.
+
+</Card>
+
+<Card icon="trash" iconType="solid" title="More reliable deal deletion">
+  <Fix category="Deals" />
+
+  Fixed a bug that could prevent a deal from being deleted.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comments" iconType="solid" title="Fewer timeouts on longer questions">
+  <Improved category="Chat & Analysis" />
+
+  Chat now checkpoints its progress and enforces a synthesis deadline on longer, multi-step questions, so you get a complete answer back instead of a timeout.
+
+</Card>
+
+<Card icon="user" iconType="solid" title="Shared chat thread fixes">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where avatars could render incorrectly, and a teammate replying in a shared chat thread could unexpectedly take over ownership of the session.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="envelope" iconType="solid" title="Interview sequence fixes">
+  <Fix category="Buyer Interviews" />
+
+  Fixed bugs affecting interview sequence enrollment and personalization-variable replacement in interview email subject lines and bodies.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="file-word" iconType="solid" title="Document upload fix">
+  <Fix category="Platform" />
+
+  Fixed an issue that could cause uploading `.docx` files to fail.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
