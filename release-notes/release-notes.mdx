@@ -5,6 +5,102 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+A new Comparable Deals engine (in preview) for finding and learning from deals like the one you're working now, product-based quick filtering, more resilient chat responses, and fixes for deal filtering and interview demos.
+
+### Comparable Deals
+
+<CardGroup cols={1}>
+
+<Card icon="scale-balanced" iconType="solid" title="Comparable Deals">
+  <Preview category="Sales Intelligence" />
+
+  A new way to find and learn from deals like the one you're working now.
+
+  **AI-generated shortlist** — Hindsight surfaces the past deals most comparable to a given opportunity, matching on deal stage, competitors, features, and outcomes.
+
+  **Evidence-backed matches** — Each comparable deal comes with audited supporting evidence and a research brief explaining why it's relevant, instead of a bare similarity score.
+
+  **Playground** — Explore comparable-deal matches and see how the matching works in the new Comparable Deals playground.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="boxes-stacked" iconType="solid" title="Filter deals by product">
+  <New category="Deals" />
+
+  A new quick filter lets you narrow the deal grid down to specific products synced from your CRM, alongside your existing quick filters.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title='More flexible "Analyzed" filtering'>
+  <Improved category="Deals" />
+
+  The Analyzed filter now supports include, include-any-of, and exclude options, so you can slice your deal grid by analysis status more precisely.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="More accurate Custom Answer & Metric filters">
+  <Fix category="Deals" />
+
+  Fixed a bug where filtering deals by a Custom Answer or Custom Metric value could fail to match deals that should have been included.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="bolt" iconType="solid" title="More resilient chat responses">
+  <Improved category="Chat & Analysis" />
+
+  Chat now saves its progress as it works through longer, multi-step questions and wraps up with an answer instead of timing out.
+
+</Card>
+
+<Card icon="magnifying-glass" iconType="solid" title="Faster, more relevant search">
+  <Improved category="Chat & Analysis" />
+
+  AI answers now pull supporting evidence from your deals and documents using an improved keyword-first search, for faster and more relevant results.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Slack Assistant reliability fix">
+  <Fix category="Slack" />
+
+  Fixed an issue that could cause some Slack Assistant questions to fail without returning an answer.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="id-card" iconType="solid" title="Demo survey name fix">
+  <Fix category="Buyer Interviews" />
+
+  Fixed an issue where the demo win-loss survey showed a placeholder name instead of the respondent's actual name.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
