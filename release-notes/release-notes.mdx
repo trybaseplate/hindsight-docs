@@ -5,6 +5,171 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+A new Analysis settings page to control when deals get automatically re-analyzed, Paige answers that factor in your top competitors and hold up better on long, complex questions, faster and more reliable search across deals and documents, a new product quick filter, and fixes across deal deletion, document uploads, interview emails, Sales Plays loading, and catalog suggestions.
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="sliders" iconType="solid" title="New Analysis settings page">
+  <New category="Deals" />
+
+  Control when Hindsight automatically re-analyzes a deal — for example, on a stage change — from a new **Settings → Analysis** page, with sensible defaults already turned on.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Product quick filter">
+  <New category="Deals" />
+
+  Quickly filter your deals by product, using the product labels synced in from your CRM.
+
+</Card>
+
+<Card icon="square-check" iconType="solid" title="More ways to filter analyzed deals">
+  <Improved category="Deals" />
+
+  The "analyzed" filter now supports include, "include any of," and exclude conditions, so you can slice your deal list more precisely.
+
+</Card>
+
+<Card icon="table-list" iconType="solid" title="Fixed deal list timeouts for large organizations">
+  <Fix category="Deals" />
+
+  Fixed an issue where the deals list could time out for organizations with a large number of deals.
+
+</Card>
+
+<Card icon="trash" iconType="solid" title="Fixed deal deletion">
+  <Fix category="Deals" />
+
+  Fixed an issue that could prevent a deal from being deleted.
+
+</Card>
+
+<Card icon="file-arrow-up" iconType="solid" title="Fixed uploads for certain document types">
+  <Fix category="Deals" />
+
+  Fixed an issue uploading certain document types, including `.docx` files, to deals and your knowledge base.
+
+</Card>
+
+<Card icon="chess-knight" iconType="solid" title="Fixed Plays page loading">
+  <Fix category="Deals" />
+
+  Fixed an issue where the Sales Plays page wouldn't show a loading indicator correctly while opportunities loaded.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="bullseye" iconType="solid" title="Paige factors in your top competitors">
+  <Improved category="Chat & Analysis" />
+
+  Paige now automatically pulls in your organization's top competitors as context, for more relevant answers to competitive questions.
+
+</Card>
+
+<Card icon="hourglass-half" iconType="solid" title="More reliable answers on long, complex questions">
+  <Improved category="Chat & Analysis" />
+
+  Paige now saves progress as it works and produces a complete answer even on long-running or complex questions, instead of occasionally timing out with nothing.
+
+</Card>
+
+<Card icon="magnifying-glass" iconType="solid" title="See what Paige searched for">
+  <Improved category="Chat & Analysis" />
+
+  Hovering over a search result in chat now shows what Paige actually searched for, for more transparency into how it found its answer.
+
+</Card>
+
+<Card icon="gauge-high" iconType="solid" title="Faster, more reliable search">
+  <Improved category="Chat & Analysis" />
+
+  Search across your deals and documents is faster and more reliable, especially for larger organizations, including a fix for broad searches that could previously time out or fail.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Answers
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Fixed Custom Answer and Metric filters">
+  <Fix category="Custom Metrics & Answers" />
+
+  Fixed an issue where filtering by Custom Answers or Custom Metrics could fail to match deals with the saved values.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Fixed bad catalog suggestions">
+  <Fix category="Dashboard & Analytics" />
+
+  Fixed a regression that could surface incorrect or low-quality suggestions when reviewing new Feature and Driver catalog suggestions.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="users" iconType="solid" title="Sync internal contacts from your CRM">
+  <New category="CRM Integration" />
+
+  Internal teammates on a deal (not just external contacts) can now be synced in from your CRM into Hindsight's contacts.
+
+</Card>
+
+</CardGroup>
+
+### Buyer Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="envelope" iconType="solid" title="Fixed personalization in interview emails">
+  <Fix category="Buyer Interviews" />
+
+  Fixed an issue where personalization variables, like a contact's name, sometimes weren't filled in correctly in interview request emails.
+
+</Card>
+
+<Card icon="user-check" iconType="solid" title="Cleaned up stale interview enrollments">
+  <Fix category="Buyer Interviews" />
+
+  Cleaned up stale and duplicate enrollments in interview sequences.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Fixed Paige Slack previews">
+  <Fix category="Slack" />
+
+  Fixed an issue that could cause Paige's Slack preview responses to fail to generate.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
