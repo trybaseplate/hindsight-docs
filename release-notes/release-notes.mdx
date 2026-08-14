@@ -5,6 +5,117 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+A first look at Comparable Deals for benchmarking open opportunities against your deal history, more transparent and reliable AI chat, automatic CRM contact syncing, and refinements to deal filtering and data quality.
+
+### Comparable Deals
+
+<CardGroup cols={1}>
+
+<Card icon="scale-balanced" iconType="solid" title="Comparable Deals">
+  <Preview category="Comparable Deals" />
+
+  Benchmark an open opportunity against similar deals from your history to see how they played out. Hindsight shortlists comparable deals using configurable matching criteria — competitors, drivers, deal size, and more — then researches and scores each match.
+
+  **AI research briefs** — Hindsight explains why a deal is comparable, backed by cited evidence, and audits how useful each piece of evidence actually is so the reasoning stays trustworthy.
+
+  **Smarter matching** — Prioritizes your most recent deals and uses semantic similarity to catch a wider set of relevant comparisons than attribute matching alone.
+
+  Reach out to your account manager to get access to the Comparable Deals playground.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="See what the AI searched for">
+  <New category="Chat & Analysis" />
+
+  Search result cards in chat now show the AI's actual tool inputs alongside the results, so you can see exactly what it searched for and why it found what it did.
+
+</Card>
+
+<Card icon="clock-rotate-left" iconType="solid" title="More reliable answers on long-running questions">
+  <Improved category="Chat & Analysis" />
+
+  Chat now checkpoints its progress as it works and wraps up with a synthesized answer instead of cutting off, so complex, multi-step questions come back with a complete response.
+
+</Card>
+
+<Card icon="users" iconType="solid" title="Smarter competitor awareness">
+  <Improved category="Chat & Analysis" />
+
+  The AI now automatically factors in your organization's most relevant competitors when answering questions, for more grounded competitive context.
+
+</Card>
+
+<Card icon="user-group" iconType="solid" title="Shared chat session fixes">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where a teammate replying in a shared chat thread could take over ownership of the session, and fixed avatars not displaying correctly for some messages.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="address-book" iconType="solid" title="Automatic internal contact syncing">
+  <New category="CRM Integration" />
+
+  Internal contacts from your CRM now sync automatically into Hindsight, so deal owners and collaborators stay up to date without manual entry.
+
+</Card>
+
+<Card icon="code-compare" iconType="solid" title="Salesforce null-value filters">
+  <New category="CRM Integration" />
+
+  Salesforce import filters now support "is null" and "is not null" conditions, in addition to existing comparison operators.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="More filtering options for Analyzed deals">
+  <Improved category="Deals" />
+
+  The "Analyzed" deal filter now supports more combinations — include, include any of, and exclude — for finer control when building deal views and datasets.
+
+</Card>
+
+<Card icon="table-list" iconType="solid" title="Accounts & deals UI refinements">
+  <Improved category="Deals" />
+
+  Cleaned up layout and navigation on the accounts and deals pages, and Custom Answer and Custom Metric filters now correctly match on stored names and IDs.
+
+</Card>
+
+<Card icon="trash" iconType="solid" title="Deal deletion & interview email fixes">
+  <Fix category="Deals" />
+
+  Fixed a bug that could prevent some deals from being deleted, and fixed variable replacement in interview email subject lines and bodies.
+
+</Card>
+
+<Card icon="file-word" iconType="solid" title="More reliable document uploads">
+  <Fix category="Deals" />
+
+  Fixed an issue that could cause `.docx` file uploads to fail.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
