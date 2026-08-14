@@ -5,6 +5,152 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+An early preview of Comparable Deals, configurable AI reanalysis triggers, a Slack DM toggle for interview requests, product-based deal filtering, an uncapped Snowflake sync, and reliability fixes across chat, Custom Metrics & Answers, document uploads, and Plays.
+
+### Comparable Deals
+
+<CardGroup cols={1}>
+
+<Card icon="scale-balanced" iconType="solid" title="Find and evaluate comparable deals">
+  <Preview category="Deals" />
+
+  An early preview of Comparable Deals, now available in a dedicated playground. Hindsight surfaces past deals similar to the one you're working, backed by AI-generated research briefs and evidence-based similarity scoring, so you can quickly find relevant precedent for pricing, positioning, and strategy.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="sliders" iconType="solid" title="Personalize when AI reanalysis runs">
+  <New category="Admin" />
+
+  Configure exactly when Hindsight re-analyzes a deal — on stage changes, property changes, or new documents — from a new Analysis settings page, instead of one fixed trigger for every organization. By default, deals now reanalyze automatically whenever their stage changes.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="table-cells" iconType="solid" title="Filter deals by product">
+  <New category="CRM Integration" />
+
+  Quickly filter your deal list by product, using product labels synced in from your CRM, alongside existing quick filters like industry, owner, and status.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="No more cap on Snowflake imports">
+  <Improved category="CRM Integration" />
+
+  Scheduled Snowflake syncs no longer stop at a fixed deal limit — every new deal matching your filters is imported on each run.
+
+  **Smarter default filter window** — New Snowflake filter imports now default to a 1-month lookback instead of your full deal history, so initial imports are faster to review.
+
+</Card>
+
+<Card icon="address-book" iconType="solid" title="Internal teammates now sync in as contacts">
+  <New category="CRM Integration" />
+
+  Deal owners and collaborators from HubSpot and Salesforce are now synced in as contacts and linked to their deals, so your internal team shows up alongside customer contacts.
+
+</Card>
+
+</CardGroup>
+
+### Buyer Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Toggle Slack DM notifications per interview send">
+  <New category="Buyer Interviews" />
+
+  Choose whether to notify a seller by Slack DM when sending them a one-off interview request, with more reliable matching of requests to the right respondent whether they reply in a Slack thread or click a button.
+
+</Card>
+
+<Card icon="envelope" iconType="solid" title="Fixed interview email templates">
+  <Fix category="Buyer Interviews" />
+
+  Fixed an issue where variables in interview email subject lines and bodies weren't always filled in correctly, plus cleanup bugs affecting sequence enrollment.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="Fixed chat timeouts for large document libraries">
+  <Fix category="Chat & Analysis" />
+
+  Chat no longer risks timing out for organizations with large document libraries, and the chat page now handles new and empty sessions more gracefully.
+
+</Card>
+
+<Card icon="message" iconType="solid" title="Fixed chat responses stuck \"in progress\"">
+  <Fix category="Chat & Analysis" />
+
+  Fixed a bug where some streamed chat responses weren't saved correctly, which could leave a conversation stuck showing as in-progress instead of complete.
+
+</Card>
+
+<Card icon="users" iconType="solid" title="Fixed teammate avatars in shared chats">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where a teammate replying in a shared chat could unintentionally take over ownership of the session, and cleaned up avatar rendering for messages without saved user info.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Answers
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Fixed Custom Answer and Metric filters">
+  <Fix category="Custom Metrics" />
+
+  Fixed filters for Custom Answers and Metrics so they correctly match by name, and added "include," "include any of," and "exclude" options when filtering deals by these fields.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="trash" iconType="solid" title="Fixed an error deleting deals with chat history">
+  <Fix category="Deals" />
+
+  Fixed a bug that could prevent a deal from being deleted if it had an associated AI chat session.
+
+</Card>
+
+<Card icon="file-word" iconType="solid" title="More reliable Word, Excel, and PowerPoint uploads">
+  <Fix category="Deals" />
+
+  Fixed an issue that could cause DOCX, XLSX, and PPTX uploads to fail, and added clearer success and error messages, including for payment-related upload issues.
+
+</Card>
+
+<Card icon="spinner" iconType="solid" title="Fixed Plays loading indicator">
+  <Fix category="Deals" />
+
+  Fixed the Plays page occasionally showing a stuck or incorrect loading indicator.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
