@@ -5,6 +5,116 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+An early preview of AI-powered Comparable Deals, a new way to filter your deal list by Product, more visibility into what the AI searches for in chat, and fixes for deal deletion, custom filters, document uploads, and shared chat sessions.
+
+### Comparable Deals
+
+<CardGroup cols={1}>
+
+<Card icon="scale-balanced" iconType="solid" title="AI-powered Comparable Deals">
+  <Preview category="Comparable Deals" />
+
+  Hindsight can now surface deals comparable to the one you're viewing, backed by AI-gathered evidence and reasoning for why each match is relevant. This is an early preview as we continue tuning the matching and scoring.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="See what the AI searched for">
+  <Improved category="Chat & Analysis" />
+
+  Hover over a search result in chat to see the exact inputs the AI used to find it, for more visibility into how an answer was generated.
+
+</Card>
+
+<Card icon="comments" iconType="solid" title="More reliable chat sessions">
+  <Fix category="Chat & Analysis" />
+
+  Fixed bugs that could cause streamed chat responses to fail or cut off mid-answer, a teammate replying in a shared thread to unintentionally take over the session, and avatars to render incorrectly for some messages.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="cube" iconType="solid" title="Filter your deal list by Product">
+  <New category="Dashboard & Analytics" />
+
+  Quick Filters now support filtering by Product, synced directly from your CRM, alongside your existing industry, owner, and status filters.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="user-group" iconType="solid" title="Internal team contacts sync">
+  <New category="CRM Integration" />
+
+  Your team's internal contacts — reps, CSMs, and other internal stakeholders — now sync automatically from your CRM into Hindsight.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Scheduled Snowflake imports">
+  <Fix category="CRM Integration" />
+
+  Fixed a cap that could silently limit how many new deals were brought in during a scheduled Snowflake sync, so all matching deals now import as expected.
+
+</Card>
+
+</CardGroup>
+
+### Custom Metrics & Answers
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Custom filter matching fix">
+  <Fix category="Custom Metrics" />
+
+  Fixed a bug where filtering deals by certain Custom Answers or Custom Metrics values could fail to match, so filtered views now correctly reflect your criteria.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="triangle-exclamation" iconType="solid" title="Deal deletion & document upload fixes">
+  <Fix category="Deals" />
+
+  Fixed a bug that could prevent a deal from being deleted, an issue uploading certain `.docx` documents, and cases where personalization variables (like contact name) weren't filling in correctly in outbound emails.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="compass" iconType="solid" title="Onboarding and navigation polish">
+  <Improved category="Platform" />
+
+  Refreshed layout and navigation on the Accounts and Deals pages, plus a smoother onboarding experience for new users.
+
+</Card>
+
+</CardGroup>
+
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
