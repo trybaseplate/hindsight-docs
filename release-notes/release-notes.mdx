@@ -5,6 +5,108 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+A first look at Comparable Deals for benchmarking open opportunities against your win/loss history, a new Product quick filter, and fixes across chat, CRM filtering, and the deals page.
+
+### Comparable Deals
+
+<CardGroup cols={1}>
+
+<Card icon="scale-balanced" iconType="solid" title="Comparable Deals">
+  <Preview category="Competitive Intelligence" />
+
+  See how an open opportunity stacks up against similar deals you've already won or lost. Hindsight shortlists comparable deals from your history based on shared competitors, features, and deal stage, then uses AI to research and score how closely each one matches — surfacing the supporting evidence behind every comparison so you can see why a deal was flagged as similar.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Filter deals by Product">
+  <New category="Dashboard & Analytics" />
+
+  A new quick filter lets you narrow the deal grid down to a specific product, using product labels synced in from your CRM.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Custom Answer & Metric filtering fix">
+  <Fix category="Dashboard & Analytics" />
+
+  Fixed an issue where filtering deals by Custom Answer or Custom Metric values could miss deals that should have matched.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comments" iconType="solid" title="Clearer loading states in chat">
+  <Improved category="Chat & Analysis" />
+
+  AI chat messages now show shimmer and pulse loading indicators while a response is being generated, making it clearer that the AI is still working.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Owner filtering fix">
+  <Fix category="CRM Integration" />
+
+  Fixed an issue where filtering deals by owner could miss results depending on how your CRM identifies the deal owner.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="table-list" iconType="solid" title="\"No deals assigned\" message fix">
+  <Fix category="Deals" />
+
+  Fixed a display bug where the deals page could incorrectly show a "0 deals" state instead of the correct "No deals assigned" message.
+
+</Card>
+
+</CardGroup>
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Plays loading fix">
+  <Fix category="Sales Enablement" />
+
+  Fixed an issue where the Plays page loading indicator could disappear before opportunity data had actually finished loading.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user" iconType="solid" title="Demo survey respondent name fix">
+  <Fix category="Buyer Interviews" />
+
+  Fixed an issue where demo interview surveys could show a placeholder name instead of the respondent's actual name.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
