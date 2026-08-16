@@ -5,6 +5,89 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Plays now research and act on matching deals automatically, interview sequences can require sign-off from every approver, clearer Slack answers with citations, and a round of reliability fixes for AI interviews, chat, and the deals grid.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Plays now research and act on matching deals">
+  <Improved category="Sales Enablement" />
+
+  Plays have been generalized to actively research and take action on deals that match a play's criteria, instead of only surfacing an opportunity for review — so more of the legwork happens automatically.
+
+</Card>
+
+<Card icon="hourglass" iconType="solid" title="Plays loading fix">
+  <Fix category="Sales Enablement" />
+
+  Fixed an issue where the Plays page could get stuck showing a loading state after data had already finished loading.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Require sign-off from every approver">
+  <New category="Buyer Interviews" />
+
+  Interview sequences can now require approval from **all** designated approvers before a request goes out, instead of just one — giving teams more control over sensitive outreach.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="AI interviewer & approval fixes">
+  <Fix category="Buyer Interviews" />
+
+  Fixed an issue where an approved interview request could still show as "pending" when approved from the deal home page, along with bugs causing cut-off response transcripts and missing opening messages during AI-led interviews.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Clearer Slack answers with citations">
+  <Improved category="Slack" />
+
+  Slack Assistant responses now come with cleaner formatting and citations, making it easier to trace an answer back to its source.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comment" iconType="solid" title="Chat loading fix">
+  <Fix category="Chat & Analysis" />
+
+  Fixed an issue where loading indicators on AI chat messages could get stuck instead of clearing once a response finished.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Deal grid fixes">
+  <Fix category="Deals" />
+
+  Fixed owner-based filtering on the deals grid and a display issue where the deals page didn't render correctly when a filter matched zero deals.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
