@@ -5,6 +5,131 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Paige can now run sandboxed data analysis and generate charts right in chat, comes with new specialized skills for enablement and deal strategy, interview requests can require approval from everyone on the list, plus a batch of reliability fixes across chat, CRM sync, and buyer interviews.
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="flask" iconType="solid" title="Paige can now run its own data analysis">
+  <New category="Chat & Analysis" />
+
+  For complex quantitative questions, Paige can now write and run analysis in a secure sandbox and return the results — including generated charts you can copy or download — instead of relying on a single retrieval pass.
+
+</Card>
+
+<Card icon="puzzle-piece" iconType="solid" title="New Paige skills for enablement and deal strategy">
+  <New category="Chat & Analysis" />
+
+  Three new specialized skills are available in chat: **Competitive Enablement**, **Research Hindsight Deals**, and **Prepare Deal Strategy**, each producing evidence-backed outputs tailored to that workflow.
+
+</Card>
+
+<Card icon="comments" iconType="solid" title="More reliable chat sessions">
+  <Fix category="Chat & Analysis" />
+
+  Chat messages now show clearer loading indicators while Paige is working, teammate avatars render correctly on shared sessions, and sessions no longer get stuck showing "in progress" after a response finishes streaming.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="check-double" iconType="solid" title="Require approval from every approver">
+  <New category="Buyer Interviews" />
+
+  Interview requests can now be configured to require a vote from **all** designated approvers instead of just one, with progress shown inline and buttons disabled once you've already approved.
+
+</Card>
+
+<Card icon="slack" iconType="solid" title="Seller interview & Slack reliability fixes">
+  <Fix category="Buyer Interviews" />
+
+  Fixed several issues with seller interviews sent via Slack: a toggle to control Slack DM notifications on one-off sends, more reliable resolution of interview requests, transcripts that no longer cut off the AI's closing remarks or drop the opening message, and correct approval status when a request is sent from a deal's home page.
+
+</Card>
+
+<Card icon="envelope" iconType="solid" title="Email template and demo survey fixes">
+  <Fix category="Buyer Interviews" />
+
+  Fixed variable replacement in interview email subjects and bodies, and fixed the demo survey occasionally showing a placeholder name instead of the respondent's actual name.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="address-book" iconType="solid" title="Internal teammates synced as contacts">
+  <Improved category="CRM Integration" />
+
+  Deal owners and collaborators from HubSpot and Salesforce are now synced into Hindsight as contacts and linked to their deals automatically.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake import reliability">
+  <Fix category="CRM Integration" />
+
+  Improved reliability of Snowflake deal imports to avoid processing unnecessary historical backlog.
+
+</Card>
+
+<Card icon="upload" iconType="solid" title="Clearer document upload status">
+  <Improved category="CRM Integration" />
+
+  Uploading a `.docx` file now shows clear loading, success, and error states instead of a single generic confirmation.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="arrows-rotate" iconType="solid" title="Smarter default reanalysis">
+  <Improved category="Deals" />
+
+  New organizations now default to re-analyzing a deal whenever its stage changes, instead of requiring manual configuration first.
+
+</Card>
+
+<Card icon="trash" iconType="solid" title="Deal deletion fix">
+  <Fix category="Deals" />
+
+  Fixed an error that could block deleting a deal that had an associated chat session.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Filtering and Custom Metric fixes">
+  <Fix category="Deals" />
+
+  Fixed owner filtering so it works consistently across CRM data sources, corrected a message that incorrectly showed "0 deals" on the deals page, and fixed Custom Metric and Custom Answer filters not matching correctly in some cases.
+
+</Card>
+
+</CardGroup>
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Plays loading fix">
+  <Fix category="Sales Enablement" />
+
+  Fixed an incorrect loading indicator on the Plays page that could clear before opportunity data had actually finished loading.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
