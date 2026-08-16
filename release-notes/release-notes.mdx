@@ -5,6 +5,137 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Sales Plays that research and act on matching deals automatically, an option to require every approver before an interview request goes out, smarter Similar Deals matching, cleaner Slack replies with citations, and a round of reliability fixes across interviews, chat, and deal filtering.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Plays now research and act on matching deals">
+  <Improved category="Sales Enablement" />
+
+  Instead of only surfacing an opportunity, Plays now researches matching deals and acts on them directly, so more of the workflow happens automatically instead of waiting on manual follow-up.
+
+</Card>
+
+<Card icon="spinner" iconType="solid" title="Fixed a loading glitch on the Plays page">
+  <Fix category="Sales Enablement" />
+
+  Fixed an issue where the Plays page could show the wrong loading state while opportunities were still being fetched.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Require all approvers before sending">
+  <New category="Buyer Interviews" />
+
+  Interview requests can now be configured to require sign-off from every approver instead of just one, with clear in-app progress showing who has approved and who's still pending.
+
+</Card>
+
+<Card icon="file-signature" iconType="solid" title="Complete, uninterrupted interview transcripts">
+  <Fix category="Buyer Interviews" />
+
+  Fixed an issue where AI interviewer transcripts could be cut off or missing their opening message in Slack-based interviews, so full conversations — including closing remarks — are always saved.
+
+</Card>
+
+<Card icon="circle-check" iconType="solid" title="Fixed approval status on deal-page requests">
+  <Fix category="Buyer Interviews" />
+
+  Interview requests sent from a deal's home page were incorrectly showing as "pending" — they now correctly show as approved right away.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Clearer Slack replies with citations">
+  <Improved category="Slack" />
+
+  Slack Assistant responses now render with cleaner formatting and inline citations back to their sources, plus a toggle for whether replies are sent as a DM.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Fixed occasional Slack errors">
+  <Fix category="Slack" />
+
+  Fixed an error that could occur when generating certain Slack previews and quick replies.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="comment-dots" iconType="solid" title="Better loading feedback in AI chat">
+  <Improved category="Chat & Analysis" />
+
+  AI chat messages now show clearer loading indicators while a response is being generated, instead of leaving you waiting with no feedback.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Fixed Custom Metric and Custom Answer filters">
+  <Fix category="Chat & Analysis" />
+
+  Fixed a bug where filtering by Custom Answers or Custom Metrics could fail to match deals correctly against their saved values.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="shuffle" iconType="solid" title="Smarter Similar Deals matching">
+  <Improved category="Deals" />
+
+  The Similar Deals section on a deal page now uses a more sophisticated matching and scoring algorithm, backed by supporting evidence and AI research, so the deals it surfaces are more relevant — with a **Saved algorithm** badge showing when a deal is matched using your team's configured criteria.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Filter deals by product">
+  <New category="Deals" />
+
+  Added a Product quick filter to the deal grid, so you can filter by product labels synced in from your CRM alongside your existing filters.
+
+</Card>
+
+<Card icon="user-check" iconType="solid" title="Fixed deal owner filtering and loading">
+  <Fix category="Deals" />
+
+  Fixed an issue where filtering deals by owner didn't work correctly for all CRM connection types, and fixed the deals grid briefly showing "no deals" before data finished loading.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="cloud-arrow-down" iconType="solid" title="No more cap on Snowflake imports">
+  <Improved category="CRM Integration" />
+
+  Removed a hard limit on how many deals could come in per Snowflake sync, so larger pipelines now fully sync instead of only pulling in a capped batch.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
