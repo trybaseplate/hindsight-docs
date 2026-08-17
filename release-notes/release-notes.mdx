@@ -5,6 +5,124 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Comparable Deals arrives in preview, new research and strategy skills for Paige, in-chat data analysis with charts, Sales Plays that take action on matching deals automatically, automatic CRM contact sync, and an early look at connecting outside tools over MCP.
+
+### Deal Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="scale-balanced" iconType="solid" title="Comparable Deals">
+  <Preview category="Deal Intelligence" />
+
+  See how similar past deals played out, right from a deal's page. Hindsight shortlists comparable deals from your pipeline, then has Paige research each one and explain what made it comparable before scoring it — so you can see the reasoning behind every match, not just a similarity score.
+
+  **Smarter shortlisting** — Prioritizes your most recent, most relevant deals and scales to large pipelines.
+
+  **Evidence you can audit** — Each comparable deal shows the evidence and usefulness rating behind its match.
+
+  This is an early preview while we tune the underlying matching — expect it to keep evolving over the coming weeks.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="New skills for Paige">
+  <New category="Chat & Analysis" />
+
+  Paige can now be asked to help with competitive enablement, research a specific deal, or prepare a deal strategy, each backed by its own guidance on what evidence to pull in and how to structure the answer.
+
+</Card>
+
+<Card icon="chart-mixed" iconType="solid" title="Ask Paige to analyze your data">
+  <New category="Chat & Analysis" />
+
+  Paige can now run its own analysis on a dataset and hand back a chart, not just a written answer. Expand, copy, or download the result straight from the chat.
+
+</Card>
+
+<Card icon="bolt" iconType="solid" title="Faster, more transparent chat">
+  <Improved category="Chat & Analysis" />
+
+  Chat sessions load and respond faster, and hover cards over search results now show what the AI actually searched for, so it's easier to trust and verify an answer.
+
+</Card>
+
+</CardGroup>
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Plays that take action, not just surface opportunities">
+  <Improved category="Sales Plays" />
+
+  Plays now research and act on every matching deal automatically instead of only flagging that an opportunity exists. Slack play messages are cleaner and now cite their sources, with an optional toggle for whether notifications go out as DMs.
+
+  **Require every approver** — Sequences can now be configured so a request needs sign-off from all approvers instead of just one, with clearer progress tracking along the way.
+
+</Card>
+
+<Card icon="bug" iconType="solid" title="Plays and interview fixes">
+  <Fix category="Sales Plays" />
+
+  Fixed a stuck loading indicator on the Plays page, incorrect approval status on deals sent from the home page, and cut-off or missing messages in AI seller interviews.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="address-book" iconType="solid" title="Automatic internal contact sync">
+  <New category="CRM Integration" />
+
+  Internal contacts — your own team members on a deal — now sync in from your CRM automatically instead of needing to be added by hand.
+
+</Card>
+
+</CardGroup>
+
+### Developer Tools
+
+<CardGroup cols={1}>
+
+<Card icon="plug" iconType="solid" title="Connect external tools via MCP">
+  <Preview category="Developer Tools" />
+
+  Hindsight can now connect out to other tools over MCP. This is rolling out gradually behind a feature flag — reach out to your account team if you'd like early access.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="table-cells" iconType="solid" title="Refreshed Accounts & Deals pages">
+  <Improved category="Platform" />
+
+  Cleaner layout and navigation on the Accounts and Deals pages.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Fixes">
+  <Fix category="Platform" />
+
+  Fixed `.docx` file uploads, variable replacement in email subject and body text, an issue that could prevent a deal from being deleted, and comparable-deal filters not matching custom answers and metrics correctly.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
