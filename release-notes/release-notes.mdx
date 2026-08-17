@@ -5,6 +5,36 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Bulk CSV import for Decision Drivers, plus support for bringing your own OAuth client credentials on custom MCP connectors like Google Drive.
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="file-csv" iconType="solid" title="Bulk-import Decision Drivers from CSV">
+  <New category="Competitive Intelligence" />
+
+  Add Decision Drivers in bulk by uploading a CSV of names, tags, and descriptions instead of creating them one at a time. Available to Admins from the Decision Drivers page.
+
+</Card>
+
+</CardGroup>
+
+### Developer Tools
+
+<CardGroup cols={1}>
+
+<Card icon="key" iconType="solid" title="Bring your own OAuth client for MCP connectors">
+  <New category="Developer Tools" />
+
+  Connect custom MCP servers that require a pre-registered OAuth application — including Google Drive — by adding your own client ID and secret from **Settings → Connectors**. Connection errors now show a clearer message when a server needs these credentials.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
