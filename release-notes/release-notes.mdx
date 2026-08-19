@@ -5,6 +5,191 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Attach deals and pasted text directly into chat, sandboxed dataset analysis with shareable charts, new specialized Paige skills, configurable interview approvals and deal re-analysis rules, an early preview of MCP Connectors, and a round of reliability fixes across chat, deals, and interviews.
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="paperclip" iconType="solid" title="Bring more context into chat">
+  <New category="Chat & Analysis" />
+
+  Paste long blocks of text directly into a chat as reference material, or attach a specific deal from a picker, so Paige has exactly the context it needs without you having to search for it first.
+
+</Card>
+
+<Card icon="brain" iconType="solid" title="Cleaner reasoning and work summaries">
+  <Improved category="Chat & Analysis" />
+
+  Chat responses now group the AI's reasoning and in-progress work into collapsible sections for a tidier transcript, and the size limit for custom dataset-analysis scripts has been doubled so more complex analyses go through without being rejected.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="New Paige skills for sales and marketing">
+  <New category="Chat & Analysis" />
+
+  Three new specialized skills — competitive enablement, deal research, and deal strategy prep — are now available from chat, giving sales and marketing teams a purpose-built starting point instead of a blank prompt.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Sandboxed dataset analysis with shareable charts">
+  <New category="Chat & Analysis" />
+
+  Paige can now run custom dataset analyses in a secured sandbox and return charts you can expand, copy, or download via a shareable link.
+
+</Card>
+
+<Card icon="comments" iconType="solid" title="More reliable chat loading and sessions">
+  <Fix category="Chat & Analysis" />
+
+  Fixed cases where chat responses could disappear or get stuck loading, where a shared chat session could switch ownership when a teammate replied, and where empty sessions rendered incorrectly.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="check-double" iconType="solid" title="Require all approvers on a request">
+  <New category="Buyer Interviews" />
+
+  Sequences can now require sign-off from every configured approver instead of just one, with a progress indicator showing who has approved and who's still pending.
+
+</Card>
+
+<Card icon="slack" iconType="solid" title="Choose whether one-off requests send a Slack DM">
+  <New category="Buyer Interviews" />
+
+  The Slack DM toggle previously available only for bulk sends is now available when sending a single interview or feedback request too.
+
+</Card>
+
+<Card icon="gauge-high" iconType="solid" title="Faster interview response loading">
+  <Improved category="Buyer Interviews" />
+
+  The completed-responses view now loads in pages instead of fetching your entire response history at once, so organizations with a large archive see the page render instantly.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="More reliable Slack interviews and email sends">
+  <Fix category="Buyer Interviews" />
+
+  Fixed Slack-based interview transcripts occasionally cutting off before the closing remarks or starting with the wrong opening question, requests sent from a deal page showing an incorrect "pending approval" status, and merge variables sometimes not being substituted correctly in interview emails.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="arrows-rotate" iconType="solid" title="Configurable re-analysis triggers">
+  <New category="Deals" />
+
+  Choose exactly what should trigger a fresh AI analysis of a deal — a stage change, a property update, or a new document — instead of relying on a single fixed rule. Any stage change now triggers re-analysis by default.
+
+</Card>
+
+<Card icon="table-list" iconType="solid" title="Deal grid and deletion fixes">
+  <Fix category="Deals" />
+
+  Fixed a brief "no deals assigned" flash while the deals page was still loading, deleting a deal with chat history failing outright, and the org-wide collaborator filter returning the wrong deals when no collaborators were selected.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Filter deals by product">
+  <New category="CRM Integration" />
+
+  Quickly filter your deal list by the product labels synced from your CRM.
+
+</Card>
+
+<Card icon="address-book" iconType="solid" title="Internal contacts synced from your CRM">
+  <New category="CRM Integration" />
+
+  Deal owners and collaborators synced from HubSpot or Salesforce now appear in the Contacts tab alongside external contacts, instead of only buyer-side contacts.
+
+</Card>
+
+<Card icon="file-arrow-up" iconType="solid" title="More reliable document uploads">
+  <Fix category="CRM Integration" />
+
+  Fixed failures uploading Word, Excel, and PowerPoint files, with clearer success and error messages while an upload is processing.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="user-group" iconType="solid" title="Easier recipient search for Slack DMs">
+  <Improved category="Slack" />
+
+  Choosing who gets a Slack DM notification now uses a searchable list of your organization's members, replacing a list that got unwieldy for larger teams.
+
+</Card>
+
+<Card icon="quote-left" iconType="solid" title="Citations and cleaner formatting in Slack">
+  <Improved category="Slack" />
+
+  Slack replies from the Assistant now include citations and better-formatted plain text, and competitor pickers in Slack no longer show unnamed placeholder competitors.
+
+</Card>
+
+</CardGroup>
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Plays now act on matching deals">
+  <Improved category="Sales Enablement" />
+
+  Plays have moved beyond surfacing matching opportunities — they now actively research and take action on deals that match a play's criteria.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="sliders" iconType="solid" title="Turn off specific AI skills for your org">
+  <New category="Admin" />
+
+  Admins can now disable individual chat skills for their organization, so teams only see the skills relevant to how they work.
+
+</Card>
+
+</CardGroup>
+
+### Developer Tools
+
+<CardGroup cols={1}>
+
+<Card icon="plug" iconType="solid" title="MCP Connectors">
+  <Preview category="Developer Tools" />
+
+  An early preview of connecting third-party MCP servers to Hindsight, including support for your own OAuth client credentials. This is a flag-gated early access feature — reach out to your account team if you'd like to try it.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
