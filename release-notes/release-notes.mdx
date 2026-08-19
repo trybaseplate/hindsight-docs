@@ -5,6 +5,124 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Paige can now run its own sandboxed data analysis and three new specialized skills for enablement, deal research, and strategy prep, analysis runs can be fully personalized with custom triggers, CRM syncs now bring internal contacts into Hindsight automatically, and MCP connectors get a dedicated settings page — alongside fixes for interview delivery, chat loading, and document uploads.
+
+### Paige & Chat
+
+<CardGroup cols={1}>
+
+<Card icon="flask" iconType="solid" title="Sandboxed data analysis">
+  <New category="Chat & Analysis" />
+
+  Paige can now write and run its own Python-based analysis in an isolated sandbox to work through more complex quantitative questions, drawing on a reusable library of skills across conversations.
+
+</Card>
+
+<Card icon="chess-knight" iconType="solid" title="Specialized skills for enablement and deal strategy">
+  <New category="Chat & Analysis" />
+
+  Three new guided Paige workflows: **competitive enablement** content, **deal research**, and **account strategy prep** — each producing evidence-backed output you can act on directly.
+
+</Card>
+
+<Card icon="gauge-high" iconType="solid" title="Faster answers on large accounts">
+  <Fix category="Chat & Analysis" />
+
+  Fixed a timeout in Paige caused by scanning every document in your org before searching — semantic search now runs directly against just the relevant matches, so responses come back faster even for accounts with large document libraries.
+
+</Card>
+
+<Card icon="spinner" iconType="solid" title="Clearer chat loading states">
+  <Improved category="Chat & Analysis" />
+
+  Chat now shows clear loading indicators while Paige is working, and sessions with incomplete message data render correctly instead of getting stuck or showing broken avatars.
+
+</Card>
+
+</CardGroup>
+
+### Developer Tools
+
+<CardGroup cols={1}>
+
+<Card icon="plug" iconType="solid" title="MCP connectors settings page">
+  <Preview category="Developer Tools" />
+
+  Admins can now connect external MCP-compatible tools directly from Settings, expanding what data and actions are available to Paige.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="address-book" iconType="solid" title="Internal contacts sync from your CRM">
+  <New category="CRM Integration" />
+
+  Deal owners, collaborators, and other internal contacts from HubSpot and Salesforce now sync automatically into Hindsight and link to the right deals — no manual entry needed.
+
+</Card>
+
+</CardGroup>
+
+### Deals & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="sliders" iconType="solid" title="Personalize when deals get re-analyzed">
+  <New category="Deals" />
+
+  Configure custom triggers — stage changes, property updates, new documents — to control exactly when Hindsight re-runs analysis on a deal, right from Settings.
+
+</Card>
+
+<Card icon="rotate" iconType="solid" title="Smarter default re-analysis">
+  <Improved category="Deals" />
+
+  Deals now re-analyze automatically on any stage change by default, with existing organizations backfilled to the same behavior.
+
+</Card>
+
+<Card icon="trash" iconType="solid" title="Deal deletion no longer errors out">
+  <Fix category="Deals" />
+
+  Fixed an error that could block deleting a deal when it had associated AI chat sessions attached.
+
+</Card>
+
+<Card icon="file-word" iconType="solid" title="More reliable document uploads">
+  <Fix category="Deals" />
+
+  Fixed an issue affecting .docx, .xlsx, and .pptx uploads so they parse correctly and show clear success and error notifications.
+
+</Card>
+
+</CardGroup>
+
+### Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Require every approver before sending">
+  <New category="Interviews" />
+
+  Interview requests can now require sign-off from every listed approver instead of just one, with clear progress shown as each approval comes in.
+
+</Card>
+
+<Card icon="envelope-circle-check" iconType="solid" title="Cleaner interview delivery">
+  <Fix category="Interviews" />
+
+  Fixed cut-off transcripts, a missing opening message from the AI interviewer in Slack, incorrect approval status on direct Slack sends, and variable placeholders not filling in correctly in request emails.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
