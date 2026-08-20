@@ -5,6 +5,240 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+A first look at Comparable Deals, new specialized Paige skills for competitive enablement and deal strategy, MCP Connectors, richer chat context and dataset analysis tools, and a batch of reliability fixes across Slack, CRM sync, and deal management.
+
+### Comparable Deals
+
+<CardGroup cols={1}>
+
+<Card icon="scale-balanced" iconType="solid" title="Comparable Deals">
+  <Preview category="Comparable Deals" />
+
+  A new way to see how a deal stacks up against the most similar deals you've already run — surfaced automatically from your deal history.
+
+  **Configurable matching** — Shortlist comparable deals by the dimensions that matter most (segment, product, deal size, and more), with semantic similarity scoring under the hood.
+
+  **AI-scored evidence** — Each comparison is backed by an evidence audit rating how useful and transferable the supporting quotes are, so scores come with a clear "why."
+
+  **Research briefs** — Paige researches each candidate deal before scoring it, and its findings are shown alongside the final comparison.
+
+  Find it from the Comparable Deals playground on a deal's page — reliability and shortlist quality will keep improving as this rolls out further.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="New specialized Paige skills">
+  <New category="Chat & Analysis" />
+
+  Paige gained three focused skills for common workflows: **Competitive Enablement**, **Deal Research**, and **Deal Strategy Prep** — each with sharper guidance so responses are more actionable for sales and marketing teams.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Sandboxed dataset analysis">
+  <New category="Chat & Analysis" />
+
+  Paige can now run data analysis scripts in a secure sandbox and return the results as shareable charts you can expand, copy, or download — directly in the chat. Larger, more complex analyses are supported with an increased script size limit.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Attach deal context and pasted text to chat">
+  <New category="Chat & Analysis" />
+
+  Pick a specific deal from a new deal picker to ground your question in its context, or paste in a long block of text to use as reference material — both now show up clearly as attached context on your message.
+
+</Card>
+
+<Card icon="brain" iconType="solid" title="Tidier reasoning trail in chat">
+  <Improved category="Chat & Analysis" />
+
+  Paige's "Thinking" and "Work" blocks now group consecutive updates together instead of listing every step individually, so the reasoning trail is easier to skim.
+
+</Card>
+
+<Card icon="bolt" iconType="solid" title="More reliable streamed responses">
+  <Fix category="Chat & Analysis" />
+
+  Fixed bugs that could cut off or stall streamed chat responses. Search-result hover cards also now show the AI's tool inputs, so it's clearer what was searched to produce a result.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Personalized analysis runs">
+  <Improved category="Chat & Analysis" />
+
+  Reanalysis now kicks in on smarter default conditions, and analysis runs support more personalization so results better match how your team evaluates deals.
+
+</Card>
+
+<Card icon="user-check" iconType="solid" title="Fixed message ownership in shared chats">
+  <Fix category="Chat & Analysis" />
+
+  Fixed a bug where a teammate replying in an existing chat thread could unintentionally take over ownership of that session, plus fixed avatar rendering for messages without associated user data.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="address-book" iconType="solid" title="Sync internal contacts from your CRM">
+  <New category="CRM Integration" />
+
+  Your team's internal contacts now sync automatically from your CRM into Hindsight, so ownership and routing (like interview requests) stay accurate without manual upkeep.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Unlimited Snowflake imports">
+  <Improved category="CRM Integration" />
+
+  Scheduled Snowflake syncs no longer cap how many deals can be imported per run, so larger backlogs come in without needing multiple runs.
+
+</Card>
+
+</CardGroup>
+
+### Developer Tools
+
+<CardGroup cols={1}>
+
+<Card icon="plug" iconType="solid" title="MCP Connectors">
+  <Preview category="Developer Tools" />
+
+  Connect external MCP-compatible tools to Hindsight from a new Connectors page in Settings, with support for your own custom OAuth client credentials when a service requires them.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="Faster user search for Slack DMs">
+  <Improved category="Slack" />
+
+  Selecting a teammate for Slack DM workflows (like interview requests) now uses a searchable org member picker instead of loading your entire user list, so it stays fast for larger teams.
+
+</Card>
+
+<Card icon="slack" iconType="solid" title="Cleaner Slack modals and messages">
+  <Improved category="Slack" />
+
+  Slack modals now refresh correctly right after you add competitor intel, placeholder or unnamed competitors no longer clutter the dropdown, and plain-text message formatting is more consistent.
+
+</Card>
+
+<Card icon="toggle-off" iconType="solid" title="Disable specific Skills per organization">
+  <New category="Admin" />
+
+  Admins can now turn off individual report-type Skills for their organization, so teams only see the ones relevant to how they work.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="clipboard-check" iconType="solid" title="Require unanimous approval for sequences">
+  <New category="Buyer Interviews" />
+
+  Interview sequences can now require every configured approver to sign off before buyer outreach goes out, instead of just one.
+
+</Card>
+
+<Card icon="id-badge" iconType="solid" title="Fixed demo survey respondent names">
+  <Fix category="Buyer Interviews" />
+
+  Fixed an issue where demo interview surveys could show a placeholder name instead of the respondent's actual name.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="tags" iconType="solid" title="Fixed inaccurate auto-suggested tags">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed a regression that could produce bad auto-suggested competitors, drivers, or features.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="file-csv" iconType="solid" title="Bulk-import drivers via CSV">
+  <New category="Deals" />
+
+  Import Decision Drivers in bulk from a CSV file directly on the Drivers page, instead of adding them one at a time.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Clearer deal document filtering">
+  <Improved category="Deals" />
+
+  Deal document type filters now resolve common aliases to one canonical label for more consistent filtering, and saved competitive-intelligence searches show a loading state while results come in.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Deal management bug fixes">
+  <Fix category="Deals" />
+
+  Fixed bugs affecting deal deletion, sequence enrollment, variable replacement in email subject and body text, and `.docx` document uploads.
+
+</Card>
+
+<Card icon="users" iconType="solid" title="Fixed empty collaborator filters">
+  <Fix category="Deals" />
+
+  Fixed an issue where organization-wide deal views could return incorrect results when collaborator filters were left empty.
+
+</Card>
+
+<Card icon="square-check" iconType="solid" title="Fixed Custom Answer & Metric filters">
+  <Fix category="Deals" />
+
+  Fixed a bug where filtering by Custom Answers and Custom Metrics could fail to match deals against their stored values.
+
+</Card>
+
+<Card icon="spinner" iconType="solid" title="Fixed Plays loading indicator">
+  <Fix category="Sales Enablement" />
+
+  Fixed the Plays page loading indicator so it accounts for tier and opportunity data loading together, instead of only one.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="box" iconType="solid" title="Filter by product">
+  <New category="Dashboard & Analytics" />
+
+  Added a product-based quick filter, using product labels synced from your CRM, alongside the existing dashboard and deal filters.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
