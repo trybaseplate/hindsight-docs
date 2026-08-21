@@ -5,6 +5,116 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+New Paige agent skills and sandboxed data analysis, MCP connectors in chat, more control over when AI analysis reruns on a deal, stronger approval controls for win-loss interviews, and a batch of reliability fixes across chat, CRM sync, and document uploads.
+
+### Paige (AI Agent)
+
+<CardGroup cols={1}>
+
+<Card icon="user-graduate" iconType="solid" title="Specialized skills for enablement & deal strategy">
+  <New category="AI Agent" />
+
+  Paige can now run three purpose-built skills — **competitive enablement**, **deal research**, and **deal strategy prep** — each tuned to produce evidence-backed answers grounded in your deal data instead of generic responses.
+
+</Card>
+
+<Card icon="flask" iconType="solid" title="Sandboxed dataset analysis">
+  <New category="AI Agent" />
+
+  For quantitative questions, Paige can now run isolated, code-based analysis over your deal data in a secure sandbox — going beyond retrieval to compute and verify its own numbers before answering.
+
+</Card>
+
+<Card icon="comments" iconType="solid" title="More reliable chat">
+  <Fix category="Chat & Analysis" />
+
+  Fixed chat sessions occasionally getting stuck "in progress" instead of completing, added clearer loading indicators while Paige is working, sped up responses for organizations with large document libraries, and fixed message avatars showing incorrectly when a teammate sends a message.
+
+</Card>
+
+</CardGroup>
+
+### Developer Tools
+
+<CardGroup cols={1}>
+
+<Card icon="plug" iconType="solid" title="MCP connectors in chat">
+  <Beta category="Developer Tools" />
+
+  Attach context from your own MCP-compatible connectors directly into a chat conversation, and pick which skill to run mid-thread. Available to organizations on the early-access flag.
+
+</Card>
+
+</CardGroup>
+
+### Deal Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="sliders" iconType="solid" title="Personalize when AI analysis reruns">
+  <New category="Deal Analysis" />
+
+  A new **Settings → Analysis** page lets you control exactly when Hindsight re-analyzes a deal — on a stage change, a specific CRM property change, or whenever a new document lands — instead of one fixed rule for every deal.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="Smarter default reanalysis">
+  <Improved category="Deal Analysis" />
+
+  Deals now reanalyze automatically on any stage change by default if you haven't set custom rules. Also fixed an error that could block deleting a deal that had existing chat history.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="address-book" iconType="solid" title="Internal contacts sync from your CRM">
+  <New category="CRM Integration" />
+
+  Deal owners and collaborators from HubSpot and Salesforce are now synced into Hindsight's contacts and linked to their deals automatically, with deduplication so the same person doesn't show up twice.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Require approval from everyone before sending">
+  <New category="Buyer Interviews" />
+
+  Sequences can now require every configured approver to sign off — not just one — before a buyer interview request goes out, with a progress indicator showing who's approved and who's still pending.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Interview reliability fixes">
+  <Fix category="Buyer Interviews" />
+
+  Fixed several issues in seller and buyer interviews: approval status no longer shows as "pending" for immediate Slack DM requests sent from a deal's page, email template variables now fill in correctly, a new toggle lets you turn Slack DM notifications on or off for one-off sends, and Slack-based interview transcripts and opening messages no longer get cut off or skipped.
+
+</Card>
+
+</CardGroup>
+
+### Assets
+
+<CardGroup cols={1}>
+
+<Card icon="file-word" iconType="solid" title="Document upload fixes">
+  <Fix category="Assets" />
+
+  Fixed an issue preventing some Word, Excel, and PowerPoint files from uploading and parsing correctly. Media uploads with no spoken audio are now marked as skipped instead of repeatedly showing up as failed.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
