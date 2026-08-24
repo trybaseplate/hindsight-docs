@@ -5,6 +5,158 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+A first look at **Comparable Deals** — AI-matched similar past deals with a scoring playground — new Paige skills for deal prep, richer visibility into Paige's work as it runs, Sales Play filtering and import for Snowflake-connected orgs, a faster Slack DM picker for large teams, and fixes across deal filters, Buyer Interviews, and approval workflows.
+
+### Deal Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="clone" iconType="solid" title="Comparable Deals" href="/release-notes/comparable-deals">
+  <Preview category="Deal Intelligence" />
+
+  Hindsight can now surface your most similar past deals — won or lost — for any open opportunity, scored by fit and grounded in real evidence from your data, with a playground to review and tune how the matching works.
+
+  [Read the full Comparable Deals notes →](/release-notes/comparable-deals)
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Filter and import by Sales Play">
+  <New category="CRM Integration" />
+
+  Filter and import deals by the Sales Play assigned in your CRM, with support for matching on part of a name or against multiple plays at once — the same flexible filtering already available for other CRM fields. Available for Snowflake-connected organizations.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="bolt" iconType="solid" title="Quick filter by Product">
+  <New category="Dashboard & Analytics" />
+
+  Added Product as a one-click quick filter alongside Industry, Owner, and Status, so you can jump straight to a product line's deals.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="list-check" iconType="solid" title="New Paige skills for deal prep">
+  <New category="Chat & Analysis" />
+
+  Paige gained three specialized skills you can call on directly: **competitive enablement**, **deal research**, and **strategy prep** — each tuned with its own guidance for sales and marketing use cases.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Attach a deal or paste long text as context">
+  <New category="Chat & Analysis" />
+
+  Pick a specific deal to anchor your question, or paste long text directly into a conversation, and Paige uses it as context for the discussion.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Charts from Paige's data analysis">
+  <New category="Chat & Analysis" />
+
+  When Paige runs a dataset analysis, results can now include charts right in the conversation — expand, copy, or download them without leaving chat.
+
+</Card>
+
+<Card icon="eye" iconType="solid" title="See more of Paige's work as it happens">
+  <Improved category="Chat & Analysis" />
+
+  Reasoning and in-progress work now render as collapsible sections you can expand for detail, and Paige can work through larger, more complex analyses without hitting size limits.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Faster Slack DM setup for large teams">
+  <Improved category="Slack" />
+
+  Picking who to DM now uses a searchable picker that queries your organization directly instead of loading every member up front — noticeably faster for larger teams.
+
+</Card>
+
+<Card icon="quote-right" iconType="solid" title="Clearer Slack answers with citations">
+  <Improved category="Slack" />
+
+  Slack replies from the AI Assistant now include citations and cleaner formatting, and unnamed competitors no longer clutter the competitor picker.
+
+</Card>
+
+</CardGroup>
+
+### Buyer Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="check-double" iconType="solid" title="Require all approvers before an interview sequence sends">
+  <New category="Buyer Interviews" />
+
+  Sequences can now be configured to require sign-off from every approver, not just one, before an interview request goes out, with clearer progress tracking on where each request stands.
+
+</Card>
+
+<Card icon="bug" iconType="solid" title="Interview and demo fixes">
+  <Fix category="Buyer Interviews" />
+
+  Fixed cut-off transcripts and missing opening messages on some AI interviews, and fixed the demo survey occasionally showing a placeholder name instead of the respondent's actual name.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Filter fixes">
+  <Fix category="Deals" />
+
+  Fixed the "Analyzed" filter mishandling some true/false/no-data combinations, and fixed Custom Answer and Custom Metric filters not matching correctly against stored values.
+
+</Card>
+
+<Card icon="circle-check" iconType="solid" title="Approval status now displays correctly from the home page">
+  <Fix category="Deals" />
+
+  Fixed approval status not showing correctly for deals sent for approval from the home page.
+
+</Card>
+
+</CardGroup>
+
+### Plays
+
+<CardGroup cols={1}>
+
+<Card icon="spinner" iconType="solid" title="Fixed a loading indicator on the Plays page">
+  <Fix category="Plays" />
+
+  Fixed the Plays page occasionally showing as loaded before all of its data had actually finished loading.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
