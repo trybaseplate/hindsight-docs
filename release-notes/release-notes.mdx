@@ -5,6 +5,169 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+A new Comparable Deals playground for finding and scoring similar deals, Sales Plays that now research and act on matching opportunities automatically, richer deal context and interactive charts in Chat, Recipes' full retirement in favor of prompt-based Skills, and a refreshed Connectors page.
+
+### Comparable Deals
+
+<CardGroup cols={1}>
+
+<Card icon="scale-balanced" iconType="solid" title="Comparable Deals playground">
+  <Preview category="Deal Insights" />
+
+  A new way to see how a deal stacks up against others like it.
+
+  **Configurable matching** — Set up how deals are compared (segment, deal size, product, and more) and preview results before rolling it out to your team.
+
+  **AI-scored fit, with evidence** — Each comparable deal gets an AI-generated score, backed by a visible breakdown of the evidence used and how useful and transferable it was judged to be.
+
+  **Research briefs** — Hindsight researches each comparable deal before scoring it, and shows that brief alongside the score for extra context.
+
+</Card>
+
+</CardGroup>
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Plays now research and act, not just surface">
+  <Improved category="Sales Enablement" />
+
+  Opportunity Plays have moved beyond surfacing candidate opportunities — Hindsight now researches each matching deal and prepares recommended actions automatically.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Filter and import deals by Sales Play">
+  <New category="CRM Integration" />
+
+  Deals can now be filtered and imported by their Sales Play, synced in from your CRM, so you can quickly focus on deals tied to a specific play.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="bullseye" iconType="solid" title="Bring a specific deal into chat">
+  <New category="Chat & Analysis" />
+
+  Attach a specific deal as context in Chat with a new deal picker, or paste in long text directly as context — both show up clearly in the chat input so you always know what the AI is working from.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Interactive charts in chat">
+  <Improved category="Chat & Analysis" />
+
+  Charts generated during dataset analysis can now be expanded, copied, and downloaded directly from the chat.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Clearer view into the AI's work">
+  <Improved category="Chat & Analysis" />
+
+  Chat responses now group reasoning and work updates into cleaner, collapsible sections, and hovering a search result shows the AI tool input that produced it. Dataset-analysis scripts can now be significantly larger, supporting more complex analyses.
+
+</Card>
+
+<Card icon="user-group" iconType="solid" title="New Skills for competitive prep">
+  <New category="Chat & Analysis" />
+
+  Three new built-in Skills — competitive enablement, deal research, and deal strategy preparation — give reps and CI teams ready-made starting points for common workflows.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Recipes fully retired in favor of Skills">
+  <Improved category="Platform" />
+
+  Recipes have been fully replaced by prompt-based Workflows and Skills. Admins can also now turn off individual Skills for their organization.
+
+</Card>
+
+<Card icon="plug" iconType="solid" title="Refreshed Connectors page">
+  <Improved category="Developer Tools" />
+
+  The Connectors page has an updated layout with more integrations available, plus support for bringing your own OAuth client credentials for MCP connections.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="file-csv" iconType="solid" title="Bulk-import Decision Drivers via CSV">
+  <New category="CRM Integration" />
+
+  Import Decision Drivers in bulk from a CSV file, right from the Drivers page.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Cleaner Slack DMs and Assistant replies">
+  <Improved category="Slack" />
+
+  Slack Assistant replies now render with better formatting and citations, DMs can be toggled on or off, and choosing who to message now searches your full organization directly instead of a fixed list. Unnamed competitors no longer clutter Slack dropdowns.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Require every approver before an interview goes out">
+  <New category="Buyer Interviews" />
+
+  Interview sequences can now require sign-off from every configured approver, not just one, before a request is sent.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Interview reliability fixes">
+  <Fix category="Buyer Interviews" />
+
+  Fixed cut-off response transcripts, a missing opening message in some AI-led interviews, and incorrect approval status shown for requests sent from the deal home page.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="building" iconType="solid" title="Cleaner Accounts & Deals pages">
+  <Improved category="Deals" />
+
+  Refreshed layout and simplified flows across the Accounts and Deals pages.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Deal and filtering fixes">
+  <Fix category="Deals" />
+
+  Fixed deal deletion and enrollment bugs, incorrect variable replacement in sequence emails, a loading-indicator issue on the Plays page, and Custom Answer/Metric filters not matching correctly. Document uploads now also support `.docx` files, deal document type filters use consistent naming, and organization-wide deal filters correctly handle empty collaborator lists.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
