@@ -5,6 +5,225 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## August 2026
+
+Comparable Deals brings AI-matched historical deals into every conversation, Sales Plays now researches and acts on matching opportunities instead of just surfacing them, new chat skills and a deal context picker make it easier to steer conversations, and a long list of reliability and filtering fixes round out the month.
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="clone" iconType="solid" title="Comparable Deals">
+  <New category="Competitive Intelligence" />
+
+  Hindsight can now find and evaluate deals that are truly comparable to the one you're working, matching on stage, competitors, features, and semantic similarity — with your most recent comparable deals prioritized first.
+
+  **Evidence-backed insights** — Each comparable deal comes with researched, audited evidence explaining why it's relevant and what happened, so recommendations are grounded in real detail rather than a raw similarity score.
+
+  **Available in chat** — Ask about comparable deals directly in chat and get a cited, synthesized answer pulling from your most similar past deals.
+
+</Card>
+
+<Card icon="file-csv" iconType="solid" title="Bulk-import decision drivers">
+  <New category="Competitive Intelligence" />
+
+  Import decision drivers in bulk from a CSV file directly on the Drivers page, instead of adding them one at a time.
+
+</Card>
+
+<Card icon="broom" iconType="solid" title="Cleaner tags and competitor lists">
+  <Fix category="Competitive Intelligence" />
+
+  Fixed a regression that could produce invalid or redundant auto-suggested competitors, drivers, and features.
+
+  Competitor dropdowns and selection lists — including in Slack — no longer show unnamed placeholder competitors, and now sort alphabetically.
+
+</Card>
+
+</CardGroup>
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Plays now research and act on deals">
+  <Improved category="Sales Enablement" />
+
+  Opportunity Plays no longer just surface candidate opportunities — Hindsight now researches each matching deal and takes (or recommends) the appropriate action automatically.
+
+</Card>
+
+<Card icon="database" iconType="solid" title="Import and filter Sales Plays from your CRM">
+  <New category="Sales Enablement" />
+
+  Sales Plays data now syncs in from your CRM, and you can filter plays using new substring ("contains text") and array-contains filter types for more precise views.
+
+</Card>
+
+<Card icon="spinner" iconType="solid" title="Fixed Plays loading state">
+  <Fix category="Sales Enablement" />
+
+  Fixed a bug where the Plays page could show an incorrect loading indicator.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Require all approvers">
+  <New category="Buyer Interviews" />
+
+  Sequences can now require every configured approver to sign off before an interview request goes out, instead of stopping at the first approval.
+
+</Card>
+
+<Card icon="bolt" iconType="solid" title="Faster Responses library">
+  <Improved category="Buyer Interviews" />
+
+  The Responses library now loads incrementally with a "Load more" control instead of fetching every recorded interview at once, so pages with a lot of history load noticeably faster.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Interview and sequence fixes">
+  <Fix category="Buyer Interviews" />
+
+  Fixed cut-off response transcripts and a bug where the first message could be missing from AI-led interviews.
+
+  Fixed the demo interview showing a placeholder name ("contact-demo") instead of the respondent's real name.
+
+  Fixed merge variables (like contact name) not being replaced correctly in sequence email subject lines and bodies.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake sync improvements">
+  <Improved category="CRM Integration" />
+
+  Scheduled Snowflake syncs no longer cap the number of deals imported per run, so backlogs clear in a single pass instead of trickling in over multiple runs.
+
+</Card>
+
+<Card icon="address-book" iconType="solid" title="Internal contacts sync">
+  <New category="CRM Integration" />
+
+  Hindsight now syncs your internal team members from your CRM into Contacts, making it easier to distinguish internal stakeholders from buyer-side contacts on a deal.
+
+</Card>
+
+</CardGroup>
+
+### Deals
+
+<CardGroup cols={1}>
+
+<Card icon="sliders" iconType="solid" title="More precise deal filtering">
+  <Improved category="Deals" />
+
+  **New filter types** — Include, Include any of, and Do not include give you finer control when building deal filters and datasets.
+
+  **Analyzed-deal filtering** — Filtering by whether a deal has been analyzed now handles edge cases correctly, including combinations that exclude both analyzed and unanalyzed deals.
+
+  **Consistent document type labels** — Deal document type filters now show standardized names no matter which alias was used to set them up.
+
+</Card>
+
+<Card icon="wrench" iconType="solid" title="Deal fixes">
+  <Fix category="Deals" />
+
+  Fixed a bug that could prevent a deal from being deleted, and fixed organization-wide deal filters returning incorrect results when no collaborators were set.
+
+  Fixed uploads failing for `.docx` deal documents, and fixed owner filters (including in chat) so they also match deals imported from your CRM where the owner is stored as an email rather than a linked user.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="New agent skills">
+  <New category="Chat & Analysis" />
+
+  Trigger purpose-built skills directly in chat — Competitive Enablement, Research Hindsight Deals, and Prepare Deal Strategy — each tuned with its own response format and evidence standards for that workflow.
+
+</Card>
+
+<Card icon="paperclip" iconType="solid" title="Attach deals and long text as context">
+  <New category="Chat & Analysis" />
+
+  A new deal context picker lets you search for and attach a specific deal to your conversation without leaving the chat input. Pasting a long block of text now attaches it as context instead of filling up the input box.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Clearer reasoning, charts, and search results">
+  <Improved category="Chat & Analysis" />
+
+  Long AI reasoning and tool-use steps now collapse into clean, expandable sections instead of filling up the conversation.
+
+  Charts generated during analysis can be expanded, copied, or downloaded directly from chat, and hover cards on search results now show the underlying tool inputs for more transparency into how an answer was built. Saved competitive intelligence searches also show a loading indicator while results come in.
+
+</Card>
+
+<Card icon="arrows-rotate" iconType="solid" title="Chat reliability fixes">
+  <Fix category="Chat & Analysis" />
+
+  Fixed bugs causing chat responses to stream incorrectly or stall on longer-running requests, and added automatic checkpointing so progress isn't lost if a response is interrupted.
+
+  Fixed avatars and session ownership in shared chat threads so teammates' messages display correctly.
+
+</Card>
+
+</CardGroup>
+
+### Admin
+
+<CardGroup cols={1}>
+
+<Card icon="toggle-off" iconType="solid" title="Disable report types per organization">
+  <New category="Admin" />
+
+  Admins can now disable specific report types or skills for their organization, so teams only see the workflows relevant to them.
+
+</Card>
+
+<Card icon="slack" iconType="solid" title="Org-wide user picker for Slack DMs">
+  <Improved category="Admin" />
+
+  Selecting recipients for Slack DMs (competitor owners, NPS notifications, and more) now uses a searchable picker across your whole organization, so it scales for large teams instead of listing every member at once.
+
+</Card>
+
+</CardGroup>
+
+### Developer Tools
+
+<CardGroup cols={1}>
+
+<Card icon="plug" iconType="solid" title="MCP Connectors">
+  <Preview category="Developer Tools" />
+
+  A new Settings → Connectors page lets you add and manage MCP connections, rolling out gradually.
+
+</Card>
+
+<Card icon="key" iconType="solid" title="Bring your own OAuth credentials">
+  <Improved category="Developer Tools" />
+
+  MCP connections now support custom OAuth client IDs and secrets, with clearer error messages when a connection fails to authenticate.
+
+</Card>
+
+</CardGroup>
+
 ## July 2026
 
 The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, and a fix for deal exports.
