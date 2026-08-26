@@ -7,7 +7,7 @@ import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-t
 
 ## August 2026
 
-A new Comparable Deals engine for surfacing and learning from similar past opportunities, Sales Plays that research and act on matching deals automatically, several new Paige AI capabilities — deal-grounded chat context, sandboxed data analysis with charts, and specialized skills for competitive enablement and deal strategy — plus MCP connectors in preview, Slack and CRM improvements, and a round of reliability fixes across chat, deals, and interviews.
+Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
 
 ### Comparable Deals
 
@@ -16,13 +16,13 @@ A new Comparable Deals engine for surfacing and learning from similar past oppor
 <Card icon="scale-balanced" iconType="solid" title="Comparable Deals (v1)">
   <Preview category="Comparable Deals" />
 
-  A new AI-powered way to see which past deals look most like the one you're working — matched on evidence from calls, notes, and CRM data, not just surface-level fields like industry or deal size.
+  Find past opportunities most similar to the deal you are working, based on evidence from calls, notes, and CRM data—not just fields such as industry or deal size.
 
-  **Evidence-backed matches** — Each comparable deal comes with an auditable rationale and usefulness rating, so you can see *why* it was surfaced.
+  **Evidence-backed matches** — Each match includes an auditable rationale and usefulness rating, so you can see why it was surfaced.
 
   **AI research briefs** — Paige researches each candidate deal before scoring it, adding context beyond what's in the raw data.
 
-  **Faster, better-prioritized results** — Matching now runs at scale in the background and favors more recent deals, so results come back quickly and stay relevant.
+  **Faster, better-prioritized results** — Background matching prioritizes recent deals, so results arrive quickly and remain relevant.
 
 </Card>
 
@@ -32,11 +32,12 @@ A new Comparable Deals engine for surfacing and learning from similar past oppor
 
 <CardGroup cols={1}>
 
-<Card icon="chess-knight" iconType="solid" title="Plays now research and act on matching deals">
+<Card icon="chess-knight" iconType="solid" title="Plays (Beta)">
   <Improved category="Sales Plays" />
 
-  Plays has moved beyond win-back and upsell opportunities — it's now a full-fledged Sales Play launcher, leveraging the full Hindsight AI Agent. Create custom Trigger conditions, write Plays-as-a-prompt, and attach your playbooks or instructions.
-  Hindsight's Agent wakes up when Play triggers are met (e.g. deal reaches stage 2 and has 2+ competitors), follows your instructions, and pings reps in Slack or via Email. Reps can easily continue the conversation in Slack, Claude, ChatGPT, or Hindsight to execute the winning play.
+  Plays has moved from Alpha to Beta and expanded beyond win-back and upsell opportunities. Build proactive Sales Plays with custom trigger conditions, prompt-based instructions, and attached playbooks.
+
+  When a trigger is met—for example, a deal reaches stage 2 with two or more competitors—the Hindsight Agent follows your instructions and alerts reps in Slack or email. Reps can continue the work in Slack, Claude, ChatGPT, or Hindsight.
 
 </Card>
 
@@ -46,78 +47,81 @@ A new Comparable Deals engine for surfacing and learning from similar past oppor
 
 <CardGroup cols={1}>
 
-<Card icon="file-lines" iconType="solid" title="Ground chat in a specific deal">
+<Card icon="flask" iconType="solid" title="New Data Analysis Sandbox Tool (Python)">
   <New category="Chat & Analysis" />
 
-  Pick a deal to ground your question in its context, or paste in a long block of text as context — both now show up clearly alongside your message so it's obvious what the AI is working from.
+  Paige can now run custom Python scripts in a secure sandbox for more flexible data analysis. Ask it to analyze a dataset and return charts you can expand, copy, or download. Scripts can also be twice as long, supporting more complex requests.
 
 </Card>
 
-<Card icon="flask" iconType="solid" title="Sandboxed data analysis with charts">
+<Card icon="file-lines" iconType="solid" title="Quick Context Selector">
   <New category="Chat & Analysis" />
 
-  Ask Paige to analyze a dataset and get back charts you can expand, copy, or download, generated in a secured sandbox. Analysis scripts can also be twice as long as before, for more complex requests.
+  Type `/` in chat to add specific deals, datasets, or skills as context for your question. Pasted text now appears outside the message input, making the context easier to review before you send.
 
 </Card>
 
-<Card icon="graduation-cap" iconType="solid" title="New specialized Paige skills">
+
+<Card icon="graduation-cap" iconType="solid" title="Skills fully replace Recipes">
   <New category="Chat & Analysis" />
 
-  Four new skills tuned for common workflows: **competitive enablement**, **researching Hindsight deals**, **data analysis**, and **preparing deal strategy** — each with guidance tailored to the task.
+  Skills now fully replace Recipes. Every team starts with four default skills for **competitive enablement**, **Hindsight deal research**, **data analysis**, and **deal strategy**. Add custom skills from the [Skills page](https://app.usehindsight.com/skills).
+
+  The Hindsight Agent loads the right skills dynamically, so you do not need to select them manually.
 
 </Card>
 
 <Card icon="brain" iconType="solid" title="Clearer view into the AI's work">
   <Improved category="Chat & Analysis" />
 
-  Reasoning and work-in-progress now group into collapsible sections in the chat UI, so it's easier to follow along without the response feeling cluttered.
+  Reasoning and in-progress work now appear in collapsible chat sections, making responses easier to follow without adding clutter.
 
 </Card>
 
 <Card icon="hourglass-half" iconType="solid" title="More reliable long-running responses">
   <Improved category="Chat & Analysis" />
 
-  Long AI responses now checkpoint their progress and wrap up within a time budget instead of stalling out, and comparable-deal lookups are now available as a tool the AI can call directly in chat.
+  Long responses now checkpoint progress and finish within a time budget instead of stalling. Paige can also look up comparable deals directly in chat.
 
 </Card>
 
 <Card icon="bug" iconType="solid" title="Chat session fixes">
   <Fix category="Chat & Analysis" />
 
-  Fixed a bug where a teammate replying in a shared chat thread could accidentally take over the session, and fixed avatars not rendering correctly on some messages.
+  Fixed shared-thread replies inadvertently taking over a session and avatars failing to render on some messages.
 
 </Card>
 
 </CardGroup>
 
 ### Admin Controls
-<CardGroup>
+
+<CardGroup cols={1}>
 
 <Card icon="toggle-off" iconType="solid" title="Turn off specific report types per organization">
   <New category="Slack" />
 
-  Admins can now disable individual report or skill types for their organization, so teams only see the Slack outputs that are relevant to them.
+  Admins can disable individual report and skill types so teams see only relevant Slack outputs.
 
 </Card>
 
 </CardGroup>
 
-
 ### Platform
 
 <CardGroup cols={1}>
 
-<Card icon="diagram-project" iconType="solid" title="Recipes are now fully prompt-based Workflows">
+<Card icon="diagram-project" iconType="solid" title="Prompt-based Workflows replace Recipes">
   <Improved category="Platform" />
 
-  Recipe workflows have been replaced by the prompt-based Workflows, with inline editing of workflow prompts directly from the UI. Workflows are now more flexible and easier to maintain, providing a smoother experience for building and managing automated processes.
+  All existing workflows have migrated automatically—no action is needed. Workflows are now prompt-based, can reference skills without depending on them, and work like scheduled chat conversations. This makes them much easier to edit and manage.
 
 </Card>
 
 <Card icon="file-csv" iconType="solid" title="Bulk-import Drivers from a CSV">
   <New category="Platform" />
 
-  Import Decision Drivers in bulk from a CSV file on the Drivers page instead of adding them one at a time.
+  Import Decision Drivers from a CSV on the Drivers page instead of adding them one at a time.
 
 </Card>
 
@@ -126,7 +130,7 @@ A new Comparable Deals engine for surfacing and learning from similar past oppor
 
 ## July 2026
 
-Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,quick dashboard filters, Recipes renamed as Skills, and Snowflake sync reliability.
+MCP 2.0, stronger controls for Custom Metrics and Answers, faster dashboard filtering, more reliable Snowflake syncs, and new Slack and interview improvements.
 
 ### Developer Tools
 
@@ -135,7 +139,7 @@ Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,q
 <Card icon="plug" iconType="solid" title="MCP 2.0" href="/release-notes/mcp-2.0">
   <Improved category="Developer Tools" />
 
-  OAuth is now the primary sign-in, capabilities are exposed as **direct tool calls** (faster responses and per-tool control) instead of a single orchestrating agent, plus CORS and reliability fixes. This is a **breaking change** and our first stable contract.
+  OAuth is now the primary sign-in method, and capabilities are exposed as **direct tool calls** for faster responses and per-tool control rather than through a single orchestrating agent. This breaking change establishes our first stable contract and includes CORS and reliability fixes.
 
   Hindsight is now a Claude Community Connector.
 
@@ -146,14 +150,14 @@ Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,q
 <Card icon="sliders" iconType="solid" title="Per-tool MCP controls for admins">
   <New category="Developer Tools" />
 
-  Admins can now choose which MCP tools are available to their organization and add custom instructions for how each tool should be used, so Claude, ChatGPT, and other MCP clients behave consistently with your team's conventions. Connections also stay signed in longer, and tools show clearer, human-readable names and error messages in your client.
+  Admins can choose available MCP tools and add per-tool instructions, keeping Claude, ChatGPT, and other clients aligned with your team's conventions. Connections also stay signed in longer, and tools now have clearer names and error messages.
 
 </Card>
 
 <Card icon="upload" iconType="solid" title="Write documents back through MCP">
   <New category="Developer Tools" />
 
-  MCP clients can now push documents into Hindsight, not just read from it. Each tool accepts in-context text or a downloadable file URL and kicks off the same processing pipeline as the app.
+  MCP clients can now write documents to Hindsight, not just read them. Each tool accepts in-context text or a downloadable file URL and uses the same processing pipeline as the app.
 
   **`upload_deal_document`** — attach a transcript, note, or file to a specific deal.
 
@@ -168,7 +172,7 @@ Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,q
 <Card icon="key" iconType="solid" title="Full API access during your trial">
   <Improved category="Developer Tools" />
 
-  Organizations on a trial now get Growth-tier API rate limits automatically instead of being blocked, so you can fully evaluate the API before you subscribe.
+  Trial organizations now receive Growth-tier API rate limits automatically, so you can fully evaluate the API before subscribing.
 
 </Card>
 
@@ -181,7 +185,7 @@ Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,q
 <Card icon="snowflake" iconType="solid" title="Smoother, more reliable Snowflake imports">
   <Improved category="CRM Integration" />
 
-  Snowflake import now works the same way as our other CRM integrations, with a dedicated preview step so you can see exactly which deals will come in before you import. Filters and sorting stay in sync automatically, and refreshed deals are matched more accurately against ones you've already imported — plus stronger duplicate detection on synced notes, meetings, and emails — so you don't end up with duplicate or missing deal data.
+  Snowflake imports now include a dedicated preview, like our other CRM integrations, so you can see exactly which deals will be imported. Filters and sorting stay in sync, refreshed deals match more accurately, and improved duplicate detection covers synced notes, meetings, and emails.
 
   **On-demand resync** — Snowflake-connected orgs can now trigger a manual resync of their deals right from the deal grid instead of waiting for the next scheduled sync.
 
@@ -190,7 +194,7 @@ Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,q
 <Card icon="database" iconType="solid" title="Bulk-import missing HubSpot deals">
   <New category="CRM Integration" />
 
-  A new pipeline health check flags HubSpot deals that haven't made it into Hindsight yet, with a one-click way to bulk-import everything that's missing.
+  A pipeline health check flags HubSpot deals missing from Hindsight and lets you bulk-import them in one click.
 
 </Card>
 
@@ -204,7 +208,7 @@ Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,q
 <Card icon="brain" iconType="solid" title="See the AI's reasoning while it works">
   <Improved category="Chat & Analysis" />
 
-  Chat responses now include a collapsible "Thinking..." block so you can follow the AI's reasoning as it works through your question, instead of only seeing the final answer, with cleaner citation rendering throughout.
+  Chat responses now include a collapsible “Thinking…” section, so you can follow the AI's work alongside the final answer. Citation rendering is cleaner throughout.
 
 </Card>
 
@@ -215,17 +219,17 @@ Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,q
 
 <CardGroup cols={1}>
 
-<Card icon="wand-magic-sparkles" iconType="solid" title="Custom Metric and Answer Conditions">
+<Card icon="wand-magic-sparkles" iconType="solid" title="Conditions for Custom Metrics and Answers">
   <Improved category="Custom Metrics" />
   
-  You can now control when Custom Metrics and Answers get evaluated, allowing you to set specific conditions under which they should be applied to your deals. Add Filters to any Answer or Metric (e.g. Stage 2+, Deal Size > $50k) to grant more granular control over their application.
+  Set conditions for when Custom Metrics and Answers are evaluated. Add filters to any metric or answer—for example, Stage 2+ or deal size over $50K—for more precise control.
 
 </Card>
 
 <Card icon="wand-magic-sparkles" iconType="solid" title="Deeper analysis for Metrics & Custom Answers">
   <Improved category="Custom Metrics" />
   
-  Metrics and Custom Answers now use full agentic analysis — actively digging through deal context in multiple steps — instead of a single retrieval pass, for more accurate scores and answers on complex questions.
+  Metrics and Custom Answers now use multi-step analysis of deal context rather than a single retrieval pass, improving accuracy for complex questions.
 
 </Card>
 
@@ -233,14 +237,14 @@ Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,q
 <Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
   <New category="Custom Metrics" />
 
-  Organize related Custom Metrics into groups so they're easier to configure and review together, and turn off Hindsight's default metrics entirely if you'd rather run on your own custom set.
+  Group related Custom Metrics for easier configuration and review. You can also disable Hindsight's default metrics and use only your own.
 
 </Card>
 
 <Card icon="paperclip" iconType="solid" title="Reference documents for Custom Answers">
   <New category="Custom Answers" />
 
-  Attach reference documents — playbooks, guides, approved messaging — to a Custom Answer so the AI uses them as context when generating that answer across your deals, the same way you can already do for Custom Metrics.
+  Attach playbooks, guides, and approved messaging to Custom Answers so the AI uses them as context across your deals, just as it does for Custom Metrics.
 
 </Card>
 
@@ -253,14 +257,14 @@ Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,q
 <Card icon="folder-tree" iconType="solid" title="Analyze your Product Taxonomy">
   <New category="Dashboard & Analytics" />
 
-  Browse your Product Intelligence page grouped by feature, product, or product area, with an improved column selector across the deals and features grids. Quickly edit and manage your Product Taxonomy.
+  Browse Product Intelligence by feature, product, or product area. Improved column selectors across the deals and features grids make Product Taxonomy easier to manage.
 
 </Card>
 
 <Card icon="bolt" iconType="solid" title="Quick filters, remembered automatically">
   <New category="Dashboard & Analytics" />
 
-  One-click quick filters on the Dashboard and Settings pages let you jump straight to common views. Your last-used filters are now remembered automatically between visits — defaulting to the current quarter for new sessions — with a **Reset filters** option to jump back to the defaults at any time.
+  One-click filters on the Dashboard and Settings pages take you to common views faster. Your last-used filters are remembered between visits; new sessions default to the current quarter, and **Reset filters** restores the defaults.
 
 </Card>
 
@@ -273,7 +277,7 @@ Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,q
 <Card icon="slack" iconType="solid" title="Hand off Slack answers to Hindsight, Claude or ChatGPT">
   <New category="Slack" />
 
-  Replies from the Slack Assistant now include buttons to continue the conversation in Claude or ChatGPT, with your question pre-filled as a prompt — so you can dig deeper in your AI tool of choice without retyping context.
+  Slack Assistant replies now include buttons to continue in Claude or ChatGPT with your question pre-filled, so you can dig deeper without retyping context.
 
 </Card>
 
@@ -286,14 +290,15 @@ Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,q
 <Card icon="envelope-circle-check" iconType="solid" title="Unsubscribe from interview requests">
   <New category="Buyer Interviews" />
 
-  Recipients of interview-request emails can now opt out with a one-click unsubscribe link, and won't be contacted again for future requests.
+  Interview-request recipients can opt out with a one-click unsubscribe link and will not be contacted again.
 
 </Card>
+</CardGroup>
 
 
 ## June 2026
 
-Sales Plays, a unified usage analytics dashboard, role-based access control, win-loss feature charts, GDPR support for EU surveys, and the Hindsight MCP server in Claude and ChatGPT.
+Sales Plays in alpha, unified usage analytics, role-based MCP access, GDPR support for EU surveys, and the Hindsight MCP server in Claude and ChatGPT.
 
 ### Sales Plays (Alpha)
 
@@ -302,13 +307,13 @@ Sales Plays, a unified usage analytics dashboard, role-based access control, win
 <Card icon="chess-knight" iconType="solid" title="Opportunity Plays">
   <Preview category="Sales Enablement" />
 
-  A new way to turn competitive intelligence into action on live deals.
+  Turn competitive intelligence into action on live deals.
 
-  **AI-generated plays** — Hindsight generates recommended plays for an opportunity based on deal context and competitive signals.
+  **AI-generated plays** — Hindsight recommends plays using deal context and competitive signals.
 
   **Outreach drafting in Slack** — Draft tailored outreach directly from a Slack thread, with messaging adapted to the play type.
 
-  **Linked assets** — Attach enablement assets to a play so reps have the right collateral in hand.
+  **Linked assets** — Attach enablement assets so reps have the right collateral at hand.
 
   **Email notifications** — Get notified by email when a new play opportunity is ready to act on.
 
@@ -322,10 +327,10 @@ Sales Plays, a unified usage analytics dashboard, role-based access control, win
 <CardGroup cols={1}>
 
 
-<Card icon="slack" iconType="solid" title="Detailed usage analytics by user, topic, rating, and channel.">
+<Card icon="slack" iconType="solid" title="Detailed usage analytics">
   <Improved category="Slack" />
 
-  **Filtering & stats** — Filter questions by user, topic, rating, or channel (Slack, Web, MCP, or API) and track where your AI agent is being adopted and having impact.
+  **Filtering and stats** — Filter questions by user, topic, rating, or channel (Slack, web, MCP, or API) to understand adoption and impact.
 
   **Readable names** — Slack channels and users now resolve to their real names throughout the assistant view.
 
@@ -335,7 +340,7 @@ Sales Plays, a unified usage analytics dashboard, role-based access control, win
 <Card icon="user-plus" iconType="solid" title="Competitor onboarding refresh">
   <Improved category="Competitive Intelligence" />
 
-  Redesigned competitor onboarding and setup flow, plus new competitor enablement and setup pages for a smoother first-run experience.
+  Redesigned competitor onboarding, with new enablement and setup pages for a smoother first-run experience.
 
 </Card>
 
@@ -345,10 +350,10 @@ Sales Plays, a unified usage analytics dashboard, role-based access control, win
 
 <CardGroup cols={1}>
 
-<Card icon="microphone-lines" iconType="solid" title="Improved Voice Model">
+<Card icon="microphone-lines" iconType="solid" title="More reliable voice interviews">
   <Fix category="Buyer Interviews" />
 
-  Migrated voice interviews to the GA Azure real-time API for more stable connections, added automatic retry on connection errors, and clearer instructions for voice-only interviews. Removed the silent fallback to text mode so failures surface clearly.
+  Voice interviews now use the GA Azure real-time API for more stable connections, with automatic connection retries and clearer voice-only instructions. Failures now surface clearly instead of silently falling back to text.
 
 </Card>
 
@@ -368,21 +373,21 @@ Sales Plays, a unified usage analytics dashboard, role-based access control, win
 <Card icon="user-lock" iconType="solid" title="Role-based MCP tool access controls">
   <New category="Admin" />
 
-  MCP Tool permissions now differentiate between admins, managers, and members. Settings are configureable from your Hindsight settings dashboard.
+  MCP tool permissions now differentiate among admins, managers, and members. Configure them in the Hindsight settings dashboard.
 
 </Card>
 
 <Card icon="plug" iconType="solid" title="Community MCP Connector in Claude & ChatGPT">
   <Improved category="Developer Tools" />
 
-  The Hindsight MCP server now connects to Claude and ChatGPT from their marketplace, with new MCP tools and OAuth sign-in via Clerk-issued tokens for secure, per-user access.
+  The Hindsight MCP server is now available through the Claude and ChatGPT marketplaces, with new tools and OAuth sign-in via Clerk-issued tokens for secure, per-user access.
 
 </Card>
 
 <Card icon="code" iconType="solid" title="Deals API endpoint">
   <Improved category="Developer Tools" />
 
-  A new `/v1/deals` endpoint returns real-time, paginated deal data with filtering and rate limiting. The interview-types API also now supports custom guidelines and analysis fields.
+  The new `/v1/deals` endpoint returns real-time, paginated deal data with filtering and rate limiting. The interview-types API now also supports custom guidelines and analysis fields.
 
 </Card>
 
