@@ -1,15 +1,17 @@
 ---
-title: "Set Up Plays"
-description: "Turn closed-lost deals into a ranked, actionable win-back list"
+title: "Sales Plays"
+description: "Proactive guidance to help reps win deals."
 ---
 
 <Info>
   **Plays is in preview.** The capability is rolling out to workspaces — setup steps and screens may change as it reaches general availability.
 </Info>
 
-Most of your pipeline ends up in the loss column, and a lot of it was never truly unwinnable — the deal was high-fit but lost to execution, or lost on a gap you've since shipped. **Plays** finds those deals, reconstructs the real reason they stalled, and hands reps a specific, ready-to-run win-back motion.
+**Plays** turns the signals in your Deal Reviews into proactive, account-specific guidance for reps. Define the deal conditions that matter, then Hindsight identifies matching opportunities and delivers the next best action, grounded in the deal's evidence.
 
-Plays sit on top of your [Deal Reviews](/deals-quickstart) — the verified record and scored decision drivers Hindsight already built for every deal are exactly what make a play targetable.
+Use Plays throughout the revenue lifecycle: help a rep prepare for a competitor entering an in-progress opportunity, address a new risk before a key meeting, guide an expansion motion, or re-engage a deal that went cold. Win-backs are one useful play type—not the only one.
+
+Plays sit on top of your [Deal Reviews](/deals-quickstart). The verified record, CRM data, deal evidence, and scored decision drivers Hindsight has assembled for each opportunity make guidance specific to the account—not a generic sequence or static alert.
 
 <Frame>
   <img alt="Plays overview" src="/images/plays/play-graphic-overview.png" />
@@ -19,16 +21,18 @@ Plays sit on top of your [Deal Reviews](/deals-quickstart) — the verified reco
 
 ## What a Play is
 
-A Play is a reusable win-back motion defined by two things:
+A Play is a reusable, proactive guidance motion defined by two things:
 
-- **Enrollment criteria** — filters over your closed deals and their scored Deal Review fields. A deal that matches gets enrolled automatically. For example:
+- **Enrollment criteria** — filters over your deals and their Deal Review fields. A matching deal can enroll automatically when its insights refresh, or you can enroll selected deals manually. For example:
 
-  > **Auto-enroll closed deals where**
-  > product fit ≥ 4 / 5 **and** customer fit ≥ 4 / 5 **and** loss reason is *sales execution*
+  > **Auto-enroll deals where**
+  > a competitor is present **and** the deal is in evaluation **and** product fit is below the team's target
 
-- **The play itself** — the motion reps run on enrolled deals, e.g. *"VP outreach — LinkedIn connect + event invite, opened with why they really passed."*
+- **Play guidance** — instructions for the action Hindsight should recommend to the rep. For example: *"Review the competitive risk, cite the most relevant evidence, and prepare a call plan for the account owner."*
 
-Because enrollment runs off the verified record, each play is a live, ranked list of genuinely winnable deals — not a static report.
+You can also attach playbooks, messaging decks, battlecards, and other Asset Library documents. Hindsight uses them as reference material when it creates the guidance.
+
+Because enrollment runs from the deal record, each play is a live list of opportunities where your team can act—not a static report.
 
 <Frame>
   <img alt="Defining a play's enrollment criteria and motion" src="/images/plays/play-workflow-definition.png" />
@@ -40,19 +44,19 @@ Because enrollment runs off the verified record, each play is a live, ranked lis
 
 <Steps>
   <Step icon="target" title="Define the criteria">
-    Pick the closed deals this play should target. Combine CRM fields and Hindsight's scored Deal Review fields — product fit, customer fit, decision drivers, loss reason, competitor — to isolate a winnable segment (e.g. *high-fit deals lost to execution*, or *lost on a feature that's now shipped*).
+    Use deal filters to describe the moment this play should address. Combine CRM fields with Hindsight's Deal Review signals—such as stage, competitor, product fit, customer fit, and decision drivers—to target in-progress deals as well as closed-won, closed-lost, or expansion opportunities. For example: *deals in late-stage evaluation with a newly identified competitor*, *accounts ready for expansion*, or *high-fit opportunities lost to sales execution*.
   </Step>
 
   <Step icon="wand-magic-sparkles" title="Let Hindsight generate the play">
-    Hindsight generates a **recommended play** for each opportunity from its deal context and competitive signals — the angle, who to reach, and why they really passed. Review and adjust the motion to match how your team sells.
+    Write clear Play guidance that tells Hindsight the desired outcome, format, and action. For every enrolled opportunity, Paige researches the deal and produces a **recommended play** from its evidence, comparable signals, and your instructions. That could be a call plan, risk response, internal coaching brief, stakeholder strategy, or outreach—not just a win-back message.
   </Step>
 
   <Step icon="link" title="Attach assets">
-    Link enablement assets to the play so reps have the right collateral in hand — battlecards, one-pagers, or a refreshed comparison that reflects what changed since the deal closed.
+    Link Asset Library documents that should inform the recommendation: battlecards, playbooks, one-pagers, messaging decks, or product updates. Their content is included when Paige drafts guidance for this play.
   </Step>
 
   <Step icon="slack" title="Act in Slack">
-    Winnable deals are routed to the rep in Slack. From the thread, reps **draft tailored outreach** with messaging adapted to the play type — one click, grounded in the real loss reason. Reps and admins can opt into **email notifications** when a new play opportunity is ready to act on.
+    Choose whether to notify the deal owner, additional teammates, or both. When an opportunity enrolls, the recipients receive the evidence-led Play in Slack, with options to ask Paige for help, open the associated Hindsight research session, or snooze it. Email notifications can also alert recipients to a new Play.
   </Step>
 </Steps>
 
@@ -60,7 +64,7 @@ Because enrollment runs off the verified record, each play is a live, ranked lis
 
 ## Track outcomes
 
-Each play tracks revenue as deals move through it — **in play**, **engaged**, and **won** — so you can see which win-back motions actually convert and double down on them.
+Each play tracks the opportunities enrolled in it and their progress—from **pending** and **surfaced** to **engaged**, **snoozed**, **dismissed**, or **converted**. Use that view to see which proactive motions create engagement and where to refine your criteria or guidance.
 
 ---
 
@@ -68,9 +72,9 @@ Each play tracks revenue as deals move through it — **in play**, **engaged**, 
 
 <CardGroup cols={2}>
   <Card title="Analyze Deals" icon="chart-line" href="/deals-quickstart">
-    Plays run on your Deal Reviews — make sure your closed deals are analyzed and scored.
+    Plays run on your Deal Reviews—make sure your active and closed deals are analyzed and scored.
   </Card>
   <Card title="Build Your Custom AI" icon="robot" href="/guides/build-custom-ai">
-    Use Recipes and Claude Skills to surface win-back segments and draft outreach at scale.
+    Use Recipes and Claude Skills to investigate deal patterns and create supporting enablement at scale.
   </Card>
 </CardGroup>

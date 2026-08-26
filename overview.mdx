@@ -1,54 +1,58 @@
 ---
-title: "Platform Overview"
-description: "An AI-ready layer on top of your GTM data — query verified deal and competitive intelligence over MCP and the REST API."
+title: "Deal Memory for AI Agents"
+description: "Turn fragmented GTM evidence into a verified, continuously updated memory of every account and deal—queryable over MCP and the REST API."
 ---
 
-Hindsight is an **AI-ready layer on top of your GTM data**. It turns scattered, noisy revenue data — calls, emails, CRM notes, documents — into **one verified record per deal** that AI agents can reason over directly, through the [Model Context Protocol (MCP)](/integrations/mcp) or the [REST API](/integrations/api).
+Hindsight is the **deal memory layer** for your GTM stack. It continuously turns the evidence scattered across calls, emails, CRM records, documents, and warehouse data into a verified, structured memory of each account and opportunity.
 
-If you're a **RevOps** leader, this is the layer that makes your pipeline data trustworthy enough to act on. If you're an **AI engineer**, this is a clean tool surface you can point Claude, ChatGPT, Cursor, or your own agents at — without building the retrieval, ranking, and verification pipeline yourself.
+The result is more than a deal summary. Hindsight reconstructs what happened, why it happened, and how the team executed; preserves the supporting evidence; and makes relevant prior experience available when a new opportunity needs it. Your team and AI agents can query that memory directly through the [Model Context Protocol (MCP)](/integrations/mcp) or the [REST API](/integrations/api).
 
-<Frame caption="Sources in. One verified record per deal. Queryable by anything.">
-  <img src="/images/analyze/platform-explainer-diagram.png" alt="Hindsight platform: GTM data sources flow into the Analyze agent, which produces one verified record per deal, reachable over MCP and the REST API by Claude, ChatGPT, Slack, Salesforce, HubSpot, and custom workflows." />
+For **RevOps and enablement**, this creates a dependable operating record without relying on manual CRM hygiene. For **AI engineers**, it provides a cited, workspace-scoped tool surface—without building ingestion, retrieval, entity resolution, comparison, and verification infrastructure for every workflow.
+
+<Frame caption="GTM evidence in. Verified account and deal memory out. Queryable by people, agents, and workflows.">
+  <img src="/images/analyze/platform-explainer-diagram.png" alt="Hindsight platform: GTM data sources flow into the Analyze Engine, which builds verified account and deal memory, reachable over MCP and the REST API by people, agents, and custom workflows." />
 </Frame>
 
 ---
 
-## The problem it solves
+## Why deal memory
 
-GTM data is hard for agents to use directly. Three things get in the way:
+Every opportunity generates experience, but most organizations cannot reuse it. The evidence is distributed, inconsistently labeled, and difficult for a person—or an agent—to evaluate in the context of the next deal.
 
 <CardGroup cols={3}>
   <Card title="Fragmentation" icon="puzzle-piece">
-    Deal context is split across call recordings, email threads, CRM fields, and documents — no single place an agent can read.
+    Deal context is split across call recordings, email threads, CRM fields, documents, and systems of record—without a canonical view of the opportunity.
   </Card>
   <Card title="Unreliability" icon="triangle-exclamation">
-    CRM fields are incomplete and transcripts are noisy. Agents reasoning over raw data inherit the noise and hallucinate.
+    CRM fields are incomplete, terms vary by team, and transcripts are noisy. Raw retrieval alone cannot establish what actually happened or which evidence supports a conclusion.
   </Card>
-  <Card title="Cost" icon="coins">
-    Feeding raw, unstructured data to an agent burns tokens and latency on retrieval the model has to redo every time.
+  <Card title="Experience does not compound" icon="coins">
+    Prior wins and losses stay trapped in source systems. Teams repeatedly research the same objections, buyer requirements, and execution risks instead of applying proven experience.
   </Card>
 </CardGroup>
 
 ---
 
-## How it works
+## How Hindsight builds deal memory
 
-At the core is the **Analyze Engine**. It connects to your source systems and, for every deal, aggregates the relevant calls, emails, CRM records, and documents, then cross-references, summarizes, and vectorizes them into **one verified record per deal**.
+At the core is the **Analyze Engine**. For each deal, it aggregates related calls, emails, CRM records, documents, and other available evidence. It reconciles that evidence into an account and deal record that captures the commercial context, outcome, and supporting sources.
 
-That record is what every tool reads from. Because the work of retrieval and verification happens once — up front, server-side — agents get clean, cited answers instead of raw transcripts to wade through.
+The memory captures dimensions that make past experience comparable and reusable: buyer and stakeholder context, product signals, competitive position, decision drivers, commercial fit, and sales execution. As new evidence arrives and deals advance, Hindsight refreshes the record rather than leaving a point-in-time summary behind.
+
+Every tool reads from this memory layer. Retrieval, reconciliation, and evidence linking happen server-side, so agents can work from clean, cited context instead of reprocessing raw transcripts on every call.
 
 <CardGroup cols={2}>
   <Card title="Verified, not inferred" icon="shield-check">
-    Each record is grounded in source documents with citations and confidence scoring, so answers trace back to what was actually said.
+    Each conclusion remains linked to source evidence and confidence signals, so users can inspect what was actually said and resolve uncertainty.
   </Card>
   <Card title="Always current" icon="arrows-rotate">
-    Records update as new deals close and tracked competitor pages change — battlecards and intel stay live without manual upkeep.
+    The memory evolves as opportunities progress, close, and receive new context—so the next workflow can use the most current available experience.
   </Card>
 </CardGroup>
 
 ### Data sources
 
-**Your CRM is the backbone — and the only required source.** Connect Salesforce or HubSpot and Hindsight pulls each opportunity and its associated objects, along with the related account and contact objects. You control exactly which properties come across from the **CRM settings page** in your dashboard. For many teams that's enough on its own — the CRM is already the centralizer, and Hindsight builds the verified record from what's there.
+**Your CRM is the backbone — and the only required source.** Connect Salesforce or HubSpot and Hindsight pulls each opportunity and its associated objects, along with the related account and contact objects. You control exactly which properties come across from the **CRM settings page** in your dashboard. For many teams that's enough on its own—the CRM is already the centralizer, and Hindsight builds the verified deal memory from what is there.
 
 **Context sources are optional enrichment.** When you want more than what lives on the CRM record — full call transcripts and the actual content behind a deal — connect dedicated sources and Hindsight ingests the full signal:
 
@@ -66,24 +70,26 @@ Hindsight is **format-flexible**: PDFs, Office files, Markdown, audio, and video
 
 ### Sync & analysis cadence
 
-Hindsight pulls the latest from your connected integrations **every 12 hours** while a deal is open, and continues for **14 days after it closes**. Deal analysis re-runs on **every stage change** and whenever **new context sources are uploaded** — so the verified record stays current as the deal moves.
+By default, Hindsight pulls the latest from connected integrations **every 12 hours** while a deal is open and continues for **14 days after it closes**. By default, deal analysis re-runs on **every stage change** and whenever **new context sources are uploaded**—so the deal memory stays current as the opportunity moves.
+
+You control when deal analysis runs. **Enterprise customers can also configure custom integration sync schedules** to match their data-refresh and operating requirements.
 
 ---
 
-## How you access it
+## Query and apply the memory
 
-Hindsight is built API-first. There are two ways to query the verified layer, plus packaged integrations on top of them.
+Hindsight is API-first. Query account and deal memory through two integration surfaces, then use the resulting experience in your agents, applications, and operating workflows.
 
 <CardGroup cols={2}>
   <Card title="MCP" icon="plug" href="/integrations/mcp">
-    Individual tools your AI assistant orchestrates directly. Best for Claude, ChatGPT, Cursor, Cline, or your own MCP client. **Start here for agent use cases.**
+    A composable tool surface your AI assistant orchestrates directly. Use it to inspect deal context, find comparable experience, retrieve evidence, and analyze pipeline data in Claude, ChatGPT, Cursor, Cline, or your own MCP client. **Start here for agent use cases.**
   </Card>
   <Card title="REST API" icon="code" href="/integrations/api">
-    A single endpoint that runs Hindsight's agent server-side and returns a complete, cited answer. Best for Glean, Slack bots, and search interfaces that want a finished response.
+    A single endpoint that runs Hindsight's agent server-side and returns a complete, cited answer. Best for Glean, Slack bots, embedded search, and workflows that want a finished response.
   </Card>
 </CardGroup>
 
-**Rule of thumb:** use **MCP** when *your* model should decide which tools to call and how to chain them. Use the **REST API** when you want Hindsight to do the orchestration and hand you a synthesized answer with citations.
+**Rule of thumb:** use **MCP** when *your* model should choose the tools and control the execution path. Use the **REST API** when you want Hindsight to orchestrate retrieval and synthesis, then return a cited answer.
 
 Authentication is the same for both — a Bearer API key scoped to your workspace. Generate one from **Settings → API Keys** in the [Hindsight app](https://app.usehindsight.com/settings/keys).
 
@@ -91,7 +97,7 @@ Authentication is the same for both — a Bearer API key scoped to your workspac
 
 ## Tools available
 
-The MCP server exposes the verified layer as a focused set of tools. They fall into seven groups. Most agent workflows start with **`fetch_hindsight_context`** to learn the workspace's competitors and deal stages, then branch into the relevant group.
+The MCP server exposes the deal memory layer as a focused set of tools. They fall into seven groups. Most agent workflows start with **`fetch_hindsight_context`** to learn the workspace's competitors and deal stages, then branch into the relevant group.
 
 ### Context & schema
 
@@ -110,6 +116,7 @@ Find, triage, and read individual deals and their underlying documents.
 |---|---|
 | `select_deal` | Filter and list deals by criteria. Returns lean rows for fast triage. |
 | `get_deal` | Get full details for specific deals by ID. |
+| `search_comparable_deals` | Find the most comparable historical deals for a source deal, including each matching dimension and score. |
 | `search_across_deals` | Search all deal documents across the entire pipeline. |
 | `search_deal_documents` | Deep search within specific deals. |
 | `pull_full_document` | Fetch full document content by ID when retrieved chunks aren't enough. |
@@ -146,13 +153,19 @@ Build and analyze structured datasets from the deal grid for win-rate, trend, an
 | Tool | Description |
 |---|---|
 | `create_dataset` | Build a structured dataset from your deal pipeline. |
-| `analyze_dealgrid_subset` | Filter and analyze a quantitative subset of the deal grid. |
+| `run_sandbox_dataset_analysis` | Run custom Python analysis against an authorized dataset in Hindsight's isolated, network-disabled sandbox. Can return up to three charts. |
 
 ### Write back
 
 | Tool | Description |
 |---|---|
-| `upload_deal_document` | Upload a document to a deal by URL. |
+| `upload_deal_document` | Attach a document to a deal — pass the text directly or a downloadable file URL. |
+| `upload_to_knowledge_base` | Upload your company's docs, playbooks, case studies, or approved messaging to the knowledge base. |
+| `upload_competitive_intel` | Save competitor pricing, positioning, feature notes, or gathered news to the knowledge base. |
+
+<Note>
+Tool availability is role-based. By default, workspace admins can use every tool; managers can use the read tools plus the data-analysis tools; and members can use the read tools. Workspace admins can customize these permissions in **Settings → MCP Tools**.
+</Note>
 
 <Note>
   The canonical tool list is generated from the live MCP server. Names and parameters can change between releases — call `tools/list` against the [MCP endpoint](/integrations/mcp) for the exact current surface.
@@ -160,14 +173,14 @@ Build and analyze structured datasets from the deal grid for win-rate, trend, an
 
 ---
 
-## Who it's for
+## What this enables
 
 <CardGroup cols={2}>
   <Card title="RevOps & enablement" icon="chart-line">
-    A trustworthy system of record for win-loss, competitive attribution, and rep performance — without hand-maintaining battlecards or CRM hygiene.
+    An operational memory for win-loss, competitive attribution, and rep execution. Identify which patterns matter, find comparable deals, and improve the next motion without hand-maintaining a secondary system of record.
   </Card>
   <Card title="AI engineers & builders" icon="robot">
-    A clean, cited tool surface for your own agents and apps. Skip building the retrieval and verification pipeline; query the verified layer over MCP or REST.
+    A clean, cited tool surface for agents and applications. Give workflows access to grounded deal experience over MCP or REST instead of implementing a bespoke retrieval and verification pipeline.
   </Card>
 </CardGroup>
 

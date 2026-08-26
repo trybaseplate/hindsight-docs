@@ -1,95 +1,164 @@
 ---
-title: "Recipes"
-description: "Build reusable, extendable workflows for you and your team"
+title: "Skills and Workflows"
+description: "Build portable AI skills and schedule recurring prompts for your team"
 ---
-<iframe src="https://www.loom.com/embed/b3b9a4e6d0a64d6fbd641099f2e1a95c" className="w-full aspect-video"
-></iframe>
 
-Recipes let you create custom workflows in Hindsight which you can schedule or run on demand. When you cook up something that works, save it as a recipe!
+Skills turn a useful set of AI instructions into a reusable capability. Workflows run a prompt on a schedule, so recurring intelligence reaches the right people without someone having to remember to ask for it.
 
-## What Can You Create?
+The two work well together, but they are independent:
 
-Recipes power a wide range of use cases built on top of Hindsight's Deal Intelligence.
+| | Skills | Workflows |
+| --- | --- | --- |
+| Purpose | Reusable instructions for a specific job | A scheduled prompt that runs repeatedly |
+| How it runs | On demand, when selected by name or loaded dynamically when relevant | Automatically on the cadence you choose |
+| Where it works | Hindsight, Claude, or another AI tool | Hindsight |
+| Relationship | Can be used in a workflow | May use a skill, but does not need to |
 
-- **Win/loss reports and deal alerts in Slack** — Recurring reports on deal outcomes and trends
-- **Personalized sales coaching and insights** — Coaching insights, talk tracks, and rep performance analysis
-- **Competitive assets that auto-update** — Battlecards, objection handling guides, and competitor comparisons
-- **Real-time product intelligence** — Feature gap reports, buyer feedback summaries, and roadmap inputs
+## Default Agent Skills
 
-## Automating with Workflows
+Hindsight’s Agent has four built-in skills for common research and analysis tasks. These procedures are available by default: the Agent can load the relevant one dynamically, or you can select it by name when you want to direct the work.
 
-Once you've built a recipe, you can schedule it to run automatically with **Workflows**. This lets you:
+- **Competitive enablement** — Researches competitor positioning and creates evidence-backed battlecards, talk tracks, and seller-safe responses.
+- **Research Hindsight deals** — Finds relevant historical deals, validates themes against source documents, and returns cited win/loss evidence.
+- **Prepare deal strategy** — Builds an evidence-backed strategy for an active deal using deal context, comparable precedents, competitive research, and buyer signals.
+- **Analyze Hindsight datasets** — Performs quantitative analysis of Deal Grid data, including win/loss rates, trends, cohorts, and breakdowns.
 
-- **Schedule recurring runs** — Set recipes to run daily, weekly, or on a custom cadence
-- **Deliver to Slack or Email** — Push insights directly to specific Slack channels, email lists, or Slack DMs
-- **Save to Library** - Create or update existing assets and documents in your Library (e.g., battlecards, competitor profiles)
-- **Connect external tools** — Use Zapier to send outputs to your CRM, docs, or other systems
+These defaults provide a reliable starting procedure for common work. Add your own skills when your team has specialized processes, terminology, quality requirements, or output formats that the defaults do not cover.
 
-Workflows turn one-time analysis into ongoing intelligence that reaches your team where they work.
+## Build a Skill
 
-## Recipe Library
+A skill is a concise set of instructions that tells an AI how to complete one well-defined task. It can include the goal, the context to use, the steps to follow, quality checks, and the format of the final output.
 
-We provide a growing library of pre-built recipes to get you started. These cover common use cases across departments:
+Skills are portable. Write them in clear, tool-agnostic language so the same instructions can work in Hindsight, Claude, or another AI tool. In Hindsight, a skill can be selected by name or loaded dynamically when it matches the task at hand.
 
-- **Competitive Intel** — Battlecards, competitor comparisons, and win/loss analysis by competitor
-- **Enablement** — Coaching insights, objection handling, and talk tracks
-- **Marketing** — Messaging analysis, persona insights, and competitive trends
-- **Operations** — Pipeline trends, pricing insights, and process optimization
-- **Product** — Feature gap reports, buyer feedback, and roadmap inputs
-- **Sales** — Deal reviews, rep performance, and win-loss reports
+### Start with one job
+
+Give each skill a narrow, recognizable responsibility. Good examples include:
+
+- Summarize new competitive mentions from this week’s calls
+- Prepare a win/loss readout for a quarterly review
+- Create an account-specific deal strategy from the latest activity
+- Turn buyer feedback into product requests and supporting evidence
+
+Avoid combining unrelated jobs into one skill. A focused skill is easier to select, evaluate, and improve.
+
+### Use this structure
+
+Use the following pattern when authoring a skill:
+
+```text
+# [Skill name]
+
+## Goal
+Describe the single outcome this skill should produce.
+
+## When to use it
+State the request, signal, or situation that should select this skill.
+
+## Inputs and context
+List the information to use and any assumptions to avoid.
+
+## Instructions
+1. Research or gather the needed evidence.
+2. Analyze it using the criteria that matter.
+3. Produce the requested output.
+
+## Quality bar
+Specify what a good answer includes, such as evidence, caveats, and next steps.
+
+## Output format
+Define the headings, table, bullets, or other final structure.
+```
+
+### Make skills easy to select
+
+Name skills after the outcome they create, not a vague category. For example, use **Prepare Deal Strategy** instead of **Sales Helper**, or **Weekly Competitor Brief** instead of **Competitive Intelligence**.
+
+Include a short “When to use it” section with the phrases and scenarios that should trigger it. This helps people select a skill by name and helps AI tools load it dynamically when the request fits.
+
+### Test and improve
+
+Run the skill against a few representative requests before sharing it. Check that it:
+
+- Uses the right source material
+- Produces specific conclusions rather than generic summaries
+- Separates evidence from assumptions
+- Follows the requested format every time
+
+If the output is inconsistent, tighten the instructions or add an example of the expected result. Keep the skill’s instructions self-contained rather than relying on undocumented team knowledge.
 
 <Tip>
-Use a default recipe as a starting point—hit the **Remix** button and edit it to make your own.
+If a skill depends on Hindsight data, describe the data to look for in plain language. This keeps the instructions portable while still allowing an AI tool with Hindsight access to retrieve the appropriate evidence.
 </Tip>
 
-## Recipe Types
+## Create and customize skills in Hindsight
 
-### AI Search Recipes
-Use natural language prompts to search and analyze your deal data. These recipes leverage Hindsight's AI search capabilities to find insights across your deals.
+Go to **Skills** (`/skills`) to manage the skills available to your workspace. The page has three libraries:
 
-AI Search Recipes are best for qualitative insights that can be derived by diving deeper into a smaller set of deals. Use cases include:
-- Finding objections from the last week of calls
-- Summarizing competitive positioning in recent deals
-- Extracting buyer personas from a set of closed-won deals
+- **Hindsight-created** — Skill templates provided by Hindsight.
+- **Your organization** — Skills teammates have created or added for the workspace.
+- **Yours** — Skills you created or added yourself.
 
-When building AI Search recipes, keep in mind the 25-deal context window for individual tool calls. Make sure your prompt is focused enough to get meaningful results from a limited set of deals.
+### Create a skill from scratch
 
-For more on crafting effective prompts in AI Search Mode, see the [Good Prompts](/guides/prompting) guide.
+1. Select **Create skill** on the Skills page.
+2. Add a descriptive name, a short description, category, and the skill prompt.
+3. Include the goal, inputs, procedure, quality bar, and output format described above.
+4. Select **Create Skill**, then test it in Chat or add it to a workflow.
 
-### Data Analyst Mode Recipes
-Data Analyst mode allows Hindsight's AI to pick apart trends from across an unlimited number of deals, without being limited to the 25-deal context window of AI Search mode.
+### Add a Hindsight skill to your library
 
-Data Analyst mode pulls data directly from Hindsight's Deal Reviews, and uses Code Interpreter to segment, chart, and analyze large datasets.
+1. On **Skills**, open the **Hindsight-created** tab.
+2. Open a template skill and select **Add Skill**.
+3. The copied skill appears in **Yours**, where it is available in your workspace’s skill selectors.
+4. Open the copy and select **Edit** to customize its name, description, prompt, and category.
 
-To provide fine-grained controls, Data Analyst mode allows you to define your dataset using a set of "Filters" and "Columns".
-- **Filters** — Define which deals to include in the analysis using CRM or Hindsight-defined field. E.g. "Stage is 'Closed Won'" or "Industry is 'Healthcare'"
-- **Columns** — Select the data fields to analyze e.g. "Account.Industry", "Deal.Product_Fit", "Deal.Loss_Reason" 
+Adding a template creates a copy rather than changing Hindsight’s original. Your customizations affect your workspace’s version only. You can also remix a teammate’s organization skill to make your own editable copy.
 
-## Variables
+<Tip>
+If a skill is already used in a workflow, remix it before changing it. This preserves the existing workflow and gives you a safe version to customize.
+</Tip>
 
-Variables make your recipes dynamic and reusable. When someone runs a recipe, they'll see a form to fill in the required inputs.
+## Create a Workflow
 
-### Variable Types
+Use a workflow for work that should happen on a recurring schedule: a weekly brief, monthly trend report, regular competitive monitoring, or a periodic update to a team asset.
 
-- **Text variables** — Inserted directly into your prompt. Use these for things like competitor names, product features, or custom instructions.
-- **Deal filter variables** — Map to specific filters in Data Analyst mode. Use these to let users select deal stages, date ranges, segments, or other filter criteria at runtime.
+A workflow is a scheduled prompt. It can contain all the instructions it needs directly, or it can call on a skill for a reusable part of the work.
 
-### Required vs Optional
+### Set up the prompt
 
-- **Required variables** — Must be filled in before the recipe can run
-- **Optional variables** — Provide defaults or allow users to skip if not needed
+1. Go to **Workflows** in Hindsight and select **Create Workflow**.
+2. Give the workflow a clear name that describes its recurring outcome.
+3. Write the prompt that should run each time.
+4. Optionally use **Browse Skills** to add a skill inline, or write the workflow prompt directly.
+5. Test the prompt and refine the expected output before scheduling it.
 
+The workflow owns its prompt. Adding a skill brings the relevant instructions into that prompt, so a workflow can also stand alone without a linked skill.
 
-## Creating a Recipe
+### Choose a cadence and destination
 
-1. Navigate to **Chat** in Hindsight
-2. Click **Browse Recipes**
-3. Choose an existing recipe to remix, or click **Create Recipe**
-4. Configure your inputs and hit Run to test
+Select the schedule that matches how quickly the information changes—such as daily, weekly, monthly, or a custom cadence. Then choose where the result should go:
 
-## Best Practices
+- Slack channel or direct message
+- Email recipients
+- A new or updated asset in the Hindsight Library
+- Zapier, for follow-on actions in other tools
 
-- **Keep prompts focused** — Each recipe should solve one specific problem
-- **Use clear variable names** — Make it obvious what inputs are expected
-- **Test your recipe** — Run your recipe before sharing with the team
-- **Document your recipes** — Add descriptions so teammates understand when to use each one
+### Recurring workflow ideas
+
+- **Weekly competitor brief:** Review recent calls and surface competitor mentions, objections, and suggested response updates.
+- **Monthly win/loss report:** Identify recurring reasons deals were won or lost, with supporting examples and recommended actions.
+- **Pipeline risk digest:** Summarize open-deal risks, missing next steps, and accounts that need attention.
+- **Product feedback roundup:** Group recent buyer feedback into themes, feature requests, and evidence for the product team.
+
+## When to use which
+
+Use a **skill** when someone needs to run a repeatable task on demand, or when you want an AI tool to recognize and apply specialized instructions. Use a **workflow** when the task should run without manual effort on a schedule. Combine them when a recurring workflow benefits from a tested, reusable skill—but do not create a skill solely because a workflow needs a prompt.
+
+## Best practices
+
+- Keep the task and output specific.
+- Give skills descriptive names and clear selection cues.
+- Ask for source-backed findings and call out uncertainty.
+- Review early workflow runs before relying on automated delivery.
+- Revisit prompts and skills as your data, process, or priorities change.
