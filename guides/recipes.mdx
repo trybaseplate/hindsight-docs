@@ -1,9 +1,9 @@
 ---
 title: "Skills and Workflows"
-description: "Build portable AI skills and schedule recurring prompts for your team"
+description: "Build Hindsight skills and schedule recurring prompts for your team"
 ---
 
-Skills turn a useful set of AI instructions into a reusable capability. Workflows run a prompt on a schedule, so recurring intelligence reaches the right people without someone having to remember to ask for it.
+Skills turn a useful set of AI instructions into a reusable capability. In Hindsight, they run in the web interface, through the Responses API, or in Slack. Workflows run a prompt on a schedule, so recurring intelligence reaches the right people without someone having to remember to ask for it.
 
 The two work well together, but they are independent:
 
@@ -11,12 +11,12 @@ The two work well together, but they are independent:
 | --- | --- | --- |
 | Purpose | Reusable instructions for a specific job | A scheduled prompt that runs repeatedly |
 | How it runs | On demand, when selected by name or loaded dynamically when relevant | Automatically on the cadence you choose |
-| Where it works | Hindsight, Claude, or another AI tool | Hindsight |
+| Where it works | Hindsight’s web interface, Responses API, and Slack | Hindsight |
 | Relationship | Can be used in a workflow | May use a skill, but does not need to |
 
 ## Default Agent Skills
 
-Hindsight’s Agent has four built-in skills for common research and analysis tasks. These procedures are available by default: the Agent can load the relevant one dynamically, or you can select it by name when you want to direct the work.
+Hindsight’s Agent has four built-in skills for common research and analysis tasks. These procedures are available by default: the Agent can load the relevant one dynamically, or you can select it by name when you want to direct the work in Hindsight.
 
 - **Competitive enablement** — Researches competitor positioning and creates evidence-backed battlecards, talk tracks, and seller-safe responses.
 - **Research Hindsight deals** — Finds relevant historical deals, validates themes against source documents, and returns cited win/loss evidence.
@@ -27,9 +27,11 @@ These defaults provide a reliable starting procedure for common work. Add your o
 
 ## Build a Skill
 
-A skill is a concise set of instructions that tells an AI how to complete one well-defined task. It can include the goal, the context to use, the steps to follow, quality checks, and the format of the final output.
+A skill is a concise set of instructions that tells Hindsight’s Agent how to complete one well-defined task. It can include the goal, the context to use, the steps to follow, quality checks, and the format of the final output.
 
-Skills are portable. Write them in clear, tool-agnostic language so the same instructions can work in Hindsight, Claude, or another AI tool. In Hindsight, a skill can be selected by name or loaded dynamically when it matches the task at hand.
+In Hindsight, a skill can be selected by name or loaded dynamically when it matches the task at hand. It is not automatically available to Claude, ChatGPT, or another AI tool.
+
+You can still create skills in Claude or ChatGPT, or export a Hindsight skill for use there. Skills are ultimately Markdown instructions, so you can copy the relevant text between tools. When moving a skill out of Hindsight, adapt any Hindsight-specific tool references or company context to the tools and data available in the destination.
 
 ### Start with one job
 
@@ -56,7 +58,7 @@ Describe the single outcome this skill should produce.
 State the request, signal, or situation that should select this skill.
 
 ## Inputs and context
-List the information to use and any assumptions to avoid.
+List the Hindsight tools, knowledge-base files, company context, and assumptions to use or avoid.
 
 ## Instructions
 1. Research or gather the needed evidence.
@@ -76,6 +78,18 @@ Name skills after the outcome they create, not a vague category. For example, us
 
 Include a short “When to use it” section with the phrases and scenarios that should trigger it. This helps people select a skill by name and helps AI tools load it dynamically when the request fits.
 
+### Give Hindsight the context it needs
+
+Skills are optional, but they give you control over the context and conventions Hindsight should apply. Use them to document information that may not be obvious from an individual request, including:
+
+- When your fiscal quarters start and end
+- The currency and reporting conventions your team uses
+- The deal fields, segments, and taxonomies that matter for analysis
+- The definitions of stages, customer tiers, regions, or other company-specific terms
+- The knowledge-base files to use for approved messaging, enablement, or seller guidance
+
+You can also name the specific Hindsight tools the Agent should use. For example, an enablement skill can instruct the Agent to consult a particular knowledge-base file before producing a seller-facing talk track, while an analysis skill can require a particular set of fields for every segmentation.
+
 ### Test and improve
 
 Run the skill against a few representative requests before sharing it. Check that it:
@@ -88,7 +102,7 @@ Run the skill against a few representative requests before sharing it. Check tha
 If the output is inconsistent, tighten the instructions or add an example of the expected result. Keep the skill’s instructions self-contained rather than relying on undocumented team knowledge.
 
 <Tip>
-If a skill depends on Hindsight data, describe the data to look for in plain language. This keeps the instructions portable while still allowing an AI tool with Hindsight access to retrieve the appropriate evidence.
+If a skill depends on Hindsight data, say which tools, fields, taxonomy, or knowledge-base files to use. This makes the output more consistent and gives the Agent the context it needs to follow your team’s process.
 </Tip>
 
 ## Create and customize skills in Hindsight
@@ -103,7 +117,7 @@ Go to **Skills** (`/skills`) to manage the skills available to your workspace. T
 
 1. Select **Create skill** on the Skills page.
 2. Add a descriptive name, a short description, category, and the skill prompt.
-3. Include the goal, inputs, procedure, quality bar, and output format described above.
+3. Include the goal, relevant Hindsight tools and company context, procedure, quality bar, and output format described above.
 4. Select **Create Skill**, then test it in Chat or add it to a workflow.
 
 ### Add a Hindsight skill to your library
@@ -150,6 +164,12 @@ Select the schedule that matches how quickly the information changes—such as d
 - **Monthly win/loss report:** Identify recurring reasons deals were won or lost, with supporting examples and recommended actions.
 - **Pipeline risk digest:** Summarize open-deal risks, missing next steps, and accounts that need attention.
 - **Product feedback roundup:** Group recent buyer feedback into themes, feature requests, and evidence for the product team.
+
+## Use skills outside Hindsight
+
+Hindsight skills run only in Hindsight’s web interface, Responses API, and Slack. To use the same procedure in Claude, ChatGPT, or another AI tool, export or copy the Markdown instructions and add them to that tool’s skill or project setup.
+
+Review the exported instructions before using them elsewhere. Replace Hindsight tool names with the destination tool’s capabilities, and provide any necessary company schema, taxonomy, or source documents that would otherwise have been available in Hindsight.
 
 ## When to use which
 

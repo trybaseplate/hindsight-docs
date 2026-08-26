@@ -9,29 +9,29 @@ Hindsight gives you a way to build competitive content from verified deal data a
 
 ---
 
-## Step 1: Start with a Default Recipe
+## Step 1: Start with a Default Skill
 
-The fastest way to create competitive content is to use a pre-built recipe from Hindsight's library.
+The fastest way to create competitive content is to use a pre-built skill from Hindsight's library.
 
 **To find one:**
 
-1. Go to [Chat](https://app.usehindsight.com/chat) in Hindsight
-2. Click **Browse Recipes**
-3. Filter by **Competitive Intel**
+1. Go to [Skills](https://app.usehindsight.com/skills) in Hindsight
+2. Open **Hindsight-created**
+3. Add a relevant competitive intelligence skill to your library
 
-You'll find starting recipes for common use cases: battlecards, competitor comparisons, objection handling guides, win/loss breakdowns by competitor.
+You'll find starting skills for common use cases: battlecards, competitor comparisons, objection handling guides, win/loss breakdowns by competitor.
 
 Pick the one closest to what you need and run it. This gives you a first draft grounded in your actual deal data before you write a single word.
 
 ---
 
-## Step 2: Create Your Own Recipe
+## Step 2: Create Your Own Skill
 
-Default recipes are starting points. For content you'll use regularly, build your own.
+Default skills are starting points. For content you'll use regularly, build your own.
 
-Hit **Remix** on any default recipe to create a copy you can edit. Or start from scratch with **Create Recipe**.
+Add a default skill to create a copy you can edit, or start from scratch with **Create skill**.
 
-A good competitive content recipe is specific. It names the competitor, defines the deal set to draw from, and tells the agent what to produce. Vague prompts return vague content.
+A good competitive content skill is specific. It names the competitor, defines the deal set to draw from, and tells the agent what to produce. Vague prompts return vague content.
 
 **Example: Generic**
 > "Create a battlecard for Competitor X."
@@ -50,9 +50,9 @@ The specific version uses Hindsight's tools in sequence — deal search, within-
 
 The more precisely an asset matches a rep's situation, the more they'll use it.
 
-**Add variables to make recipes reusable.** A competitor name variable lets you run the same recipe across all your tracked competitors without rewriting the prompt each time. A segment variable (enterprise, midmarket, SMB) lets you produce scenario-specific versions from a single recipe.
+**Add context to make skills reusable.** Tell the Agent which competitor, segment, fields, or knowledge-base files to use, and describe the output you expect. This lets one skill guide a repeatable process without rewriting the procedure each time.
 
-Once you're happy with the output, save the recipe. Give it a clear name and description so teammates know when to use it.
+Once you're happy with the skill, save it. Give it a clear name and description so teammates know when to use it.
 
 ---
 
@@ -66,7 +66,7 @@ Hindsight draws from verified deal data, but output is only as good as your prom
 Hindsight shows which deals and documents it used. If the sample is thin — fewer than 5 to 10 deals against a competitor — flag the content and note the sample size. Thin coverage means thin confidence.
 
 **Is the win/loss framing balanced?**
-A battlecard built only from closed-won deals will skew positive. Make sure your recipe draws from both wins and losses. The loss data is where the real differentiation lives.
+A battlecard built only from closed-won deals will skew positive. Make sure your skill draws from both wins and losses. The loss data is where the real differentiation lives.
 
 **Would a rep trust this?**
 Read the talk tracks out loud. If they sound like marketing copy, rewrite them. Reps need language that works in a live conversation, not a press release.
@@ -97,7 +97,7 @@ Saving content once is not enough. Use **Workflows** to have Hindsight suggest u
 
 **How it works:**
 
-1. Build a workflow that runs your competitive content recipe on a schedule
+1. Build a workflow that uses your competitive content skill on a schedule
 2. Add the **Update Asset** action at the end of the workflow
 3. Point it at the asset you want to keep current
 
@@ -108,7 +108,7 @@ This means your assets reflect your most recent deals. When three reps in a row 
 **To set this up:**
 
 1. Go to [Workflows](https://app.usehindsight.com/workflows)
-2. Create a new workflow and select your recipe as the trigger
+2. Create a new workflow and use **Browse Skills** to add your skill to its prompt
 3. Set a schedule (weekly works for most teams)
 4. Add the **Update Asset** action and select the target document
 5. Add a Slack notification so your team knows when suggestions are ready to review
@@ -119,4 +119,4 @@ This works for every asset type. Run it against your enterprise battlecard with 
 
 ---
 
-*Related: [Setting Up Your Knowledge Base](/guides/knowledge-base-setup) | [Monitoring Competitors](/guides/monitoring-competitors) | [Recipes Guide](/guides/recipes)*
+*Related: [Setting Up Your Knowledge Base](/guides/knowledge-base-setup) | [Monitoring Competitors](/guides/monitoring-competitors) | [Skills and Workflows](/guides/recipes)*

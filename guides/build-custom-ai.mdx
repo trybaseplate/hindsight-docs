@@ -1,6 +1,6 @@
 ---
 title: "Build Your Custom AI"
-description: "Create portable skills and recurring workflows on top of Hindsight"
+description: "Create Hindsight skills and recurring workflows on top of your deal intelligence"
 ---
 
 Once your deals are analyzed and your library is seeded, Hindsight's AI can reason over all of it. This page is about going from one-off questions to **repeatable, custom AI**: skills for work you run on demand and workflows for work that should recur automatically.
@@ -9,7 +9,7 @@ There are two ways to do that, and they're the same idea at two altitudes:
 
 <CardGroup cols={2}>
   <Card title="Skills and Workflows" icon="wand-magic-sparkles" href="/guides/recipes">
-    Build portable AI instructions that can be selected by name or loaded dynamically, then schedule prompts that need to run on a cadence.
+    Build Hindsight instructions that can be selected by name or loaded dynamically, then schedule prompts that need to run on a cadence.
   </Card>
   <Card title="Skills in Claude — over MCP" icon="plug" href="/integrations/mcp">
     Connect Hindsight's MCP server to Claude and build a **Claude Skill** that calls Hindsight's tools directly. Same verified data, orchestrated by your own agent in whatever workflow you already use.
@@ -34,10 +34,10 @@ Behind the scenes, Hindsight routes each query to specialized sub-agents. For th
 
 ## Build a Skill
 
-Skills package a working set of instructions so people and AI tools can reliably perform the same task. Write them in portable language: a skill can work in Hindsight, Claude, or another AI tool. In Hindsight, skills can be selected by name or loaded dynamically when they match the task.
+Skills package a working set of instructions so Hindsight can reliably perform the same task. They run in Hindsight’s web interface, Responses API, and Slack, and can be selected by name or loaded dynamically when they match the task. You can export their Markdown instructions to adapt them for Claude or another AI tool, but they are not automatically shared between products.
 
 1. Define one clear outcome, such as a weekly competitor brief or deal strategy.
-2. Specify the context to use, instructions to follow, quality checks, and output format.
+2. Specify the Hindsight tools, company context, instructions, quality checks, and output format to use.
 3. Test the skill on representative requests and refine it until the output is consistent.
 4. Save and share it so teammates can select it by name or an AI tool can load it when relevant.
 
@@ -70,7 +70,7 @@ If you're building custom AI on top of your GTM data, **start the Skill in Claud
     Wire Hindsight into Claude and build a Skill on your verified deal layer.
   </Card>
   <Card title="Skills and Workflows" icon="wand-magic-sparkles" href="/guides/recipes">
-    Author portable skills and schedule recurring prompts.
+    Author Hindsight skills and schedule recurring prompts.
   </Card>
   <Card title="AI Agent Tools" icon="robot" href="/guides/prompting">
     The full tool reference and prompting patterns for precise results.
