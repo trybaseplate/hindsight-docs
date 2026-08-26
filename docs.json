@@ -2,10 +2,29 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "maple",
   "name": "Hindsight Docs",
+  "fonts": {
+    "family": "Sora",
+    "weight": 400,
+    "heading": {
+      "family": "Fraunces",
+      "weight": 600
+    },
+    "body": {
+      "family": "Sora",
+      "weight": 400
+    }
+  },
   "colors": {
-    "primary": "#379BFF",
-    "light": "#81DBFD",
-    "dark": "#000F29"
+    "primary": "#D97706",
+    "light": "#FBBF24",
+    "dark": "#B45309"
+  },
+  "background": {
+    "decoration": "grid",
+    "color": {
+      "light": "#f9f8f6",
+      "dark": "#080F1E"
+    }
   },
   "favicon": "/favicon.svg",
   "navigation": {
