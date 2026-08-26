@@ -35,14 +35,8 @@ A new Comparable Deals engine for surfacing and learning from similar past oppor
 <Card icon="chess-knight" iconType="solid" title="Plays now research and act on matching deals">
   <Improved category="Sales Plays" />
 
-  Plays has moved beyond flagging opportunities — it now researches and takes action on the deals that match, so recommendations come with the legwork already done.
-
-</Card>
-
-<Card icon="filter" iconType="solid" title="Filter and import by Sales Play">
-  <New category="Sales Plays" />
-
-  Filter deals with "contains" and "is like" matching on Sales Play data, and bring Sales Play data into Hindsight directly from Snowflake for your existing deals.
+  Plays has moved beyond win-back and upsell opportunities — it's now a full-fledged Sales Play launcher, leveraging the full Hindsight AI Agent. Create custom Trigger conditions, write Plays-as-a-prompt, and attach your playbooks or instructions.
+  Hindsight's Agent wakes up when Play triggers are met (e.g. deal reaches stage 2 and has 2+ competitors), follows your instructions, and pings reps in Slack or via Email. Reps can easily continue the conversation in Slack, Claude, ChatGPT, or Hindsight to execute the winning play.
 
 </Card>
 
@@ -69,7 +63,7 @@ A new Comparable Deals engine for surfacing and learning from similar past oppor
 <Card icon="graduation-cap" iconType="solid" title="New specialized Paige skills">
   <New category="Chat & Analysis" />
 
-  Three new skills tuned for common workflows: **competitive enablement**, **researching Hindsight deals**, and **preparing deal strategy** — each with guidance tailored to the task.
+  Four new skills tuned for common workflows: **competitive enablement**, **researching Hindsight deals**, **data analysis**, and **preparing deal strategy** — each with guidance tailored to the task.
 
 </Card>
 
@@ -87,13 +81,6 @@ A new Comparable Deals engine for surfacing and learning from similar past oppor
 
 </Card>
 
-<Card icon="bullseye" iconType="solid" title="Sharper, competitor-aware answers">
-  <Improved category="Chat & Analysis" />
-
-  Paige now automatically pulls in an organization's top competitors as background context, and search results are more precise thanks to improved keyword matching alongside semantic search.
-
-</Card>
-
 <Card icon="bug" iconType="solid" title="Chat session fixes">
   <Fix category="Chat & Analysis" />
 
@@ -103,43 +90,8 @@ A new Comparable Deals engine for surfacing and learning from similar past oppor
 
 </CardGroup>
 
-### Developer Tools
-
-<CardGroup cols={1}>
-
-<Card icon="plug" iconType="solid" title="MCP connectors">
-  <Preview category="Developer Tools" />
-
-  Connect external MCP servers to Hindsight, gated behind a feature flag while we roll it out. Bring your own OAuth client ID and secret for a connection, with clearer error feedback if it fails.
-
-</Card>
-
-<Card icon="puzzle-piece" iconType="solid" title="More integrations on the Connectors page">
-  <Improved category="Developer Tools" />
-
-  The Connectors page has more integrations to choose from and a refreshed layout.
-
-</Card>
-
-</CardGroup>
-
-### Slack
-
-<CardGroup cols={1}>
-
-<Card icon="slack" iconType="solid" title="Cleaner Slack replies and DMs">
-  <Improved category="Slack" />
-
-  Slack Assistant replies now format more consistently with clearer citations, and unnamed competitors no longer clutter dropdown menus in Slack modals.
-
-</Card>
-
-<Card icon="users" iconType="solid" title="Faster recipient picking for large orgs">
-  <Improved category="Slack" />
-
-  Choosing who to send a Slack DM to now uses a searchable, paginated picker instead of a flat list, so it stays fast for organizations with a lot of people.
-
-</Card>
+### Admin Controls
+<CardGroup>
 
 <Card icon="toggle-off" iconType="solid" title="Turn off specific report types per organization">
   <New category="Slack" />
@@ -148,68 +100,8 @@ A new Comparable Deals engine for surfacing and learning from similar past oppor
 
 </Card>
 
-<Card icon="bug" iconType="solid" title="Fixed a Slack request error">
-  <Fix category="Slack" />
-
-  Fixed an error that could cause AI requests started from Slack to fail.
-
-</Card>
-
 </CardGroup>
 
-### CRM Integration
-
-<CardGroup cols={1}>
-
-<Card icon="boxes-stacked" iconType="solid" title="Filter deals by product">
-  <New category="CRM Integration" />
-
-  Filter your deal grid by product, using the product labels already synced in from your CRM.
-
-</Card>
-
-<Card icon="address-book" iconType="solid" title="CRM contacts sync">
-  <New category="CRM Integration" />
-
-  Contacts from your CRM now sync into Hindsight automatically, helping keep deal collaborators and stakeholders current.
-
-</Card>
-
-</CardGroup>
-
-### Deals
-
-<CardGroup cols={1}>
-
-<Card icon="gauge-high" iconType="solid" title="Faster, more reliable deal loading">
-  <Improved category="Deals" />
-
-  The deals API is now paginated to avoid timeouts on large lists, and dashboard queries were optimized for faster load times.
-
-</Card>
-
-<Card icon="lightbulb" iconType="solid" title="More accurate suggestions">
-  <Fix category="Deals" />
-
-  Fixed a regression that could surface invalid or nonsensical feature and driver suggestions on a deal.
-
-</Card>
-
-<Card icon="wrench" iconType="solid" title="Deal management fixes">
-  <Fix category="Deals" />
-
-  Fixed bugs affecting deal deletion and enrollment, email template variable replacement, and uploading `.docx` documents.
-
-</Card>
-
-<Card icon="repeat" iconType="solid" title="More context-aware re-analysis">
-  <Improved category="Deals" />
-
-  Deal re-analysis now takes more context into account per deal, so scores and insights stay current as new information comes in.
-
-</Card>
-
-</CardGroup>
 
 ### Platform
 
@@ -218,7 +110,7 @@ A new Comparable Deals engine for surfacing and learning from similar past oppor
 <Card icon="diagram-project" iconType="solid" title="Recipes are now fully prompt-based Workflows">
   <Improved category="Platform" />
 
-  The last of the legacy Recipe workflows have been replaced by the prompt-based Workflows introduced last month, with inline editing of workflow prompts directly from the UI.
+  Recipe workflows have been replaced by the prompt-based Workflows, with inline editing of workflow prompts directly from the UI. Workflows are now more flexible and easier to maintain, providing a smoother experience for building and managing automated processes.
 
 </Card>
 
@@ -229,32 +121,12 @@ A new Comparable Deals engine for surfacing and learning from similar past oppor
 
 </Card>
 
-<Card icon="compass" iconType="solid" title="Smoother onboarding">
-  <Improved category="Platform" />
-
-  Refreshed onboarding UI for new organizations getting set up in Hindsight.
-
-</Card>
-
-</CardGroup>
-
-### Win-Loss Interviews
-
-<CardGroup cols={1}>
-
-<Card icon="video" iconType="solid" title="Fixed Google Meet interview recording">
-  <Fix category="Buyer Interviews" />
-
-  Fixed a race condition where the Google Meet interview bot could fail to save its recording under concurrent join events.
-
-</Card>
-
 </CardGroup>
 
 
 ## July 2026
 
-The first stable release of the Hindsight MCP server, a guided setup flow for connecting your CRM and call intelligence tools, live Google Drive sync, more control over MCP tools, smarter and more transparent AI analysis, grouped Custom Metrics, richer feature and deal analytics, quick dashboard filters, Recipes reborn as Skills, and fixes for deal exports, competitor list sorting, and Snowflake sync reliability.
+Updated MCP admin controls, lots of improvements to Custom Metrics and Answers,quick dashboard filters, Recipes renamed as Skills, and Snowflake sync reliability.
 
 ### Developer Tools
 
@@ -265,7 +137,7 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
   OAuth is now the primary sign-in, capabilities are exposed as **direct tool calls** (faster responses and per-tool control) instead of a single orchestrating agent, plus CORS and reliability fixes. This is a **breaking change** and our first stable contract.
 
-  **Coming soon** — Web MCP as an official Claude connector.
+  Hindsight is now a Claude Community Connector.
 
   [Read the full MCP 2.0 notes →](/release-notes/mcp-2.0)
 
@@ -306,41 +178,12 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 <CardGroup cols={1}>
 
-<Card icon="list-check" iconType="solid" title="Guided setup for Deals">
-  <New category="CRM Integration" />
-
-  A new setup flow walks admins through connecting their data sources before bringing deals into Hindsight.
-
-  **CRM connection check** — Admins are guided to connect a CRM before the Deals page unlocks, so deal data is always backed by a live source.
-
-  **Gong & Clari** — Connect Gong or Clari directly from setup to bring call and meeting intelligence into your deals (Growth and Enterprise plans).
-
-  **Broader CRM coverage** — Expanded HubSpot and Salesforce object support means more of your CRM data can be brought into Hindsight.
-
-  **Developer tools** — Set up API access or Zapier from the same flow, with links straight to the docs.
-
-</Card>
-
 <Card icon="snowflake" iconType="solid" title="Smoother, more reliable Snowflake imports">
   <Improved category="CRM Integration" />
 
   Snowflake import now works the same way as our other CRM integrations, with a dedicated preview step so you can see exactly which deals will come in before you import. Filters and sorting stay in sync automatically, and refreshed deals are matched more accurately against ones you've already imported — plus stronger duplicate detection on synced notes, meetings, and emails — so you don't end up with duplicate or missing deal data.
 
   **On-demand resync** — Snowflake-connected orgs can now trigger a manual resync of their deals right from the deal grid instead of waiting for the next scheduled sync.
-
-</Card>
-
-<Card icon="cloud-arrow-down" iconType="solid" title="Google Drive sync is live">
-  <New category="CRM Integration" />
-
-  Assets and documents linked from Google Drive can now be kept up to date automatically or on demand — resync an individual asset from its menu, or kick off an org-wide sync, and Hindsight pulls in the latest version from Drive.
-
-</Card>
-
-<Card icon="filter" iconType="solid" title="HubSpot previous-stage filtering">
-  <New category="CRM Integration" />
-
-  Import deals from HubSpot filtered by the stage they were in *before* their current one — matching the filtering already available for Salesforce and Snowflake. The import dialog also now only shows filter properties that come from your CRM, so there's less noise when narrowing down which deals to bring in.
 
 </Card>
 
@@ -351,34 +194,8 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
-<Card icon="arrows-rotate" iconType="solid" title="More reliable document syncing">
-  <Improved category="CRM Integration" />
-
-  Documents pulled in from HubSpot and Salesforce retry automatically if an upload hiccups, and AI analysis now refreshes more consistently as new documents and deals come in.
-
-</Card>
-
 </CardGroup>
 
-### Competitive Intelligence
-
-<CardGroup cols={1}>
-
-<Card icon="arrow-down-a-z" iconType="solid" title="Competitor table sorting fix">
-  <Fix category="Competitive Intelligence" />
-
-  Fixed an issue where sorting the Competitors table only sorted the currently loaded page instead of your full competitor list.
-
-</Card>
-
-<Card icon="wand-magic-sparkles" iconType="solid" title="Cleaner, more consistent competitor names">
-  <Improved category="Competitive Intelligence" />
-
-  Vague or generic competitor mentions (like "DIY" or "homegrown") are now automatically normalized to consistent, canonical names, so your competitor list stays clean without manual cleanup.
-
-</Card>
-
-</CardGroup>
 
 ### Chat & Analysis
 
@@ -391,12 +208,6 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
-<Card icon="wand-magic-sparkles" iconType="solid" title="Deeper analysis for Metrics & Custom Answers">
-  <Improved category="Chat & Analysis" />
-
-  Metrics and Custom Answers now use full agentic analysis — actively digging through deal context in multiple steps — instead of a single retrieval pass, for more accurate scores and answers on complex questions.
-
-</Card>
 
 </CardGroup>
 
@@ -404,17 +215,25 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 <CardGroup cols={1}>
 
+<Card icon="wand-magic-sparkles" iconType="solid" title="Custom Metric and Answer Conditions">
+  <Improved category="Custom Metrics" />
+  
+  You can now control when Custom Metrics and Answers get evaluated, allowing you to set specific conditions under which they should be applied to your deals. Add Filters to any Answer or Metric (e.g. Stage 2+, Deal Size > $50k) to grant more granular control over their application.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Deeper analysis for Metrics & Custom Answers">
+  <Improved category="Custom Metrics" />
+  
+  Metrics and Custom Answers now use full agentic analysis — actively digging through deal context in multiple steps — instead of a single retrieval pass, for more accurate scores and answers on complex questions.
+
+</Card>
+
+
 <Card icon="layer-group" iconType="solid" title="Group your Custom Metrics">
   <New category="Custom Metrics" />
 
   Organize related Custom Metrics into groups so they're easier to configure and review together, and turn off Hindsight's default metrics entirely if you'd rather run on your own custom set.
-
-</Card>
-
-<Card icon="circle-question" iconType="solid" title="No more forced guesses when there's no evidence">
-  <Improved category="Custom Metrics" />
-
-  When there isn't enough evidence to score a deal, Custom Metrics now show "No evidence to score" instead of a low-confidence guess, and Custom Answers do the same for true/false and multiple-choice questions. These are excluded from averages, charts, and exports so your numbers stay trustworthy.
 
 </Card>
 
@@ -425,44 +244,16 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
-<Card icon="plus" iconType="solid" title="Faster answer creation">
-  <Improved category="Custom Answers" />
-
-  Add a new Custom Answer directly from its group card on the Custom Answers page — the group is pre-selected for you, so there are fewer clicks to get set up.
-
-</Card>
-
 </CardGroup>
 
 ### Dashboard & Analytics
 
 <CardGroup cols={1}>
 
-<Card icon="chart-line" iconType="solid" title="Custom Metrics on the dashboard">
+<Card icon="folder-tree" iconType="solid" title="Analyze your Product Taxonomy">
   <New category="Dashboard & Analytics" />
 
-  Dashboard charts now support your own Custom Metrics alongside the built-in ones. Segment filters also got more flexible — select multiple segments at once ("is any of") instead of just one.
-
-</Card>
-
-<Card icon="chart-column" iconType="solid" title="Deeper feature analytics">
-  <New category="Dashboard & Analytics" />
-
-  New tag, sentiment, and revenue charts on the Feature Deals page — including tag counts in the deal-level feature breakdown — make it easier to see what's driving a feature's performance. The Competitors and Drivers pages also gained collapsible trend sections, so older data stays out of the way until you need it.
-
-</Card>
-
-<Card icon="face-smile" iconType="solid" title="Sentiment badges on deal feature cards">
-  <Improved category="Dashboard & Analytics" />
-
-  The Feature Association card on a deal now shows a clear sentiment badge in place of the older deal-impact score, making it quicker to gauge at a glance how a feature landed.
-
-</Card>
-
-<Card icon="folder-tree" iconType="solid" title="Group features by product & product area">
-  <New category="Dashboard & Analytics" />
-
-  Browse the Features page grouped by product or product area, with an improved column selector across the deals and features grids.
+  Browse your Product Intelligence page grouped by feature, product, or product area, with an improved column selector across the deals and features grids. Quickly edit and manage your Product Taxonomy.
 
 </Card>
 
@@ -479,7 +270,7 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 <CardGroup cols={1}>
 
-<Card icon="slack" iconType="solid" title="Hand off Slack answers to Claude or ChatGPT">
+<Card icon="slack" iconType="solid" title="Hand off Slack answers to Hindsight, Claude or ChatGPT">
   <New category="Slack" />
 
   Replies from the Slack Assistant now include buttons to continue the conversation in Claude or ChatGPT, with your question pre-filled as a prompt — so you can dig deeper in your AI tool of choice without retyping context.
@@ -499,88 +290,12 @@ The first stable release of the Hindsight MCP server, a guided setup flow for co
 
 </Card>
 
-<Card icon="user-check" iconType="solid" title="More reliable interview enrollment">
-  <Fix category="Buyer Interviews" />
-
-  Fixed a bug where some internal, email-based respondents weren't being correctly matched and enrolled into interview sequences.
-
-</Card>
-
-</CardGroup>
-
-### Platform
-
-<CardGroup cols={1}>
-
-<Card icon="wand-magic-sparkles" iconType="solid" title="Recipes are now Skills">
-  <Improved category="Platform" />
-
-  Recipes have been renamed to **Skills**, with a refreshed `/skills` page. The underlying agent also got better at picking the right deals to work with when you run a Skill, so results line up more closely with what you actually meant to analyze.
-
-</Card>
-
-<Card icon="user-lock" iconType="solid" title="Role-based permissions for Settings">
-  <New category="Admin" />
-
-  Access to the Settings page now follows your role — Members see a read-only view while Admins and Managers retain full edit access, consistent with role-based access elsewhere in the app.
-
-</Card>
-
-</CardGroup>
-
-### Deals
-
-<CardGroup cols={1}>
-
-<Card icon="file-export" iconType="solid" title="Deal exports now respect your filters">
-  <Fix category="Deals" />
-
-  Fixed an issue where exporting deals from a filtered view could include deals outside that filter. Exports now always match what's shown in the grid.
-
-</Card>
-
-<Card icon="table-columns" iconType="solid" title="More columns in deal exports">
-  <Improved category="Deals" />
-
-  Deal exports now include Salesforce ID alongside your other CRM identifiers, plus your Customer Fit, Messaging Fit, and Messaging Accuracy metric scores — so exported data lines up more cleanly with your CRM and reporting.
-
-</Card>
-
-<Card icon="wrench" iconType="solid" title="More reliable suggestion management">
-  <Fix category="Deals" />
-
-  Fixed errors that could occur when confirming, editing, or deleting suggested competitors, drivers, and features, with clearer messages when something goes wrong.
-
-</Card>
-
-<Card icon="sliders" iconType="solid" title="Cleaner product filtering">
-  <Improved category="Deals" />
-
-  Refined the layout and section headers used when filtering deals, metrics, and answers by product — a more consistent experience across the app.
-
-</Card>
-
-<Card icon="table-list" iconType="solid" title="Steadier deal grid sorting & pagination">
-  <Fix category="Deals" />
-
-  Fixed the deal grid occasionally reshuffling rows with the same sort value, and fixed pagination not resetting back to page one when you change filters, sorting, or your search.
-
-</Card>
-
-<Card icon="tags" iconType="solid" title="Tagging and deal home fixes">
-  <Fix category="Deals" />
-
-  Fixed a bug that could cause duplicate tags to appear when labeling deals, and added new columns and metrics to the deal home analysis view.
-
-</Card>
-
-</CardGroup>
 
 ## June 2026
 
 Sales Plays, a unified usage analytics dashboard, role-based access control, win-loss feature charts, GDPR support for EU surveys, and the Hindsight MCP server in Claude and ChatGPT.
 
-### Sales Plays
+### Sales Plays (Alpha)
 
 <CardGroup cols={1}>
 
@@ -601,47 +316,26 @@ Sales Plays, a unified usage analytics dashboard, role-based access control, win
 
 </CardGroup>
 
-### Dashboard & Analytics
+
+### Sales Enablement
 
 <CardGroup cols={1}>
 
-<Card icon="chart-column" iconType="solid" title="Win-loss feature charts">
-  <New category="Win-Loss Analysis" />
 
-  New dashboard charts visualize how product features and tags drive deal outcomes.
+<Card icon="slack" iconType="solid" title="Detailed usage analytics by user, topic, rating, and channel.">
+  <Improved category="Slack" />
 
-  **Win rate, revenue & tag mix** — Dedicated charts break down win rates, revenue, and tag mix by feature.
+  **Filtering & stats** — Filter questions by user, topic, rating, or channel (Slack, Web, MCP, or API) and track where your AI agent is being adopted and having impact.
 
-  **Comparison & answer charts** — New comparison and answer visualizations make competitive trends easier to read at a glance, with collapsible sections for older sessions.
-
-</Card>
-
-<Card icon="gauge" iconType="solid" title="Unified usage analytics">
-  <New category="Admin" />
-
-  A single dashboard tracking usage across every channel — API, MCP, Slack, and web — so admins can see how their team and integrations are using Hindsight in one place.
+  **Readable names** — Slack channels and users now resolve to their real names throughout the assistant view.
 
 </Card>
 
-</CardGroup>
-
-### Competitive Intelligence
-
-<CardGroup cols={1}>
 
 <Card icon="user-plus" iconType="solid" title="Competitor onboarding refresh">
   <Improved category="Competitive Intelligence" />
 
   Redesigned competitor onboarding and setup flow, plus new competitor enablement and setup pages for a smoother first-run experience.
-
-</Card>
-
-<Card icon="slack" iconType="solid" title="Slack Assistant improvements">
-  <Improved category="Slack" />
-
-  **Filtering & stats** — Filter questions by rating and see average questions per day, with a refreshed toolbar layout.
-
-  **Readable names** — Slack channels and users now resolve to their real names throughout the assistant view.
 
 </Card>
 
@@ -651,14 +345,7 @@ Sales Plays, a unified usage analytics dashboard, role-based access control, win
 
 <CardGroup cols={1}>
 
-<Card icon="bell" iconType="solid" title="Interview notification settings">
-  <New category="Buyer Interviews" />
-
-  Configure notification preferences per interview type from a new settings modal. The older interview-agent onboarding tour has been retired in favor of the streamlined setup.
-
-</Card>
-
-<Card icon="microphone-lines" iconType="solid" title="Voice interview reliability">
+<Card icon="microphone-lines" iconType="solid" title="Improved Voice Model">
   <Fix category="Buyer Interviews" />
 
   Migrated voice interviews to the GA Azure real-time API for more stable connections, added automatic retry on connection errors, and clearer instructions for voice-only interviews. Removed the silent fallback to text mode so failures surface clearly.
@@ -678,17 +365,17 @@ Sales Plays, a unified usage analytics dashboard, role-based access control, win
 
 <CardGroup cols={1}>
 
-<Card icon="user-lock" iconType="solid" title="Role-based access control">
+<Card icon="user-lock" iconType="solid" title="Role-based MCP tool access controls">
   <New category="Admin" />
 
-  Permissions now differentiate between admins, managers, and members. Admins have full access, managers can edit the documents they own, and members get read-only access — with edit actions hidden accordingly across the app.
+  MCP Tool permissions now differentiate between admins, managers, and members. Settings are configureable from your Hindsight settings dashboard.
 
 </Card>
 
-<Card icon="plug" iconType="solid" title="MCP in Claude & ChatGPT">
+<Card icon="plug" iconType="solid" title="Community MCP Connector in Claude & ChatGPT">
   <Improved category="Developer Tools" />
 
-  The Hindsight MCP server now connects to Claude and ChatGPT, with new MCP tools and OAuth sign-in via Clerk-issued tokens for secure, per-user access.
+  The Hindsight MCP server now connects to Claude and ChatGPT from their marketplace, with new MCP tools and OAuth sign-in via Clerk-issued tokens for secure, per-user access.
 
 </Card>
 
@@ -701,9 +388,29 @@ Sales Plays, a unified usage analytics dashboard, role-based access control, win
 
 </CardGroup>
 
+
 ## May 2026
 
-A new interview viewer with response analytics, a major audio and transcription overhaul, Google Meet recording, Snowflake deal-grid filtering, and in-chat feedback.
+A new AI Win-loss Interview experience, and more customizeable Product Intelligence. 
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="tags" iconType="solid" title="Product tagging overhaul">
+  <Improved category="Product Intelligence" />
+
+    A major upgrade to how Hindsight tags and organizes product feedback, making it far easier to track what buyers care about across your deals.
+
+  **Customizable feature tag types** — Define your own feature tag types instead of relying on fixed categories, so tagging maps to how your team actually thinks about the product.
+
+  **Smarter tagging logic** — Reworked tagging logic produces more accurate, consistent tags across interviews and documents.
+
+  **Cleaner tagging UI** — Updated components make reviewing and managing product tags faster and more intuitive.
+
+</Card>
+
+</CardGroup>
 
 ### Win-Loss Interviews
 
@@ -769,31 +476,7 @@ A new interview viewer with response analytics, a major audio and transcription 
 
 </CardGroup>
 
-### Platform
 
-<CardGroup cols={1}>
-
-<Card icon="comment" iconType="solid" title="Share feedback from chat">
-  <New category="Chat & Analysis" />
-
-  A feedback bubble in the chat interface lets you share feedback in one click, with the current chat session captured as context.
-
-</Card>
-
-<Card icon="tags" iconType="solid" title="Product tagging overhaul">
-  <Improved category="Competitive Intelligence" />
-
-  A major upgrade to how Hindsight tags and organizes product feedback, making it far easier to track what buyers care about across your deals.
-
-  **Customizable feature tag types** — Define your own feature tag types instead of relying on fixed categories, so tagging maps to how your team actually thinks about the product.
-
-  **Smarter tagging logic** — Reworked tagging logic produces more accurate, consistent tags across interviews and documents.
-
-  **Cleaner tagging UI** — Updated components make reviewing and managing product tags faster and more intuitive.
-
-</Card>
-
-</CardGroup>
 
 ## April 2026
 
