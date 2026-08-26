@@ -1,6 +1,6 @@
 ---
 title: "Competitor Monitoring"
-description: "Build a systematic competitive monitoring program using AI Agent recipes and workflows"
+description: "Build a systematic competitive monitoring program using AI Agent skills and workflows"
 ---
 
 Competitive landscapes move fast. New pricing pages, product announcements, G2 reviews, hiring signals — by the time someone notices, it's already in the next deal cycle.
@@ -24,48 +24,48 @@ You can invoke these tools directly in a prompt, or let the agent decide which o
 
 ---
 
-## The Default Recipe
+## The Default Skill
 
-When you set up competitor monitoring, Hindsight creates a default recipe as a starting point. It runs a general web search for recent activity on your tracked competitors.
+When you set up competitor monitoring, Hindsight creates a default skill as a starting point. It runs a general web search for recent activity on your tracked competitors.
 
 The default is intentionally generic. It works, but it might not find the signals that matter most to your team, or for a specific competitor.
 
 **The intent is for you to customize it.**
 
-Remix the recipe and tell the agent exactly where to look. Examples:
+Customize the skill and tell the agent exactly where to look. Examples:
 
 - Point it at a competitor's changelog URL to track product releases
 - Give it a G2 search query to surface new reviews
 - Direct it to a competitor's hiring page to catch team expansion signals
 - Set it to scrape a pricing page weekly so you catch changes before your reps do
 
-The more specific your instructions, the more useful the output. A recipe that says "research Competitor X" will return noise. A recipe that says "scrape competitor-x.com/changelog and summarize new features added this month" will return signal.
+The more specific your instructions, the more useful the output. A skill that says "research Competitor X" will return noise. A skill that says "scrape competitor-x.com/changelog and summarize new features added this month" will return signal.
 
 ---
 
-## Remixing a Recipe
+## Customizing a Skill
 
 Once you find an approach that returns useful findings, save it.
 
-In the Recipe library, hit **Remix** on any recipe to create your own version. Give it a name, edit the prompt, and save it as a reusable starting point.
+On the [Skills page](https://app.usehindsight.com/skills), add a Hindsight-created skill to your library, then edit your copy. Give it a name, edit the prompt, and save it as a reusable starting point.
 
-Build one recipe per competitor, or one per signal type (e.g., "pricing changes," "product releases," "hiring signals"). Remix the same base recipe for each competitor by swapping in a variable for the competitor name — so the structure stays consistent and only the target changes.
+Build one skill per competitor, or one per signal type (e.g., "pricing changes," "product releases," "hiring signals"). Start from the same base skill for each competitor, then tailor the target, sources, and output format while keeping the procedure consistent.
 
-**To create or remix a recipe:**
+**To create or customize a skill:**
 
-1. Go to [Chat](https://app.usehindsight.com/chat) in Hindsight
-2. Click **Browse Recipes**
-3. Find a relevant starting recipe and click **Remix**, or click **Create Recipe** to start fresh
-4. Edit the prompt, add variables if needed, and hit **Run** to test
+1. Go to [Skills](https://app.usehindsight.com/skills) in Hindsight
+2. Add a relevant Hindsight-created skill, or click **Create skill** to start fresh
+3. Edit the prompt with the sources and output format you need
+4. Run it in Hindsight to test
 5. Save when you're happy with the output
 
 ---
 
 ## Running on a Cadence with Workflows
 
-A recipe you run once is useful. A recipe that runs every Monday at 8am and posts findings to Slack is a competitive monitoring program.
+A skill you run once is useful. A workflow that runs every Monday at 8am and posts findings to Slack is a competitive monitoring program.
 
-Use [Workflows](https://app.usehindsight.com/workflows) to automate your recipes:
+Use [Workflows](https://app.usehindsight.com/workflows) to automate your prompts:
 
 - **Schedule recurring runs** — daily, weekly, or on a custom cadence
 - **Deliver to Slack** — push summaries to a channel like `#competitive-intel` or DM a specific person
@@ -88,7 +88,7 @@ Hindsight's AI Agent is different in a few ways:
 
 **It connects to your deal data.** Once new intel is saved to your library, the AI assistant can reference it when answering rep questions mid-deal. Competitive monitoring feeds directly into competitive enablement.
 
-**It's flexible.** One team might want a weekly Slack digest of all competitor activity. Another might want per-competitor recipes running on different schedules with different sources. Recipes and Workflows support both.
+**It's flexible.** One team might want a weekly Slack digest of all competitor activity. Another might want per-competitor workflows running on different schedules with different sources. Skills and Workflows support both.
 
 ---
 
@@ -100,8 +100,8 @@ Hindsight's AI Agent is different in a few ways:
 | Secondary competitors | Homepage, blog, hiring page | Bi-weekly | Intel library |
 | All | Web search for news and press | Weekly | Slack digest |
 
-Start with one recipe for your top competitor. Get the output right. Remix it for others. Add Workflows once the recipe is dialed in.
+Start with one skill for your top competitor. Get the output right. Customize copies for others. Add Workflows once the prompt is dialed in.
 
 ---
 
-*Related: [Setting Up Your Knowledge Base](/guides/knowledge-base-setup) | [Recipes Guide](/guides/recipes) | [AI Agent Tools](/guides/prompting)*
+*Related: [Setting Up Your Knowledge Base](/guides/knowledge-base-setup) | [Skills and Workflows](/guides/recipes) | [AI Agent Tools](/guides/prompting)*

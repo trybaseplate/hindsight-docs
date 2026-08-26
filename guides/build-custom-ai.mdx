@@ -1,15 +1,15 @@
 ---
 title: "Build Your Custom AI"
-description: "Turn Hindsight's tools into repeatable AI you and your team can run on demand"
+description: "Create Hindsight skills and recurring workflows on top of your deal intelligence"
 ---
 
-Once your deals are analyzed and your library is seeded, Hindsight's AI can reason over all of it. This page is about going from one-off questions to **repeatable, custom AI** — capabilities you build once and your whole team runs.
+Once your deals are analyzed and your library is seeded, Hindsight's AI can reason over all of it. This page is about going from one-off questions to **repeatable, custom AI**: skills for work you run on demand and workflows for work that should recur automatically.
 
 There are two ways to do that, and they're the same idea at two altitudes:
 
 <CardGroup cols={2}>
-  <Card title="Recipes — your in-app Skills" icon="wand-magic-sparkles" href="/guides/recipes">
-    Reusable, parameterized prompts you save and schedule inside Hindsight. Think of a Recipe as a **Claude Skill that lives in the app** — package a task once, then run it on demand or on a cadence.
+  <Card title="Skills and Workflows" icon="wand-magic-sparkles" href="/guides/recipes">
+    Build Hindsight instructions that can be selected by name or loaded dynamically, then schedule prompts that need to run on a cadence.
   </Card>
   <Card title="Skills in Claude — over MCP" icon="plug" href="/integrations/mcp">
     Connect Hindsight's MCP server to Claude and build a **Claude Skill** that calls Hindsight's tools directly. Same verified data, orchestrated by your own agent in whatever workflow you already use.
@@ -32,26 +32,26 @@ Behind the scenes, Hindsight routes each query to specialized sub-agents. For th
 
 ---
 
-## Build a Recipe (your in-app Skill)
+## Build a Skill
 
-Recipes let you package a working prompt — with variables — and save it so anyone on your team can run it. **A Recipe is Hindsight's in-app version of a Claude Skill:** you define the task once, and it becomes a reusable capability.
+Skills package a working set of instructions so Hindsight can reliably perform the same task. They run in Hindsight’s web interface, Responses API, and Slack, and can be selected by name or loaded dynamically when they match the task. You can export their Markdown instructions to adapt them for Claude or another AI tool, but they are not automatically shared between products.
 
-1. Go to **Chat** in Hindsight and click **Browse Recipes**.
-2. **Remix** an existing recipe or click **Create Recipe**.
-3. Add **variables** (competitor name, deal filters, date range) so the recipe is reusable across runs.
-4. Run it to test, then save and share.
+1. Define one clear outcome, such as a weekly competitor brief or deal strategy.
+2. Specify the Hindsight tools, company context, instructions, quality checks, and output format to use.
+3. Test the skill on representative requests and refine it until the output is consistent.
+4. Save and share it so teammates can select it by name or an AI tool can load it when relevant.
 
-Once a Recipe works, schedule it with **Workflows** to deliver to Slack or email, write back to your library, or push to other tools via Zapier. Full details — recipe types, variables, and best practices — are in the [Recipes guide](/guides/recipes).
+Use **Workflows** for recurring work. A workflow is a scheduled prompt: it can use a skill, but it can also contain all of its instructions directly. Schedule it to deliver results to Slack or email, write to your Library, or trigger other tools through Zapier. Full authoring guidance is in the [Skills and Workflows guide](/guides/recipes).
 
 <Tip>
-  Keep each Recipe focused on one job and give variables clear names. A tight, single-purpose Recipe produces far better output than one that tries to do everything.
+  Keep each skill focused on one job. A tight, single-purpose instruction set produces far better output than one that tries to do everything.
 </Tip>
 
 ---
 
 ## Strong recommendation: build a Skill in Claude over MCP
 
-Recipes are the fastest way to get repeatable AI inside Hindsight. But the most powerful path is to **build a Claude Skill that uses Hindsight's tools directly over [MCP](/integrations/mcp)**.
+Skills and workflows make repeatable AI easy inside Hindsight. For custom orchestration outside the app, you can also **build a Claude Skill that uses Hindsight's tools directly over [MCP](/integrations/mcp)**.
 
 Because Hindsight exposes its verified deal layer as MCP tools, you don't have to rebuild any retrieval or analysis — you point Claude at the same `select_deal`, `search_across_deals`, `search_competitive_intel`, and dataset tools the in-app agent uses, and let Claude orchestrate them inside a Skill you author. That gives you:
 
@@ -69,8 +69,8 @@ If you're building custom AI on top of your GTM data, **start the Skill in Claud
   <Card title="Connect over MCP" icon="plug" href="/integrations/mcp">
     Wire Hindsight into Claude and build a Skill on your verified deal layer.
   </Card>
-  <Card title="Recipes Guide" icon="wand-magic-sparkles" href="/guides/recipes">
-    Recipe types, variables, scheduling, and best practices.
+  <Card title="Skills and Workflows" icon="wand-magic-sparkles" href="/guides/recipes">
+    Author Hindsight skills and schedule recurring prompts.
   </Card>
   <Card title="AI Agent Tools" icon="robot" href="/guides/prompting">
     The full tool reference and prompting patterns for precise results.

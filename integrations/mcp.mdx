@@ -254,7 +254,7 @@ The server exposes the verified deal layer as a focused set of tools, grouped be
 |---|---|
 | `select_deal` | Filter and list deals by criteria (competitor, stage, amount, date, owner, and more). Pass a conceptual `semantic_query` to rank matches by similarity to a description instead of paging by date. Returns lean rows for fast triage. |
 | `get_deal` | Get full details for specific deals by ID. |
-| `search_comparable_deals` | Given a source deal, return the org's configured set of historical comparable deals — the same algorithm behind the in-app comparables feature, run on demand. Retrieval only; typically followed by `get_deal` / `search_deal_documents` on the returned IDs. |
+| `search_comparable_deals` | Find the most comparable historical deals for a source deal, including each matching dimension and score. |
 | `search_across_deals` | Search all deal documents across the entire pipeline. |
 | `search_deal_documents` | Deep search within specific deals. |
 | `pull_full_document` | Fetch full document content by ID when retrieved chunks aren't enough. |
@@ -298,6 +298,10 @@ For win-rate, trend, and segment questions over the deal grid.
 | `upload_deal_document` | Attach a document to a deal — pass the text directly or a downloadable file URL (PDF, DOCX, audio, video). |
 | `upload_to_knowledge_base` | Upload your own company's docs, playbooks, case studies, or approved messaging to the knowledge base. |
 | `upload_competitive_intel` | Save competitor pricing, positioning, feature notes, or gathered news to the knowledge base. |
+
+<Note>
+Tool availability is role-based. By default, workspace admins can use every tool; managers can use the read tools plus the data-analysis tools; and members can use the read tools. Workspace admins can customize these permissions in **Settings → MCP Tools**.
+</Note>
 
 ---
 
