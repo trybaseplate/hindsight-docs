@@ -53,19 +53,9 @@ Hindsight exposes its AI agent capabilities through the Model Context Protocol (
   </Tab>
 
   <Tab title="Claude Desktop">
-    ### One-Click Install
-
-    Download and double-click the Hindsight MCP bundle to install directly into Claude Desktop. No config file editing required.
-
-    [Download hindsight.mcpb](https://app.usehindsight.com/hindsight.mcpb)
-
-    When you open the file and click install, Claude Desktop will open the browser prompting you to login to Hindsight and select an organization to use for the MCP.
-
-    ---
-
-    ### Manual Setup
-
-    If you prefer to configure manually, open your Claude Desktop config file:
+    <Note>
+      The one-click `hindsight.mcpb` bundle install is deprecated. Connect via HTTP instead by adding Hindsight directly to your Claude Desktop config file:
+    </Note>
 
     - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
     - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
@@ -74,16 +64,17 @@ Hindsight exposes its AI agent capabilities through the Model Context Protocol (
     {
       "mcpServers": {
         "hindsight": {
-          "command": "npx",
-          "args": ["-y", "mcp-remote", "https://app.usehindsight.com/api/mcp", "--header", "Authorization: Bearer YOUR_API_KEY"]
+          "type": "http",
+          "url": "https://app.usehindsight.com/api/mcp",
+          "headers": {
+            "Authorization": "Bearer YOUR_API_KEY"
+          }
         }
       }
     }
     ```
 
-    Restart Claude Desktop after saving. For more details, see [Anthropic's MCP setup guide](https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop).
-
-    Generate an API key from **Settings → API Keys** in the Hindsight app.
+    Restart Claude Desktop after saving. Generate an API key from **Settings → API Keys** in the Hindsight app.
 
     ### Claude Code
 
@@ -187,7 +178,7 @@ Hindsight MCP moved to OAuth sign-in in [MCP 2.0](/release-notes/mcp-2.0). If yo
 
     **2. Add it again**
 
-    Click **+ → Add custom connector**, set the URL to `https://app.usehindsight.com/api/mcp`, and click **Add**. (Desktop users can instead reinstall the [hindsight.mcpb](https://app.usehindsight.com/hindsight.mcpb) bundle.)
+    Click **+ → Add custom connector**, set the URL to `https://app.usehindsight.com/api/mcp`, and click **Add**.
 
     **3. Connect and sign in**
 
@@ -296,11 +287,9 @@ For win-rate, trend, and segment questions over the deal grid.
 | Tool | Description |
 |---|---|
 | `create_dataset` | Build a structured dataset from your deal pipeline. |
-| `run_sandbox_dataset_analysis` | Run custom Python analysis against an authorized dataset in Hindsight's isolated, network-disabled sandbox. Can return up to three charts. |
+| `run_sandbox_dataset_analysis` | Run a user-supplied Python script against a dataset from `create_dataset` in an isolated, network-disabled sandbox, printing the requested aggregate or table and optionally saving up to 3 charts. Replaces the retired `analyze_dealgrid_subset`. |
 
 **Typical flow:** `pull_schema` → `create_dataset` → `run_sandbox_dataset_analysis`.
-
-`analyze_dealgrid_subset` remains available only through the REST API; it is not exposed by MCP.
 
 ### Write back
 
