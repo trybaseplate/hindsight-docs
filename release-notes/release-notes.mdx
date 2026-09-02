@@ -5,6 +5,103 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## September 2026
+
+Starter Plays onboarding, a redesigned Connectors page with new integrations, more accurate Gong call matching, and reliability fixes across Slack, interviews, and the deals page.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Starter Plays onboarding">
+  <New category="Sales Plays" />
+
+  New to Plays? A guided onboarding dialog walks you through creating your first Plays from ready-made starter templates. Revisit it anytime from the **Starter Plays** button on the Plays page.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Filter Sales Plays synced from Snowflake">
+  <New category="Sales Plays" />
+
+  Sales Plays imported from Snowflake can now be filtered using substring and "contains" matching, alongside your existing filters.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="plug" iconType="solid" title="Redesigned Connectors page, 5 new integrations">
+  <New category="Platform" />
+
+  The Connectors page has a cleaner look and adds support for **Notion, Grain, Otter.ai, Avoma, and Attio**. Manage connections—edit, disconnect, or remove—directly from the page.
+
+</Card>
+
+<Card icon="compass" iconType="solid" title="Reorganized navigation">
+  <Improved category="Platform" />
+
+  The sidebar now groups **Interview** and **Library** into their own sections, with updated icons and clearer labels for Plays, Analytics, Deals, Assets, and Saved Intel.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="phone" iconType="solid" title="More accurate Gong call matching">
+  <Improved category="CRM Integration" />
+
+  Gong calls now match to the right deal using more signals—phone numbers, contact and account names, Salesforce-synced contacts, and call IDs surfaced through Salesforce managed packages—plus corrected date-window handling so calls near a deal's key dates aren't missed.
+
+</Card>
+
+</CardGroup>
+
+### Competitive Intelligence
+
+<CardGroup cols={1}>
+
+<Card icon="chart-pie" iconType="solid" title="Competitor charts now reflect deal filters">
+  <Fix category="Competitive Intelligence" />
+
+  Charts on the deals page were showing unfiltered data. They now update live as you filter the deal grid.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Cleaner Slack reply threads">
+  <Fix category="Slack" />
+
+  Fixed an issue where continuing a conversation in Slack could send duplicate messages. Replies are now preserved in threads and DMs instead of being deleted and re-sent.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="video" iconType="solid" title="More reliable Google Meet recording">
+  <Fix category="Buyer Interviews" />
+
+  Fixed a race condition that could prevent the Google Meet interview bot from saving its recording.
+
+</Card>
+
+</CardGroup>
+
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
