@@ -5,6 +5,103 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## September 2026
+
+Configurable triggers and feedback loops for Sales Plays, deeper impact reporting, and smoother Google Drive and Slack reliability.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="sliders" iconType="solid" title="Configurable Play triggers">
+  <New category="Sales Plays" />
+
+  Set your own trigger conditions—for example, a deal reaching Stage 2 with two or more competitors—to automatically enroll deals into a Play as soon as they qualify.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Track the impact of your Plays">
+  <New category="Sales Plays" />
+
+  A redesigned Plays Overview shows the opportunities, pipeline, and revenue your Plays have influenced, with attributed deals and their outcomes, so you can see which Plays are actually moving the needle.
+
+</Card>
+
+<Card icon="comment-dots" iconType="solid" title="Collect feedback on Play outcomes">
+  <New category="Sales Plays" />
+
+  Reps can now submit feedback on a Play directly from Slack or email, helping you refine which Plays are working and which need adjustment.
+
+</Card>
+
+<Card icon="compass" iconType="solid" title="Starter Plays onboarding">
+  <New category="Sales Plays" />
+
+  New teams are guided through creating their first Plays from a set of ready-made templates, right from the Plays page.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="google-drive" iconType="solid" title="Faster, more transparent Google Drive sync">
+  <Improved category="CRM Integration" />
+
+  Drive sync now runs daily instead of weekly, and each synced document shows when it was last updated. Ownership of imported files now correctly stays with the person who connected Drive, even if Google-side permissions change.
+
+</Card>
+
+<Card icon="phone-volume" iconType="solid" title="More complete Gong call matching for Salesforce">
+  <Improved category="CRM Integration" />
+
+  Hindsight now discovers more Gong calls linked to your Salesforce records by checking managed-package relationships and Task/Event activity records, so more of your call history shows up automatically without manual mapping.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="More reliable Play responses in Slack">
+  <Fix category="Slack" />
+
+  Fixed an issue that could let a Play action be triggered twice, and replies now update in place in the original thread instead of disappearing. Slack responses no longer arrive blank if a reply is still finishing up.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="More complete search results while syncing">
+  <Improved category="Chat & Analysis" />
+
+  Search now surfaces newly imported documents even while they're still finishing indexing, and Drive sync automatically reindexes any files that didn't fully index the first time.
+
+</Card>
+
+</CardGroup>
+
+### Admin Controls
+
+<CardGroup cols={1}>
+
+<Card icon="user-lock" iconType="solid" title="Notion connections restricted to admins">
+  <Improved category="Admin" />
+
+  Connecting Notion to your workspace now requires organization admin permissions.
+
+</Card>
+
+</CardGroup>
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
