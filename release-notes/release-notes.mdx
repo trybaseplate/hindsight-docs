@@ -5,6 +5,138 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## September 2026
+
+Configurable Sales Plays triggers with a redesigned, impact-focused Plays page, smarter Gong call matching across Salesforce, more resilient search while documents finish indexing, and a reorganized navigation sidebar.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Configurable triggers and automatic enrollment">
+  <New category="Sales Plays" />
+
+  Build Plays around your own trigger conditions instead of only the built-in templates, and let Hindsight automatically enroll deals as they start to qualify—no manual review needed to get a Play started.
+
+  **Portfolio impact, at a glance** — The Plays page has a new Overview tab showing impact metrics across your whole portfolio, so you can see what's working before digging into individual deals.
+
+  **Feedback from Slack or email** — Reply to a Play recommendation to tell Hindsight whether it was useful, right from Slack or email.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Starter Plays for new teams">
+  <New category="Sales Plays" />
+
+  Teams with no Plays yet now see a guided dialog with ready-to-use starter templates, so you can get your first Play running in a couple of clicks.
+
+</Card>
+
+<Card icon="bug" iconType="solid" title="Plays fixes">
+  <Fix category="Sales Plays" />
+
+  Fixed competitor charts not reflecting the correct deals on the competitor comparison page.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="phone-volume" iconType="solid" title="Smarter, more complete Gong call matching">
+  <Improved category="CRM Integration" />
+
+  Hindsight now matches Gong calls to the right deal using phone numbers and contact names, not just email—so more of your calls land on the correct deal automatically. Salesforce-synced contacts are recognized too.
+
+  **Broader Salesforce coverage** — Calls linked through Salesforce's Gong managed package, and calls referenced in Salesforce Tasks and Events, are now picked up during sync.
+
+  **Fixed a sync gap** — Corrected a date-range bug that could cause some recent calls to be skipped.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="More resilient search while documents finish indexing">
+  <Improved category="Chat & Analysis" />
+
+  Paige can now surface newly added documents in search results even before indexing completes, instead of returning nothing. Google Drive sync also automatically repairs documents that didn't fully index the first time.
+
+</Card>
+
+</CardGroup>
+
+### Assets
+
+<CardGroup cols={1}>
+
+<Card icon="clock" iconType="solid" title="See when a Drive document was last updated">
+  <New category="Assets" />
+
+  Google Drive documents now display a last-updated timestamp. Drive sync also runs daily instead of weekly, so your library stays current.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="compass" iconType="solid" title="Reorganized navigation">
+  <Improved category="Platform" />
+
+  The sidebar is reorganized around how teams actually use Hindsight, with new Interview and Library sections and direct links to Plays, Analytics, Deals, Assets, and Saved Intel.
+
+</Card>
+
+<Card icon="user-check" iconType="solid" title="Cleaner deal contacts">
+  <Improved category="Platform" />
+
+  Internal teammates no longer clutter the contacts list on deal workflows—you'll only see the external contacts that matter.
+
+</Card>
+
+<Card icon="bug" iconType="solid" title="Deal page fixes">
+  <Fix category="Platform" />
+
+  Fixed client website, LinkedIn, and logo links not rendering correctly on deal pages.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="More reliable Play conversations in Slack">
+  <Fix category="Slack" />
+
+  Fixed an issue where Play action buttons could be triggered more than once, and where Paige's replies could disappear from Slack threads and DMs.
+
+</Card>
+
+</CardGroup>
+
+### Admin Controls
+
+<CardGroup cols={1}>
+
+<Card icon="lock" iconType="solid" title="Notion connections limited to org admins">
+  <Improved category="Admin Controls" />
+
+  Only organization admins can now connect or manage the Notion integration, keeping integration setup centralized.
+
+</Card>
+
+</CardGroup>
+
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
