@@ -5,6 +5,132 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## September 2026
+
+Sales Plays impact reporting and Slack reliability, a redesigned navigation sidebar, and steadier syncing for Google Drive, Gong, and Snowflake.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chart-line" iconType="solid" title="Play impact: pipeline & revenue">
+  <Improved category="Sales Plays" />
+
+  The Plays overview now shows the pipeline and revenue tied to each Play's attributed opportunities, so you can see the business impact of a Play at a glance, not just replies and clicks.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Starter Plays">
+  <New category="Sales Plays" />
+
+  New teams get a guided setup flow that suggests ready-to-use starter Plays. Create one with a single click from the **Starter Plays** button on the Plays page.
+
+</Card>
+
+<Card icon="comments" iconType="solid" title="Play conversations stay in context">
+  <Improved category="Sales Plays" />
+
+  Replying to a Play alert now continues the same conversation with full context, whether you respond in Slack or pick it back up in Hindsight chat. Play threads and feedback are also now visible directly from the deal table.
+
+</Card>
+
+<Card icon="bug" iconType="solid" title="Slack reliability fixes for Plays">
+  <Fix category="Sales Plays" />
+
+  Fixed duplicate responses when replying to a Play alert in Slack — action buttons now disable after use — and replies in a Slack thread or DM are preserved instead of being overwritten.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="compass" iconType="solid" title="Refreshed navigation">
+  <Improved category="Platform" />
+
+  The sidebar has been reorganized for clarity, with dedicated **Interview** and **Library** sections and direct links to Plays, Analytics, Deals, Assets, and Saved Intel.
+
+</Card>
+
+<Card icon="plug" iconType="solid" title="Connectors page refresh">
+  <Improved category="Platform" />
+
+  The Connectors page has a cleaner layout and support for more integrations.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="More resilient search">
+  <Fix category="Chat & Analysis" />
+
+  Newly added documents now show up in search results while they finish indexing, instead of appearing to have no results.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="filter" iconType="solid" title="Filter deals by Sales Play">
+  <New category="CRM Integration" />
+
+  Orgs syncing deals from Snowflake can now filter and view deals by their CRM "Sales Play" field directly in the deal grid.
+
+</Card>
+
+<Card icon="phone" iconType="solid" title="More accurate Gong call matching">
+  <Improved category="CRM Integration" />
+
+  Gong calls are now matched to the right deal using phone numbers and contact names in addition to email, so more of your calls show up automatically in the right place.
+
+</Card>
+
+<Card icon="users" iconType="solid" title="Cleaner contact lists">
+  <Improved category="CRM Integration" />
+
+  Internal teammates are now filtered out of deal contact lists and workflows, so only buyer-side contacts show up.
+
+</Card>
+
+<Card icon="cloud" iconType="solid" title="Faster, more visible Google Drive sync">
+  <Improved category="CRM Integration" />
+
+  Connected Drive folders now sync daily instead of weekly, and each document shows a "last updated" timestamp so you know how fresh it is.
+
+</Card>
+
+<Card icon="bug" iconType="solid" title="Google Drive ownership fix">
+  <Fix category="CRM Integration" />
+
+  Fixed an issue where a teammate's Google Drive sharing permissions could unintentionally change who owns an imported document inside Hindsight.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="video" iconType="solid" title="Fixed Google Meet recording bug">
+  <Fix category="Buyer Interviews" />
+
+  Fixed an issue where the Google Meet interview bot could fail to save its recording.
+
+</Card>
+
+</CardGroup>
+
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
