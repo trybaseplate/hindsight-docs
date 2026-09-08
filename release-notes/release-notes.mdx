@@ -5,6 +5,124 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## September 2026
+
+A smoother first run for Sales Plays, richer Play impact reporting, more reliable Slack replies, and several CRM and Google Drive sync accuracy improvements.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Starter Plays onboarding">
+  <New category="Sales Plays" />
+
+  New teams are guided through creating their first Plays with a starter-template picker, so there's no blank-slate setup before Plays start finding opportunities.
+
+</Card>
+
+<Card icon="chart-simple" iconType="solid" title="Deeper Play impact reporting">
+  <Improved category="Sales Plays" />
+
+  The Plays overview now reports the pipeline and won revenue tied to each Play, plus which opportunities it has already touched, so you can see impact at a glance instead of opportunity-by-opportunity.
+
+</Card>
+
+<Card icon="comments" iconType="solid" title="Play conversations remember context">
+  <Improved category="Sales Plays" />
+
+  Continuing a Play in Slack or chat now picks up where you left off, carrying prior context and reference materials forward instead of starting fresh. Play threads and feedback are also clearer in the UI.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="Search surfaces documents while they're still indexing">
+  <Improved category="Chat & Analysis" />
+
+  Search results now include recently added documents even if indexing hasn't finished, instead of leaving them out until processing completes.
+
+</Card>
+
+<Card icon="brain" iconType="solid" title="More reliable final answers">
+  <Fix category="Chat & Analysis" />
+
+  Paige now reliably delivers a synthesized answer at the end of multi-step responses instead of occasionally stopping short.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Fixed duplicate replies in Slack">
+  <Fix category="Slack" />
+
+  Slack buttons now disable after you respond, preventing duplicate follow-ups, and existing replies in a thread or DM are preserved instead of being overwritten.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="video" iconType="solid" title="More reliable Google Meet recording">
+  <Fix category="Buyer Interviews" />
+
+  Fixed a race condition where the Google Meet interview bot could fail to save a recording when multiple participants joined at once.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="phone" iconType="solid" title="More accurate Gong-Salesforce call matching">
+  <Improved category="CRM Integration" />
+
+  Calls from Gong are now matched to the right Salesforce records using phone numbers, contact names, and managed-package relationships, in addition to existing account and email matching—cutting down on missed or mismatched calls.
+
+</Card>
+
+<Card icon="user-slash" iconType="solid" title="Internal contacts excluded from deal workflows">
+  <Improved category="CRM Integration" />
+
+  Deal workflows and related views now filter out internal team members, keeping the focus on external buyer-side contacts.
+
+</Card>
+
+<Card icon="cloud" iconType="solid" title="Google Drive sync improvements">
+  <Improved category="CRM Integration" />
+
+  Drive documents now show a last-updated timestamp, and Drive assets sync daily instead of weekly. Importer ownership is also preserved during sync, so a Drive permission change no longer overrides the app-level document owner.
+
+</Card>
+
+<Card icon="link" iconType="solid" title="Fixed client links and logos on deal pages">
+  <Fix category="CRM Integration" />
+
+  Corrected rendering of client website, LinkedIn, and Twitter links and logos on deal pages.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Filter and import by Sales Play status (Snowflake)">
+  <New category="CRM Integration" />
+
+  Snowflake-connected orgs can now filter and import deals by their Sales Play List status, matching the filtering already available for other CRM fields.
+
+</Card>
+
+</CardGroup>
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
