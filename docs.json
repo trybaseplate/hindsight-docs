@@ -48,6 +48,10 @@
         "pages": ["integrations/mcp"]
       },
       {
+        "group": "Security & Compliance",
+        "pages": ["security-compliance"]
+      },
+      {
         "group": "REST API",
         "pages": [
           "integrations/api",

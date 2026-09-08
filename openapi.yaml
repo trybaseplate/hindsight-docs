@@ -11,24 +11,17 @@ info:
     ```
     
     Get your API key from the [Hindsight dashboard](https://app.usehindsight.com/settings/keys).
+    Newly created API keys begin with `hs_`; existing keys remain supported until they
+    are rotated or expire.
     
     ## Rate Limits
     
-    API and MCP requests are rate-limited per organization. The per-minute rate limit is
-    shared across API and MCP traffic and uses a 60-second sliding window. Direct tool
-    calls also consume a monthly usage bucket; `select-deal` and `get-deal` consume one
-    read each from the shared reads bucket after authorization and validation succeed.
-    
-    | Plan | Per Minute | Per Month |
-    |------|-----------|----------|
-    | Essentials | 10 | 10,000 |
-    | Growth | 60 | 30,000 |
-    | Enterprise | 300 | 100,000 |
-    
-    Successful direct-tool responses include `X-RateLimit-Limit`, `X-RateLimit-Remaining`,
-    `X-RateLimit-Reset` (Unix milliseconds), `X-Usage-Used`, `X-Usage-Limit`,
-    `X-Usage-Remaining`, and `X-Usage-Period-End`. When a limit is exceeded, the API
-    returns a `429` response with the relevant headers.
+    Hindsight applies both organization-wide and per-API-key request limits. Per-key
+    defaults are approximately one-third of the organization plan limit, with a minimum
+    of 5 requests per minute. Expensive operations may also consume separate usage quotas.
+    On `429 Too Many Requests`, use `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and
+    `X-RateLimit-Reset` (Unix milliseconds). These public headers represent the active
+    response limit; separate per-key response headers are not currently provided.
   version: 1.0.0
   contact:
     name: Hindsight Support
@@ -648,7 +641,7 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-      description: API key from Hindsight dashboard
+      description: "API key from Hindsight Settings → API keys. Use `Authorization: Bearer YOUR_API_KEY`. Newly created keys begin with `hs_`; existing keys remain supported until rotated or expired."
 
   schemas:
     SelectDealRequest:
@@ -1506,10 +1499,22 @@ components:
           example:
             error:
               code: "forbidden"
-              message: "Your role does not have permission to use this tool."
+              message: "Your role (member) does not have permission to perform this action."
+
+    InsufficientScope:
+      description: Forbidden - the API key is not scoped for this action
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "insufficient_scope"
+              message: "This API key is not scoped for this action."
+              required_scopes: ["documents:write"]
 
     RateLimitExceeded:
-      description: Too many requests - per-minute rate limit or monthly usage quota exceeded
+      description: Too many requests - rate limit or applicable usage quota exceeded
       content:
         application/json:
           schema:
@@ -1532,24 +1537,6 @@ components:
             type: integer
             format: int64
           description: Unix timestamp in milliseconds when the rate-limit window resets.
-        X-Usage-Used:
-          schema:
-            type: integer
-          description: Requests consumed from the applicable monthly bucket.
-        X-Usage-Limit:
-          schema:
-            type: integer
-          description: Monthly allowance for the applicable usage bucket.
-        X-Usage-Remaining:
-          schema:
-            type: integer
-          description: Requests remaining in the applicable monthly usage bucket.
-        X-Usage-Period-End:
-          schema:
-            type: string
-            format: date-time
-          description: ISO timestamp when the monthly usage period resets.
-
     InternalServerError:
       description: Internal server error
       content:

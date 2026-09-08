@@ -28,7 +28,7 @@ Path parameter:
   } | null
 }
 
-Rate limits: 60 req/min (Essentials), 300 req/min (Growth), 1,000 req/min (Enterprise)
+Rate limits: Organization-wide and per-API-key limits apply.
 ```
 </Accordion>
 
@@ -88,11 +88,7 @@ Avoid polling faster than once per minute — completions typically happen hours
 
 ## Rate Limits
 
-| Plan | Requests per Minute |
-|------|-------------------|
-| Essentials | 60 |
-| Growth | 300 |
-| Enterprise | 1,000 |
+Organization-wide and per-API-key limits apply. Handle `429 Too Many Requests` using `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Reset`.
 
 ## Examples
 
@@ -134,7 +130,7 @@ if (transcript) {
 import requests
 import time
 
-API_KEY = 'your_api_key_here'
+API_KEY = 'YOUR_API_KEY'
 
 def get_interview(interview_request_id):
     response = requests.get(

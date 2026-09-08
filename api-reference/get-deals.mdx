@@ -114,7 +114,7 @@ Query Parameters:
   }
 ]
 
-Rate limits: 10 req/min (Essentials), 60 req/min (Growth), 300 req/min (Enterprise)
+Rate limits: Organization-wide and per-API-key limits apply.
 ```
 </Accordion>
 
@@ -462,11 +462,7 @@ Supported operators:
 
 ## Rate Limits
 
-| Plan | Requests per Minute |
-|------|-------------------|
-| Essentials | 10 |
-| Growth | 60 |
-| Enterprise | 300 |
+Organization-wide and per-API-key limits apply. Handle `429 Too Many Requests` using `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Reset`.
 
 ## Examples
 
@@ -498,7 +494,7 @@ curl "https://app.usehindsight.com/api/v1/deals?close_date=%7B%22from%22%3A%2220
 ```
 
 ```javascript Node.js - Get Paginated Deals
-const API_KEY = 'your_api_key_here';
+const API_KEY = 'YOUR_API_KEY';
 const BASE_URL = 'https://app.usehindsight.com/api/v1';
 
 async function getDeals(page = 0, pageSize = 50) {
@@ -564,7 +560,7 @@ console.log(`Total deals: ${total}`);
 import requests
 import json
 
-API_KEY = 'your_api_key_here'
+API_KEY = 'YOUR_API_KEY'
 BASE_URL = 'https://app.usehindsight.com/api/v1'
 
 def get_all_deals(filters=None):
@@ -663,7 +659,7 @@ for deal in deals[:5]:
 | **Use Case** | Real-time access, integrations | Reports, analysis, backups |
 | **Pagination** | Built-in | N/A (single file) |
 | **Max Records** | Unlimited (paginated) | Unlimited |
-| **Rate Limits** | 10-300 req/min | 10-300 req/min plus monthly export quota |
+| **Rate Limits** | Organization-wide and per-key limits | Organization-wide and per-key limits; exports may consume a separate usage quota |
 | **Data Freshness** | Real-time | Snapshot at export time |
 
 ## Error Responses

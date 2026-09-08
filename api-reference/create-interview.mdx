@@ -33,7 +33,7 @@ Request body:
   "status": "sent"   // "sent" = enrolled in sequence | "created" = link only
 }
 
-Rate limits: 60 req/min (Essentials), 300 req/min (Growth), 1,000 req/min (Enterprise)
+Rate limits: Organization-wide and per-API-key limits apply. Interview actions may consume a separate usage quota.
 ```
 </Accordion>
 
@@ -112,17 +112,11 @@ You can also pass a plain string:
 
 ## Rate Limits
 
-| Plan | Requests per Minute |
-|------|-------------------|
-| Essentials | 60 |
-| Growth | 300 |
-| Enterprise | 1,000 |
-
-Rate limit headers are included on every response:
+Organization-wide and per-API-key limits apply. Interview actions may consume a separate usage quota. Handle `429 Too Many Requests` using the current response headers:
 
 | Header | Description |
 |--------|-------------|
-| `X-RateLimit-Limit` | Your plan's request limit per window |
+| `X-RateLimit-Limit` | Requests allowed in the active response limit window |
 | `X-RateLimit-Remaining` | Requests remaining in the current window |
 | `X-RateLimit-Reset` | Unix timestamp when the window resets |
 

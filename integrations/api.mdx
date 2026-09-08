@@ -20,15 +20,58 @@ This page covers the REST API. Direct REST tool calls and MCP calls use the same
 
 ---
 
-## Authentication
+## API keys
 
-All API requests require authentication using an API key in the header:
+All API requests require an API key in the `Authorization` header:
 
-```bash
+```yaml
 Authorization: Bearer YOUR_API_KEY
 ```
 
-Get your API keys from the [Hindsight dashboard](https://app.usehindsight.com/settings/keys).
+Create API keys in **Hindsight Settings → API keys**. The plaintext key is shown only once, at creation. Store it in a secrets manager; Hindsight cannot display it again.
+
+Newly created API keys begin with `hs_`. Existing keys remain supported until they are rotated or expire.
+
+Each key is tied to the organization in which it was created, its creator's current organization role, its explicit API-key scopes, and an optional expiry date. A key is rejected immediately when it is revoked, expires, or its creator is no longer a member of that organization.
+
+Scopes can only reduce access. They never grant access beyond the creator's current role or the organization's configured MCP/API permissions.
+
+### Available scopes
+
+| Scope | Allows |
+| --- | --- |
+| `deals:read` | Read deals, deal schema, datasets, and comparable-deal data |
+| `documents:read` | Search and retrieve deal documents |
+| `competitive_intel:read` | Search competitive assets/intel and use related web research tools |
+| `knowledge_base:read` | Search company messaging and knowledge-base documents |
+| `exports:read` | Create, inspect, and download deal exports |
+| `responses:execute` | Use the Responses API |
+| `documents:write` | Upload documents to deals |
+| `knowledge_base:write` | Upload knowledge-base documents and competitive intelligence |
+| `interviews:write` | Create and update interview requests |
+| `workflows:read` | Read workflow metadata |
+| `workflows:write` | Create, update, or delete workflows |
+
+### Read-only integrations
+
+For competitive discovery, narrative generation, analytics, or reporting, create a key with only the required read scopes. Do not grant any `*:write` scope unless the integration must change Hindsight data.
+
+Recommended default read-only scopes:
+
+- `deals:read`
+- `documents:read`
+- `competitive_intel:read`
+- `knowledge_base:read`
+
+Add `exports:read` only when the integration needs downloadable deal exports. Add `responses:execute` only when the integration invokes the Hindsight Responses API.
+
+### Expiration and rotation
+
+Available lifetimes are 7 days, 30 days, 90 days, 1 year, and Never. The default is 30 days.
+
+Create a replacement key before the old key expires, update the external integration, verify it works, then revoke the old key. Revocation takes effect immediately.
+
+Existing keys have a 90-day transition expiry after this feature is deployed and should be rotated before then. Reserve indefinite keys for managed, long-lived integrations and review them regularly.
 
 <img alt="API Keys" classname="block" src="/images/api-keys.png" />
 
@@ -315,31 +358,21 @@ app.message(async ({ message, say }) => {
 
 ---
 
-## Rate Limits
+## Rate limits
 
-All API and MCP calls are limited **per organization**, not per user, API key, or endpoint. The per-minute limit is shared across the organization's API and MCP traffic and uses a 60-second sliding window.
+Hindsight applies both organization-wide and per-API-key request limits. The organization-wide limit protects overall platform capacity, while the per-key limit prevents one compromised or malfunctioning key from exhausting the organization's entire allowance.
 
-| Plan | Requests/minute | Monthly reads |
-|------|----------------|----------------|
-| Essentials | 10 | 10,000 |
-| Growth | 60 | 30,000 |
-| Enterprise | 300 | 100,000 |
+Per-key defaults are derived from the organization's plan limit: approximately one-third of the organization limit, with a minimum of 5 requests per minute. Expensive operations such as exports, uploads, interview actions, and AI/Responses requests may also consume separate usage quotas.
 
-`select-deal` and `get-deal` each consume one read from the shared monthly **reads** bucket after authorization and input validation succeed. That bucket is also shared with other read-class Hindsight tools, whether called over REST or MCP. Organization-specific allowances may differ from the plan defaults.
-
-Successful direct-tool responses include these headers:
+Clients should handle `429 Too Many Requests` using these existing response headers:
 
 | Header | Meaning |
 |--------|---------|
-| `X-RateLimit-Limit` | Requests allowed in the current 60-second window. |
+| `X-RateLimit-Limit` | Requests allowed in the active response limit window. |
 | `X-RateLimit-Remaining` | Requests remaining in that window. |
-| `X-RateLimit-Reset` | Unix timestamp in milliseconds when the rate-limit window resets. |
-| `X-Usage-Used` | Reads used in the current calendar month. |
-| `X-Usage-Limit` | Monthly read allowance. |
-| `X-Usage-Remaining` | Reads remaining this month. |
-| `X-Usage-Period-End` | ISO timestamp for the next monthly reset. |
+| `X-RateLimit-Reset` | Unix timestamp in milliseconds when the active rate-limit window resets. |
 
-On a `429`, inspect the same headers and retry after the stated reset time. A rate-limited call does not consume monthly usage.
+Do not infer separate per-key response headers: the current public headers represent the active response limit.
 
 ---
 
@@ -357,12 +390,46 @@ All errors follow this format:
 }
 ```
 
+When a key does not include the scope required for an action:
+
+```json
+{
+  "error": {
+    "code": "insufficient_scope",
+    "message": "This API key is not scoped for this action.",
+    "required_scopes": ["documents:write"]
+  }
+}
+```
+
+When the creator's role does not allow the action:
+
+```json
+{
+  "error": {
+    "code": "forbidden",
+    "message": "Your role (member) does not have permission to perform this action."
+  }
+}
+```
+
+For an invalid, expired, revoked, or otherwise unusable key:
+
+```json
+{
+  "error": {
+    "code": "unauthorized",
+    "message": "Invalid API key"
+  }
+}
+```
+
 ### Error Codes
 - `400` - Bad Request (invalid parameters)
 - `401` - Unauthorized (invalid API key)
-- `403` - Forbidden (insufficient permissions)
+- `403` - Forbidden (insufficient scope or permissions)
 - `404` - Not Found (resource doesn't exist)
-- `429` - Too Many Requests (rate limit or monthly usage quota exceeded)
+- `429` - Too Many Requests (rate limit or applicable usage quota exceeded)
 - `500` - Internal Server Error
 
 ---

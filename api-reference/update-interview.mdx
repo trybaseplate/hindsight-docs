@@ -24,7 +24,7 @@ Request body (at least one field required):
   "interview_request_id": 4821
 }
 
-Rate limits: 60 req/min (Essentials), 300 req/min (Growth), 1,000 req/min (Enterprise)
+Rate limits: Organization-wide and per-API-key limits apply. Interview actions may consume a separate usage quota.
 ```
 </Accordion>
 
@@ -63,11 +63,7 @@ At least one field must be provided. Fields not included in the request are left
 
 ## Rate Limits
 
-| Plan | Requests per Minute |
-|------|-------------------|
-| Essentials | 60 |
-| Growth | 300 |
-| Enterprise | 1,000 |
+Organization-wide and per-API-key limits apply. Interview actions may consume a separate usage quota. Handle `429 Too Many Requests` using `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Reset`.
 
 ## Examples
 
