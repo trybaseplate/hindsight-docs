@@ -5,6 +5,158 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## September 2026
+
+A new Deal Sync Agent, a refreshed Sales Plays experience with triggers and portfolio impact tracking, reorganized navigation, and more reliable Gong and Google Drive syncing.
+
+### Deal Sync Agent
+
+<CardGroup cols={1}>
+
+<Card icon="robot" iconType="solid" title="Deal Sync Agent">
+  <New category="Platform" />
+
+  A new agent keeps your deals up to date automatically, so your CRM and Hindsight stay in sync without manual upkeep. A guided setup walks you through connecting your tools, describing what you'd like synced, and choosing a schedule.
+
+</Card>
+
+</CardGroup>
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="graduation-cap" iconType="solid" title="Starter Plays onboarding">
+  <New category="Sales Plays" />
+
+  New teams now get a guided onboarding dialog for creating their first Plays from ready-made templates, so you can start seeing value right away instead of starting from a blank page.
+
+</Card>
+
+<Card icon="bolt" iconType="solid" title="Event-based Play enrollment">
+  <New category="Sales Plays" />
+
+  Plays can now enroll deals automatically based on qualifying events—including calendar events and CRM account activity—alongside existing trigger conditions, so opportunities are surfaced the moment they're ready to act on.
+
+</Card>
+
+<Card icon="chart-simple" iconType="solid" title="Redesigned Plays overview with portfolio impact metrics">
+  <Improved category="Sales Plays" />
+
+  The Plays page now leads with an Overview tab showing portfolio-level impact—won revenue, pipeline generated, and attributed opportunities—so you can see at a glance which Plays are driving results.
+
+</Card>
+
+<Card icon="comments" iconType="solid" title="Feedback and continuity for Play conversations">
+  <Improved category="Sales Plays" />
+
+  Rate a Play's usefulness directly from Slack or email, and pick up where you left off—Play conversations now carry context across Slack and chat sessions instead of starting over each time.
+
+</Card>
+
+<Card icon="bug" iconType="solid" title="Slack reply fixes">
+  <Fix category="Sales Plays" />
+
+  Fixed duplicate replies when continuing a Play conversation in Slack, and replies no longer disappear mid-thread.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="More complete search results while indexing catches up">
+  <Improved category="Chat & Analysis" />
+
+  Paige now surfaces recently added documents in search even before they finish indexing, and Google Drive sync automatically reprocesses any files that were left partially indexed.
+
+</Card>
+
+<Card icon="plug" iconType="solid" title="Clearer view of connected tools in chat">
+  <Improved category="Chat & Analysis" />
+
+  Connected tools now appear in a collapsible section in chat for easier review, and tool availability is checked fresh each turn instead of relying on a cached list.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="phone" iconType="solid" title="More accurate Gong call matching for Salesforce deals">
+  <Improved category="CRM Integration" />
+
+  Gong calls are now matched to Salesforce-synced deals using phone numbers, contact and account names, and call IDs discovered directly from Salesforce activity records—surfacing calls that previously went unmatched.
+
+</Card>
+
+<Card icon="cloud" iconType="solid" title="Google Drive sync improvements">
+  <Improved category="CRM Integration" />
+
+  Google Drive documents now show when they were last updated, and syncing runs daily instead of weekly to keep content fresher.
+
+</Card>
+
+<Card icon="user-check" iconType="solid" title="Preserved document ownership on Google Drive import">
+  <Fix category="CRM Integration" />
+
+  Imported Google Drive assets now correctly retain the importer as the document owner instead of being overridden by Google Drive's own permissions.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-column" iconType="solid" title="Competitor chart fixes">
+  <Fix category="Dashboard & Analytics" />
+
+  Competitor charts on the deals page now update correctly to reflect the deals currently shown in the grid, instead of displaying stale, unfiltered data.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="compass" iconType="solid" title="Reorganized navigation">
+  <Improved category="Platform" />
+
+  The sidebar now groups Interview and Library separately from Competitive Intelligence, with quicker access to Plays, Analytics, Deals, Assets, and Saved Intel.
+
+</Card>
+
+<Card icon="coins" iconType="solid" title="More precise deal credit tracking">
+  <Improved category="Platform" />
+
+  Deal credit usage is now tracked at a more granular level, so your credit balance and usage indicators reflect actual consumption more accurately.
+
+</Card>
+
+</CardGroup>
+
+### Developer Tools
+
+<CardGroup cols={1}>
+
+<Card icon="key" iconType="solid" title="Scoped API keys with expiration">
+  <New category="Developer Tools" />
+
+  Create API keys scoped to specific permissions with an optional expiration date, for tighter control over programmatic access to your Hindsight data.
+
+</Card>
+
+</CardGroup>
+
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
