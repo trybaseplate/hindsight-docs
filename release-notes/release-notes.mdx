@@ -5,6 +5,138 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## September 2026
+
+Sales Plays gets configurable triggers and a portfolio-level Overview, a new Deal Sync Agent keeps records current automatically, and Win-Loss Interviews add incentive-locking for multi-approval requests.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chess-knight" iconType="solid" title="Starter Plays to get you going">
+  <New category="Sales Plays" />
+
+  A new onboarding dialog walks you through creating your first Plays from ready-made starter templates, so there's no blank-page problem the first time you open Plays.
+
+</Card>
+
+<Card icon="chart-pie" iconType="solid" title="Plays Overview: portfolio impact at a glance">
+  <Improved category="Sales Plays" />
+
+  The Plays page has been redesigned around a new Overview tab that shows the impact of your Plays across the whole portfolio—attributed opportunities, pipeline, and won revenue—each with a rationale you can trace back to the underlying deal conversation.
+
+</Card>
+
+<Card icon="calendar-check" iconType="solid" title="Trigger Plays from calendar events and CRM activity">
+  <New category="Sales Plays" />
+
+  Configure Plays to trigger and enroll reps automatically off calendar events, alongside existing deal-based triggers, with enrollments now linked to the right CRM account for easier tracking.
+
+</Card>
+
+<Card icon="comment-dots" iconType="solid" title="Send Play feedback from Slack or email">
+  <New category="Sales Plays" />
+
+  Rate and comment on a Play directly from Slack or email, so your team can see what's landing and refine Plays based on real feedback.
+
+</Card>
+
+<Card icon="bug" iconType="solid" title="Plays fixes">
+  <Fix category="Sales Plays" />
+
+  Fixed duplicate Slack replies when continuing a Play conversation—earlier responses are now preserved instead of being overwritten—and corrected competitor deal charts that weren't reflecting the right deals.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Analysis
+
+<CardGroup cols={1}>
+
+<Card icon="robot" iconType="solid" title="Deal Sync Agent">
+  <New category="Chat & Analysis" />
+
+  A new agent keeps your deal records in sync automatically—give it a prompt and a schedule, and it reviews and updates deals on its own, following the same guardrails as your other Hindsight agents.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Simpler setup for AI agents">
+  <Improved category="Chat & Analysis" />
+
+  A redesigned, step-by-step setup flow walks you through connecting your tools, writing your prompt, and scheduling new agents like Deal Sync and Plays.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="hand-holding-dollar" iconType="solid" title="Consistent incentives on multi-approval interviews">
+  <Improved category="Buyer Interviews" />
+
+  When an interview request needs more than one approval, the first approver's incentive amount is now locked in for everyone after, and shown alongside their name—so the amount stays consistent across approvals.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="phone-volume" iconType="solid" title="More Gong calls matched to your deals">
+  <Improved category="CRM Integration" />
+
+  Expanded matching now discovers Gong calls linked through Salesforce activities and managed-package fields, so more of your recorded calls show up automatically on the right deal.
+
+</Card>
+
+<Card icon="google-drive" iconType="solid" title="Faster, more reliable Google Drive sync">
+  <Improved category="CRM Integration" />
+
+  Google Drive documents now sync daily instead of weekly and show a "last updated" timestamp, and files that didn't fully index the first time are automatically caught and reprocessed.
+
+</Card>
+
+<Card icon="user-shield" iconType="solid" title="Google Drive ownership fix">
+  <Fix category="CRM Integration" />
+
+  Imported Google Drive assets now correctly keep the importer as the owner in Hindsight, instead of being overridden by Google Drive's own sharing permissions.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="key" iconType="solid" title="Scoped, expiring API keys">
+  <New category="Developer Tools" />
+
+  Create API keys that are scoped to specific permissions and automatically expire, giving admins tighter control over programmatic access to Hindsight.
+
+</Card>
+
+<Card icon="coins" iconType="solid" title="More precise deal credit usage">
+  <Improved category="Admin" />
+
+  Deal credits are now deducted per action instead of in one flat amount, so your usage and remaining balance reflect what you actually ran more accurately.
+
+</Card>
+
+<Card icon="user-lock" iconType="solid" title="Notion restricted to admins">
+  <Improved category="Admin" />
+
+  Connecting or managing the Notion integration is now limited to organization admins.
+
+</Card>
+
+</CardGroup>
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
