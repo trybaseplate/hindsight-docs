@@ -5,6 +5,90 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## September 2026
+
+Starter Plays onboarding, richer Play impact reporting, more accurate Gong call matching, and reliability fixes across Slack, Google Meet recording, and Google Drive imports.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="compass" iconType="solid" title="Starter Plays onboarding">
+  <New category="Sales Plays" />
+
+  New teams now see a guided onboarding dialog for creating their first Plays, with a set of ready-to-use starter templates to choose from. Find it any time via the **Starter Plays** button on the Plays page.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Richer Play impact reporting">
+  <Improved category="Sales Plays" />
+
+  Play impact now reports detailed pipeline and revenue metrics for each attributed opportunity, and links back to the Paige chat session that drove the outcome for easier traceability.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="phone-volume" iconType="solid" title="More accurate Gong call matching">
+  <Improved category="CRM Integration" />
+
+  Gong calls now match to the right deal using phone numbers, contact names, and account names — not just email domains — and matching now extends to Salesforce-synced contacts and calls discovered through Salesforce activity records. Also fixes an issue where the contact-matching date window could end a day early.
+
+</Card>
+
+<Card icon="google-drive" iconType="solid" title="Google Drive import ownership fix">
+  <Fix category="CRM Integration" />
+
+  Imported Google Drive assets now correctly keep the importing user as the owner in Hindsight, instead of being overridden by Google Drive's own sharing permissions.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="video" iconType="solid" title="More reliable Google Meet recording">
+  <Fix category="Buyer Interviews" />
+
+  Fixed a race condition that could prevent the Google Meet interview bot from saving its recording when multiple join events fired at once.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="Cleaner Slack thread replies">
+  <Fix category="Slack" />
+
+  Fixed an issue where continuing a conversation in Slack could post a duplicate reply. Action buttons now disable after use, and replies update in place instead of replacing the thread.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="list" iconType="solid" title="Reorganized navigation">
+  <Improved category="Platform" />
+
+  The left sidebar has been reorganized for clarity, with dedicated **Interview** and **Library** sections replacing the previous **Compete** section, and updated icons throughout.
+
+</Card>
+
+</CardGroup>
+
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
