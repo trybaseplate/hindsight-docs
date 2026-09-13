@@ -15,7 +15,7 @@ Authorization: Bearer YOUR_API_KEY
 Content-Type: application/json
 ```
 
-Tool calls share authorization, role checks, rate limits, and usage accounting with their MCP equivalents. See [Rate Limits](/integrations/api#rate-limits) for the shared per-organization limits and returned headers.
+Tool calls share authorization, scope and role checks, rate limits, and usage accounting with their MCP equivalents. See [API keys](/integrations/api#api-keys) and [Rate limits](/integrations/api#rate-limits) for details.
 
 The access column below shows the default role policy. Organization administrators can further restrict individual tools.
 
@@ -73,4 +73,4 @@ All tool endpoints return JSON errors in this shape:
 }
 ```
 
-Common status codes are `400` for invalid input, `401` for an invalid API key, `403` for a role without access to the tool, and `429` for a rate or monthly usage limit. For exact request and response examples of the deal lookup flow, see [Select Deal](/api-reference/select-deal) and [Get Deal](/api-reference/get-deal).
+Common status codes are `400` for invalid input, `401` for an invalid API key, `403` for insufficient scope or a role without access to the tool, and `429` for a rate limit or applicable usage quota. For exact request and response examples of the deal lookup flow, see [Select Deal](/api-reference/select-deal) and [Get Deal](/api-reference/get-deal).

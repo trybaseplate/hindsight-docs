@@ -56,7 +56,7 @@ GET https://app.usehindsight.com/api/v1/deals/export/{export_id}
   "expires_at": "2026-03-17T12:02:30Z"  // Download URL expires in 7 days
 }
 
-Rate limits: Per-minute (10/60/300 req/min for Essentials/Growth/Enterprise) + monthly quota per route.
+Rate limits: Organization-wide and per-API-key limits apply. Exports may consume a separate usage quota.
 ```
 </Accordion>
 
@@ -378,25 +378,9 @@ Some account properties (like industry or company name) are stored in a dedicate
 
 ## Rate Limits
 
-All API routes share a per-minute rate limit and a monthly usage quota.
+Exports are subject to the organization-wide and per-API-key request limits. Export operations may also consume a separate usage quota.
 
-**Per-minute limit** (shared across all API routes):
-
-| Plan | Requests per Minute |
-|------|-------------------|
-| Essentials | 10 |
-| Growth | 60 |
-| Enterprise | 300 |
-
-**Monthly quota** (per route, resets on the first of each month):
-
-| Plan | Exports per Month |
-|------|------------------|
-| Essentials | 10,000 |
-| Growth | 30,000 |
-| Enterprise | 100,000 |
-
-When a limit is exceeded, the API returns a `429` response with `X-RateLimit-*` and `X-Usage-*` headers indicating current usage and reset timing.
+When a request limit is exceeded, the API returns `429 Too Many Requests`. Handle it using `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Reset`; these public headers represent the active response limit.
 
 ## Examples
 
@@ -507,7 +491,7 @@ const downloadUrl = await waitForExport('exp_abc123');
 import requests
 import time
 
-API_KEY = 'your_api_key_here'
+API_KEY = 'YOUR_API_KEY'
 BASE_URL = 'https://app.usehindsight.com/api/v1'
 
 # Start export

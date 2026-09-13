@@ -36,8 +36,7 @@ Request body:
   "tool_calls": ["search_across_deals", "search_deal_documents"]
 }
 
-Rate limits: 10 req/min (Essentials), 60 req/min (Growth), 300 req/min (Enterprise)
-           10,000/mo (Essentials), 30,000/mo (Growth), 100,000/mo (Enterprise)
+Rate limits: Organization-wide and per-API-key limits apply. Responses requests may consume a separate usage quota.
 ```
 </Accordion>
 
@@ -103,13 +102,7 @@ data: {"type": "citation", "citation": { "...": "..." }}
 
 ## Rate Limits
 
-| Plan | Requests / minute | Requests / month |
-|------|-------------------|------------------|
-| Essentials | 10 | 10,000 |
-| Growth | 60 | 30,000 |
-| Enterprise | 300 | 100,000 |
-
-A `429` is returned when a limit is exceeded — back off and retry. See [Error Handling](/integrations/api#error-handling) for the full error format and codes.
+Organization-wide and per-API-key limits apply. Responses requests may consume a separate usage quota. On `429 Too Many Requests`, use `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Reset` to back off and retry. See [Error Handling](/integrations/api#error-handling) for the full error format and codes.
 
 <RequestExample>
 ```bash cURL

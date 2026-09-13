@@ -64,4 +64,4 @@ curl -X POST https://app.usehindsight.com/api/v1/tools/get-deal \
 
 ## Limits and Errors
 
-Each successful, valid request consumes one read from the shared organization read bucket. See [Rate Limits](/integrations/api#rate-limits) for plan limits, returned headers, and retry guidance. A request with no IDs or more than ten IDs returns `400` and does not consume read usage.
+Organization-wide and per-API-key limits apply. See [Rate limits](/integrations/api#rate-limits) for returned headers and retry guidance. A request with no IDs or more than ten IDs returns `400`.
