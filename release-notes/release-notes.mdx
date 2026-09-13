@@ -5,6 +5,64 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## September 2026
+
+Deeper Sales Play impact reporting, a guided onboarding flow for new Plays, and reliability fixes across Slack and CRM syncing.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chart-simple" iconType="solid" title="Deeper Play impact reporting">
+  <Improved category="Sales Plays" />
+
+  Play impact reporting now breaks out pipeline and won revenue attributed to each opportunity, so you can see the dollar impact of a Play at a glance. Opportunities also link back to the AI chat session that surfaced them, for full traceability.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Starter Plays onboarding">
+  <New category="Sales Plays" />
+
+  New teams now get a guided onboarding flow on the Plays page to help you create your first Play from a set of ready-made templates.
+
+</Card>
+
+</CardGroup>
+
+### Slack
+
+<CardGroup cols={1}>
+
+<Card icon="slack" iconType="solid" title="More reliable Slack replies">
+  <Fix category="Slack" />
+
+  Fixed an issue where interacting with a Slack message could trigger duplicate follow-up responses. Buttons now disable after use, and replies are preserved in their original thread instead of being deleted.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="phone-volume" iconType="solid" title="More Gong calls matched automatically via Salesforce">
+  <Improved category="CRM Integration" />
+
+  Hindsight now discovers additional Gong call recordings directly from Salesforce activity records and managed-package fields, so more of your calls are automatically linked to the right deals without manual work.
+
+</Card>
+
+<Card icon="folder-open" iconType="solid" title="Correct ownership for imported Google Drive files">
+  <Fix category="CRM Integration" />
+
+  Fixed an issue where Google Drive sharing permissions could override the correct owner of documents imported into your Library.
+
+</Card>
+
+</CardGroup>
+
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
