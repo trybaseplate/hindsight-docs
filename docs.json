@@ -58,6 +58,7 @@
           "api-reference/responses",
           "api-reference/select-deal",
           "api-reference/get-deals",
+          "api-reference/product-intelligence",
           "api-reference/export-deals",
           "api-reference/upload-library-document",
           "api-reference/upload-deal-document",

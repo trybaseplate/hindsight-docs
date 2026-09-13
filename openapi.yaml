@@ -164,6 +164,97 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
+  /product-intelligence:
+    get:
+      operationId: getProductIntelligence
+      summary: Export product-feature intelligence
+      description: Returns one row per product-feature association with its raw influence summary, feature taxonomy, deal, and account context. Without filters, returns associations of every sentiment.
+      tags:
+        - Deals
+      parameters:
+        - name: date_from
+          in: query
+          schema:
+            type: string
+            format: date-time
+          description: Inclusive ISO 8601 lower bound for the association creation timestamp.
+        - name: date_to
+          in: query
+          schema:
+            type: string
+            format: date-time
+          description: Inclusive ISO 8601 upper bound for the association creation timestamp.
+        - name: sentiment
+          in: query
+          schema:
+            type: string
+            enum: [positive, negative, neutral]
+          description: Filter association sentiment. Omit to return all sentiments.
+        - name: tags
+          in: query
+          schema:
+            type: string
+          description: Comma-separated tags, or repeat the parameter. All specified tags must match.
+        - name: product
+          in: query
+          schema:
+            type: string
+          description: Exact feature product.
+        - name: product_area
+          in: query
+          schema:
+            type: string
+          description: Exact feature product area.
+      responses:
+        '200':
+          description: Product-feature associations and applied filters.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data, meta]
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        created_at:
+                          type: string
+                          format: date-time
+                        deal_id:
+                          type: string
+                        feature_id:
+                          type: string
+                        influence_summary:
+                          type: string
+                          nullable: true
+                        sentiment:
+                          type: boolean
+                          nullable: true
+                        tags:
+                          type: array
+                          items:
+                            type: string
+                        features:
+                          type: object
+                        deals:
+                          type: object
+                  meta:
+                    type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
   /deals:
     get:
       operationId: getDeals

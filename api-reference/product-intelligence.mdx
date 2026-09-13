@@ -1,0 +1,129 @@
+---
+title: 'Product Intelligence Export'
+openapi: 'GET /product-intelligence'
+---
+
+Export individual product-feature requests with their original analysis, associated feature, deal, and customer context. Each row represents one feature-to-deal association, making it suitable for downstream clustering and product-request analysis.
+
+<Accordion title="Copy for AI context">
+```text
+GET https://app.usehindsight.com/api/v1/product-intelligence
+Authorization: Bearer YOUR_API_KEY
+
+Optional query parameters:
+  date_from: string (ISO 8601 association timestamp, inclusive)
+  date_to: string (ISO 8601 association timestamp, inclusive)
+  sentiment: "positive" | "negative" | "neutral"
+  tags: string (comma-separated tags, or repeat this parameter; all specified tags must match)
+  product: string (exact feature product)
+  product_area: string (exact feature product area)
+
+200 Response:
+{
+  "data": [
+    {
+      "id": "dfa_123",
+      "created_at": "2026-09-01T12:00:00Z",
+      "deal_id": "deal_123",
+      "feature_id": "feature_123",
+      "influence_summary": "The buyer needs SSO provisioning before they can move forward.",
+      "sentiment": false,
+      "tags": ["security", "must-have"],
+      "features": {
+        "id": "feature_123",
+        "name": "SCIM provisioning",
+        "description": "Automated user lifecycle management.",
+        "product": "Platform",
+        "product_area": "Identity"
+      },
+      "deals": {
+        "id": "deal_123",
+        "name": "Acme Enterprise",
+        "salesforce_id": "006xxxxxxxxxxxx",
+        "hubspot_id": "123456789",
+        "status": "Negotiation",
+        "amount": 50000,
+        "close_date": "2026-10-15T00:00:00Z",
+        "created_at": "2026-06-01T12:00:00Z",
+        "updated_at": "2026-09-01T12:00:00Z",
+        "clients": {
+          "id": "client_123",
+          "name": "Acme Corp",
+          "salesforce_id": "001xxxxxxxxxxxx",
+          "hubspot_id": "987654321",
+          "industry": "Software",
+          "website_url": "https://acme.example"
+        }
+      }
+    }
+  ],
+  "meta": {
+    "count": 1,
+    "sentiment": null,
+    "date_from": null,
+    "date_to": null,
+    "tags": [],
+    "product": null,
+    "product_area": null
+  }
+}
+
+Rate limits: Organization-wide limits apply.
+```
+</Accordion>
+
+## Overview
+
+This endpoint returns the raw `influence_summary` for each feature association alongside CRM IDs and account context. It does not aggregate by feature, so a single feature requested in multiple deals appears as multiple rows.
+
+When no filters are supplied, the response contains all product-feature associations available to the API key's organization, regardless of sentiment.
+
+## Filters
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `date_from` | string | Inclusive ISO 8601 lower bound for the association's `created_at` timestamp | `2026-01-01` |
+| `date_to` | string | Inclusive ISO 8601 upper bound for the association's `created_at` timestamp | `2026-03-31T23:59:59Z` |
+| `sentiment` | string | `positive`, `negative`, or `neutral`. Omit to return all sentiments. `neutral` returns associations with no sentiment recorded. | `negative` |
+| `tags` | string | Comma-separated tags, or repeat the parameter. A row must contain every supplied tag. | `security,must-have` |
+| `product` | string | Exact feature product | `Platform` |
+| `product_area` | string | Exact feature product area | `Identity` |
+
+**Examples:**
+
+```bash
+# All product intelligence for the organization
+curl https://app.usehindsight.com/api/v1/product-intelligence \
+  -H "Authorization: Bearer YOUR_API_KEY"
+
+# Negative identity feedback created this quarter
+curl --get https://app.usehindsight.com/api/v1/product-intelligence \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  --data-urlencode "date_from=2026-07-01" \
+  --data-urlencode "sentiment=negative" \
+  --data-urlencode "product_area=Identity"
+
+# Requests carrying both tags
+curl --get https://app.usehindsight.com/api/v1/product-intelligence \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  --data-urlencode "tags=security,must-have"
+```
+
+## Response fields
+
+| Field | Description |
+|-------|-------------|
+| `influence_summary` | Raw feature-request or feature-impact summary extracted from the deal. |
+| `sentiment` | `true` for positive, `false` for negative, or `null` when neutral/unspecified. |
+| `tags` | Tags assigned to this feature association in this deal. |
+| `features` | The associated Hindsight feature, including product taxonomy. |
+| `deals.salesforce_id` | Salesforce Opportunity ID, when synced. |
+| `deals.hubspot_id` | HubSpot Deal ID, when synced. |
+| `deals.amount` | Deal value/ARR, when recorded. |
+| `deals.close_date` | The deal's expected or actual close date. |
+| `deals.clients.salesforce_id` | Salesforce Account ID, when synced. |
+| `deals.clients.hubspot_id` | HubSpot Company ID, when synced. |
+
+<Note>
+The endpoint returns a complete result set rather than a paginated collection. For especially large workspaces, narrow the result with the available filters.
+</Note>
