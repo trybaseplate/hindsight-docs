@@ -530,10 +530,11 @@ paths:
       operationId: createInterview
       summary: Create an interview request
       description: |
-        Creates an interview request for a contact. Upserts the contact by email if they don't exist yet.
-        When a `sequence_id` is provided, the contact is enrolled in the sequence and Hindsight's
-        scheduling agent handles outreach automatically. When only `interview_type_id` is provided,
-        the request is created and the survey link is returned without any outreach.
+        Creates an interview request. Buyer requests upsert the contact by email. When a `sequence_id`
+        is provided, the buyer contact is enrolled in the sequence and Hindsight's scheduling agent handles
+        outreach automatically. When only `interview_type_id` is provided, the request is created and the
+        survey link is returned without any outreach. Set `respondent_type` to `seller` to create an internal,
+        link-only seller request with no contact creation, email, Slack, or sequence outreach.
       tags:
         - Interviews
       requestBody:
@@ -561,6 +562,15 @@ paths:
                   contact_name: "Jane Smith"
                   interview_type_id: "type_abc123"
                   objective: "Understand why we lost this deal to Competitor X"
+              salesforceSeller:
+                summary: Create an internal seller debrief for a synced Salesforce opportunity
+                value:
+                  contact_email: "alex.rep@acme.com"
+                  contact_name: "Alex Rep"
+                  interview_type_id: "seller_debrief_type_abc123"
+                  salesforce_opportunity_id: "006xx000001ABCdAAO"
+                  respondent_type: "seller"
+                  objective: "Capture the seller perspective on this closed deal"
       responses:
         '201':
           description: Interview request created
@@ -572,6 +582,8 @@ paths:
                 interview_request_id: 4821
                 contact_id: "contact_abc123"
                 deal_id: "deal_xyz789"
+                salesforce_opportunity_id: null
+                respondent_type: "buyer"
                 survey_url: "https://app.usehindsight.com/survey?token=tok_xyz"
                 survey_token: "tok_xyz"
                 status: "sent"
@@ -1478,11 +1490,11 @@ components:
         contact_email:
           type: string
           format: email
-          description: Email address of the contact. Required. The contact is upserted — created if new, updated if existing.
+          description: Email address of the person to interview. Required. Buyer contacts are upserted; seller requests use this as the internal respondent.
           example: "jane@acme.com"
         contact_name:
           type: string
-          description: Full name of the contact. Used to create or update the contact record.
+          description: Full name of the person to interview. Used to create or update a buyer contact record.
           example: "Jane Smith"
         contact_context:
           oneOf:
@@ -1490,9 +1502,9 @@ components:
             - type: object
               additionalProperties: true
           description: |
-            Unstructured context about this contact — passed to Paige as background information when conducting
-            the interview. Can be a plain string or a JSON object; objects are serialized automatically.
-            Stored in the contact's notes field and included in every interview prompt for this contact.
+            Unstructured context about a buyer contact — passed to Paige as background information when
+            conducting the interview. Can be a plain string or a JSON object; objects are serialized automatically.
+            Stored in the buyer contact's notes field and included in every interview prompt for that contact.
           example:
             title: "VP of Engineering"
             use_case: "Evaluating us for CI/CD pipeline automation"
@@ -1514,7 +1526,21 @@ components:
           type: string
           description: |
             Hindsight deal ID to associate this interview with. The deal must belong to your organization.
+            Mutually exclusive with `salesforce_opportunity_id`.
           example: "deal_xyz789"
+        salesforce_opportunity_id:
+          type: string
+          description: |
+            Salesforce Opportunity ID for an already-synced deal. Hindsight resolves it using the
+            organization-scoped `deals.salesforce_id` field. Mutually exclusive with `deal_id`.
+          example: "006xx000001ABCdAAO"
+        respondent_type:
+          type: string
+          enum: [buyer, seller]
+          default: buyer
+          description: |
+            Audience for the interview. `buyer` upserts an external contact and supports sequences.
+            `seller` creates an internal, link-only request and cannot be used with `sequence_id`.
         objective:
           type: string
           description: |
@@ -1531,13 +1557,24 @@ components:
           example: 4821
         contact_id:
           type: string
-          description: ID of the upserted contact record.
+          nullable: true
+          description: ID of the upserted buyer contact record, or null for seller requests.
           example: "contact_abc123"
         deal_id:
           type: string
           nullable: true
-          description: Deal ID passed in the request, or null.
+          description: Resolved Hindsight deal ID, or null.
           example: "deal_xyz789"
+        salesforce_opportunity_id:
+          type: string
+          nullable: true
+          description: Salesforce Opportunity ID used to resolve the deal, or null.
+          example: "006xx000001ABCdAAO"
+        respondent_type:
+          type: string
+          enum: [buyer, seller]
+          description: Audience for the created interview request.
+          example: "buyer"
         survey_url:
           type: string
           nullable: true
