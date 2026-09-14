@@ -19,7 +19,9 @@ Request body:
   },
   "sequence_id": "seq_abc123",              // required if no interview_type_id
   "interview_type_id": "type_abc123",       // required if no sequence_id
-  "deal_id": "deal_xyz789",                 // optional
+  "deal_id": "deal_xyz789",                 // optional; mutually exclusive with salesforce_opportunity_id
+  "salesforce_opportunity_id": "006...",    // optional; resolves a synced Hindsight deal
+  "respondent_type": "buyer",               // optional: "buyer" (default) or "seller"
   "objective": "Understand loss to Competitor X"  // optional
 }
 
@@ -28,6 +30,8 @@ Request body:
   "interview_request_id": 4821,
   "contact_id": "contact_abc123",
   "deal_id": "deal_xyz789",
+  "salesforce_opportunity_id": "006...",
+  "respondent_type": "buyer",
   "survey_url": "https://app.usehindsight.com/survey?token=tok_xyz",
   "survey_token": "tok_xyz",
   "status": "sent"   // "sent" = enrolled in sequence | "created" = link only
@@ -39,12 +43,13 @@ Rate limits: Organization-wide and per-API-key limits apply. Interview actions m
 
 ## Overview
 
-Use this endpoint to programmatically trigger win-loss interviews for your contacts. Two paths:
+Use this endpoint to programmatically trigger win-loss interviews. There are three paths:
 
 - **Sequence path** (`sequence_id`) — Hindsight enrolls the contact and Paige handles email outreach automatically. The interview type, email template, and scheduling logic are inherited from the sequence.
 - **Link-only path** (`interview_type_id`) — Creates the interview request and returns a survey link. No email is sent; you control delivery.
+- **Seller path** (`respondent_type: "seller"`) — Creates an internal, link-only seller debrief. No contact is created, and the API does not send email, Slack messages, or sequence outreach.
 
-Contacts are upserted by email — if the contact already exists in your org, their record is updated with any new name or context you provide.
+Buyer contacts are upserted by email — if the contact already exists in your org, their record is updated with any new name or context you provide. Seller requests use the supplied email as the internal respondent and return `contact_id: null`.
 
 ## Request Parameters
 
@@ -54,17 +59,19 @@ You must provide either `sequence_id` or `interview_type_id`.
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `contact_email` | string | Email of the contact to interview. The contact is created if they don't exist, or updated if they do. |
-| `sequence_id` | string | ID of the outreach sequence to enroll the contact in. Paige sends the interview email automatically. |
+| `contact_email` | string | Email of the person to interview. For buyers, a contact is created or updated; for sellers, it identifies the internal respondent. |
+| `sequence_id` | string | ID of the outreach sequence to enroll a buyer contact in. Paige sends the interview email automatically. Not supported for seller interviews. |
 | `interview_type_id` | string | ID of the interview type (e.g. win-loss buyer, NPS). Use this for link-only requests where you handle delivery yourself. |
 
 ### Optional
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `contact_name` | string | Full name of the contact. Used to create or update the contact record. |
-| `contact_context` | string \| object | Background context about the contact, passed to Paige when conducting the interview. Accepts a plain string or a JSON object (serialized automatically). Stored in the contact's notes and included in every interview prompt. |
-| `deal_id` | string | Hindsight deal ID to associate the interview with. |
+| `contact_name` | string | Full name of the person to interview. Used to create or update a buyer contact record. |
+| `contact_context` | string \| object | Background context about a buyer contact, passed to Paige when conducting the interview. Accepts a plain string or a JSON object (serialized automatically). Stored in the buyer contact's notes and included in every interview prompt. |
+| `deal_id` | string | Hindsight deal ID to associate the interview with. Mutually exclusive with `salesforce_opportunity_id`. |
+| `salesforce_opportunity_id` | string | Salesforce Opportunity ID for an already-synced deal. Hindsight resolves it using the organization-scoped `deals.salesforce_id` field. Mutually exclusive with `deal_id`. |
+| `respondent_type` | `"buyer"` \| `"seller"` | Defaults to `"buyer"`. Use `"seller"` to create an internal, link-only seller request (`external: false`). Seller requests cannot include `sequence_id`. |
 | `objective` | string | Custom goal for this interview. Paige uses this as additional context (e.g. "Understand why we lost to Competitor X on pricing"). |
 
 ### Finding IDs
@@ -72,10 +79,11 @@ You must provide either `sequence_id` or `interview_type_id`.
 - **Sequence IDs** — Settings → Sequences in your Hindsight dashboard
 - **Interview type IDs** — Settings → Interview Types
 - **Deal IDs** — Use the [Get Deals](/api-reference/get-deals) endpoint or find them in the dashboard URL
+- **Salesforce Opportunity IDs** — Salesforce `Opportunity.Id`; the deal must already be synced to Hindsight
 
 ## Contact Context
 
-The `contact_context` field is the primary way to give Paige background on who she's interviewing. This context is stored in the contact's notes field and used in every interview prompt for that contact.
+The `contact_context` field is the primary way to give Paige background on a buyer. This context is stored in the buyer contact's notes field and used in every interview prompt for that contact.
 
 Pass anything relevant — role, company details, the deal they were involved in, why you're reaching out, or any other signal that helps Paige have a more informed conversation:
 
@@ -104,8 +112,10 @@ You can also pass a plain string:
 | Field | Type | Description |
 |-------|------|-------------|
 | `interview_request_id` | integer | ID of the created interview request. |
-| `contact_id` | string | ID of the upserted contact record. |
-| `deal_id` | string \| null | Deal ID from the request, or null. |
+| `contact_id` | string \| null | ID of the upserted buyer contact record; `null` for sellers. |
+| `deal_id` | string \| null | Resolved Hindsight deal ID, or null. |
+| `salesforce_opportunity_id` | string \| null | Salesforce Opportunity ID used to resolve the deal, or `null` when `deal_id` was used or no deal was supplied. |
+| `respondent_type` | `"buyer"` \| `"seller"` | The audience for this interview request. |
 | `survey_url` | string \| null | Direct link to the survey. Share this if you're handling delivery yourself. |
 | `survey_token` | string \| null | Raw token used in the survey URL. |
 | `status` | `"created"` \| `"sent"` | `sent` when enrolled in a sequence; `created` for link-only requests. |
@@ -149,6 +159,20 @@ curl -X POST "https://app.usehindsight.com/api/v1/interviews" \
     "contact_name": "Jane Smith",
     "interview_type_id": "type_abc123",
     "objective": "Understand why we lost this deal to Competitor X"
+  }'
+```
+
+```bash Salesforce seller debrief (internal, link-only)
+curl -X POST "https://app.usehindsight.com/api/v1/interviews" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "contact_email": "alex.rep@acme.com",
+    "contact_name": "Alex Rep",
+    "interview_type_id": "seller_debrief_type_abc123",
+    "salesforce_opportunity_id": "006xx000001ABCdAAO",
+    "respondent_type": "seller",
+    "objective": "Capture the seller perspective on this closed deal."
   }'
 ```
 
@@ -223,7 +247,11 @@ for deal in closed_deals:
 
 ### Trigger on CRM deal close
 
-Connect Hindsight to your CRM via webhook or scheduled job to automatically send win-loss interviews whenever a deal closes. Pass the deal context so Paige has background on what was evaluated.
+Connect Hindsight to your CRM via webhook or scheduled job to automatically send win-loss interviews whenever a deal closes. For already-synced Salesforce opportunities, pass `salesforce_opportunity_id` instead of maintaining a separate Hindsight deal-ID mapping. Pass only one of `salesforce_opportunity_id` and `deal_id`.
+
+### Salesforce-only seller debriefs
+
+Use a Salesforce Flow or outbound callout to invoke the seller path on Closed Won or Closed Lost. Set `respondent_type` to `"seller"`, pass the opportunity owner's email as `contact_email`, and store the returned `survey_url` on the Opportunity. This path creates an internal request without Slack or email delivery.
 
 ### Manual outreach with custom delivery
 
@@ -237,7 +265,7 @@ If you call this endpoint multiple times for the same contact, `contact_context`
 
 | Code | Description |
 |------|-------------|
-| `bad_request` | Missing required field, or `sequence_id` / `interview_type_id` / `deal_id` not found in your org. |
+| `bad_request` | Missing or invalid field; an unknown `sequence_id`, `interview_type_id`, `deal_id`, or `salesforce_opportunity_id`; both deal identifiers; or a seller request with `sequence_id`. |
 | `unauthorized` | Invalid or missing API key. |
 | `rate_limit_exceeded` | Too many requests. Check `X-RateLimit-Reset` and retry after. |
 | `internal_error` | Failed to create the contact record. |
