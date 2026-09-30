@@ -5,6 +5,173 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## September 2026
+
+Playbook generation in chat, a redesigned setup flow, rep-focused workflow agents, richer Play reporting, and more reliable Salesforce, Gong, and Google Drive syncs.
+
+### Sales Plays & Playbooks
+
+<CardGroup cols={1}>
+
+<Card icon="book-open" iconType="solid" title="Playbook Generation">
+  <New category="Playbooks" />
+
+  Generate playbooks directly in chat. Add sections, review and save drafts, and browse version history to see how a playbook has changed. Chat now recognizes when you are working on a playbook and suggests relevant starter prompts.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Richer Play Impact Reporting">
+  <Improved category="Sales Plays" />
+
+  Play overviews now show opportunities, pipeline, and won revenue attributed to each Play, with details for every attributed opportunity and a link back to the AI chat session that produced it.
+
+</Card>
+
+<Card icon="bolt" iconType="solid" title="Immediate Play Enrollment for Calendar Events">
+  <Improved category="Sales Plays" />
+
+  When a meeting has no free pre-meeting slot, eligible Plays can now enroll right away instead of being skipped.
+
+</Card>
+
+<Card icon="comments" iconType="solid" title="Play Conversations Keep Their Context">
+  <Improved category="Sales Plays" />
+
+  Follow-up conversations in Slack and chat now pick up where the Play left off, with reference materials carried over. The Plays table also adds feedback and Play thread links.
+
+</Card>
+
+</CardGroup>
+
+### Workflows & Setup
+
+<CardGroup cols={1}>
+
+<Card icon="user-gear" iconType="solid" title="Redesigned Setup Flow">
+  <New category="Onboarding" />
+
+  New users are guided through a redesigned setup to get their AI agents ready. Setup includes Deal Sync and Play enrollment, including calendar events and CRM account linking.
+
+</Card>
+
+<Card icon="user-plus" iconType="solid" title="Members Can Create Rep-Focused Agents">
+  <New category="Workflows" />
+
+  Members can now create Deal Sync and Plays Planning agents focused on their own deals. Members land on the Deals page after signing in.
+
+</Card>
+
+<Card icon="diagram-project" iconType="solid" title="Workflow Chats Keep the Right Agent">
+  <Improved category="Workflows" />
+
+  Chats started from workflows such as Deal Sync and Plays Planning now stay with that workflow's agent for the whole conversation.
+
+</Card>
+
+<Card icon="tower-broadcast" iconType="solid" title="Live Workflow Run Monitoring">
+  <Improved category="Workflows" />
+
+  Workflow runs and pending tool approvals now update in real time, with no refresh needed.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Deal-Owner Approvals for Interview Requests">
+  <New category="Win-Loss Interviews" />
+
+  Interview requests can now require approval from the deal owner, including by email, alongside your existing approvers.
+
+</Card>
+
+<Card icon="bell" iconType="solid" title="Choose Where Approvals Are Delivered">
+  <New category="Win-Loss Interviews" />
+
+  Choose Slack, email, or both for interview sequence approvals. At least one channel must stay enabled when approval is required.
+
+</Card>
+
+</CardGroup>
+
+### Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-simple" iconType="solid" title="More Accurate Usage Analytics">
+  <Improved category="Analytics" />
+
+  Usage analytics now include MCP session activity, and headline metrics stay consistent across filters. The "Unanswered" tab is replaced by "Downvoted answers" so you can see where responses fell short.
+
+</Card>
+
+<Card icon="file-export" iconType="solid" title="Feature-Scoped Deal Exports">
+  <Improved category="Deals" />
+
+  When you filter deals by a feature, exports now include only the fields associated with that feature.
+
+</Card>
+
+</CardGroup>
+
+### Integrations
+
+<CardGroup cols={1}>
+
+<Card icon="cloud" iconType="solid" title="Better Salesforce Filtering and Import Retries">
+  <Improved category="CRM Integration" />
+
+  Custom Salesforce filters now support multi-select picklists and blank values. Retrying an import no longer creates duplicates.
+
+</Card>
+
+<Card icon="phone" iconType="solid" title="More Gong Calls Synced from Salesforce">
+  <Improved category="CRM Integration" />
+
+  Gong calls linked through Salesforce managed-package records and Task and Event activities are now included when syncing.
+
+</Card>
+
+<Card icon="folder-open" iconType="solid" title="Google Drive Improvements">
+  <Improved category="Integrations" />
+
+  Drive documents sync daily instead of weekly and show when they were last updated. Importers stay the owner of the assets they import, and folder and shared-drive search is more reliable.
+
+</Card>
+
+<Card icon="slack" iconType="brands" title="Cleaner Slack Continuations">
+  <Fix category="Slack" />
+
+  Action buttons are disabled after use to prevent duplicate continuations, and replies stay in your thread or DM.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="database" iconType="solid" title="Granular Deal Credits">
+  <Improved category="Platform" />
+
+  Deal credit usage is now tracked more granularly.
+
+</Card>
+
+<Card icon="gauge-high" iconType="solid" title="Reliable Large Data Exports">
+  <Fix category="Chat & Analysis" />
+
+  Large dataset exports from chat are more dependable and retry automatically on failure.
+
+</Card>
+
+</CardGroup>
+
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
