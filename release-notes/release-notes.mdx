@@ -5,6 +5,200 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## September 2026
+
+A redesigned Plays experience with impact tracking, playbook generation, deal-owner approvals for interview requests, rep-focused workflow agents, and broader Gong, Salesforce, and Google Drive coverage.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chart-line" iconType="solid" title="Plays impact overview">
+  <New category="Sales Plays" />
+
+  The Plays page now opens on an **Overview** tab that shows the portfolio impact of your Plays—attributed opportunities, pipeline, and won revenue—so you can see which Plays are working. Set a success goal for each Play to measure results against it.
+
+</Card>
+
+<Card icon="bolt" iconType="solid" title="Configurable triggers and event-based enrollment">
+  <New category="Sales Plays" />
+
+  Plays can now be triggered by events and enroll reps automatically when conditions are met. When a calendar event has no free pre-meeting slot, Plays now enroll the rep immediately instead of skipping the meeting.
+
+</Card>
+
+<Card icon="comments" iconType="solid" title="Play feedback from reps">
+  <New category="Sales Plays" />
+
+  Collect feedback on each Play from reps through Slack or email. Feedback and links to Play conversation threads appear alongside each Play so you can see how it landed.
+
+</Card>
+
+<Card icon="rocket" iconType="solid" title="Starter Plays">
+  <New category="Sales Plays" />
+
+  New to Plays? A guided dialog helps you create your first Plays from ready-made templates. You can reopen it any time from the **Starter Plays** button.
+
+</Card>
+
+<Card icon="slack" iconType="brands" title="More reliable Play conversations in Slack">
+  <Fix category="Sales Plays" />
+
+  Play conversations now keep their context when you continue them across Slack and Hindsight. Fixed duplicate continuations from repeated button clicks and replies going missing in Slack threads.
+
+</Card>
+
+</CardGroup>
+
+### Playbooks
+
+<CardGroup cols={1}>
+
+<Card icon="book-open" iconType="solid" title="Playbook generation">
+  <Preview category="Playbooks" />
+
+  Generate and refine playbooks with Paige. Add sections, chat with a playbook-aware assistant to draft them, and save new versions as you go. A version history panel lets you review earlier drafts.
+
+</Card>
+
+<Card icon="folder-tree" iconType="solid" title="Playbook sections in asset pickers">
+  <Improved category="Playbooks" />
+
+  Playbook sections now appear in reference asset pickers, so you can attach them as context alongside documents and other assets.
+
+</Card>
+
+</CardGroup>
+
+### Workflows & Chat
+
+<CardGroup cols={1}>
+
+<Card icon="user-gear" iconType="solid" title="Workflow agents for every rep">
+  <New category="Workflows" />
+
+  Reps can now create **Deal Sync** and **Plays Planning** agents focused on their own deals. Reps also land on the Deals page after signing in. Admins and managers keep access to all workflow types.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Redesigned setup flow">
+  <Improved category="Workflows" />
+
+  New users are guided through a redesigned setup flow for their AI agents, including deal synchronization and Plays enrollment with calendar events and CRM account linking.
+
+</Card>
+
+<Card icon="gauge-high" iconType="solid" title="Live workflow runs">
+  <Improved category="Workflows" />
+
+  Workflow runs and pending tool approvals now update in real time—no page refresh needed—and active runs open in their live session.
+
+</Card>
+
+<Card icon="bullseye" iconType="solid" title="Workflow agents stay on task">
+  <Fix category="Chat & Analysis" />
+
+  Chats started from a workflow such as Deal Sync or Play Planning now keep using that workflow's specialized agent. Search also returns documents that are still being indexed, so recent uploads are not missed.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Deal-owner approvals for interview requests">
+  <New category="Win-Loss Interviews" />
+
+  Interview requests can now require approval from the deal owner, in addition to other approvers. Approvals count toward the required total automatically.
+
+</Card>
+
+<Card icon="envelope" iconType="solid" title="Approval delivery by Slack or email">
+  <New category="Win-Loss Interviews" />
+
+  Choose whether interview sequence approvals are sent through Slack, email, or both. At least one channel must be on when approval is required.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-simple" iconType="solid" title="More accurate usage analytics">
+  <Improved category="Analytics" />
+
+  Usage analytics now include MCP sessions, and headline metrics stay consistent across filters. The **Unanswered** tab is replaced by **Downvoted answers** for clearer feedback tracking.
+
+</Card>
+
+<Card icon="file-export" iconType="solid" title="Feature-scoped deal exports">
+  <Improved category="Deals" />
+
+  When you filter deals by a feature and export, the file now includes only the fields associated with that feature.
+
+</Card>
+
+<Card icon="link" iconType="solid" title="Deal page link and logo fixes">
+  <Fix category="Deals" />
+
+  Client website, LinkedIn, and X links and logos now render correctly on deal pages.
+
+</Card>
+
+</CardGroup>
+
+### Integrations
+
+<CardGroup cols={1}>
+
+<Card icon="phone" iconType="solid" title="Better Gong call matching">
+  <Improved category="CRM Integration" />
+
+  Hindsight now finds more of the right Gong calls for each deal, matching on Salesforce contacts, phone numbers, contact names, account names in call titles, and call IDs recorded in Salesforce activities and the Gong managed package.
+
+</Card>
+
+<Card icon="cloud" iconType="solid" title="Salesforce filter improvements">
+  <Improved category="CRM Integration" />
+
+  Custom Salesforce filters now support multi-select picklists and blank values. Retrying a missing-deal import no longer risks duplicate imports.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake product taxonomy sync">
+  <New category="CRM Integration" />
+
+  Sync your product taxonomy from Snowflake, with support for multiple taxonomy versions.
+
+</Card>
+
+<Card icon="google-drive" iconType="brands" title="Google Drive improvements">
+  <Improved category="Integrations" />
+
+  Drive sync now runs daily, documents show when they were last updated, and imported assets stay owned by the person who imported them. Folder search is more reliable, and files with incomplete search indexes are re-indexed automatically.
+
+</Card>
+
+<Card icon="plug" iconType="solid" title="MCP competitor lookups">
+  <Improved category="Developer Tools" />
+
+  MCP tools now resolve competitors by name directly, making competitive intel requests simpler and more reliable.
+
+</Card>
+
+<Card icon="lock" iconType="solid" title="Notion integration limited to admins">
+  <Improved category="Integrations" />
+
+  Only organization admins can now connect the Notion integration.
+
+</Card>
+
+</CardGroup>
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
