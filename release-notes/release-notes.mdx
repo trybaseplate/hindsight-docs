@@ -5,6 +5,212 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## September 2026
+
+Plays get triggers, feedback, and an impact overview, a guided setup for new users, Playbook generation in chat, and more flexible interview approvals.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="bolt" iconType="solid" title="Play Triggers and Event-based Enrollment">
+  <New category="Sales Plays" />
+
+  Configure when a Play starts with custom triggers, or enroll deals automatically from events such as upcoming calendar meetings. If there isn't a free pre-meeting slot, Plays can now enroll right away instead of being skipped. Calendar events and CRM accounts can be linked to a Play enrollment.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Plays Impact Overview and Feedback">
+  <New category="Sales Plays" />
+
+  The redesigned Plays page opens on a new **Overview** tab that shows portfolio-level impact. Set a success goal for each Play and track how it is performing. Reps can also give feedback on Plays directly from Slack or email.
+
+</Card>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Starter Plays">
+  <New category="Sales Plays" />
+
+  New to Plays? A guided dialog now walks you through creating your first Plays from ready-made templates. Reopen it anytime with the **Starter Plays** button.
+
+</Card>
+
+</CardGroup>
+
+### Playbooks
+
+<CardGroup cols={1}>
+
+<Card icon="book-open" iconType="solid" title="Playbook Generation in Chat">
+  <New category="Playbooks" />
+
+  Generate and refine Playbooks in chat. Add sections, get playbook-aware starter prompts, save your work, and review earlier versions in the new version history panel. Playbook sections can also be selected as reference assets when you add context to a chat or Play.
+
+</Card>
+
+</CardGroup>
+
+### Getting Started & Workflows
+
+<CardGroup cols={1}>
+
+<Card icon="user-gear" iconType="solid" title="Redesigned User Setup">
+  <Improved category="Onboarding" />
+
+  A new setup flow gets each user's AI agents configured the first time they sign in, including a Deal Sync workflow that keeps your deals up to date and a Plays Planning workflow for enrolling your deals in Plays.
+
+</Card>
+
+<Card icon="users" iconType="solid" title="Reps Can Create Their Own Workflow Agents">
+  <New category="Workflows" />
+
+  Members can now create Deal Sync and Plays Planning agents focused on their own deals. Members also land on the Deals page when they sign in or switch organizations.
+
+</Card>
+
+<Card icon="signal" iconType="solid" title="Live Workflow Run Monitoring">
+  <Improved category="Workflows" />
+
+  Workflow runs and tools waiting for your approval now update in real time, with no page refresh needed. Chats linked to a workflow keep using that workflow's agent, so follow-up questions stay in context.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Deal-owner Approvals and Flexible Delivery">
+  <Improved category="Win-Loss Interviews" />
+
+  Interview requests can now require approval from the deal owner. Choose whether approvers are notified in Slack, by email, or both on each sequence. At least one delivery channel must be on when approval is required.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-simple" iconType="solid" title="Improved Usage Analytics">
+  <Improved category="Analytics" />
+
+  Usage analytics now include MCP session activity, and headline numbers stay consistent across filters. The Unanswered tab has been replaced by **Downvoted answers**, which makes it easier to see where answers fell short.
+
+</Card>
+
+<Card icon="chart-column" iconType="solid" title="Pipeline Dashboard: Metric Signals and Streaming Previews">
+  <New category="Analytics" />
+
+  The pipeline dashboard shows new metric signals, and Paige previews now stream in as they are generated.
+
+</Card>
+
+<Card icon="chart-pie" iconType="solid" title="Competitor Charts">
+  <Fix category="Analytics" />
+
+  Competitor deal charts and filters now reflect the correct deals.
+
+</Card>
+
+</CardGroup>
+
+### Deals & Exports
+
+<CardGroup cols={1}>
+
+<Card icon="file-export" iconType="solid" title="Feature-scoped Deal Exports">
+  <Improved category="Deals" />
+
+  When you filter deals by a feature, the export now includes only the fields associated with that feature.
+
+</Card>
+
+<Card icon="credit-card" iconType="solid" title="Granular Deal Credits">
+  <Improved category="Deals" />
+
+  Deal credits now track usage at a more granular level.
+
+</Card>
+
+<Card icon="link" iconType="solid" title="Deal Page Links and Logos">
+  <Fix category="Deals" />
+
+  Client website, LinkedIn, and Twitter links and logos on deal pages now display correctly.
+
+</Card>
+
+</CardGroup>
+
+### Integrations
+
+<CardGroup cols={1}>
+
+<Card icon="phone" iconType="solid" title="Better Gong Call Matching">
+  <Improved category="CRM Integration" />
+
+  Gong calls are matched to CRM records more accurately using phone numbers, contact names, and account names. Salesforce users with the Gong managed package also get calls linked to accounts and opportunities automatically.
+
+</Card>
+
+<Card icon="folder-open" iconType="solid" title="Google Drive Search and Sync">
+  <Fix category="Integrations" />
+
+  Folder and file search in the Drive import dialog is more reliable, including shared drives and special characters. Drive files that were not fully indexed are now re-indexed on the next sync.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake Product Taxonomy Sync">
+  <New category="Integrations" />
+
+  Sync your product taxonomy from Snowflake, with support for choosing which taxonomy version to use.
+
+</Card>
+
+<Card icon="rotate" iconType="solid" title="Competitor Setup Options">
+  <Improved category="Platform" />
+
+  When setting up competitors, you can reuse existing competitors and save suggestions for later.
+
+</Card>
+
+</CardGroup>
+
+### Chat & Slack
+
+<CardGroup cols={1}>
+
+<Card icon="magnifying-glass" iconType="solid" title="Search Finds Documents Still Being Indexed">
+  <Improved category="Chat & Analysis" />
+
+  Paige now returns documents that haven't finished indexing, with a note that semantic results aren't available yet, instead of returning nothing.
+
+</Card>
+
+<Card icon="slack" iconType="brands" title="Slack Continuations">
+  <Fix category="Slack" />
+
+  Action buttons are disabled after you click them, so you can't start the same continuation twice, and replies stay in your thread.
+
+</Card>
+
+<Card icon="plug" iconType="solid" title="Simpler MCP Competitor Lookup">
+  <Improved category="MCP" />
+
+  MCP tools now resolve competitors by name, so you don't need to supply a competitor ID.
+
+</Card>
+
+<Card icon="bars" iconType="solid" title="Reorganized Navigation">
+  <Improved category="Platform" />
+
+  The sidebar is grouped into clearer sections, with **Interview** and **Library** sections and quick links to Plays, Analytics, Deals, Assets, and Saved Intel.
+
+</Card>
+
+</CardGroup>
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
