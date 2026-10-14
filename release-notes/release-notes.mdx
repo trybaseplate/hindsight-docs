@@ -5,6 +5,226 @@ description: "Summary of major updates"
 
 import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
+## October 2026
+
+Pipeline analytics with deal win-path comparisons, Deal Sync that can update your CRM stage, filters on the pipeline dashboard, and a simpler agent setup.
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="route" iconType="solid" title="Win-path comparisons on every deal">
+  <New category="Dashboard & Analytics" />
+
+  The deal overview now shows how a deal's progress and stage timing compare with your historical won deals, so you can quickly tell whether a deal is on track. Comparisons appear once a stage has at least three completed won-deal visits.
+
+</Card>
+
+<Card icon="chart-line" iconType="solid" title="Pipeline progression and loss-driver analytics">
+  <New category="Dashboard & Analytics" />
+
+  See weighted pipeline progression by stage, along with the drivers behind losses at each stage. The pipeline dashboard also adds metric signals and streaming Paige previews, so insights appear as they're generated.
+
+  Make sure your organization's deal stages are configured to get the most from these views.
+
+</Card>
+
+<Card icon="filter" iconType="solid" title="Filters on the pipeline dashboard">
+  <New category="Dashboard & Analytics" />
+
+  Narrow the pipeline dashboard to the deals you care about, then clear or reset filters in one click.
+
+</Card>
+
+<Card icon="users" iconType="solid" title="Owner filters list every user">
+  <Fix category="Dashboard & Analytics" />
+
+  Owner filters now load all users in large organizations, including those beyond the first page, and correctly show owners who were previously missing.
+
+</Card>
+
+</CardGroup>
+
+### Agents & Plays
+
+<CardGroup cols={1}>
+
+<Card icon="arrows-rotate" iconType="solid" title="Deal Sync can update CRM deal stages">
+  <New category="Agents" />
+
+  Deal Sync can now move a deal to the right stage in your CRM based on what it learns from your calls and notes. Approvals for this action apply to the requesting user.
+
+</Card>
+
+<Card icon="sliders" iconType="solid" title="Simpler agent setup">
+  <Improved category="Agents" />
+
+  Agent setup is now a single, streamlined page of configuration controls. For the Slack Assistant, a new **deal access** option lets you choose how it handles deal data.
+
+</Card>
+
+<Card icon="bolt" iconType="solid" title="Manual Play enrollment starts right away">
+  <Improved category="Sales Plays" />
+
+  When you enroll a deal in a Play by hand, it's queued immediately instead of waiting on delays or automatic triggers.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Flexible approvers for interview requests">
+  <Improved category="Buyer Interviews" />
+
+  Choose who approves interview requests, including the deal owner. At least one approver is required, so every request has someone responsible for the decision.
+
+</Card>
+
+</CardGroup>
+
+### Platform
+
+<CardGroup cols={1}>
+
+<Card icon="book-open" iconType="solid" title="Playbook sections in reference pickers">
+  <New category="Platform" />
+
+  Add specific playbook sections as reference material for Custom Metrics, Custom Answers, and more. Search by playbook name or section.
+
+</Card>
+
+<Card icon="compass" iconType="solid" title="Competitor setup: reuse and save for later">
+  <Improved category="Competitive Intelligence" />
+
+  Reuse competitors you've already set up, and save suggested competitors to review later. Beta badges have also been removed from features that are now generally available.
+
+</Card>
+
+<Card icon="bug" iconType="solid" title="Dashboard access and Salesforce import fixes">
+  <Fix category="Platform" />
+
+  Fixed dashboard access for users with the right roles, and made Salesforce imports more reliable when custom filters are left blank.
+
+</Card>
+
+</CardGroup>
+
+
+## September 2026
+
+Playbook generation, a redesigned agent onboarding flow, rep-focused workflow agents, richer Salesforce filtering, and more flexible interview approvals.
+
+### Playbooks
+
+<CardGroup cols={1}>
+
+<Card icon="book" iconType="solid" title="Playbook generation with version history">
+  <Preview category="Playbooks" />
+
+  Generate playbooks with Paige, chat about them with full playbook context, and save new versions as they evolve. Add or remove sections, compare earlier versions in the version history panel, and use playbook-aware starter prompts.
+
+</Card>
+
+</CardGroup>
+
+### Agents & Workflows
+
+<CardGroup cols={1}>
+
+<Card icon="wand-magic-sparkles" iconType="solid" title="Redesigned agent setup for new users">
+  <Improved category="Agents" />
+
+  A redesigned setup flow guides each user through configuring their AI agent, and members are routed straight to their deals.
+
+</Card>
+
+<Card icon="user-gear" iconType="solid" title="Reps can create their own workflow agents">
+  <New category="Workflows" />
+
+  Members can now create workflow agents focused on their own deals, including **Deal Sync** and **Plays Planning**. Admins and managers keep access to all workflow types.
+
+</Card>
+
+<Card icon="chess-knight" iconType="solid" title="Plays from calendar events, enrolled right away">
+  <Improved category="Sales Plays" />
+
+  Enroll Plays from calendar events and link CRM accounts. When there's no free slot before a meeting, eligible Plays are enrolled immediately. Chats started from a workflow now keep that workflow's specialized agent throughout the conversation.
+
+</Card>
+
+<Card icon="eye" iconType="solid" title="Live workflow run monitoring">
+  <Improved category="Workflows" />
+
+  Workflow runs and pending tool approvals now update in real time, with no page refresh needed.
+
+</Card>
+
+</CardGroup>
+
+### Dashboard & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="chart-simple" iconType="solid" title="Clearer usage analytics">
+  <Improved category="Dashboard & Analytics" />
+
+  Usage analytics now include MCP session stats, and headline metrics stay consistent across filters. The "Unanswered" tab is replaced by **Downvoted answers**, which makes it easier to see where responses missed the mark.
+
+</Card>
+
+<Card icon="file-export" iconType="solid" title="Feature-scoped deal exports">
+  <Improved category="Dashboard & Analytics" />
+
+  When you filter deals by a feature and export, the file now includes only the fields tied to that feature.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="envelope-circle-check" iconType="solid" title="Deal-owner approvals and Slack or email delivery">
+  <New category="Buyer Interviews" />
+
+  Interview requests can now be approved by the deal owner. For each sequence, choose whether approval requests are delivered by Slack, email, or both.
+
+</Card>
+
+</CardGroup>
+
+### CRM Integration
+
+<CardGroup cols={1}>
+
+<Card icon="cloud" iconType="solid" title="Salesforce multi-select picklist filters">
+  <New category="CRM Integration" />
+
+  Filter Salesforce imports and auto-import by multi-select picklist fields. Blank custom filters are now handled gracefully, and retrying an import no longer risks duplicates.
+
+</Card>
+
+<Card icon="snowflake" iconType="solid" title="Snowflake product taxonomy sync">
+  <New category="CRM Integration" />
+
+  Sync your product taxonomy from Snowflake on demand, including support for multiple taxonomy versions.
+
+</Card>
+
+<Card icon="folder-open" iconType="solid" title="Google Drive folder search fix">
+  <Fix category="CRM Integration" />
+
+  Folder and file search in the Google Drive importer now returns correct results, including inside shared drives and for names with special characters.
+
+</Card>
+
+</CardGroup>
+
+
 ## August 2026
 
 Comparable Deals for learning from similar past opportunities, Sales Plays in beta, and new Paige capabilities for deal-grounded chat, sandboxed data analysis, and specialized workflows.
