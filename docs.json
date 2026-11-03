@@ -40,7 +40,8 @@
           "guides/knowledge-base-setup",
           "quickstart-ci",
           "guides/recipes",
-          "guides/plays"
+          "guides/plays",
+          "guides/pages"
         ]
       },
       {
@@ -81,7 +82,7 @@
       },
       {
         "group": "Release Notes",
-        "pages": ["release-notes/release-notes", "release-notes/mcp-2.0"]
+        "pages": ["release-notes/release-notes", "release-notes/pages", "release-notes/mcp-2.0"]
       }
     ]
   },
