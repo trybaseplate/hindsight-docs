@@ -3,15 +3,155 @@ title: "Release Notes"
 description: "Summary of major updates"
 ---
 
-import { New, Improved, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
+import { New, Improved, Alpha, Preview, Fix, Beta, OpenBeta } from '/snippets/release-tag.mdx';
 
 ## November 2026
 
-### Pages — Internal Preview
+### Pages
 
-Create HTML reports, deal briefs, meeting prep, battlecards, and guides with the Hindsight agent, then revisit them in **Pages**. Browse reusable templates, upload workspace layouts, share authenticated workspace links, and download HTML files.
+<CardGroup cols={1}>
 
-Explicitly request an HTML page in chat; ordinary reports and briefs still default to Markdown. This entry describes the internal preview. See the [Pages release notes](/release-notes/pages) and [Pages guide](/guides/pages).
+<Card icon="file-lines" iconType="solid" title="Pages — Internal Preview">
+  <Preview category="Pages" />
+
+  Create HTML reports, deal briefs, meeting prep, battlecards, and guides with the Hindsight agent, then revisit them in **Pages**. Browse reusable templates, upload workspace layouts, share authenticated workspace links, and download HTML files.
+
+  Explicitly request an HTML page in chat; ordinary reports and briefs still default to Markdown. This entry describes the internal preview. See the [Pages release notes](/release-notes/pages) and [Pages guide](/guides/pages).
+
+</Card>
+
+</CardGroup>
+
+## October 2026
+
+New Alpha capabilities help you compare deal progression, keep CRM records current, and review Playbook updates. Plays can also trigger help when deals stall.
+
+### Deals & Analytics
+
+<CardGroup cols={1}>
+
+<Card icon="route" iconType="solid" title="Spot deals drifting from the path to a win">
+  <Alpha category="Deals" />
+
+  The deal overview now compares a deal's progression and time in each stage with historical won deals, helping you see where it is moving more slowly than successful opportunities. Comparisons appear once at least three won deals have passed through a stage.
+
+  **More relevant benchmarks** — In pipeline analytics and deal progression views, choose to compare against comparable deals rather than the entire pipeline.
+
+</Card>
+
+</CardGroup>
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="hourglass-end" iconType="solid" title="Trigger a Play when a deal stalls">
+  <New category="Sales Plays" />
+
+  Set a threshold for days in stage, and Hindsight triggers a Play when a deal has been there too long. Use it to bring timely guidance to reps without checking each deal manually.
+
+  You can also enroll a deal manually to queue the Play immediately.
+
+</Card>
+
+</CardGroup>
+
+### Playbooks
+
+<CardGroup cols={1}>
+
+<Card icon="book-open" iconType="solid" title="Keep playbooks current with deal evidence">
+  <Alpha category="Playbooks" />
+
+  Hindsight can now propose Playbook updates on a schedule using fresh evidence from your deals. Review the suggested edits and their supporting evidence, then accept or reject them before your guidance changes.
+
+</Card>
+
+</CardGroup>
+
+### Agents & Workflows
+
+<CardGroup cols={1}>
+
+<Card icon="arrows-rotate" iconType="solid" title="Keep CRM stages and buyer contacts up to date">
+  <Alpha category="Workflows" />
+
+  The Deal Sync agent can now update CRM deal stages and sync buyer contacts after calls and meetings, reducing the follow-up work needed to keep records current. Stage updates go through tool approval before they are applied.
+
+  **Personal approval preferences** — Choosing "Always allow" applies only to you, so each rep controls their own tool approvals.
+
+</Card>
+
+</CardGroup>
+
+## September 2026
+
+Start with a ready-made Play, deliver guidance around the moments that matter, and see which Plays are associated with pipeline and won revenue. Deal Sync and Plays Planning agents, along with Playbook generation, are available in Alpha.
+
+### Sales Plays
+
+<CardGroup cols={1}>
+
+<Card icon="chart-line" iconType="solid" title="Measure the impact of your Plays">
+  <New category="Sales Plays" />
+
+  The Plays **Overview** tab brings attributed opportunities, pipeline, and won revenue into one view. Set success goals for each Play and open the attributed opportunities to understand where it is contributing.
+
+  **Feedback from reps** — Collect feedback through Slack or email to learn whether the guidance is useful alongside the revenue measures.
+
+</Card>
+
+<Card icon="bullseye" iconType="solid" title="Get started faster and reach reps at the right moment">
+  <New category="Sales Plays" />
+
+  Use **Starter Plays** to create a Play from a ready-made template, then configure the events that enroll deals, including calendar meetings and CRM account links.
+
+  Reps can continue Play conversations across Slack and Hindsight chat with the context preserved, so they can ask follow-up questions where they are already working.
+
+</Card>
+
+</CardGroup>
+
+### Workflows
+
+<CardGroup cols={1}>
+
+<Card icon="user-gear" iconType="solid" title="Set up agents for your own deals">
+  <Alpha category="Workflows" />
+
+  Members can now create Deal Sync and Plays Planning agents for their own deals without needing an admin. A guided setup flow helps them get started, while live workflow updates make it easier to follow runs and act on pending tool approvals.
+
+</Card>
+
+</CardGroup>
+
+### Playbooks
+
+<CardGroup cols={1}>
+
+<Card icon="book" iconType="solid" title="Build and refine playbooks in chat">
+  <Alpha category="Playbooks" />
+
+  Generate and refine Playbook sections in chat, bring in sections from your library, and save the result with a full version history. Return to a session to continue the work.
+
+  Available in Alpha for enabled workspaces.
+
+</Card>
+
+</CardGroup>
+
+### Win-Loss Interviews
+
+<CardGroup cols={1}>
+
+<Card icon="user-check" iconType="solid" title="Bring deal owners into interview approvals">
+  <New category="Win-Loss Interviews" />
+
+  Deal owners can now approve interview requests alongside designated approvers, bringing the person closest to the customer into the process. Deliver approval requests through Slack, email, or both.
+
+</Card>
+
+</CardGroup>
 
 ## August 2026
 

@@ -19,6 +19,13 @@ export const Preview = ({ category }) => (
   </div>
 );
 
+export const Alpha = ({ category }) => (
+  <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px'}}>
+    <span style={{background: '#f3e8ff', color: '#7e22ce', padding: '2px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: '600'}}>Alpha</span>
+    {category && <span style={{color: '#6b7280', fontSize: '13px'}}>{category}</span>}
+  </div>
+);
+
 export const Fix = ({ category }) => (
   <div style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px'}}>
     <span style={{background: '#fee2e2', color: '#b91c1c', padding: '2px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: '600'}}>Bug Fix</span>
